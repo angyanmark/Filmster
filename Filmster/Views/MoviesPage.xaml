@@ -11,7 +11,7 @@
 
     <Page.Resources>
         <helper:PosterPathToFullPathConverter x:Key="PosterPathToFullPathConverter" />
-        <DataTemplate x:Key="ImageTemplate" x:DataType="tmdb:SearchMovie">
+        <DataTemplate x:Key="ImageTemplate" x:DataType="tmdb:SearchMovieTvBase">
             <Image Source="{Binding PosterPath, Converter={StaticResource PosterPathToFullPathConverter}}" Stretch="UniformToFill" />
         </DataTemplate>
     </Page.Resources>
