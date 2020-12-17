@@ -3,13 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:helper="using:Filmster.Helpers"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:tmdb="using:TMDbLib.Objects.Search"
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="PhotosTemplate">
-            <Image Source="https://image.tmdb.org/t/p/w600_and_h900_bestv2/jcJpkQWRU8gsZlo830eQ8ryXKNU.jpg" Stretch="UniformToFill" />
+        <helper:PosterPathToFullPathConverter x:Key="PosterPathToFullPathConverter" />
+        <DataTemplate x:Key="ImageTemplate" x:DataType="tmdb:SearchMovie">
+            <Image Source="{Binding PosterPath, Converter={StaticResource PosterPathToFullPathConverter}}" Stretch="UniformToFill" />
         </DataTemplate>
     </Page.Resources>
 
@@ -23,21 +26,21 @@
             <PivotItem x:Uid="Movies_Popular">
                 <controls:AdaptiveGridView DesiredWidth="300"
                                            ItemHeight="450"
-                                           ItemTemplate="{StaticResource PhotosTemplate}"
+                                           ItemTemplate="{StaticResource ImageTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}" />
             </PivotItem>
 
             <PivotItem x:Uid="Movies_NowPlaying">
                 <controls:AdaptiveGridView DesiredWidth="300"
                                            ItemHeight="450"
-                                           ItemTemplate="{StaticResource PhotosTemplate}"
+                                           ItemTemplate="{StaticResource ImageTemplate}"
                                            ItemsSource="{x:Bind ViewModel.NowPlayingMovies, Mode=OneWay}" />
             </PivotItem>
 
             <PivotItem x:Uid="Movies_Upcoming">
                 <controls:AdaptiveGridView DesiredWidth="300"
                                            ItemHeight="450"
-                                           ItemTemplate="{StaticResource PhotosTemplate}"
+                                           ItemTemplate="{StaticResource ImageTemplate}"
                                            ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}" />
             </PivotItem>
         </Pivot>
