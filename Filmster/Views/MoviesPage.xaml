@@ -6,8 +6,8 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot x:Name="Items">
+    <Grid Margin="{StaticResource SmallLeftRightMargin}">
+        <Pivot>
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
