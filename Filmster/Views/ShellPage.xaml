@@ -1,15 +1,14 @@
-﻿<Page
-    x:Class="Filmster.Views.ShellPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
-    xmlns:helpers="using:Filmster.Helpers"
-    xmlns:views="using:Filmster.Views"
-    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
-    mc:Ignorable="d">
+﻿<Page x:Class="Filmster.Views.ShellPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:helpers="using:Filmster.Helpers"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:views="using:Filmster.Views"
+      xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d">
 
     <i:Interaction.Behaviors>
         <ic:EventTriggerBehavior EventName="Loaded">
@@ -17,20 +16,19 @@
         </ic:EventTriggerBehavior>
     </i:Interaction.Behaviors>
 
-    <winui:NavigationView
-        x:Name="navigationView"
-        IsBackButtonVisible="Visible"
-        IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
-        SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
-        IsSettingsVisible="True"
-        PaneDisplayMode="Top"
-        Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+    <winui:NavigationView x:Name="navigationView"
+                          Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
+                          IsBackButtonVisible="Visible"
+                          IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+                          IsSettingsVisible="True"
+                          PaneDisplayMode="Top"
+                          SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
         <winui:NavigationView.MenuItems>
             <!--
-            TODO WTS: Change the symbols for each item as appropriate for your app
-            More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
-            Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/projectTypes/navigationpane.md
-            Edit String/en-US/Resources.resw: Add a menu item title for each page
+                TODO WTS: Change the symbols for each item as appropriate for your app
+                More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
+                Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/projectTypes/navigationpane.md
+                Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
             <winui:NavigationViewItem x:Uid="Shell_Movies" helpers:NavHelper.NavigateTo="views:MoviesPage" />
             <winui:NavigationViewItem x:Uid="Shell_TvShows" helpers:NavHelper.NavigateTo="views:TvShowsPage" />
