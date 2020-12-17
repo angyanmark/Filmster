@@ -1,5 +1,6 @@
-﻿using TMDbLib.Client;
-using TMDbLib.Objects.General;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMDbLib.Client;
 using TMDbLib.Objects.Search;
 
 namespace Filmster.Core.Services
@@ -8,9 +9,19 @@ namespace Filmster.Core.Services
     {
         private static readonly TMDbClient client = new TMDbClient("5e9bcb638329a15acf75c1b2d85ae67e");
 
-        public static SearchContainer<SearchMovie> GetPopularMovies()
+        public static async Task<List<SearchMovie>> GetPopularMoviesAsync()
         {
-            return client.GetMoviePopularListAsync().Result;
+            return (await client.GetMoviePopularListAsync()).Results;
+        }
+
+        public static async Task<List<SearchMovie>> GetNowPlayingMoviesAsync()
+        {
+            return (await client.GetMovieNowPlayingListAsync()).Results;
+        }
+
+        public static async Task<List<SearchMovie>> GetUpcomingMoviesAsync()
+        {
+            return (await client.GetMovieUpcomingListAsync()).Results;
         }
     }
 }
