@@ -1,6 +1,4 @@
-﻿using System;
-
-using Filmster.Helpers;
+﻿using Filmster.Helpers;
 
 namespace Filmster.ViewModels
 {

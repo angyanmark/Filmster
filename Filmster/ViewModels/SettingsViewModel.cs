@@ -1,16 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
-
 using Filmster.Helpers;
 using Filmster.Services;
-
 using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 
 namespace Filmster.ViewModels
 {
-    // TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/pages/settings.md
     public class SettingsViewModel : Observable
     {
         private ElementTheme _elementTheme = ThemeSelectorService.Theme;
@@ -64,9 +60,7 @@ namespace Filmster.ViewModels
         private string GetVersionDescription()
         {
             var appName = "AppDisplayName".GetLocalized();
-            var package = Package.Current;
-            var packageId = package.Id;
-            var version = packageId.Version;
+            var version = Package.Current.Id.Version;
 
             return $"{appName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
         }

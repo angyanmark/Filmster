@@ -1,7 +1,4 @@
-﻿using System;
-
-using Filmster.ViewModels;
-
+﻿using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
 
 namespace Filmster.Views

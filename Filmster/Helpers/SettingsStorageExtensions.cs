@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-
 using Filmster.Core.Helpers;
-
 using Windows.Storage;
 using Windows.Storage.Streams;
 
@@ -53,9 +51,7 @@ namespace Filmster.Helpers
 
         public static async Task<T> ReadAsync<T>(this ApplicationDataContainer settings, string key)
         {
-            object obj = null;
-
-            if (settings.Values.TryGetValue(key, out obj))
+            if (settings.Values.TryGetValue(key, out object obj))
             {
                 return await Json.ToObjectAsync<T>((string)obj);
             }

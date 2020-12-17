@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-
 using Filmster.Services;
-
 using Windows.ApplicationModel.Activation;
 
 namespace Filmster.Activation

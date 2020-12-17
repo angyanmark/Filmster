@@ -1,7 +1,5 @@
 ﻿using System;
-
 using Filmster.Services;
-
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 
@@ -9,7 +7,7 @@ namespace Filmster
 {
     public sealed partial class App : Application
     {
-        private Lazy<ActivationService> _activationService;
+        private readonly Lazy<ActivationService> _activationService;
 
         private ActivationService ActivationService
         {
@@ -46,7 +44,7 @@ namespace Filmster
 
         private ActivationService CreateActivationService()
         {
-            return new ActivationService(this, typeof(Views.MoviesPage), new Lazy<UIElement>(CreateShell));
+            return new ActivationService(typeof(Views.MoviesPage), new Lazy<UIElement>(CreateShell));
         }
 
         private UIElement CreateShell()
