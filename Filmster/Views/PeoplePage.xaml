@@ -13,17 +13,7 @@
                     <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
                 </DataTemplate>
             </Pivot.HeaderTemplate>
-            <PivotItem x:Uid="People_PivotItem1">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                    <!--
-                        The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content.
-                        Place your content here.
-                    -->
-
-                </Grid>
-            </PivotItem>
-
-            <PivotItem x:Uid="People_PivotItem2">
+            <PivotItem x:Uid="People_Popular">
                 <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <!--
                         The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content.

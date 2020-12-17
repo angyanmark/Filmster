@@ -125,41 +125,37 @@
     <value>Filmster</value>
     <comment>Application description</comment>
   </data>
-  <data name="Movies_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
-    <comment>First Pivot item title for Movies</comment>
+  <data name="Movies_Popular.Header" xml:space="preserve">
+    <value>Popular</value>
+    <comment>Popular pivot item title for Movies</comment>
   </data>
-  <data name="Movies_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
-    <comment>Second Pivot item title for Movies</comment>
+  <data name="Movies_NowPlaying.Header" xml:space="preserve">
+    <value>Now Playing</value>
+    <comment>Now Playing pivot item title for Movies</comment>
   </data>
   <data name="Shell_Movies.Content" xml:space="preserve">
     <value>Movies</value>
-    <comment>Navigation view item name for Movies</comment>
+    <comment>Movies navigation view item name</comment>
   </data>
-  <data name="TvShows_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
-    <comment>First Pivot item title for TvShows</comment>
+  <data name="TvShows_Popular.Header" xml:space="preserve">
+    <value>Popular</value>
+    <comment>Popular pivot item title for TvShows</comment>
   </data>
-  <data name="TvShows_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
-    <comment>Second Pivot item title for TvShows</comment>
+  <data name="TvShows_AiringToday.Header" xml:space="preserve">
+    <value>Airing Today</value>
+    <comment>Airing Today pivot item title for TvShows</comment>
   </data>
   <data name="Shell_TvShows.Content" xml:space="preserve">
-    <value>TvShows</value>
-    <comment>Navigation view item name for TvShows</comment>
+    <value>TV Shows</value>
+    <comment>TV Shows navigation view item name</comment>
   </data>
-  <data name="People_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
-    <comment>First Pivot item title for People</comment>
-  </data>
-  <data name="People_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
-    <comment>Second Pivot item title for People</comment>
+  <data name="People_Popular.Header" xml:space="preserve">
+    <value>Popular</value>
+    <comment>Popular pivot item title for People</comment>
   </data>
   <data name="Shell_People.Content" xml:space="preserve">
     <value>People</value>
-    <comment>Navigation view item name for People</comment>
+    <comment>People navigation view item name</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
     <value>Choose Theme</value>
@@ -177,24 +173,32 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">    
+  <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">    
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>Settings page placeholder text.  Your app description goes here.</value>
     <comment>About this application description for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">    
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">  
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">   
+  <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
+  </data>
+  <data name="Movies_Upcoming.Header" xml:space="preserve">
+    <value>Upcoming</value>
+    <comment>Upcoming pivot item title for Movies</comment>
+  </data>
+  <data name="TvShows_OnTv.Header" xml:space="preserve">
+    <value>On TV</value>
+    <comment>On TV pivot item title for TvShows</comment>
   </data>
 </root>
