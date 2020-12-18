@@ -4,6 +4,7 @@
 
     <Style x:Key="AdaptiveGridItem" TargetType="controls:AdaptiveGridView">
         <Setter Property="DesiredWidth" Value="240" />
+        <Setter Property="IsItemClickEnabled" Value="True" />
     </Style>
 
     <Style x:Key="GridImage" TargetType="Image">

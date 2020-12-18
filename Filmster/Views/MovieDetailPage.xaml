@@ -5,7 +5,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
-    <Grid>
+
+    <StackPanel>
         <TextBlock Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
-    </Grid>
+        <FlipView ItemTemplate="{StaticResource FlipPosterTemplate}"
+                  ItemsSource="{x:Bind ViewModel.Movie.Images.Posters, Mode=OneWay}"
+                  Style="{StaticResource FlipView}" />
+    </StackPanel>
 </Page>

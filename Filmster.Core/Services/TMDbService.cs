@@ -40,7 +40,7 @@ namespace Filmster.Core.Services
 
         public static async Task<Movie> GetMovieAsync(int id)
         {
-            return await client.GetMovieAsync(id);
+            return await client.GetMovieAsync(id, MovieMethods.Images);
         }
 
         public static async Task<List<SearchTv>> GetPopularTvShowsAsync()

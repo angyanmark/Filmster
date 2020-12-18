@@ -14,6 +14,7 @@
                     <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
                 </DataTemplate>
             </Pivot.HeaderTemplate>
+
             <PivotItem x:Uid="TvShows_Popular">
                 <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
