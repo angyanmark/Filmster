@@ -34,6 +34,19 @@
             <winui:NavigationViewItem x:Uid="Shell_TvShows" helpers:NavHelper.NavigateTo="views:TvShowsPage" />
             <winui:NavigationViewItem x:Uid="Shell_People" helpers:NavHelper.NavigateTo="views:PeoplePage" />
         </winui:NavigationView.MenuItems>
+
+        <winui:NavigationView.AutoSuggestBox>
+            <AutoSuggestBox x:Uid="Shell_SearchBoxPlaceholderText"
+                            Width="400"
+                            DisplayMemberPath="DisplayName"
+                            ItemsSource="{x:Bind ViewModel.SearchItems, Mode=OneWay}"
+                            QueryIcon="Find"
+                            QuerySubmitted="{x:Bind ViewModel.SearchQuerySubmitted}"
+                            SuggestionChosen="{x:Bind ViewModel.SearchSuggestionChosen}"
+                            TextChanged="{x:Bind ViewModel.SearchTextChangedAsync}"
+                            TextMemberPath="DisplayName" />
+        </winui:NavigationView.AutoSuggestBox>
+
         <i:Interaction.Behaviors>
             <ic:EventTriggerBehavior EventName="ItemInvoked">
                 <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemInvokedCommand}" />

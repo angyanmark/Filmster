@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Filmster.Core.Models;
+using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.Views;
+using TMDbLib.Objects.General;
+using TMDbLib.Objects.Search;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -146,6 +151,78 @@ namespace Filmster.ViewModels
         {
             var result = NavigationService.GoBack();
             args.Handled = result;
+        }
+
+        public ObservableCollection<SearchItem> SearchItems { get; set; } = new ObservableCollection<SearchItem>();
+
+        public async Task SearchTextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (!string.IsNullOrWhiteSpace(sender.Text) && args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                var multiSearchItems = await TMDbService.GetMultiSearchAsync(sender.Text);
+                SearchItems.Clear();
+                foreach (var multiSearchItem in multiSearchItems)
+                {
+                    var searchItem = new SearchItem
+                    {
+                        SearchBase = multiSearchItem,
+                        DisplayName = GetSearchItemDisplayName(multiSearchItem)
+                    };
+                    SearchItems.Add(searchItem);
+                }
+            }
+        }
+
+        public void SearchSuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            if (args.SelectedItem is SearchItem searchItem)
+            {
+                sender.Text = searchItem.DisplayName;
+            }
+        }
+
+        public void SearchQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (args.ChosenSuggestion != null && args.ChosenSuggestion is SearchItem searchItem)
+            {
+                switch (searchItem.SearchBase.MediaType)
+                {
+                    case MediaType.Movie:
+                        NavigationService.Navigate(typeof(MovieDetailPage), searchItem.SearchBase.Id);
+                        break;
+                    case MediaType.Tv:
+                        NavigationService.Navigate(typeof(TvShowDetailPage), searchItem.SearchBase.Id);
+                        break;
+                    case MediaType.Person:
+                        NavigationService.Navigate(typeof(PersonDetailPage), searchItem.SearchBase.Id);
+                        break;
+                    case MediaType.Unknown:
+                    default:
+                        break;
+                }
+            }
+            else if (args.ChosenSuggestion is string value)
+            {
+                // TODO: search value
+            }
+        }
+
+        private string GetSearchItemDisplayName(SearchBase searchItem)
+        {
+            switch (searchItem.MediaType)
+            {
+                case MediaType.Movie:
+                    var movie = searchItem as SearchMovie;
+                    return DisplayNameHelper.GetSearchMovieDisplayName(movie);
+                case MediaType.Tv:
+                    var tvShow = searchItem as SearchTv;
+                    return DisplayNameHelper.GetSearchTvDisplayName(tvShow);
+                case MediaType.Person:
+                    return (searchItem as SearchPerson).Name;
+                case MediaType.Unknown:
+                default:
+                    return string.Empty;
+            }
         }
     }
 }

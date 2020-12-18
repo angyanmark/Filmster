@@ -209,4 +209,8 @@
     <value>Top Rated</value>
     <comment>Top Rated pivot item title for TvShows</comment>
   </data>
+  <data name="Shell_SearchBoxPlaceholderText.PlaceholderText" xml:space="preserve">
+    <value>Search movies, shows, people...</value>
+    <comment>SearchBox placeholder text in navigation bar</comment>
+  </data>
 </root>

@@ -69,5 +69,10 @@ namespace Filmster.Core.Services
         {
             return await client.GetPersonAsync(id, PersonMethods.Images);
         }
+
+        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value)
+        {
+            return (await client.SearchMultiAsync(value)).Results;
+        }
     }
 }
