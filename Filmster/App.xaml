@@ -16,7 +16,7 @@
                 <ResourceDictionary Source="/Styles/Page.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <helpers:PosterPathToFullPathConverter x:Key="PosterPathToFullPathConverter" />
+            <helpers:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
