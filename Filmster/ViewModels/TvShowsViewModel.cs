@@ -1,5 +1,7 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
+using Filmster.Services;
+using Filmster.Views;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -51,7 +53,7 @@ namespace Filmster.ViewModels
 
         private void TvShowClicked(SearchTv tvShow)
         {
-            //NavigationService.Navigate(typeof(TvShowDetailPage), tvShow.Id);
+            NavigationService.Navigate(typeof(TvShowDetailPage), tvShow.Id);
         }
     }
 }

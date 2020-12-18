@@ -6,5 +6,7 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <Grid />
+    <StackPanel>
+        <TextBlock Text="{x:Bind ViewModel.TvShow.Name, Mode=OneWay}" />
+    </StackPanel>
 </Page>

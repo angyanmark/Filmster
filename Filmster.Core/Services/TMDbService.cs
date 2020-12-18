@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using TMDbLib.Client;
 using TMDbLib.Objects.Movies;
+using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
 using TMDbLib.Objects.Trending;
+using TMDbLib.Objects.TvShows;
 
 namespace Filmster.Core.Services
 {
@@ -53,9 +55,19 @@ namespace Filmster.Core.Services
             return (await client.GetTvShowTopRatedAsync()).Results;
         }
 
+        public static async Task<TvShow> GetTvShowAsync(int id)
+        {
+            return await client.GetTvShowAsync(id);
+        }
+
         public static async Task<List<SearchPerson>> GetPopularPeopleAsync(TimeWindow timeWindow)
         {
             return (await client.GetTrendingPeopleAsync(timeWindow)).Results;
+        }
+
+        public static async Task<Person> GetPersonAsync(int id)
+        {
+            return await client.GetPersonAsync(id);
         }
     }
 }
