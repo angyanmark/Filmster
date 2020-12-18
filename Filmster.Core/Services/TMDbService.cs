@@ -32,9 +32,19 @@ namespace Filmster.Core.Services
             return (await client.GetMovieUpcomingListAsync()).Results;
         }
 
+        public static async Task<List<SearchMovie>> GetTopRatedMoviesAsync()
+        {
+            return (await client.GetMovieTopRatedListAsync()).Results;
+        }
+
         public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
         {
             return (await client.GetTvShowPopularAsync()).Results;
+        }
+
+        public static async Task<List<SearchTv>> GetTopRatedTvShowsAsync()
+        {
+            return (await client.GetTvShowTopRatedAsync()).Results;
         }
 
         public static async Task<List<SearchPerson>> GetPopularPeopleAsync(TimeWindow timeWindow)

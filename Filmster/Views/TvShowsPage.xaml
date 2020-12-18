@@ -23,6 +23,12 @@
             <PivotItem x:Uid="TvShows_AiringToday" />
 
             <PivotItem x:Uid="TvShows_OnTv" />
+
+            <PivotItem x:Uid="TvShows_TopRated">
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
+                                           ItemsSource="{x:Bind ViewModel.TopRatedTvShows, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridItem}" />
+            </PivotItem>
         </Pivot>
     </Grid>
 </Page>

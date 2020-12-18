@@ -11,6 +11,7 @@ namespace Filmster.ViewModels
         public ObservableCollection<SearchMovie> PopularMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> NowPlayingMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> UpcomingMovies { get; set; } = new ObservableCollection<SearchMovie>();
+        public ObservableCollection<SearchMovie> TopRatedMovies { get; set; } = new ObservableCollection<SearchMovie>();
 
         public MoviesViewModel()
         {
@@ -22,6 +23,7 @@ namespace Filmster.ViewModels
             await GetPopularMoviesAsync();
             await GetNowPlayingMoviesAsync();
             await GetUpcomingMoviesAsync();
+            await GetTopRatedMoviesAsync();
         }
 
         private async Task GetPopularMoviesAsync()
@@ -48,6 +50,15 @@ namespace Filmster.ViewModels
             foreach (var movie in movies)
             {
                 UpcomingMovies.Add(movie);
+            }
+        }
+
+        private async Task GetTopRatedMoviesAsync()
+        {
+            var movies = await TMDbService.GetTopRatedMoviesAsync();
+            foreach (var movie in movies)
+            {
+                TopRatedMovies.Add(movie);
             }
         }
     }

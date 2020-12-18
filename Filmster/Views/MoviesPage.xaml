@@ -31,6 +31,12 @@
                                            ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
+
+            <PivotItem x:Uid="Movies_TopRated">
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
+                                           ItemsSource="{x:Bind ViewModel.TopRatedMovies, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridItem}" />
+            </PivotItem>
         </Pivot>
     </Grid>
 </Page>

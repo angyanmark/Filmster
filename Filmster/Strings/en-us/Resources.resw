@@ -201,4 +201,12 @@
     <value>On TV</value>
     <comment>On TV pivot item title for TvShows</comment>
   </data>
+  <data name="Movies_TopRated.Header" xml:space="preserve">
+    <value>Top Rated</value>
+    <comment>Top Rated pivot item title for Movies</comment>
+  </data>
+  <data name="TvShows_TopRated.Header" xml:space="preserve">
+    <value>Top Rated</value>
+    <comment>Top Rated pivot item title for TvShows</comment>
+  </data>
 </root>
