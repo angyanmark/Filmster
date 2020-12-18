@@ -2,8 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
-    <DataTemplate x:Key="GridImageTemplate">
+    <DataTemplate x:Key="GridPosterTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource PosterPathToFullPathConverter}}" Stretch="UniformToFill" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="GridProfileTemplate">
+        <Image Source="{Binding ProfilePath, Converter={StaticResource PosterPathToFullPathConverter}}" Stretch="UniformToFill" />
     </DataTemplate>
 
     <Style x:Key="AdaptiveGridItem" TargetType="controls:AdaptiveGridView">

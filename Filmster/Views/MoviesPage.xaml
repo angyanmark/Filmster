@@ -15,19 +15,19 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="Movies_Popular">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
 
             <PivotItem x:Uid="Movies_NowPlaying">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.NowPlayingMovies, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
 
             <PivotItem x:Uid="Movies_Upcoming">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>

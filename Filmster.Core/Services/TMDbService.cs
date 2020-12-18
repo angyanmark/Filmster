@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TMDbLib.Client;
 using TMDbLib.Objects.Search;
+using TMDbLib.Objects.Trending;
 
 namespace Filmster.Core.Services
 {
@@ -34,6 +35,11 @@ namespace Filmster.Core.Services
         public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
         {
             return (await client.GetTvShowPopularAsync()).Results;
+        }
+
+        public static async Task<List<SearchPerson>> GetPopularPeopleAsync(TimeWindow timeWindow)
+        {
+            return (await client.GetTrendingPeopleAsync(timeWindow)).Results;
         }
     }
 }

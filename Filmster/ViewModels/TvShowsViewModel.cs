@@ -12,10 +12,10 @@ namespace Filmster.ViewModels
 
         public TvShowsViewModel()
         {
-            _ = GetTvShows();
+            _ = GetTvShowsAsync();
         }
 
-        private async Task GetTvShows()
+        private async Task GetTvShowsAsync()
         {
             await GetPopularTvShowsAsync();
         }

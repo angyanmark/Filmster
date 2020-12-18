@@ -14,10 +14,10 @@ namespace Filmster.ViewModels
 
         public MoviesViewModel()
         {
-            _ = GetMovies();
+            _ = GetMoviesAsync();
         }
 
-        private async Task GetMovies()
+        private async Task GetMoviesAsync()
         {
             await GetPopularMoviesAsync();
             await GetNowPlayingMoviesAsync();

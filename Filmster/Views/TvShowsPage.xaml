@@ -15,7 +15,7 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="TvShows_Popular">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
