@@ -1,7 +1,14 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <DataTemplate x:Key="GridImageTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource PosterPathToFullPathConverter}}" Stretch="UniformToFill" />
     </DataTemplate>
+
+    <Style x:Key="AdaptiveGridItem" TargetType="controls:AdaptiveGridView">
+        <Setter Property="DesiredWidth" Value="240" />
+        <Setter Property="ItemHeight" Value="360" />
+    </Style>
 
 </ResourceDictionary>

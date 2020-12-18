@@ -15,10 +15,9 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="TvShows_Popular">
-                <controls:AdaptiveGridView DesiredWidth="300"
-                                           ItemHeight="450"
-                                           ItemTemplate="{StaticResource GridImageTemplate}"
-                                           ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}" />
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                                           ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
 
             <PivotItem x:Uid="TvShows_AiringToday" />

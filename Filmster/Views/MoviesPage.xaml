@@ -15,24 +15,21 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem x:Uid="Movies_Popular">
-                <controls:AdaptiveGridView DesiredWidth="300"
-                                           ItemHeight="450"
-                                           ItemTemplate="{StaticResource GridImageTemplate}"
-                                           ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}" />
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                                           ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
 
             <PivotItem x:Uid="Movies_NowPlaying">
-                <controls:AdaptiveGridView DesiredWidth="300"
-                                           ItemHeight="450"
-                                           ItemTemplate="{StaticResource GridImageTemplate}"
-                                           ItemsSource="{x:Bind ViewModel.NowPlayingMovies, Mode=OneWay}" />
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                                           ItemsSource="{x:Bind ViewModel.NowPlayingMovies, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
 
             <PivotItem x:Uid="Movies_Upcoming">
-                <controls:AdaptiveGridView DesiredWidth="300"
-                                           ItemHeight="450"
-                                           ItemTemplate="{StaticResource GridImageTemplate}"
-                                           ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}" />
+                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridImageTemplate}"
+                                           ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
         </Pivot>
     </Grid>
