@@ -150,6 +150,7 @@
     <Compile Include="ViewModels\MovieDetailViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TvShowDetailViewModel.cs" />
@@ -162,6 +163,9 @@
     </Compile>
     <Compile Include="Views\PeoplePage.xaml.cs">
       <DependentUpon>PeoplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonDetailPage.xaml.cs">
+      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -220,6 +224,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PeoplePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PersonDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
