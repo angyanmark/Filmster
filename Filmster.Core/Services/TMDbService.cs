@@ -57,7 +57,7 @@ namespace Filmster.Core.Services
 
         public static async Task<TvShow> GetTvShowAsync(int id)
         {
-            return await client.GetTvShowAsync(id);
+            return await client.GetTvShowAsync(id, TvShowMethods.Images);
         }
 
         public static async Task<List<SearchPerson>> GetPopularPeopleAsync(TimeWindow timeWindow)
@@ -67,7 +67,7 @@ namespace Filmster.Core.Services
 
         public static async Task<Person> GetPersonAsync(int id)
         {
-            return await client.GetPersonAsync(id);
+            return await client.GetPersonAsync(id, PersonMethods.Images);
         }
     }
 }

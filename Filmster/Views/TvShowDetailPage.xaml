@@ -8,5 +8,8 @@
 
     <StackPanel>
         <TextBlock Text="{x:Bind ViewModel.TvShow.Name, Mode=OneWay}" />
+        <FlipView ItemTemplate="{StaticResource FlipPosterTemplate}"
+                  ItemsSource="{x:Bind ViewModel.TvShow.Images.Posters, Mode=OneWay}"
+                  Style="{StaticResource FlipView}" />
     </StackPanel>
 </Page>
