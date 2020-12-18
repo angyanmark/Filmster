@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMDbLib.Client;
+using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
 using TMDbLib.Objects.Trending;
 
@@ -35,6 +36,11 @@ namespace Filmster.Core.Services
         public static async Task<List<SearchMovie>> GetTopRatedMoviesAsync()
         {
             return (await client.GetMovieTopRatedListAsync()).Results;
+        }
+
+        public static async Task<Movie> GetMovieAsync(int id)
+        {
+            return await client.GetMovieAsync(id);
         }
 
         public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
