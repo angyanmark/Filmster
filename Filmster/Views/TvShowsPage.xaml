@@ -16,7 +16,8 @@
             </Pivot.HeaderTemplate>
 
             <PivotItem x:Uid="TvShows_Popular">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
+                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
+                                           ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
@@ -26,7 +27,8 @@
             <PivotItem x:Uid="TvShows_OnTv" />
 
             <PivotItem x:Uid="TvShows_TopRated">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridPosterTemplate}"
+                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
+                                           ItemTemplate="{StaticResource GridPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.TopRatedTvShows, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>

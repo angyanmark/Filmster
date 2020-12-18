@@ -2,6 +2,7 @@
 using Filmster.Helpers;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TMDbLib.Objects.Search;
 
 namespace Filmster.ViewModels
@@ -11,9 +12,17 @@ namespace Filmster.ViewModels
         public ObservableCollection<SearchTv> PopularTvShows { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<SearchTv> TopRatedTvShows { get; set; } = new ObservableCollection<SearchTv>();
 
+        public ICommand TvShowClickedCommand;
+
         public TvShowsViewModel()
         {
             _ = GetTvShowsAsync();
+            SetCommands();
+        }
+
+        private void SetCommands()
+        {
+            TvShowClickedCommand = new RelayCommand<SearchTv>(TvShowClicked);
         }
 
         private async Task GetTvShowsAsync()
@@ -38,6 +47,11 @@ namespace Filmster.ViewModels
             {
                 TopRatedTvShows.Add(tvshow);
             }
+        }
+
+        private void TvShowClicked(SearchTv tvShow)
+        {
+            //NavigationService.Navigate(typeof(TvShowDetailPage), tvShow.Id);
         }
     }
 }

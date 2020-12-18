@@ -16,7 +16,8 @@
             </Pivot.HeaderTemplate>
 
             <PivotItem x:Uid="People_Popular">
-                <controls:AdaptiveGridView ItemTemplate="{StaticResource GridProfileTemplate}"
+                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.PersonClickedCommand}"
+                                           ItemTemplate="{StaticResource GridProfileTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularPeople, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridItem}" />
             </PivotItem>
