@@ -10,10 +10,30 @@
     </Style>
 
     <Style x:Key="BodyTextStyle" TargetType="TextBlock">
-        <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
+    <Style x:Key="DetailPageTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource XLargeFontSize}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxLines" Value="6" />
+    </Style>
+
+    <Style x:Key="TaglineTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxLines" Value="4" />
+    </Style>
+
+    <Style x:Key="OverviewTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxLines" Value="8" />
     </Style>
 
 </ResourceDictionary>

@@ -6,10 +6,136 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <StackPanel>
-        <TextBlock Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
-        <FlipView ItemTemplate="{StaticResource FlipPosterTemplate}"
-                  ItemsSource="{x:Bind ViewModel.Movie.Images.Posters, Mode=OneWay}"
-                  Style="{StaticResource FlipView}" />
-    </StackPanel>
+    <ScrollViewer>
+        <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource LargeSpacing}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <FlipView Grid.Column="0"
+                          VerticalAlignment="Top"
+                          ItemTemplate="{StaticResource FlipPosterTemplate}"
+                          ItemsSource="{x:Bind ViewModel.Movie.Images.Posters, Mode=OneWay}"
+                          Style="{StaticResource FlipView}" />
+
+                <Grid Grid.Column="1" RowSpacing="{StaticResource XSmallSpacing}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Style="{StaticResource DetailPageTitleStyle}"
+                               ToolTipService.ToolTip="{x:Bind ViewModel.Movie.ReleaseDate.Value.ToShortDateString(), Mode=OneWay}">
+                        <Run FontWeight="Bold" Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
+                        <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.Movie.ReleaseDate.Value.Year, Mode=OneWay}" />
+                    </TextBlock>
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                Spacing="{StaticResource SmallSpacing}">
+                        <Border Padding="4"
+                                BorderBrush="{StaticResource SystemOffsetMediumBrush}"
+                                BorderThickness="2"
+                                CornerRadius="4">
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="PG-13" />
+                        </Border>
+                        <TextBlock VerticalAlignment="Center"
+                                   Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                   Text="{x:Bind ViewModel.Movie.Runtime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                Spacing="{StaticResource SmallSpacing}">
+                        <RatingControl IsReadOnly="True" Value="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                        <TextBlock Margin="{StaticResource XXSmallTopMargin}"
+                                   Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                   Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="3"
+                               Foreground="{StaticResource SystemOffsetMediumBrush}"
+                               Style="{StaticResource TaglineTextStyle}"
+                               Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
+
+                    <TextBlock Grid.Row="4"
+                               Style="{StaticResource OverviewTextStyle}"
+                               Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
+
+                    <StackPanel Grid.Row="5"
+                                Orientation="Horizontal"
+                                Spacing="{StaticResource XXXSmallSpacing}">
+                        <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Text="Directed by" />
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Christopher Nolan" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="6"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="Genres" />
+
+                    <TextBlock Grid.Row="7"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="Keywords" />
+
+                    <StackPanel Grid.Row="8"
+                                Orientation="Horizontal"
+                                Spacing="{StaticResource XSmallSpacing}">
+                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="IMDb" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="TMDb" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Web" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Trailer" />
+                        </HyperlinkButton>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <TextBlock Grid.Row="1"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Cast" />
+            <TextBlock Grid.Row="2"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Crew" />
+            <TextBlock Grid.Row="3"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Collection" />
+            <TextBlock Grid.Row="4"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Recommendations" />
+            <TextBlock Grid.Row="5"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Images" />
+            <TextBlock Grid.Row="6"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="Reviews" />
+        </Grid>
+    </ScrollViewer>
 </Page>

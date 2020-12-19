@@ -213,4 +213,12 @@
     <value>Search movies, shows, people...</value>
     <comment>SearchBox placeholder text in navigation bar</comment>
   </data>
+  <data name="Media_RuntimeHours" xml:space="preserve">
+    <value>h</value>
+    <comment>Runtime hour tag for media</comment>
+  </data>
+  <data name="Media_RuntimeMinutes" xml:space="preserve">
+    <value>m</value>
+    <comment>Runtime minute tag for media</comment>
+  </data>
 </root>
