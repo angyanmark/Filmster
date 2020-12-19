@@ -20,6 +20,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
+            <helpers:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
             <helpers:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
             <helpers:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <helpers:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />

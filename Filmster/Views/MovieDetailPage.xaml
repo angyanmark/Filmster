@@ -102,17 +102,26 @@
                     <StackPanel Grid.Row="8"
                                 Orientation="Horizontal"
                                 Spacing="{StaticResource XSmallSpacing}">
-                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="IMDb" />
-                        </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="TMDb" />
                         </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="IMDb" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay}">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Web" />
                         </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="https://www.google.com">
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.Videos.Results[0].Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Trailer" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ExternalIds.FacebookId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Facebook}">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Facebook" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ExternalIds.InstagramId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Instagram}">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Instagram" />
+                        </HyperlinkButton>
+                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ExternalIds.TwitterId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Twitter}">
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Twitter" />
                         </HyperlinkButton>
                     </StackPanel>
                 </Grid>
