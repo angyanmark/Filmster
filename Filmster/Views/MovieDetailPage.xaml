@@ -77,13 +77,11 @@
                     <TextBlock Grid.Row="3"
                                Foreground="{StaticResource SystemOffsetMediumBrush}"
                                Style="{StaticResource TaglineTextStyle}"
-                               Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}"
-                               Visibility="{x:Bind ViewModel.Movie.Tagline, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
+                               Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
 
                     <TextBlock Grid.Row="4"
                                Style="{StaticResource OverviewTextStyle}"
-                               Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}"
-                               Visibility="{x:Bind ViewModel.Movie.Overview, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
+                               Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
 
                     <StackPanel Grid.Row="5"
                                 Orientation="Horizontal"
@@ -91,7 +89,7 @@
                         <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
                                    Style="{StaticResource SubtitleTextBlockStyle}"
                                    Text="Directed by" />
-                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Christopher Nolan" />
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.Directors.Count, Mode=OneWay}" />
                     </StackPanel>
 
                     <TextBlock Grid.Row="6"
