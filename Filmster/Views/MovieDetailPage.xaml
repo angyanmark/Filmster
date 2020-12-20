@@ -61,15 +61,10 @@
                     <StackPanel Grid.Row="2"
                                 Orientation="Horizontal"
                                 Spacing="{StaticResource SmallSpacing}">
-                        <Border Padding="4"
-                                BorderBrush="{StaticResource SystemOffsetMediumBrush}"
-                                BorderThickness="2"
-                                CornerRadius="4">
-                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="PG-13" />
-                        </Border>
-                        <TextBlock VerticalAlignment="Center"
-                                   Foreground="{StaticResource SystemOffsetMediumBrush}"
-                                   Text="{x:Bind ViewModel.Movie.Runtime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
+                        <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.Movie.Runtime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
+                        <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                   Text="{x:Bind ViewModel.Certification, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.Certification, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="3"

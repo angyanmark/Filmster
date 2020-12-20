@@ -36,6 +36,13 @@ namespace Filmster.ViewModels
             set { Set(ref _video, value); }
         }
 
+        private string _certification;
+        public string Certification
+        {
+            get { return _certification; }
+            set { Set(ref _certification, value); }
+        }
+
         private string _directors;
         public string Directors
         {
@@ -107,12 +114,29 @@ namespace Filmster.ViewModels
         {
             Movie = await TMDbService.GetMovieAsync(id);
             Video = Movie.Videos.Results.FirstOrDefault();
+            GetCertification();
             GetDirectors();
             GetGenres();
             CastToggled(false);
             CrewToggled(false);
             BackdropsToggled(false);
             await GetCollectionAsync();
+        }
+
+        private void GetCertification()
+        {
+            foreach (var releaseDate in Movie.ReleaseDates.Results)
+            {
+                if (releaseDate.Iso_3166_1 == "US")
+                {
+                    var cert = releaseDate.ReleaseDates.FirstOrDefault(rd => !string.IsNullOrEmpty(rd.Certification));
+                    if (cert != null)
+                    {
+                        Certification = cert.Certification;
+                        return;
+                    }
+                }
+            }
         }
 
         private void GetDirectors()
