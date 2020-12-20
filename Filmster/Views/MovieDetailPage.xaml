@@ -118,8 +118,8 @@
 
                     <HyperlinkButton Grid.Row="8"
                                      Padding="0"
-                                     NavigateUri="{x:Bind ViewModel.Movie.Videos.Results[0].Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
-                                     Visibility="{x:Bind ViewModel.Movie.Videos.Results, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                     NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
+                                     Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                         <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Trailer" />
                     </HyperlinkButton>
                 </Grid>

@@ -29,6 +29,13 @@ namespace Filmster.ViewModels
             set { Set(ref _collection, value); }
         }
 
+        private Video _video;
+        public Video Video
+        {
+            get { return _video; }
+            set { Set(ref _video, value); }
+        }
+
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
         public ObservableCollection<ImageData> Backdrops { get; set; } = new ObservableCollection<ImageData>();
@@ -85,6 +92,7 @@ namespace Filmster.ViewModels
         public async Task LoadMovie(int id)
         {
             Movie = await TMDbService.GetMovieAsync(id);
+            Video = Movie.Videos.Results.FirstOrDefault();
             CastToggled(false);
             CrewToggled(false);
             BackdropsToggled(false);
