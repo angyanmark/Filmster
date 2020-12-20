@@ -136,9 +136,9 @@
                                   IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
                 </Grid>
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
-                                           ItemTemplate="{StaticResource GridMediumProfileTemplate}"
+                                           ItemTemplate="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}"
                                            ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridRowItem}" />
+                                           Style="{StaticResource AdaptiveGridNoStretch}" />
             </StackPanel>
 
             <StackPanel Grid.Row="2">
@@ -149,25 +149,25 @@
                                   IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
                 </Grid>
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
-                                           ItemTemplate="{StaticResource GridMediumProfileTemplate}"
+                                           ItemTemplate="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}"
                                            ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridRowItem}" />
+                                           Style="{StaticResource AdaptiveGridNoStretch}" />
             </StackPanel>
 
             <StackPanel Grid.Row="3">
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
-                                           ItemTemplate="{StaticResource GridMediumPosterTemplate}"
+                                           ItemTemplate="{StaticResource AdaptiveGridNoStretchMediumPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridRowItem}" />
+                                           Style="{StaticResource AdaptiveGridNoStretch}" />
             </StackPanel>
 
             <StackPanel Grid.Row="4">
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Recommendations" />
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
-                                           ItemTemplate="{StaticResource GridMediumPosterTemplate}"
+                                           ItemTemplate="{StaticResource AdaptiveGridNoStretchMediumPosterTemplate}"
                                            ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridRowItem}" />
+                                           Style="{StaticResource AdaptiveGridNoStretch}" />
             </StackPanel>
 
             <TextBlock Grid.Row="5"
