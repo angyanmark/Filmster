@@ -17,9 +17,8 @@
 
             <PivotItem x:Uid="People_Popular">
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.PersonClickedCommand}"
-                                           ItemTemplate="{StaticResource AdaptiveGridMediumProfileTemplate}"
                                            ItemsSource="{x:Bind ViewModel.PopularPeople, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGrid}" />
+                                           Style="{StaticResource AdaptiveGridMediumProfile}" />
             </PivotItem>
         </Pivot>
     </Grid>

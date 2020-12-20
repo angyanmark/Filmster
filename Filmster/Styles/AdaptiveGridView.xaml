@@ -3,9 +3,16 @@
                     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <!--  Main list pages  -->
-    <Style x:Key="AdaptiveGrid" TargetType="controls:AdaptiveGridView">
+    <Style x:Key="AdaptiveGridMediumPoster" TargetType="controls:AdaptiveGridView">
         <Setter Property="DesiredWidth" Value="240" />
         <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridMediumPosterTemplate}" />
+    </Style>
+
+    <Style x:Key="AdaptiveGridMediumProfile" TargetType="controls:AdaptiveGridView">
+        <Setter Property="DesiredWidth" Value="240" />
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridMediumProfileTemplate}" />
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridMediumPosterTemplate">
@@ -23,8 +30,14 @@
     </Style>
 
     <!--  Detail pages, no stretch  -->
-    <Style x:Key="AdaptiveGridNoStretch" TargetType="controls:AdaptiveGridView">
+    <Style x:Key="AdaptiveGridNoStretchMediumPoster" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumPosterTemplate}" />
+    </Style>
+
+    <Style x:Key="AdaptiveGridNoStretchMediumProfile" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}" />
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumPosterTemplate">
@@ -39,6 +52,7 @@
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="240" />
         <Setter Property="Width" Value="160" />
     </Style>
 
