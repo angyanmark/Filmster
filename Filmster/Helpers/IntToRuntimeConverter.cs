@@ -8,6 +8,10 @@ namespace Filmster.Helpers
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var totalMinutes = (int)value;
+            if (totalMinutes == 0)
+            {
+                return string.Empty;
+            }
 
             int hours = totalMinutes / 60;
             int minutes = totalMinutes % 60;
@@ -15,7 +19,7 @@ namespace Filmster.Helpers
             string h = "Media_RuntimeHours".GetLocalized();
             string m = "Media_RuntimeMinutes".GetLocalized();
 
-            if(hours < 1)
+            if (hours < 1)
             {
                 return $"{minutes}{m}";
             }

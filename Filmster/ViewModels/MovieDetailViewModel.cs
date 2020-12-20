@@ -36,9 +36,15 @@ namespace Filmster.ViewModels
             set { Set(ref _video, value); }
         }
 
+        private string _directors;
+        public string Directors
+        {
+            get { return _directors; }
+            set { Set(ref _directors, value); }
+        }
+
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
-        public ObservableCollection<Crew> Directors { get; set; } = new ObservableCollection<Crew>();
         public ObservableCollection<ImageData> Backdrops { get; set; } = new ObservableCollection<ImageData>();
 
         private bool _isCastChecked;
@@ -103,13 +109,8 @@ namespace Filmster.ViewModels
 
         private void GetDirectors()
         {
-            foreach (var crew in Movie.Credits.Crew)
-            {
-                if(crew.Job.ToLower() == "director")
-                {
-                    Directors.Add(crew);
-                }
-            }
+            var directors = Movie.Credits.Crew.FindAll(crew => crew.Job.ToLower() == "director");
+            Directors = string.Join(", ", directors.Select(director => director.Name));
         }
 
         private void CastClicked(Cast cast)
