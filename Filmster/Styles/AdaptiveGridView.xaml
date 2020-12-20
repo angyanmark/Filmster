@@ -40,6 +40,11 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}" />
     </Style>
 
+    <Style x:Key="AdaptiveGridNoStretchMediumBackdrop" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumBackdropTemplate}" />
+    </Style>
+
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumPosterTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
     </DataTemplate>
@@ -48,12 +53,23 @@
         <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
     </DataTemplate>
 
+    <DataTemplate x:Key="AdaptiveGridNoStretchMediumBackdropTemplate">
+        <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumBackdrop}" Style="{StaticResource AdaptiveGridNoStretchLandscapeImage}" />
+    </DataTemplate>
+
     <Style x:Key="AdaptiveGridNoStretchImage" TargetType="Image">
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Height" Value="240" />
         <Setter Property="Width" Value="160" />
+    </Style>
+
+    <Style x:Key="AdaptiveGridNoStretchLandscapeImage" TargetType="Image">
+        <Setter Property="Stretch" Value="UniformToFill" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="324" />
     </Style>
 
 </ResourceDictionary>
