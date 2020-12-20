@@ -2,15 +2,16 @@
 {
     public enum ExternalIdType
     {
-        TMDbMovie = 1,
-        TMDbTvShow = 2,
-        TMDbPerson = 3,
-        IMDbMovie = 4,
-        IMDbTvShow = 5,
-        IMDbPerson = 6,
-        YouTube = 7,
-        Facebook = 8,
-        Instagram = 9,
-        Twitter = 10
+        Homepage = 1,
+        TMDbMovie = 2,
+        TMDbTvShow = 3,
+        TMDbPerson = 4,
+        IMDbMovie = 5,
+        IMDbTvShow = 6,
+        IMDbPerson = 7,
+        YouTube = 8,
+        Facebook = 9,
+        Instagram = 10,
+        Twitter = 11
     }
 }

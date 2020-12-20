@@ -16,6 +16,16 @@ namespace Filmster.Helpers
 
             switch (externalIdType)
             {
+                case ExternalIdType.Homepage:
+                    var homepage = id as string;
+                    if (string.IsNullOrEmpty(homepage))
+                    {
+                        return new Uri(TMDbService.TMDbBaseUrl);
+                    }
+                    else
+                    {
+                        return new Uri(homepage);
+                    }
                 case ExternalIdType.TMDbMovie:
                     baseUrl = TMDbService.TMDbMovieBaseUrl;
                     break;

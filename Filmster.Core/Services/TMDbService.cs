@@ -38,6 +38,7 @@ namespace Filmster.Core.Services
 
         public static readonly string OriginalSize = "original";
 
+        public static readonly string TMDbBaseUrl = "https://www.themoviedb.org/";
         public static readonly string TMDbMovieBaseUrl = "https://www.themoviedb.org/movie/";
         public static readonly string TMDbTvShowBaseUrl = "https://www.themoviedb.org/tv/";
         public static readonly string TMDbPersonBaseUrl = "https://www.themoviedb.org/person/";
