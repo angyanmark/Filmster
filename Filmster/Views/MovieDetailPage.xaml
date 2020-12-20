@@ -96,35 +96,32 @@
                                Style="{StaticResource SubtitleTextBlockStyle}"
                                Text="Genres" />
 
-                    <TextBlock Grid.Row="7"
-                               Style="{StaticResource SubtitleTextBlockStyle}"
-                               Text="Keywords" />
-
-                    <StackPanel Grid.Row="8"
+                    <StackPanel Grid.Row="7"
                                 Orientation="Horizontal"
                                 Spacing="{StaticResource XSmallSpacing}">
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}">
+                        <HyperlinkButton Padding="0"
+                                         NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}"
+                                         Visibility="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="TMDb" />
                         </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}">
+                        <HyperlinkButton Padding="0"
+                                         NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}"
+                                         Visibility="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="IMDb" />
                         </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}">
+                        <HyperlinkButton Padding="0"
+                                         NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}"
+                                         Visibility="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Web" />
                         </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.Videos.Results[0].Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Trailer" />
-                        </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ExternalIds.FacebookId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Facebook}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Facebook" />
-                        </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ExternalIds.InstagramId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Instagram}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Instagram" />
-                        </HyperlinkButton>
-                        <HyperlinkButton Padding="0" NavigateUri="{x:Bind ViewModel.Movie.ExternalIds.TwitterId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Twitter}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Twitter" />
-                        </HyperlinkButton>
                     </StackPanel>
+
+                    <HyperlinkButton Grid.Row="8"
+                                     Padding="0"
+                                     NavigateUri="{x:Bind ViewModel.Movie.Videos.Results[0].Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
+                                     Visibility="{x:Bind ViewModel.Movie.Videos.Results, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Trailer" />
+                    </HyperlinkButton>
                 </Grid>
             </Grid>
 
@@ -152,7 +149,7 @@
                                            Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
             </StackPanel>
 
-            <StackPanel Grid.Row="3">
+            <StackPanel Grid.Row="3" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
                                            ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
