@@ -43,6 +43,13 @@ namespace Filmster.ViewModels
             set { Set(ref _directors, value); }
         }
 
+        private string _genres;
+        public string Genres
+        {
+            get { return _genres; }
+            set { Set(ref _genres, value); }
+        }
+
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
         public ObservableCollection<ImageData> Backdrops { get; set; } = new ObservableCollection<ImageData>();
@@ -101,6 +108,7 @@ namespace Filmster.ViewModels
             Movie = await TMDbService.GetMovieAsync(id);
             Video = Movie.Videos.Results.FirstOrDefault();
             GetDirectors();
+            GetGenres();
             CastToggled(false);
             CrewToggled(false);
             BackdropsToggled(false);
@@ -111,6 +119,11 @@ namespace Filmster.ViewModels
         {
             var directors = Movie.Credits.Crew.FindAll(crew => crew.Job.ToLower() == "director");
             Directors = string.Join(", ", directors.Select(director => director.Name));
+        }
+
+        private void GetGenres()
+        {
+            Genres = string.Join(", ", Movie.Genres.Select(genre => genre.Name));
         }
 
         private void CastClicked(Cast cast)

@@ -36,4 +36,13 @@
         <Setter Property="MaxLines" Value="8" />
     </Style>
 
+    <Style x:Key="GenresTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="Foreground" Value="{StaticResource SystemOffsetMediumBrush}" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MaxLines" Value="4" />
+    </Style>
+
 </ResourceDictionary>

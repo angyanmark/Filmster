@@ -91,8 +91,8 @@
                                Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
 
                     <TextBlock Grid.Row="6"
-                               Style="{StaticResource SubtitleTextBlockStyle}"
-                               Text="Genres" />
+                               Style="{StaticResource GenresTextStyle}"
+                               Text="{x:Bind ViewModel.Genres, Mode=OneWay}" />
 
                     <StackPanel Grid.Row="7"
                                 Orientation="Horizontal"
