@@ -16,7 +16,6 @@ namespace Filmster.Services
         public static event NavigationFailedEventHandler NavigationFailed;
 
         private static Frame _frame;
-        private static object _lastParamUsed;
 
         public static Frame Frame
         {
@@ -63,14 +62,9 @@ namespace Filmster.Services
                 throw new ArgumentException($"Invalid pageType '{pageType}', please provide a valid pageType.", nameof(pageType));
             }
 
-            // Don't open the same page multiple times
-            if (Frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParamUsed)))
+            if (Frame.Content?.GetType() != pageType || (parameter != null))
             {
                 var navigationResult = Frame.Navigate(pageType, parameter, infoOverride);
-                if (navigationResult)
-                {
-                    _lastParamUsed = parameter;
-                }
 
                 return navigationResult;
             }
