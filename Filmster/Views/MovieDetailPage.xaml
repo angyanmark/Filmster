@@ -8,7 +8,7 @@
       mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource LargeSpacing}">
+        <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource MediumSpacing}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -164,8 +164,13 @@
             </StackPanel>
 
             <StackPanel Grid.Row="5">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Images" />
-                <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Movie.Images.Backdrops, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchMediumBackdrop}" />
+                <Grid>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Images" />
+                    <ToggleButton HorizontalAlignment="Right"
+                                  Content="Show all"
+                                  IsChecked="{x:Bind ViewModel.IsBackdropsChecked, Mode=TwoWay}" />
+                </Grid>
+                <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Backdrops, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchMediumBackdrop}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>

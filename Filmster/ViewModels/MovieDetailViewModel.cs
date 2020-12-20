@@ -31,6 +31,7 @@ namespace Filmster.ViewModels
 
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
+        public ObservableCollection<ImageData> Backdrops { get; set; } = new ObservableCollection<ImageData>();
 
         private bool _isCastChecked;
         public bool IsCastChecked
@@ -51,6 +52,17 @@ namespace Filmster.ViewModels
             {
                 Set(ref _isCrewChecked, value);
                 CrewToggled(IsCrewChecked);
+            }
+        }
+
+        private bool _isBackdropsChecked;
+        public bool IsBackdropsChecked
+        {
+            get { return _isBackdropsChecked; }
+            set
+            {
+                Set(ref _isBackdropsChecked, value);
+                BackdropsToggled(IsBackdropsChecked);
             }
         }
 
@@ -75,6 +87,7 @@ namespace Filmster.ViewModels
             Movie = await TMDbService.GetMovieAsync(id);
             CastToggled(false);
             CrewToggled(false);
+            BackdropsToggled(false);
             await GetCollectionAsync();
         }
 
@@ -110,6 +123,16 @@ namespace Filmster.ViewModels
             foreach (var c in crew)
             {
                 Crew.Add(c);
+            }
+        }
+
+        private void BackdropsToggled(bool isChecked)
+        {
+            var backdrops = isChecked ? Movie.Images.Backdrops : Movie.Images.Backdrops.Take(15);
+            Backdrops.Clear();
+            foreach (var b in backdrops)
+            {
+                Backdrops.Add(b);
             }
         }
 
