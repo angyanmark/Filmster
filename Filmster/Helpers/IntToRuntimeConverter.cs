@@ -15,7 +15,14 @@ namespace Filmster.Helpers
             string h = "Media_RuntimeHours".GetLocalized();
             string m = "Media_RuntimeMinutes".GetLocalized();
 
-            return $"{hours}{h} {minutes}{m}";
+            if(hours < 1)
+            {
+                return $"{minutes}{m}";
+            }
+            else
+            {
+                return $"{hours}{h} {minutes}{m}";
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
