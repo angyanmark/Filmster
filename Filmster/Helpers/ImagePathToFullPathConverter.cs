@@ -10,7 +10,6 @@ namespace Filmster.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var path = value as string;
             Enum.TryParse(parameter as string, out ImageSizeType imageType);
             string size;
 
@@ -68,12 +67,45 @@ namespace Filmster.Helpers
                     throw new InvalidEnumArgumentException("parameter", (int)imageType, typeof(ImageSizeType));
             }
 
+            var path = value as string;
+            if (string.IsNullOrEmpty(path))
+            {
+                return GetPlaceholder(imageType);
+            }
+
             return $"{TMDbService.SecureBaseUrl}{size}{path}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
+        }
+
+        private object GetPlaceholder(ImageSizeType imageType)
+        {
+            switch (imageType)
+            {
+                case ImageSizeType.SmallBackdrop:
+                case ImageSizeType.SmallLogo:
+                case ImageSizeType.SmallPoster:
+                case ImageSizeType.SmallProfile:
+                case ImageSizeType.SmallStill:
+                    return @"..\Assets\Placeholders\placeholder-poster-small.png";
+                case ImageSizeType.MediumBackdrop:
+                case ImageSizeType.MediumLogo:
+                case ImageSizeType.MediumPoster:
+                case ImageSizeType.MediumProfile:
+                case ImageSizeType.MediumStill:
+                    return @"..\Assets\Placeholders\placeholder-poster-medium.png";
+                case ImageSizeType.LargeBackdrop:
+                case ImageSizeType.LargeLogo:
+                case ImageSizeType.LargePoster:
+                case ImageSizeType.LargeProfile:
+                case ImageSizeType.LargeStill:
+                    return @"..\Assets\Placeholders\placeholder-poster-large.png";
+                default:
+                    return string.Empty;
+            }
         }
     }
 }
