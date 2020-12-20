@@ -5,8 +5,14 @@
         <Setter Property="Width" Value="300" />
     </Style>
 
+    <Style x:Key="FlipImage" TargetType="Image">
+        <Setter Property="Stretch" Value="UniformToFill" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
     <DataTemplate x:Key="FlipPosterTemplate">
-        <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=Poster}" Stretch="UniformToFill" />
+        <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource FlipImage}" />
     </DataTemplate>
 
 </ResourceDictionary>

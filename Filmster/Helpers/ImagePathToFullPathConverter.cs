@@ -11,28 +11,61 @@ namespace Filmster.Helpers
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var path = value as string;
-            Enum.TryParse(parameter as string, out ImageType imageType);
+            Enum.TryParse(parameter as string, out ImageSizeType imageType);
             string size;
 
             switch (imageType)
             {
-                case ImageType.Backdrop:
-                    size = TMDbService.BackdropSize;
+                case ImageSizeType.SmallBackdrop:
+                    size = TMDbService.SmallBackdropSize;
                     break;
-                case ImageType.Logo:
-                    size = TMDbService.LogoSize;
+                case ImageSizeType.MediumBackdrop:
+                    size = TMDbService.MediumBackdropSize;
                     break;
-                case ImageType.Poster:
-                    size = TMDbService.PosterSize;
+                case ImageSizeType.LargeBackdrop:
+                    size = TMDbService.LargeBackdropSize;
                     break;
-                case ImageType.Profile:
-                    size = TMDbService.ProfileSize;
+                case ImageSizeType.SmallLogo:
+                    size = TMDbService.SmallLogoSize;
                     break;
-                case ImageType.Still:
-                    size = TMDbService.StillSize;
+                case ImageSizeType.MediumLogo:
+                    size = TMDbService.MediumLogoSize;
+                    break;
+                case ImageSizeType.LargeLogo:
+                    size = TMDbService.LargeLogoSize;
+                    break;
+                case ImageSizeType.SmallPoster:
+                    size = TMDbService.SmallPosterSize;
+                    break;
+                case ImageSizeType.MediumPoster:
+                    size = TMDbService.MediumPosterSize;
+                    break;
+                case ImageSizeType.LargePoster:
+                    size = TMDbService.LargePosterSize;
+                    break;
+                case ImageSizeType.SmallProfile:
+                    size = TMDbService.SmallProfileSize;
+                    break;
+                case ImageSizeType.MediumProfile:
+                    size = TMDbService.MediumProfileSize;
+                    break;
+                case ImageSizeType.LargeProfile:
+                    size = TMDbService.LargeProfileSize;
+                    break;
+                case ImageSizeType.SmallStill:
+                    size = TMDbService.SmallStillSize;
+                    break;
+                case ImageSizeType.MediumStill:
+                    size = TMDbService.MediumStillSize;
+                    break;
+                case ImageSizeType.LargeStill:
+                    size = TMDbService.LargeStillSize;
+                    break;
+                case ImageSizeType.Original:
+                    size = TMDbService.OriginalSize;
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("parameter", (int)imageType, typeof(ImageType));
+                    throw new InvalidEnumArgumentException("parameter", (int)imageType, typeof(ImageSizeType));
             }
 
             return $"{TMDbService.SecureBaseUrl}{size}{path}";

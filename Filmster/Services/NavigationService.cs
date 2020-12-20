@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Filmster.Views;
+using System;
+using TMDbLib.Objects.General;
+using TMDbLib.Objects.Search;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -80,6 +83,25 @@ namespace Filmster.Services
         public static bool Navigate<T>(object parameter = null, NavigationTransitionInfo infoOverride = null)
             where T : Page
             => Navigate(typeof(T), parameter, infoOverride);
+
+        public static void NavigateToSearchMediaDetail(SearchBase searchBase)
+        {
+            switch (searchBase.MediaType)
+            {
+                case MediaType.Movie:
+                    Navigate(typeof(MovieDetailPage), searchBase.Id);
+                    break;
+                case MediaType.Tv:
+                    Navigate(typeof(TvShowDetailPage), searchBase.Id);
+                    break;
+                case MediaType.Person:
+                    Navigate(typeof(PersonDetailPage), searchBase.Id);
+                    break;
+                case MediaType.Unknown:
+                default:
+                    break;
+            }
+        }
 
         private static void RegisterFrameEvents()
         {

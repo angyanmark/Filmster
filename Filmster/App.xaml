@@ -13,8 +13,8 @@
                 <ResourceDictionary Source="/Styles/_Spacing.xaml" />
                 <ResourceDictionary Source="/Styles/_Thickness.xaml" />
 
+                <ResourceDictionary Source="/Styles/AdaptiveGridView.xaml" />
                 <ResourceDictionary Source="/Styles/FlipView.xaml" />
-                <ResourceDictionary Source="/Styles/Grid.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="/Styles/Page.xaml" />
             </ResourceDictionary.MergedDictionaries>

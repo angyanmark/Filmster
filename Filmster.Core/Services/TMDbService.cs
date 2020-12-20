@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMDbLib.Client;
+using TMDbLib.Objects.Collections;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
@@ -14,11 +15,28 @@ namespace Filmster.Core.Services
         private static readonly TMDbClient client = new TMDbClient("5e9bcb638329a15acf75c1b2d85ae67e");
 
         public static readonly string SecureBaseUrl = "https://image.tmdb.org/t/p/";
-        public static readonly string BackdropSize = "w780";
-        public static readonly string LogoSize = "w300";
-        public static readonly string PosterSize = "w342";
-        public static readonly string ProfileSize = "w185";
-        public static readonly string StillSize = "w300";
+
+        public static readonly string SmallBackdropSize = "w300";
+        public static readonly string MediumBackdropSize = "w780";
+        public static readonly string LargeBackdropSize = "w1280";
+        
+        public static readonly string SmallLogoSize = "w92";
+        public static readonly string MediumLogoSize = "w185";
+        public static readonly string LargeLogoSize = "w300";
+
+        public static readonly string SmallPosterSize = "w154";
+        public static readonly string MediumPosterSize = "w342";
+        public static readonly string LargePosterSize = "w500";
+
+        public static readonly string SmallProfileSize = "w45";
+        public static readonly string MediumProfileSize = "w185";
+        public static readonly string LargeProfileSize = "h632";
+
+        public static readonly string SmallStillSize = "w92";
+        public static readonly string MediumStillSize = "w185";
+        public static readonly string LargeStillSize = "w300";
+
+        public static readonly string OriginalSize = "original";
 
         public static readonly string TMDbMovieBaseUrl = "https://www.themoviedb.org/movie/";
         public static readonly string TMDbTvShowBaseUrl = "https://www.themoviedb.org/tv/";
@@ -53,7 +71,12 @@ namespace Filmster.Core.Services
 
         public static async Task<Movie> GetMovieAsync(int id)
         {
-            return await client.GetMovieAsync(id, MovieMethods.Images | MovieMethods.Videos | MovieMethods.ExternalIds);
+            return await client.GetMovieAsync(id, MovieMethods.Images | MovieMethods.Videos | MovieMethods.ExternalIds | MovieMethods.Credits | MovieMethods.Recommendations);
+        }
+
+        public static async Task<Collection> GetCollectionAsync(int id)
+        {
+            return await client.GetCollectionAsync(id);
         }
 
         public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
