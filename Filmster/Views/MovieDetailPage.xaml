@@ -77,11 +77,13 @@
                     <TextBlock Grid.Row="3"
                                Foreground="{StaticResource SystemOffsetMediumBrush}"
                                Style="{StaticResource TaglineTextStyle}"
-                               Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
+                               Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}"
+                               Visibility="{x:Bind ViewModel.Movie.Tagline, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
 
                     <TextBlock Grid.Row="4"
                                Style="{StaticResource OverviewTextStyle}"
-                               Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
+                               Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}"
+                               Visibility="{x:Bind ViewModel.Movie.Overview, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
 
                     <StackPanel Grid.Row="5"
                                 Orientation="Horizontal"
