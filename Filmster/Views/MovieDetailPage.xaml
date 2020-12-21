@@ -96,17 +96,17 @@
                         <HyperlinkButton Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}"
                                          Visibility="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_TMDb" Style="{StaticResource SubtitleTextBlockStyle}" />
+                            <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
                         </HyperlinkButton>
                         <HyperlinkButton Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}"
                                          Visibility="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_IMDb" Style="{StaticResource SubtitleTextBlockStyle}" />
+                            <TextBlock x:Uid="Media_IMDb" Style="{StaticResource ExternalLinkTextStyle}" />
                         </HyperlinkButton>
                         <HyperlinkButton Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}"
                                          Visibility="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_Homepage" Style="{StaticResource SubtitleTextBlockStyle}" />
+                            <TextBlock x:Uid="Media_Homepage" Style="{StaticResource ExternalLinkTextStyle}" />
                         </HyperlinkButton>
                     </StackPanel>
 
@@ -114,7 +114,7 @@
                                      Padding="0"
                                      NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
                                      Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                        <TextBlock x:Uid="Media_Trailer" Style="{StaticResource SubtitleTextBlockStyle}" />
+                        <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
                     </HyperlinkButton>
                 </Grid>
             </Grid>

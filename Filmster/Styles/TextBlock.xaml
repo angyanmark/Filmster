@@ -43,4 +43,9 @@
         <Setter Property="MaxLines" Value="4" />
     </Style>
 
+    <Style x:Key="ExternalLinkTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
 </ResourceDictionary>
