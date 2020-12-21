@@ -125,18 +125,29 @@ namespace Filmster.ViewModels
                 NavigationService.GoBack();
                 return;
             }
-            SelectedPoster = Movie.Images.Posters.Find(poster => poster.FilePath == Movie.PosterPath) ?? Movie.Images.Posters.FirstOrDefault();
+            SelectedPoster = GetSelectedPoster();
+            Directors = GetDirectors();
+            Certification = GetCertification();
+            Genres = GetGenres();
             Video = Movie.Videos.Results.FirstOrDefault();
-            GetCertification();
-            GetDirectors();
-            GetGenres();
+            Collection = await GetCollectionAsync();
             CastToggled(false);
             CrewToggled(false);
             BackdropsToggled(false);
-            await GetCollectionAsync();
         }
 
-        private void GetCertification()
+        private ImageData GetSelectedPoster()
+        {
+            return Movie.Images.Posters.Find(poster => poster.FilePath == Movie.PosterPath) ?? Movie.Images.Posters.FirstOrDefault();
+        }
+
+        private string GetDirectors()
+        {
+            var directors = Movie.Credits.Crew.FindAll(crew => crew.Job.ToLower() == "director");
+            return string.Join(", ", directors.Select(director => director.Name));
+        }
+
+        private string GetCertification()
         {
             foreach (var releaseDate in Movie.ReleaseDates.Results)
             {
@@ -145,22 +156,29 @@ namespace Filmster.ViewModels
                     var cert = releaseDate.ReleaseDates.FirstOrDefault(rd => !string.IsNullOrEmpty(rd.Certification));
                     if (cert != null)
                     {
-                        Certification = cert.Certification;
-                        return;
+                        return cert.Certification;
                     }
                 }
             }
+            return default;
         }
 
-        private void GetDirectors()
+        private string GetGenres()
         {
-            var directors = Movie.Credits.Crew.FindAll(crew => crew.Job.ToLower() == "director");
-            Directors = string.Join(", ", directors.Select(director => director.Name));
+            return string.Join(", ", Movie.Genres.Select(genre => genre.Name));
         }
 
-        private void GetGenres()
+        private async Task<Collection> GetCollectionAsync()
         {
-            Genres = string.Join(", ", Movie.Genres.Select(genre => genre.Name));
+            if (Movie.BelongsToCollection != null)
+            {
+                var collection = await TMDbService.GetCollectionAsync(Movie.BelongsToCollection.Id);
+                collection.Parts = collection.Parts
+                    .OrderByDescending(part => part.ReleaseDate.HasValue)
+                    .ThenBy(p => p.ReleaseDate).ToList();
+                return collection;
+            }
+            return default;
         }
 
         private void CastClicked(Cast cast)
@@ -180,7 +198,7 @@ namespace Filmster.ViewModels
 
         private void CastToggled(bool isChecked)
         {
-            var cast = isChecked ? Movie.Credits.Cast : Movie.Credits.Cast.Take(15);
+            var cast = isChecked ? Movie.Credits.Cast : Movie.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount);
             Cast.Clear();
             foreach (var c in cast)
             {
@@ -190,7 +208,7 @@ namespace Filmster.ViewModels
 
         private void CrewToggled(bool isChecked)
         {
-            var crew = isChecked ? Movie.Credits.Crew : Movie.Credits.Crew.Take(15);
+            var crew = isChecked ? Movie.Credits.Crew : Movie.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount);
             Crew.Clear();
             foreach (var c in crew)
             {
@@ -200,23 +218,11 @@ namespace Filmster.ViewModels
 
         private void BackdropsToggled(bool isChecked)
         {
-            var backdrops = isChecked ? Movie.Images.Backdrops : Movie.Images.Backdrops.Take(15);
+            var backdrops = isChecked ? Movie.Images.Backdrops : Movie.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount);
             Backdrops.Clear();
             foreach (var b in backdrops)
             {
                 Backdrops.Add(b);
-            }
-        }
-
-        private async Task GetCollectionAsync()
-        {
-            if (Movie.BelongsToCollection != null)
-            {
-                var collection = await TMDbService.GetCollectionAsync(Movie.BelongsToCollection.Id);
-                collection.Parts = collection.Parts
-                    .OrderByDescending(part => part.ReleaseDate.HasValue)
-                    .ThenBy(p => p.ReleaseDate).ToList();
-                Collection = collection;
             }
         }
     }

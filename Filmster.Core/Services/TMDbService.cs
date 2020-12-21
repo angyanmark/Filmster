@@ -50,6 +50,8 @@ namespace Filmster.Core.Services
         public static readonly string TwitterBaseUrl = "https://twitter.com/";
         public static readonly string InstagramBaseUrl = "https://www.instagram.com/";
 
+        public static readonly int DefaultCastCrewBackdropCount = 15;
+
         public static async Task<List<SearchMovie>> GetTrendingMoviesAsync(TimeWindow timeWindow)
         {
             return (await client.GetTrendingMoviesAsync(timeWindow)).Results;

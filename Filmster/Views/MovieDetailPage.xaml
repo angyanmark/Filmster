@@ -119,7 +119,21 @@
                 </Grid>
             </Grid>
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="1" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
+                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
+                                           ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Recommendations" />
+                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
+                                           ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
+                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="3">
                 <Grid>
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Cast" />
                     <ToggleButton HorizontalAlignment="Right"
@@ -131,7 +145,7 @@
                                            Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
             </StackPanel>
 
-            <StackPanel Grid.Row="2">
+            <StackPanel Grid.Row="4">
                 <Grid>
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Crew" />
                     <ToggleButton HorizontalAlignment="Right"
@@ -141,20 +155,6 @@
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
                                            ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="3" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="4">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Recommendations" />
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
             </StackPanel>
 
             <StackPanel Grid.Row="5">
