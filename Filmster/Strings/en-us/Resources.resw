@@ -221,4 +221,8 @@
     <value>m</value>
     <comment>Runtime minute tag for media</comment>
   </data>
+  <data name="Movies_Trending.Header" xml:space="preserve">
+    <value>Trending</value>
+    <comment>Trending pivot item title for Movies</comment>
+  </data>
 </root>

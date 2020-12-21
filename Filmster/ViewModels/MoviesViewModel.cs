@@ -10,6 +10,7 @@ namespace Filmster.ViewModels
 {
     public class MoviesViewModel : Observable
     {
+        public ObservableCollection<SearchMovie> TrendingMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> PopularMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> NowPlayingMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> UpcomingMovies { get; set; } = new ObservableCollection<SearchMovie>();
@@ -30,10 +31,20 @@ namespace Filmster.ViewModels
 
         private async Task GetMoviesAsync()
         {
+            await GetTrendingMoviesAsync();
             await GetPopularMoviesAsync();
             await GetNowPlayingMoviesAsync();
             await GetUpcomingMoviesAsync();
             await GetTopRatedMoviesAsync();
+        }
+
+        private async Task GetTrendingMoviesAsync()
+        {
+            var movies = await TMDbService.GetTrendingMoviesAsync();
+            foreach (var movie in movies)
+            {
+                TrendingMovies.Add(movie);
+            }
         }
 
         private async Task GetPopularMoviesAsync()

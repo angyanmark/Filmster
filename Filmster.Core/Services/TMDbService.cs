@@ -50,6 +50,11 @@ namespace Filmster.Core.Services
         public static readonly string TwitterBaseUrl = "https://twitter.com/";
         public static readonly string InstagramBaseUrl = "https://www.instagram.com/";
 
+        public static async Task<List<SearchMovie>> GetTrendingMoviesAsync()
+        {
+            return (await client.GetTrendingMoviesAsync(TimeWindow.Week)).Results;
+        }
+
         public static async Task<List<SearchMovie>> GetPopularMoviesAsync()
         {
             return (await client.GetMoviePopularListAsync()).Results;
