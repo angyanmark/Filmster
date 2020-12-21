@@ -19,9 +19,13 @@ namespace Filmster.Helpers
             string h = "Media_RuntimeHours".GetLocalized();
             string m = "Media_RuntimeMinutes".GetLocalized();
 
-            if (hours < 1)
+            if (hours == 0)
             {
                 return $"{minutes}{m}";
+            }
+            else if (minutes == 0)
+            {
+                return $"{hours}{h}";
             }
             else
             {
