@@ -55,7 +55,7 @@
                     <TextBlock Grid.Row="1"
                                Style="{StaticResource SubtitleTextBlockStyle}"
                                Visibility="{x:Bind ViewModel.Directors, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                        <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="Directed by" />
+                        <Run x:Uid="Media_DirectedBy" Foreground="{StaticResource SystemOffsetMediumBrush}" />
                         <Run Text="{x:Bind ViewModel.Directors, Mode=OneWay}" />
                     </TextBlock>
 
@@ -96,17 +96,17 @@
                         <HyperlinkButton Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}"
                                          Visibility="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="TMDb" />
+                            <TextBlock x:Uid="Media_TMDb" Style="{StaticResource SubtitleTextBlockStyle}" />
                         </HyperlinkButton>
                         <HyperlinkButton Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}"
                                          Visibility="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="IMDb" />
+                            <TextBlock x:Uid="Media_IMDb" Style="{StaticResource SubtitleTextBlockStyle}" />
                         </HyperlinkButton>
                         <HyperlinkButton Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}"
                                          Visibility="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Web" />
+                            <TextBlock x:Uid="Media_Homepage" Style="{StaticResource SubtitleTextBlockStyle}" />
                         </HyperlinkButton>
                     </StackPanel>
 
@@ -114,7 +114,7 @@
                                      Padding="0"
                                      NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
                                      Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Trailer" />
+                        <TextBlock x:Uid="Media_Trailer" Style="{StaticResource SubtitleTextBlockStyle}" />
                     </HyperlinkButton>
                 </Grid>
             </Grid>
@@ -127,7 +127,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="2">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Recommendations" />
+                <TextBlock x:Uid="Media_Recommendations" Style="{StaticResource TitleTextBlockStyle}" />
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
                                            ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
@@ -135,9 +135,9 @@
 
             <StackPanel Grid.Row="3">
                 <Grid>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Cast" />
-                    <ToggleButton HorizontalAlignment="Right"
-                                  Content="Show all"
+                    <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Right"
                                   IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
                 </Grid>
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
@@ -147,9 +147,9 @@
 
             <StackPanel Grid.Row="4">
                 <Grid>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Crew" />
-                    <ToggleButton HorizontalAlignment="Right"
-                                  Content="Show all"
+                    <TextBlock x:Uid="Media_Crew" Style="{StaticResource TitleTextBlockStyle}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Right"
                                   IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
                 </Grid>
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
@@ -159,9 +159,9 @@
 
             <StackPanel Grid.Row="5">
                 <Grid>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Images" />
-                    <ToggleButton HorizontalAlignment="Right"
-                                  Content="Show all"
+                    <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Right"
                                   IsChecked="{x:Bind ViewModel.IsBackdropsChecked, Mode=TwoWay}" />
                 </Grid>
                 <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Backdrops, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />

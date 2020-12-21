@@ -229,4 +229,44 @@
     <value>Trending</value>
     <comment>Trending pivot item title for TvShows</comment>
   </data>
+  <data name="Media_Cast.Text" xml:space="preserve">
+    <value>Cast</value>
+    <comment>Cast text for media</comment>
+  </data>
+  <data name="Media_Crew.Text" xml:space="preserve">
+    <value>Crew</value>
+    <comment>Crew text for media</comment>
+  </data>
+  <data name="Media_DirectedBy.Text" xml:space="preserve">
+    <value>Directed by</value>
+    <comment>Directed by text for media</comment>
+  </data>
+  <data name="Media_Homepage.Text" xml:space="preserve">
+    <value>Homepage</value>
+    <comment>Homepage text for media</comment>
+  </data>
+  <data name="Media_Images.Text" xml:space="preserve">
+    <value>Images</value>
+    <comment>Images text for media</comment>
+  </data>
+  <data name="Media_IMDb.Text" xml:space="preserve">
+    <value>IMDb</value>
+    <comment>IMDb text for media</comment>
+  </data>
+  <data name="Media_Recommendations.Text" xml:space="preserve">
+    <value>Recommendations</value>
+    <comment>Recommendations text for media</comment>
+  </data>
+  <data name="Media_ShowAll.Content" xml:space="preserve">
+    <value>Show all</value>
+    <comment>Show all text for media</comment>
+  </data>
+  <data name="Media_TMDb.Text" xml:space="preserve">
+    <value>TMDb</value>
+    <comment>TMDb text for media</comment>
+  </data>
+  <data name="Media_Trailer.Text" xml:space="preserve">
+    <value>Trailer</value>
+    <comment>Trailer text for media</comment>
+  </data>
 </root>
