@@ -134,37 +134,31 @@
             </StackPanel>
 
             <StackPanel Grid.Row="3">
-                <Grid>
-                    <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
-                    <ToggleButton x:Uid="Media_ShowAll"
-                                  HorizontalAlignment="Right"
-                                  IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
-                </Grid>
+                <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
                                            ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
+                <ToggleButton x:Uid="Media_ShowAll"
+                              HorizontalAlignment="Center"
+                              IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
             </StackPanel>
 
             <StackPanel Grid.Row="4">
-                <Grid>
-                    <TextBlock x:Uid="Media_Crew" Style="{StaticResource TitleTextBlockStyle}" />
-                    <ToggleButton x:Uid="Media_ShowAll"
-                                  HorizontalAlignment="Right"
-                                  IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
-                </Grid>
+                <TextBlock x:Uid="Media_Crew" Style="{StaticResource TitleTextBlockStyle}" />
                 <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
                                            ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
                                            Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
+                <ToggleButton x:Uid="Media_ShowAll"
+                              HorizontalAlignment="Center"
+                              IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
             </StackPanel>
 
             <StackPanel Grid.Row="5">
-                <Grid>
-                    <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
-                    <ToggleButton x:Uid="Media_ShowAll"
-                                  HorizontalAlignment="Right"
-                                  IsChecked="{x:Bind ViewModel.IsBackdropsChecked, Mode=TwoWay}" />
-                </Grid>
+                <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
                 <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Backdrops, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
+                <ToggleButton x:Uid="Media_ShowAll"
+                              HorizontalAlignment="Center"
+                              IsChecked="{x:Bind ViewModel.IsBackdropsChecked, Mode=TwoWay}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>
