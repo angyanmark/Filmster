@@ -199,7 +199,11 @@ namespace Filmster.ViewModels
         {
             if (Movie.BelongsToCollection != null)
             {
-                Collection = await TMDbService.GetCollectionAsync(Movie.BelongsToCollection.Id);
+                var collection = await TMDbService.GetCollectionAsync(Movie.BelongsToCollection.Id);
+                collection.Parts = collection.Parts
+                    .OrderByDescending(part => part.ReleaseDate.HasValue)
+                    .ThenBy(p => p.ReleaseDate).ToList();
+                Collection = collection;
             }
         }
     }
