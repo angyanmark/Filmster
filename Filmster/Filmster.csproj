@@ -141,6 +141,7 @@
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\ExternalIdToUriConverter.cs" />
     <Compile Include="Helpers\IntToRuntimeConverter.cs" />
+    <Compile Include="Helpers\LoadingObservable.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\NullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Helpers\Observable.cs" />

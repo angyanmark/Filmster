@@ -13,15 +13,8 @@ using TMDbLib.Objects.Search;
 
 namespace Filmster.ViewModels
 {
-    public class MovieDetailViewModel : Observable
+    public class MovieDetailViewModel : LoadingObservable
     {
-        private bool _dataLoaded;
-        public bool DataLoaded
-        {
-            get { return _dataLoaded; }
-            set { Set(ref _dataLoaded, value); }
-        }
-
         private Movie _movie;
         public Movie Movie
         {
