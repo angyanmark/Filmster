@@ -122,7 +122,7 @@
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Filmster</value>
+    <value>Browse films, shows, people...</value>
     <comment>Application description</comment>
   </data>
   <data name="Movies_Popular.Header" xml:space="preserve">
@@ -268,5 +268,9 @@
   <data name="Media_Trailer.Text" xml:space="preserve">
     <value>Trailer</value>
     <comment>Trailer text for media</comment>
+  </data>
+  <data name="AppPublisher" xml:space="preserve">
+    <value>Márk Ángyán</value>
+    <comment>Application publisher name</comment>
   </data>
 </root>

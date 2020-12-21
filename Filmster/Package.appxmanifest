@@ -15,8 +15,8 @@
   <mp:PhoneIdentity PhoneProductId="1010D804-90C7-4978-9627-2A112C059A6D" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Filmster</DisplayName>
-    <PublisherDisplayName>angya</PublisherDisplayName>
+    <DisplayName>ms-resource:AppDisplayName</DisplayName>
+    <PublisherDisplayName>ms-resource:AppPublisher</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
