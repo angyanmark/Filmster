@@ -30,6 +30,11 @@
     </Style>
 
     <!--  Detail pages, no stretch  -->
+    <Style x:Key="AdaptiveGridNoStretchSmallPoster" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallPosterTemplate}" />
+    </Style>
+
     <Style x:Key="AdaptiveGridNoStretchMediumPoster" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumPosterTemplate}" />
@@ -40,10 +45,19 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}" />
     </Style>
 
+    <Style x:Key="AdaptiveGridNoStretchSmallBackdrop" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallBackdropTemplate}" />
+    </Style>
+
     <Style x:Key="AdaptiveGridNoStretchMediumBackdrop" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumBackdropTemplate}" />
     </Style>
+
+    <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterTemplate">
+        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+    </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumPosterTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
@@ -57,19 +71,23 @@
         <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumBackdrop}" Style="{StaticResource AdaptiveGridNoStretchLandscapeImage}" />
     </DataTemplate>
 
+    <DataTemplate x:Key="AdaptiveGridNoStretchSmallBackdropTemplate">
+        <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallBackdrop}" Style="{StaticResource AdaptiveGridNoStretchLandscapeImage}" />
+    </DataTemplate>
+
     <Style x:Key="AdaptiveGridNoStretchImage" TargetType="Image">
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Height" Value="240" />
-        <Setter Property="Width" Value="160" />
+        <Setter Property="Height" Value="180" />
+        <Setter Property="Width" Value="120" />
     </Style>
 
     <Style x:Key="AdaptiveGridNoStretchLandscapeImage" TargetType="Image">
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Width" Value="324" />
+        <Setter Property="Width" Value="244" />
     </Style>
 
 </ResourceDictionary>
