@@ -15,10 +15,13 @@
 
                 <ResourceDictionary Source="/Styles/AdaptiveGridView.xaml" />
                 <ResourceDictionary Source="/Styles/FlipView.xaml" />
-                <ResourceDictionary Source="/Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="/Styles/Page.xaml" />
+                <ResourceDictionary Source="/Styles/ProgressRing.xaml" />
+                <ResourceDictionary Source="/Styles/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
             <helpers:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
             <helpers:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />

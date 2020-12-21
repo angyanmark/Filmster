@@ -15,9 +15,9 @@ namespace Filmster.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
             var id = (int)e.Parameter;
             await ViewModel.LoadPerson(id);
-            base.OnNavigatedTo(e);
         }
     }
 }

@@ -15,6 +15,13 @@ namespace Filmster.ViewModels
 {
     public class MovieDetailViewModel : Observable
     {
+        private bool _dataLoaded;
+        public bool DataLoaded
+        {
+            get { return _dataLoaded; }
+            set { Set(ref _dataLoaded, value); }
+        }
+
         private Movie _movie;
         public Movie Movie
         {

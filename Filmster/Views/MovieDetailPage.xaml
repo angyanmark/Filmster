@@ -7,159 +7,162 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <ScrollViewer>
-        <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource MediumSpacing}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+    <Grid>
+        <ProgressRing IsActive="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{StaticResource ProgressRing}" />
+        <ScrollViewer Visibility="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource MediumSpacing}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <FlipView Grid.Column="0"
-                          VerticalAlignment="Top"
-                          ItemTemplate="{StaticResource FlipPosterTemplate}"
-                          ItemsSource="{x:Bind ViewModel.Movie.Images.Posters, Mode=OneWay}"
-                          SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
-                          Style="{StaticResource FlipView}" />
+                    <FlipView Grid.Column="0"
+                              VerticalAlignment="Top"
+                              ItemTemplate="{StaticResource FlipPosterTemplate}"
+                              ItemsSource="{x:Bind ViewModel.Movie.Images.Posters, Mode=OneWay}"
+                              SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
+                              Style="{StaticResource FlipView}" />
 
-                <Grid Grid.Column="1" RowSpacing="{StaticResource XSmallSpacing}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1" RowSpacing="{StaticResource XSmallSpacing}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0"
-                               Style="{StaticResource DetailPageTitleStyle}"
-                               ToolTipService.ToolTip="{x:Bind ViewModel.Movie.ReleaseDate.Value.ToShortDateString(), Mode=OneWay}">
-                        <Run FontWeight="Bold" Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
-                        <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.Movie.ReleaseDate.Value.Year, Mode=OneWay}" />
-                    </TextBlock>
+                        <TextBlock Grid.Row="0"
+                                   Style="{StaticResource DetailPageTitleStyle}"
+                                   ToolTipService.ToolTip="{x:Bind ViewModel.Movie.ReleaseDate.Value.ToShortDateString(), Mode=OneWay}">
+                            <Run FontWeight="Bold" Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
+                            <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.Movie.ReleaseDate.Value.Year, Mode=OneWay}" />
+                        </TextBlock>
 
-                    <TextBlock Grid.Row="1"
-                               Style="{StaticResource SubtitleTextBlockStyle}"
-                               Visibility="{x:Bind ViewModel.Directors, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                        <Run x:Uid="Media_DirectedBy" Foreground="{StaticResource SystemOffsetMediumBrush}" />
-                        <Run Text="{x:Bind ViewModel.Directors, Mode=OneWay}" />
-                    </TextBlock>
+                        <TextBlock Grid.Row="1"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Visibility="{x:Bind ViewModel.Directors, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                            <Run x:Uid="Media_DirectedBy" Foreground="{StaticResource SystemOffsetMediumBrush}" />
+                            <Run Text="{x:Bind ViewModel.Directors, Mode=OneWay}" />
+                        </TextBlock>
 
-                    <StackPanel Grid.Row="2"
-                                Orientation="Horizontal"
-                                Spacing="{StaticResource SmallSpacing}">
-                        <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.Movie.Runtime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
-                        <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
-                                   Text="{x:Bind ViewModel.Certification, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.Certification, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
-                    </StackPanel>
+                        <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource SmallSpacing}">
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.Movie.Runtime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                       Text="{x:Bind ViewModel.Certification, Mode=OneWay}"
+                                       Visibility="{x:Bind ViewModel.Certification, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
+                        </StackPanel>
 
-                    <StackPanel Grid.Row="3"
-                                Orientation="Horizontal"
-                                Spacing="{StaticResource SmallSpacing}">
-                        <RatingControl IsReadOnly="True" Value="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
-                        <TextBlock Margin="{StaticResource XXSmallTopMargin}"
+                        <StackPanel Grid.Row="3"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource SmallSpacing}">
+                            <RatingControl IsReadOnly="True" Value="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                            <TextBlock Margin="{StaticResource XXSmallTopMargin}"
+                                       Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                       Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="4"
                                    Foreground="{StaticResource SystemOffsetMediumBrush}"
-                                   Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
-                    </StackPanel>
+                                   Style="{StaticResource TaglineTextStyle}"
+                                   Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="4"
-                               Foreground="{StaticResource SystemOffsetMediumBrush}"
-                               Style="{StaticResource TaglineTextStyle}"
-                               Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
+                        <TextBlock Grid.Row="5"
+                                   Style="{StaticResource OverviewTextStyle}"
+                                   Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="5"
-                               Style="{StaticResource OverviewTextStyle}"
-                               Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
+                        <TextBlock Grid.Row="6"
+                                   Style="{StaticResource GenresTextStyle}"
+                                   Text="{x:Bind ViewModel.Genres, Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="6"
-                               Style="{StaticResource GenresTextStyle}"
-                               Text="{x:Bind ViewModel.Genres, Mode=OneWay}" />
+                        <StackPanel Grid.Row="7"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource XSmallSpacing}">
+                            <HyperlinkButton Padding="0"
+                                             NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}"
+                                             Visibility="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
+                            </HyperlinkButton>
+                            <HyperlinkButton Padding="0"
+                                             NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}"
+                                             Visibility="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                <TextBlock x:Uid="Media_IMDb" Style="{StaticResource ExternalLinkTextStyle}" />
+                            </HyperlinkButton>
+                            <HyperlinkButton Padding="0"
+                                             NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}"
+                                             Visibility="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                <TextBlock x:Uid="Media_Homepage" Style="{StaticResource ExternalLinkTextStyle}" />
+                            </HyperlinkButton>
+                        </StackPanel>
 
-                    <StackPanel Grid.Row="7"
-                                Orientation="Horizontal"
-                                Spacing="{StaticResource XSmallSpacing}">
-                        <HyperlinkButton Padding="0"
-                                         NavigateUri="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbMovie}"
-                                         Visibility="{x:Bind ViewModel.Movie.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
+                        <HyperlinkButton Grid.Row="8"
+                                         Padding="0"
+                                         NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
+                                         Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                            <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
                         </HyperlinkButton>
-                        <HyperlinkButton Padding="0"
-                                         NavigateUri="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbMovie}"
-                                         Visibility="{x:Bind ViewModel.Movie.ImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_IMDb" Style="{StaticResource ExternalLinkTextStyle}" />
-                        </HyperlinkButton>
-                        <HyperlinkButton Padding="0"
-                                         NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}"
-                                         Visibility="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_Homepage" Style="{StaticResource ExternalLinkTextStyle}" />
-                        </HyperlinkButton>
-                    </StackPanel>
-
-                    <HyperlinkButton Grid.Row="8"
-                                     Padding="0"
-                                     NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
-                                     Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                        <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
-                    </HyperlinkButton>
+                    </Grid>
                 </Grid>
+
+                <StackPanel Grid.Row="1" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock x:Uid="Media_Recommendations" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="3">
+                    <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="4">
+                    <TextBlock x:Uid="Media_Crew" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="5">
+                    <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Backdrops, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsBackdropsChecked, Mode=TwoWay}" />
+                </StackPanel>
             </Grid>
-
-            <StackPanel Grid.Row="1" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="2">
-                <TextBlock x:Uid="Media_Recommendations" Style="{StaticResource TitleTextBlockStyle}" />
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="3">
-                <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
-                <ToggleButton x:Uid="Media_ShowAll"
-                              HorizontalAlignment="Center"
-                              IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="4">
-                <TextBlock x:Uid="Media_Crew" Style="{StaticResource TitleTextBlockStyle}" />
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
-                <ToggleButton x:Uid="Media_ShowAll"
-                              HorizontalAlignment="Center"
-                              IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="5">
-                <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
-                <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Backdrops, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
-                <ToggleButton x:Uid="Media_ShowAll"
-                              HorizontalAlignment="Center"
-                              IsChecked="{x:Bind ViewModel.IsBackdropsChecked, Mode=TwoWay}" />
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Grid>
 </Page>
