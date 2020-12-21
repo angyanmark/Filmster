@@ -22,6 +22,13 @@ namespace Filmster.ViewModels
             set { Set(ref _movie, value); }
         }
 
+        private ImageData _selectedPoster;
+        public ImageData SelectedPoster
+        {
+            get { return _selectedPoster; }
+            set { Set(ref _selectedPoster, value); }
+        }
+
         private Collection _collection;
         public Collection Collection
         {
@@ -113,6 +120,12 @@ namespace Filmster.ViewModels
         public async Task LoadMovie(int id)
         {
             Movie = await TMDbService.GetMovieAsync(id);
+            if (Movie == null)
+            {
+                NavigationService.GoBack();
+                return;
+            }
+            SelectedPoster = Movie.Images.Posters.Find(poster => poster.FilePath == Movie.PosterPath) ?? Movie.Images.Posters.FirstOrDefault();
             Video = Movie.Videos.Results.FirstOrDefault();
             GetCertification();
             GetDirectors();

@@ -29,6 +29,7 @@
                           VerticalAlignment="Top"
                           ItemTemplate="{StaticResource FlipPosterTemplate}"
                           ItemsSource="{x:Bind ViewModel.Movie.Images.Posters, Mode=OneWay}"
+                          SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
                           Style="{StaticResource FlipView}" />
 
                 <Grid Grid.Column="1" RowSpacing="{StaticResource XSmallSpacing}">
