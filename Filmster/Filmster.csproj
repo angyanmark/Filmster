@@ -271,6 +271,7 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AppLogo\filmster-wide-small.png" />
     <Content Include="Assets\Placeholders\placeholder-poster-large.png" />
     <Content Include="Assets\Placeholders\placeholder-poster-medium.png" />
     <Content Include="Assets\Placeholders\placeholder-poster-small.png" />

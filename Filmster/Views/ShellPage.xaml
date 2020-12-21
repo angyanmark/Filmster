@@ -23,6 +23,15 @@
                           IsSettingsVisible="True"
                           PaneDisplayMode="Top"
                           SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+
+        <winui:NavigationView.PaneHeader>
+            <StackPanel Orientation="Horizontal">
+                <Image Height="20"
+                       Margin="20,0"
+                       Source="..\Assets\AppLogo\filmster-wide-small.png" />
+            </StackPanel>
+        </winui:NavigationView.PaneHeader>
+
         <winui:NavigationView.MenuItems>
             <!--
                 Change the symbols for each item as appropriate for your app
