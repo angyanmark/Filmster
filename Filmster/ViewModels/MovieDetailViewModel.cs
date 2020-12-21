@@ -151,7 +151,7 @@ namespace Filmster.ViewModels
         {
             foreach (var releaseDate in Movie.ReleaseDates.Results)
             {
-                if (releaseDate.Iso_3166_1 == "US")
+                if (releaseDate.Iso_3166_1.ToLower() == "us")
                 {
                     var cert = releaseDate.ReleaseDates.FirstOrDefault(rd => !string.IsNullOrEmpty(rd.Certification));
                     if (cert != null)
