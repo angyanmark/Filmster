@@ -1,47 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--  Bases  -->
+    <Style x:Key="TextWrap" TargetType="TextBlock">
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
     <!--  Common texts  -->
-    <Style x:Key="PageTitleStyle" TargetType="TextBlock">
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontWeight" Value="SemiLight" />
-        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="NoWrap" />
-    </Style>
-
-    <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+    <Style x:Key="BodyTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
-    <Style x:Key="DetailPageTitleStyle" TargetType="TextBlock">
+    <Style x:Key="DetailPageTitleStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource XLargeFontSize}" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="MaxLines" Value="6" />
     </Style>
 
-    <Style x:Key="TaglineTextStyle" TargetType="TextBlock">
+    <Style x:Key="TaglineTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="MaxLines" Value="4" />
     </Style>
 
-    <Style x:Key="OverviewTextStyle" TargetType="TextBlock">
+    <Style x:Key="OverviewTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="MaxLines" Value="8" />
     </Style>
 
-    <Style x:Key="GenresTextStyle" TargetType="TextBlock">
+    <Style x:Key="GenresTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
         <Setter Property="Foreground" Value="{StaticResource SystemOffsetMediumBrush}" />
         <Setter Property="FontStyle" Value="Italic" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="MaxLines" Value="4" />
     </Style>
 
