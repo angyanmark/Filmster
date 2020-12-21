@@ -149,9 +149,9 @@
     <value>TV Shows</value>
     <comment>TV Shows navigation view item name</comment>
   </data>
-  <data name="People_Popular.Header" xml:space="preserve">
-    <value>Popular</value>
-    <comment>Popular pivot item title for People</comment>
+  <data name="People_Trending.Header" xml:space="preserve">
+    <value>Trending</value>
+    <comment>Trending pivot item title for People</comment>
   </data>
   <data name="Shell_People.Content" xml:space="preserve">
     <value>People</value>
@@ -224,5 +224,9 @@
   <data name="Movies_Trending.Header" xml:space="preserve">
     <value>Trending</value>
     <comment>Trending pivot item title for Movies</comment>
+  </data>
+  <data name="TvShows_Trending.Header" xml:space="preserve">
+    <value>Trending</value>
+    <comment>Trending pivot item title for TvShows</comment>
   </data>
 </root>

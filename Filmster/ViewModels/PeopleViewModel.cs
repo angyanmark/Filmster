@@ -11,7 +11,7 @@ namespace Filmster.ViewModels
 {
     public class PeopleViewModel : Observable
     {
-        public ObservableCollection<SearchPerson> PopularPeople { get; set; } = new ObservableCollection<SearchPerson>();
+        public ObservableCollection<SearchPerson> TrendingPeople { get; set; } = new ObservableCollection<SearchPerson>();
 
         public ICommand PersonClickedCommand;
 
@@ -28,15 +28,15 @@ namespace Filmster.ViewModels
 
         private async Task GetPeopleAsync()
         {
-            await GetPopularPeopleAsync();
+            await GetTrendingPeopleAsync();
         }
 
-        private async Task GetPopularPeopleAsync()
+        private async Task GetTrendingPeopleAsync()
         {
-            var people = await TMDbService.GetPopularPeopleAsync(TimeWindow.Week);
+            var people = await TMDbService.GetTrendingPeopleAsync(TimeWindow.Week);
             foreach (var person in people)
             {
-                PopularPeople.Add(person);
+                TrendingPeople.Add(person);
             }
         }
 

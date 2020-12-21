@@ -50,9 +50,9 @@ namespace Filmster.Core.Services
         public static readonly string TwitterBaseUrl = "https://twitter.com/";
         public static readonly string InstagramBaseUrl = "https://www.instagram.com/";
 
-        public static async Task<List<SearchMovie>> GetTrendingMoviesAsync()
+        public static async Task<List<SearchMovie>> GetTrendingMoviesAsync(TimeWindow timeWindow)
         {
-            return (await client.GetTrendingMoviesAsync(TimeWindow.Week)).Results;
+            return (await client.GetTrendingMoviesAsync(timeWindow)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetPopularMoviesAsync()
@@ -85,6 +85,11 @@ namespace Filmster.Core.Services
             return await client.GetCollectionAsync(id);
         }
 
+        public static async Task<List<SearchTv>> GetTrendingTvShowsAsync(TimeWindow timeWindow)
+        {
+            return (await client.GetTrendingTvAsync(timeWindow)).Results;
+        }
+
         public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
         {
             return (await client.GetTvShowPopularAsync()).Results;
@@ -100,7 +105,7 @@ namespace Filmster.Core.Services
             return await client.GetTvShowAsync(id, TvShowMethods.Images);
         }
 
-        public static async Task<List<SearchPerson>> GetPopularPeopleAsync(TimeWindow timeWindow)
+        public static async Task<List<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow)
         {
             return (await client.GetTrendingPeopleAsync(timeWindow)).Results;
         }

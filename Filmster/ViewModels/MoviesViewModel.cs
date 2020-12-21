@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Search;
+using TMDbLib.Objects.Trending;
 
 namespace Filmster.ViewModels
 {
@@ -40,7 +41,7 @@ namespace Filmster.ViewModels
 
         private async Task GetTrendingMoviesAsync()
         {
-            var movies = await TMDbService.GetTrendingMoviesAsync();
+            var movies = await TMDbService.GetTrendingMoviesAsync(TimeWindow.Week);
             foreach (var movie in movies)
             {
                 TrendingMovies.Add(movie);

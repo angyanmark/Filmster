@@ -5,11 +5,13 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Search;
+using TMDbLib.Objects.Trending;
 
 namespace Filmster.ViewModels
 {
     public class TvShowsViewModel : Observable
     {
+        public ObservableCollection<SearchTv> TrendingTvShows { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<SearchTv> PopularTvShows { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<SearchTv> TopRatedTvShows { get; set; } = new ObservableCollection<SearchTv>();
 
@@ -28,8 +30,18 @@ namespace Filmster.ViewModels
 
         private async Task GetTvShowsAsync()
         {
+            await GetTrendingTvShowsAsync();
             await GetPopularTvShowsAsync();
             await GetTopRatedTvShowsAsync();
+        }
+
+        private async Task GetTrendingTvShowsAsync()
+        {
+            var tvshows = await TMDbService.GetTrendingTvShowsAsync(TimeWindow.Week);
+            foreach (var tvshow in tvshows)
+            {
+                TrendingTvShows.Add(tvshow);
+            }
         }
 
         private async Task GetPopularTvShowsAsync()
