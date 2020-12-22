@@ -114,7 +114,7 @@ namespace Filmster.Core.Services
 
         public static async Task<Person> GetPersonAsync(int id)
         {
-            return await client.GetPersonAsync(id, PersonMethods.Images);
+            return await client.GetPersonAsync(id, PersonMethods.Images | PersonMethods.TaggedImages);
         }
 
         public static async Task<List<SearchBase>> GetMultiSearchAsync(string value)

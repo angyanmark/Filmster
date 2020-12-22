@@ -66,7 +66,7 @@ namespace Filmster.ViewModels
 
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
-        public ObservableCollection<ImageData> Backdrops { get; set; } = new ObservableCollection<ImageData>();
+        public ObservableCollection<ImageData> Images { get; set; } = new ObservableCollection<ImageData>();
 
         private bool _isCastChecked;
         public bool IsCastChecked
@@ -90,14 +90,14 @@ namespace Filmster.ViewModels
             }
         }
 
-        private bool _isBackdropsChecked;
-        public bool IsBackdropsChecked
+        private bool _isImagesChecked;
+        public bool IsImagesChecked
         {
-            get { return _isBackdropsChecked; }
+            get { return _isImagesChecked; }
             set
             {
-                Set(ref _isBackdropsChecked, value);
-                BackdropsToggled(IsBackdropsChecked);
+                Set(ref _isImagesChecked, value);
+                ImagesToggled(IsImagesChecked);
             }
         }
 
@@ -135,7 +135,7 @@ namespace Filmster.ViewModels
             Video = TvShow.Videos.Results.FirstOrDefault();
             CastToggled(false);
             CrewToggled(false);
-            BackdropsToggled(false);
+            ImagesToggled(false);
         }
 
         private ImageData GetSelectedPoster()
@@ -209,13 +209,13 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void BackdropsToggled(bool isChecked)
+        private void ImagesToggled(bool isChecked)
         {
-            var backdrops = isChecked ? TvShow.Images.Backdrops : TvShow.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Backdrops.Clear();
-            foreach (var b in backdrops)
+            var images = isChecked ? TvShow.Images.Backdrops : TvShow.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount);
+            Images.Clear();
+            foreach (var i in images)
             {
-                Backdrops.Add(b);
+                Images.Add(i);
             }
         }
     }

@@ -18,6 +18,7 @@ namespace Filmster.Views
             base.OnNavigatedTo(e);
             var id = (int)e.Parameter;
             await ViewModel.LoadPerson(id);
+            ViewModel.DataLoaded = true;
         }
     }
 }

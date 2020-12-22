@@ -34,6 +34,12 @@
         <Setter Property="MaxLines" Value="8" />
     </Style>
 
+    <Style x:Key="BiographyTextStyle"
+           BasedOn="{StaticResource OverviewTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="MaxLines" Value="20" />
+    </Style>
+
     <Style x:Key="GenresTextStyle"
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
