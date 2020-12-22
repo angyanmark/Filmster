@@ -14,6 +14,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
@@ -69,6 +71,72 @@
                 </Grid>
 
                 <StackPanel Grid.Row="1">
+                    <TextBlock x:Uid="Media_Cast"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource TitleTextBlockStyle}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Text="Movies" />
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieCastClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.MovieCast, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Text="TV Shows" />
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowCastClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.TvShowCast, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                        </StackPanel>
+                    </Grid>
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock x:Uid="Media_Crew"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource TitleTextBlockStyle}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Text="Movies" />
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieCrewClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.MovieCrew, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Text="TV Shows" />
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowCrewClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.TvShowCrew, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                        </StackPanel>
+                    </Grid>
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="3">
                     <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
                     <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Images, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
                     <ToggleButton x:Uid="Media_ShowAll"
