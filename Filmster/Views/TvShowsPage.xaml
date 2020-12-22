@@ -7,13 +7,7 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <Pivot Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot.HeaderTemplate>
-            <DataTemplate>
-                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
-            </DataTemplate>
-        </Pivot.HeaderTemplate>
-
+    <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
         <PivotItem x:Uid="TvShows_Trending">
             <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TrendingTvShows, Mode=OneWay}"
