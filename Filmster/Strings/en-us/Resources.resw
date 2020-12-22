@@ -273,4 +273,12 @@
     <value>Márk Ángyán</value>
     <comment>Application publisher name</comment>
   </data>
+  <data name="Media_CreatedBy.Text" xml:space="preserve">
+    <value>Created by</value>
+    <comment>Created by text for media</comment>
+  </data>
+  <data name="Media_Seasons.Text" xml:space="preserve">
+    <value>Seasons</value>
+    <comment>Seasons text for media</comment>
+  </data>
 </root>

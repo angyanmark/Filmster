@@ -104,7 +104,7 @@ namespace Filmster.Core.Services
 
         public static async Task<TvShow> GetTvShowAsync(int id)
         {
-            return await client.GetTvShowAsync(id, TvShowMethods.Images);
+            return await client.GetTvShowAsync(id, TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds);
         }
 
         public static async Task<List<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow)
