@@ -7,35 +7,33 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <Grid Margin="{StaticResource SmallLeftRightMargin}">
-        <Pivot>
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
+    <Pivot Margin="{StaticResource SmallLeftRightMargin}">
+        <Pivot.HeaderTemplate>
+            <DataTemplate>
+                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
+            </DataTemplate>
+        </Pivot.HeaderTemplate>
 
-            <PivotItem x:Uid="TvShows_Trending">
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.TrendingTvShows, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridMediumPoster}" />
-            </PivotItem>
+        <PivotItem x:Uid="TvShows_Trending">
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
+                                       ItemsSource="{x:Bind ViewModel.TrendingTvShows, Mode=OneWay}"
+                                       Style="{StaticResource AdaptiveGridMediumPoster}" />
+        </PivotItem>
 
-            <PivotItem x:Uid="TvShows_Popular">
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridMediumPoster}" />
-            </PivotItem>
+        <PivotItem x:Uid="TvShows_Popular">
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
+                                       ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
+                                       Style="{StaticResource AdaptiveGridMediumPoster}" />
+        </PivotItem>
 
-            <PivotItem x:Uid="TvShows_AiringToday" />
+        <PivotItem x:Uid="TvShows_AiringToday" />
 
-            <PivotItem x:Uid="TvShows_OnTv" />
+        <PivotItem x:Uid="TvShows_OnTv" />
 
-            <PivotItem x:Uid="TvShows_TopRated">
-                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
-                                           ItemsSource="{x:Bind ViewModel.TopRatedTvShows, Mode=OneWay}"
-                                           Style="{StaticResource AdaptiveGridMediumPoster}" />
-            </PivotItem>
-        </Pivot>
-    </Grid>
+        <PivotItem x:Uid="TvShows_TopRated">
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
+                                       ItemsSource="{x:Bind ViewModel.TopRatedTvShows, Mode=OneWay}"
+                                       Style="{StaticResource AdaptiveGridMediumPoster}" />
+        </PivotItem>
+    </Pivot>
 </Page>
