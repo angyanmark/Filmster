@@ -46,7 +46,7 @@
 
         <winui:NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:Uid="Shell_SearchBoxPlaceholderText"
-                            Width="400"
+                            Width="320"
                             DisplayMemberPath="DisplayName"
                             ItemsSource="{x:Bind ViewModel.SearchItems, Mode=OneWay}"
                             QueryIcon="Find"
