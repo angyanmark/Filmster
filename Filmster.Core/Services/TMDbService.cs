@@ -107,6 +107,11 @@ namespace Filmster.Core.Services
             return await client.GetTvShowAsync(id, TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds);
         }
 
+        public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber)
+        {
+            return await client.GetTvSeasonAsync(tvShowId, seasonNumber, TvSeasonMethods.Images | TvSeasonMethods.Credits);
+        }
+
         public static async Task<List<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow)
         {
             return (await client.GetTrendingPeopleAsync(timeWindow)).Results;
