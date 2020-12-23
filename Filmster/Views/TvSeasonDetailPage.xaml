@@ -46,13 +46,15 @@
                             <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.TvSeason.AirDate.Value.Year, Mode=OneWay}" />
                         </TextBlock>
 
-                        <TextBlock Grid.Row="1"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Text="{x:Bind ViewModel.TvSeason.SeasonNumber, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='Season \{0\}'}" />
+                        <TextBlock Grid.Row="1" Style="{StaticResource SubtitleTextBlockStyle}">
+                            <Run x:Uid="Media_Season" />
+                            <Run Text="{x:Bind ViewModel.TvSeason.SeasonNumber, Mode=OneWay}" />
+                        </TextBlock>
 
-                        <TextBlock Grid.Row="2"
-                                   Foreground="{StaticResource SystemOffsetMediumBrush}"
-                                   Text="{x:Bind ViewModel.TvSeason.Episodes.Count, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}" />
+                        <TextBlock Grid.Row="2" Foreground="{StaticResource SystemOffsetMediumBrush}">
+                            <Run Text="{x:Bind ViewModel.TvSeason.Episodes.Count, Mode=OneWay}" />
+                            <Run x:Uid="Media_Episodes_" />
+                        </TextBlock>
 
                         <TextBlock Grid.Row="3"
                                    Style="{StaticResource OverviewTextStyle}"

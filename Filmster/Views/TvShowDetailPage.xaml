@@ -62,7 +62,10 @@
                         <StackPanel Grid.Row="2"
                                     Orientation="Horizontal"
                                     Spacing="{StaticResource SmallSpacing}">
-                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.TvShow.NumberOfEpisodes, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}" />
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
+                                <Run Text="{x:Bind ViewModel.TvShow.NumberOfEpisodes, Mode=OneWay}" />
+                                <Run x:Uid="Media_Episodes_" />
+                            </TextBlock>
                             <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.EpisodeRuntime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
                             <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
                                        Text="{x:Bind ViewModel.Certification, Mode=OneWay}"

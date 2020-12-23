@@ -285,4 +285,12 @@
     <value>Episodes</value>
     <comment>Episodes text for media</comment>
   </data>
+  <data name="Media_Season.Text" xml:space="preserve">
+    <value>Season</value>
+    <comment>Season text for media</comment>
+  </data>
+  <data name="Media_Episodes_.Text" xml:space="preserve">
+    <value>episodes</value>
+    <comment>episodes text for media</comment>
+  </data>
 </root>
