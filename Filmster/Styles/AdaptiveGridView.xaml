@@ -79,15 +79,61 @@
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Height" Value="198" />
-        <Setter Property="Width" Value="132" />
+        <Setter Property="Height" Value="222" />
+        <Setter Property="Width" Value="148" />
     </Style>
 
     <Style x:Key="AdaptiveGridNoStretchLandscapeImage" TargetType="Image">
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Width" Value="268" />
+        <Setter Property="Width" Value="300" />
+    </Style>
+
+    <!--  Episode list  -->
+    <Style x:Key="AdaptiveGridEpisodeListLargeStill" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="DesiredWidth" Value="12000" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridEpisodeListLargeStillTemplate}" />
+    </Style>
+
+    <DataTemplate x:Key="AdaptiveGridEpisodeListLargeStillTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"
+                   Source="{Binding StillPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=LargeStill}"
+                   Style="{StaticResource AdaptiveGridEpisodeListImage}" />
+            <StackPanel Grid.Column="1"
+                        Margin="{StaticResource SmallLeftTopRightBottomMargin}"
+                        VerticalAlignment="Center"
+                        Spacing="{StaticResource XXXSmallSpacing}">
+                <TextBlock Style="{StaticResource ListTitleStyle}">
+                    <Run FontWeight="Bold" Text="{Binding Name}" />
+                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding AirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:MM/dd/yyyy}'}" />
+                </TextBlock>
+                <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
+                    <Run Text="{Binding SeasonNumber, Converter={StaticResource StringFormatConverter}, ConverterParameter='S{0:00}'}" />
+                    <Run Text="{Binding EpisodeNumber, Converter={StaticResource StringFormatConverter}, ConverterParameter='E{0:00}'}" />
+                </TextBlock>
+                <TextBlock Style="{StaticResource ListOverviewTextStyle}" Text="{Binding Overview}" />
+                <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
+                    <RatingControl IsReadOnly="True" Value="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <TextBlock Margin="{StaticResource XXSmallTopMargin}"
+                               Foreground="{StaticResource SystemOffsetMediumBrush}"
+                               Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <Style x:Key="AdaptiveGridEpisodeListImage" TargetType="Image">
+        <Setter Property="Stretch" Value="UniformToFill" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="300" />
     </Style>
 
 </ResourceDictionary>

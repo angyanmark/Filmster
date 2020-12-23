@@ -54,4 +54,18 @@
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
 
+    <Style x:Key="ListTitleStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="MaxLines" Value="2" />
+    </Style>
+
+    <Style x:Key="ListOverviewTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="MaxLines" Value="2" />
+    </Style>
+
 </ResourceDictionary>

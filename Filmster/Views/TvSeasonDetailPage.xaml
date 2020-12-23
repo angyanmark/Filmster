@@ -15,6 +15,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
@@ -60,6 +61,11 @@
                 </Grid>
 
                 <StackPanel Grid.Row="1">
+                    <TextBlock x:Uid="Media_Episodes" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.TvSeason.Episodes, Mode=OneWay}" Style="{StaticResource AdaptiveGridEpisodeListLargeStill}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
                     <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvCastClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
@@ -69,7 +75,7 @@
                                   IsChecked="{x:Bind ViewModel.IsCastChecked, Mode=TwoWay}" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="2">
+                <StackPanel Grid.Row="3">
                     <TextBlock x:Uid="Media_Crew" Style="{StaticResource TitleTextBlockStyle}" />
                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CrewClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
