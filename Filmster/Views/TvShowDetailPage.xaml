@@ -129,7 +129,7 @@
 
                 <StackPanel Grid.Row="3">
                     <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvCastClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
                     <ToggleButton x:Uid="Media_ShowAll"

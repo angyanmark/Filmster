@@ -123,21 +123,21 @@
 
                 <StackPanel Grid.Row="1" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="2">
                     <TextBlock x:Uid="Media_Recommendations" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MediaClickedCommand}"
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Movie.Recommendations.Results, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="3">
                     <TextBlock x:Uid="Media_Cast" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.CastClickedCommand}"
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieCastClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
                     <ToggleButton x:Uid="Media_ShowAll"

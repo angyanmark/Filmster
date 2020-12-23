@@ -1,19 +1,16 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
-using Filmster.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TMDbLib.Objects.General;
-using TMDbLib.Objects.Search;
 using TMDbLib.Objects.TvShows;
 
 namespace Filmster.ViewModels
 {
-    public class TvShowDetailViewModel : LoadingObservable
+    public class TvShowDetailViewModel : MediaViewModelBase
     {
         private TvShow _tvShow;
         public TvShow TvShow
@@ -101,22 +98,8 @@ namespace Filmster.ViewModels
             }
         }
 
-        public ICommand TvShowClickedCommand;
-        public ICommand CastClickedCommand;
-        public ICommand CrewClickedCommand;
-        public ICommand MediaClickedCommand;
-
         public TvShowDetailViewModel()
         {
-            SetCommands();
-        }
-
-        private void SetCommands()
-        {
-            TvShowClickedCommand = new RelayCommand<TvShow>(TvShowClicked);
-            CastClickedCommand = new RelayCommand<Cast>(CastClicked);
-            CrewClickedCommand = new RelayCommand<Crew>(CrewClicked);
-            MediaClickedCommand = new RelayCommand<SearchBase>(MediaClicked);
         }
 
         public async Task LoadTvShow(int id)
@@ -167,26 +150,6 @@ namespace Filmster.ViewModels
         private string GetGenres()
         {
             return string.Join(", ", TvShow.Genres.Select(genre => genre.Name));
-        }
-
-        private void TvShowClicked(TvShow tvShow)
-        {
-            NavigationService.Navigate(typeof(TvShowDetailPage), tvShow.Id);
-        }
-
-        private void CastClicked(Cast cast)
-        {
-            NavigationService.Navigate(typeof(PersonDetailPage), cast.Id);
-        }
-
-        private void CrewClicked(Crew crew)
-        {
-            NavigationService.Navigate(typeof(PersonDetailPage), crew.Id);
-        }
-
-        private void MediaClicked(SearchBase media)
-        {
-            NavigationService.NavigateToSearchMediaDetail(media);
         }
 
         private void CastToggled(bool isChecked)

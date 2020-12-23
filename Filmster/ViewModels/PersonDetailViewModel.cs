@@ -1,17 +1,15 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
-using Filmster.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.People;
 
 namespace Filmster.ViewModels
 {
-    public class PersonDetailViewModel : LoadingObservable
+    public class PersonDetailViewModel : MediaViewModelBase
     {
         private Person _person;
         public Person Person
@@ -66,22 +64,8 @@ namespace Filmster.ViewModels
             }
         }
 
-        public ICommand MovieCastClickedCommand;
-        public ICommand TvShowCastClickedCommand;
-        public ICommand MovieCrewClickedCommand;
-        public ICommand TvShowCrewClickedCommand;
-
         public PersonDetailViewModel()
         {
-            SetCommands();
-        }
-
-        private void SetCommands()
-        {
-            MovieCastClickedCommand = new RelayCommand<MovieRole>(MovieCastClicked);
-            TvShowCastClickedCommand = new RelayCommand<TvRole>(TvShowCastClicked);
-            MovieCrewClickedCommand = new RelayCommand<MovieJob>(MovieCrewClicked);
-            TvShowCrewClickedCommand = new RelayCommand<TvJob>(TvShowCrewClicked);
         }
 
         public async Task LoadPerson(int id)
@@ -101,26 +85,6 @@ namespace Filmster.ViewModels
         private ImageData GetSelectedPoster()
         {
             return Person.Images.Profiles.Find(poster => poster.FilePath == Person.ProfilePath) ?? Person.Images.Profiles.FirstOrDefault();
-        }
-
-        private void MovieCastClicked(MovieRole cast)
-        {
-            NavigationService.Navigate(typeof(MovieDetailPage), cast.Id);
-        }
-
-        private void TvShowCastClicked(TvRole cast)
-        {
-            NavigationService.Navigate(typeof(TvShowDetailPage), cast.Id);
-        }
-
-        private void MovieCrewClicked(MovieJob crew)
-        {
-            NavigationService.Navigate(typeof(MovieDetailPage), crew.Id);
-        }
-
-        private void TvShowCrewClicked(TvJob crew)
-        {
-            NavigationService.Navigate(typeof(TvShowDetailPage), crew.Id);
         }
 
         private void CastToggled(bool isChecked)

@@ -1,15 +1,13 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
-using Filmster.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TMDbLib.Objects.Search;
 using TMDbLib.Objects.Trending;
 
 namespace Filmster.ViewModels
 {
-    public class MoviesViewModel : Observable
+    public class MoviesViewModel : MediaViewModelBase
     {
         public ObservableCollection<SearchMovie> TrendingMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> PopularMovies { get; set; } = new ObservableCollection<SearchMovie>();
@@ -17,17 +15,9 @@ namespace Filmster.ViewModels
         public ObservableCollection<SearchMovie> UpcomingMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> TopRatedMovies { get; set; } = new ObservableCollection<SearchMovie>();
 
-        public ICommand MovieClickedCommand;
-
         public MoviesViewModel()
         {
             _ = GetMoviesAsync();
-            SetCommands();
-        }
-
-        private void SetCommands()
-        {
-            MovieClickedCommand = new RelayCommand<SearchMovie>(MovieClicked);
         }
 
         private async Task GetMoviesAsync()
@@ -82,11 +72,6 @@ namespace Filmster.ViewModels
             {
                 TopRatedMovies.Add(movie);
             }
-        }
-
-        private void MovieClicked(SearchMovie movie)
-        {
-            NavigationService.NavigateToSearchMediaDetail(movie);
         }
     }
 }

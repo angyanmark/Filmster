@@ -78,7 +78,7 @@ namespace Filmster.Services
             where T : Page
             => Navigate(typeof(T), parameter, infoOverride);
 
-        public static void NavigateToSearchMediaDetail(SearchBase searchBase)
+        public static void NavigateSearchBase(SearchBase searchBase)
         {
             switch (searchBase.MediaType)
             {

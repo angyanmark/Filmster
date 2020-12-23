@@ -9,31 +9,31 @@
 
     <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
         <PivotItem x:Uid="Movies_Trending">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TrendingMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="Movies_Popular">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="Movies_NowPlaying">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.NowPlayingMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="Movies_Upcoming">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="Movies_TopRated">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TopRatedMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>

@@ -9,7 +9,7 @@
 
     <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
         <PivotItem x:Uid="People_Trending">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.PersonClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchPersonClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TrendingPeople, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumProfile}" />
         </PivotItem>

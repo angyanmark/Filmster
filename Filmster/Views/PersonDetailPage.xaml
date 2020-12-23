@@ -84,7 +84,7 @@
                             <TextBlock HorizontalAlignment="Center"
                                        Style="{StaticResource SubtitleTextBlockStyle}"
                                        Text="Movies" />
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieCastClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieRoleClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.MovieCast, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
                         </StackPanel>
@@ -93,7 +93,7 @@
                             <TextBlock HorizontalAlignment="Center"
                                        Style="{StaticResource SubtitleTextBlockStyle}"
                                        Text="TV Shows" />
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowCastClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvRoleClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.TvShowCast, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
                         </StackPanel>
@@ -117,7 +117,7 @@
                             <TextBlock HorizontalAlignment="Center"
                                        Style="{StaticResource SubtitleTextBlockStyle}"
                                        Text="Movies" />
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieCrewClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.MovieJobClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.MovieCrew, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
                         </StackPanel>
@@ -126,7 +126,7 @@
                             <TextBlock HorizontalAlignment="Center"
                                        Style="{StaticResource SubtitleTextBlockStyle}"
                                        Text="TV Shows" />
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowCrewClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvJobClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.TvShowCrew, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
                         </StackPanel>

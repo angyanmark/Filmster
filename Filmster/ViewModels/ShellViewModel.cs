@@ -185,21 +185,7 @@ namespace Filmster.ViewModels
         {
             if (args.ChosenSuggestion != null && args.ChosenSuggestion is SearchItem searchItem)
             {
-                switch (searchItem.SearchBase.MediaType)
-                {
-                    case MediaType.Movie:
-                        NavigationService.Navigate(typeof(MovieDetailPage), searchItem.SearchBase.Id);
-                        break;
-                    case MediaType.Tv:
-                        NavigationService.Navigate(typeof(TvShowDetailPage), searchItem.SearchBase.Id);
-                        break;
-                    case MediaType.Person:
-                        NavigationService.Navigate(typeof(PersonDetailPage), searchItem.SearchBase.Id);
-                        break;
-                    case MediaType.Unknown:
-                    default:
-                        break;
-                }
+                NavigationService.NavigateSearchBase(searchItem.SearchBase);
             }
             else if (args.ChosenSuggestion is string value)
             {

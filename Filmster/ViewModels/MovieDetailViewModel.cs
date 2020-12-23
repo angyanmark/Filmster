@@ -1,19 +1,16 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
-using Filmster.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TMDbLib.Objects.Collections;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
-using TMDbLib.Objects.Search;
 
 namespace Filmster.ViewModels
 {
-    public class MovieDetailViewModel : LoadingObservable
+    public class MovieDetailViewModel : MediaViewModelBase
     {
         private Movie _movie;
         public Movie Movie
@@ -101,20 +98,8 @@ namespace Filmster.ViewModels
             }
         }
 
-        public ICommand CastClickedCommand;
-        public ICommand CrewClickedCommand;
-        public ICommand MediaClickedCommand;
-
         public MovieDetailViewModel()
         {
-            SetCommands();
-        }
-
-        private void SetCommands()
-        {
-            CastClickedCommand = new RelayCommand<Cast>(CastClicked);
-            CrewClickedCommand = new RelayCommand<Crew>(CrewClicked);
-            MediaClickedCommand = new RelayCommand<SearchBase>(MediaClicked);
         }
 
         public async Task LoadMovie(int id)
@@ -179,21 +164,6 @@ namespace Filmster.ViewModels
                 return collection;
             }
             return default;
-        }
-
-        private void CastClicked(Cast cast)
-        {
-            NavigationService.Navigate(typeof(PersonDetailPage), cast.Id);
-        }
-
-        private void CrewClicked(Crew crew)
-        {
-            NavigationService.Navigate(typeof(PersonDetailPage), crew.Id);
-        }
-
-        private void MediaClicked(SearchBase media)
-        {
-            NavigationService.NavigateToSearchMediaDetail(media);
         }
 
         private void CastToggled(bool isChecked)
