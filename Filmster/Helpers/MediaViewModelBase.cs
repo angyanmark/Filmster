@@ -16,7 +16,6 @@ namespace Filmster.Helpers
         public ICommand TvShowClickedCommand;
         public ICommand SearchMovieClickedCommand;
         public ICommand SearchTvClickedCommand;
-        public ICommand SearchTvSeasonClickedCommand;
         public ICommand SearchPersonClickedCommand;
         public ICommand SearchBaseClickedCommand;
         public ICommand MovieCastClickedCommand;
@@ -37,7 +36,6 @@ namespace Filmster.Helpers
             TvShowClickedCommand = new RelayCommand<TvShow>(TvShowClicked);
             SearchMovieClickedCommand = new RelayCommand<SearchMovie>(SearchMovieClicked);
             SearchTvClickedCommand = new RelayCommand<SearchTv>(SearchTvClicked);
-            SearchTvSeasonClickedCommand = new RelayCommand<SearchTvSeason>(SearchTvSeasonClicked);
             SearchPersonClickedCommand = new RelayCommand<SearchPerson>(SearchPersonClicked);
             SearchBaseClickedCommand = new RelayCommand<SearchBase>(SearchBaseClicked);
             MovieCastClickedCommand = new RelayCommand<MovieCast>(MovieCastClicked);
@@ -62,11 +60,6 @@ namespace Filmster.Helpers
         private void SearchTvClicked(SearchTv searchTv)
         {
             NavigationService.Navigate(typeof(TvShowDetailPage), searchTv.Id);
-        }
-
-        private void SearchTvSeasonClicked(SearchTvSeason searchTvSeason)
-        {
-            NavigationService.Navigate(typeof(TvSeasonDetailPage), searchTvSeason.Id);
         }
 
         private void SearchPersonClicked(SearchPerson searchPerson)

@@ -1,5 +1,7 @@
-﻿using Filmster.ViewModels;
+﻿using Filmster.Core.Models;
+using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Filmster.Views
 {
@@ -10,6 +12,14 @@ namespace Filmster.Views
         public TvSeasonDetailPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var parameter = e.Parameter as TvSeasonNavigationParameter;
+            await ViewModel.LoadTvSeason(parameter.TvShowId, parameter.SeasonNumber);
+            ViewModel.DataLoaded = true;
         }
     }
 }

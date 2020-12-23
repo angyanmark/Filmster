@@ -1,11 +1,15 @@
-﻿using Filmster.Core.Services;
+﻿using Filmster.Core.Models;
+using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TMDbLib.Objects.General;
+using TMDbLib.Objects.Search;
 using TMDbLib.Objects.TvShows;
 
 namespace Filmster.ViewModels
@@ -98,8 +102,11 @@ namespace Filmster.ViewModels
             }
         }
 
+        public ICommand SearchTvSeasonClickedCommand;
+
         public TvShowDetailViewModel()
         {
+            SearchTvSeasonClickedCommand = new RelayCommand<SearchTvSeason>(SearchTvSeasonClicked);
         }
 
         public async Task LoadTvShow(int id)
@@ -150,6 +157,15 @@ namespace Filmster.ViewModels
         private string GetGenres()
         {
             return string.Join(", ", TvShow.Genres.Select(genre => genre.Name));
+        }
+
+        private void SearchTvSeasonClicked(SearchTvSeason searchTvSeason)
+        {
+            NavigationService.Navigate(typeof(TvSeasonDetailPage), new TvSeasonNavigationParameter
+            {
+                TvShowId = TvShow.Id,
+                SeasonNumber = searchTvSeason.SeasonNumber
+            });
         }
 
         private void CastToggled(bool isChecked)
