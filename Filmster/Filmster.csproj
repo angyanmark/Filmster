@@ -149,6 +149,7 @@
     <Compile Include="Helpers\ImagePathToFullPathConverter.cs" />
     <Compile Include="Helpers\RatingToScaledRatingConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\SearchBaseDataTemplateSelector.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />

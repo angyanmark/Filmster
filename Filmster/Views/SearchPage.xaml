@@ -16,9 +16,10 @@
         <TextBlock Grid.Row="0"
                    Style="{StaticResource SearchHeaderTextStyle}"
                    Text="{x:Bind ViewModel.SearchValue, Mode=OneWay}" />
+
         <controls:AdaptiveGridView Grid.Row="1"
                                    ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                    ItemsSource="{x:Bind ViewModel.SearchItems, Mode=OneWay}"
-                                   Style="{StaticResource AdaptiveGridMediumPoster}" />
+                                   Style="{StaticResource AdaptiveGridSearchListMediumPoster}" />
     </Grid>
 </Page>
