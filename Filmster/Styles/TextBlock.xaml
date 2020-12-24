@@ -57,7 +57,7 @@
     <Style x:Key="ListTitleStyle"
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
-        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="MaxLines" Value="2" />
     </Style>
 
