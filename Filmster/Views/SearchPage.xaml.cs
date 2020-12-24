@@ -1,5 +1,6 @@
 ﻿using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Filmster.Views
 {
@@ -10,6 +11,14 @@ namespace Filmster.Views
         public SearchPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            ViewModel.SearchValue = e.Parameter as string;
+            await ViewModel.Search(ViewModel.SearchValue);
+            ViewModel.DataLoaded = true;
         }
     }
 }

@@ -187,9 +187,9 @@ namespace Filmster.ViewModels
             {
                 NavigationService.NavigateSearchBase(searchItem.SearchBase);
             }
-            else if (args.ChosenSuggestion is string value)
+            else if (args.QueryText is string searchValue && !string.IsNullOrWhiteSpace(searchValue))
             {
-                // TODO: search value
+                NavigationService.Navigate(typeof(SearchPage), searchValue);
             }
         }
 

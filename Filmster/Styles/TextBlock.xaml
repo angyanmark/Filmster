@@ -68,4 +68,15 @@
         <Setter Property="MaxLines" Value="2" />
     </Style>
 
+    <Style x:Key="SearchHeaderTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="MaxLines" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="{StaticResource SmallTopBottomMargin}" />
+    </Style>
+
 </ResourceDictionary>
