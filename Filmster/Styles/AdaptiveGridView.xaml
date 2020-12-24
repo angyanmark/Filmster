@@ -140,6 +140,7 @@
     <!--  Search list  -->
     <Style x:Key="AdaptiveGridSearchListMediumPoster" TargetType="controls:AdaptiveGridView">
         <Setter Property="DesiredWidth" Value="12000" />
+        <Setter Property="ItemHeight" Value="240" />
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplateSelector" Value="{StaticResource SearchBaseDataTemplateSelector}" />
     </Style>
@@ -156,9 +157,11 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
             <Image Grid.Column="0"
                    Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}"
                    Style="{StaticResource AdaptiveGridSearchListImage}" />
+
             <StackPanel Grid.Column="1"
                         Margin="{StaticResource SmallLeftTopRightBottomMargin}"
                         VerticalAlignment="Center"
@@ -185,17 +188,74 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TvItemTemplate">
-        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource AdaptiveGridSearchListImage}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"
+                   Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}"
+                   Style="{StaticResource AdaptiveGridSearchListImage}" />
+
+            <StackPanel Grid.Column="1"
+                        Margin="{StaticResource SmallLeftTopRightBottomMargin}"
+                        VerticalAlignment="Center"
+                        Spacing="{StaticResource SmallSpacing}">
+                <TextBlock Style="{StaticResource SearchListTitleStyle}">
+                    <Run FontWeight="Bold" Text="{Binding Name}" />
+                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                </TextBlock>
+                <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
+                <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
+                    <RatingControl IsReadOnly="True" Value="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <TextBlock Margin="{StaticResource XXSmallTopMargin}"
+                               Foreground="{StaticResource SystemOffsetMediumBrush}"
+                               Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Grid.Column="1"
+                       Margin="{StaticResource MediumLeftTopRightBottomMargin}"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                       Text="{Binding MediaType}" />
+        </Grid>
     </DataTemplate>
 
     <DataTemplate x:Key="PersonItemTemplate">
-        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridSearchListImage}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"
+                   Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}"
+                   Style="{StaticResource AdaptiveGridSearchListImage}" />
+
+            <StackPanel Grid.Column="1"
+                        Margin="{StaticResource SmallLeftTopRightBottomMargin}"
+                        VerticalAlignment="Center"
+                        Spacing="{StaticResource SmallSpacing}">
+                <TextBlock FontWeight="Bold"
+                           Style="{StaticResource SearchListTitleStyle}"
+                           Text="{Binding Name}" />
+            </StackPanel>
+            <TextBlock Grid.Column="1"
+                       Margin="{StaticResource MediumLeftTopRightBottomMargin}"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                       Text="{Binding MediaType}" />
+        </Grid>
     </DataTemplate>
 
     <DataTemplate x:Key="UnknownItemTemplate">
-        <Grid>
-            <TextBlock Text="Unknown" />
-        </Grid>
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                   Text="{Binding MediaType}" />
     </DataTemplate>
 
     <Style x:Key="AdaptiveGridSearchListImage" TargetType="Image">
