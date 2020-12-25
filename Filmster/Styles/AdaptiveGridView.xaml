@@ -95,6 +95,7 @@
     <Style x:Key="AdaptiveGridEpisodeListLargeStill" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="DesiredWidth" Value="12000" />
+        <Setter Property="SelectionMode" Value="None" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridEpisodeListLargeStillTemplate}" />
     </Style>
 
