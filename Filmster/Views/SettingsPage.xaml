@@ -54,7 +54,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1">
-                <Image Width="320" Source="..\Assets\AppLogo\filmster-wide-small.png" />
+                <Image Width="300" Source="..\Assets\AppLogo\filmster-wide-small.png" />
                 <TextBlock Margin="{StaticResource XSmallTopMargin}"
                            HorizontalAlignment="Center"
                            Style="{ThemeResource TitleTextBlockStyle}"
@@ -83,6 +83,11 @@
                             <Run x:Uid="Settings_TMDb" />
                         </Hyperlink>
                     </TextBlock>
+                    <StackPanel Spacing="{StaticResource XXXSmallSpacing}">
+                        <TextBlock x:Uid="Settings_Disclaimer" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <TextBlock x:Uid="Settings_Disclaim" Style="{ThemeResource BodyTextBlockStyle}" />
+                    </StackPanel>
+                    <TextBlock x:Uid="Settings_Copyright" Style="{ThemeResource BodyTextBlockStyle}" />
                     <HyperlinkButton x:Uid="Settings_PrivacyTermsLink" Padding="0" />
                 </StackPanel>
             </StackPanel>
