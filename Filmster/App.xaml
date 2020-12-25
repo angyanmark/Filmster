@@ -21,6 +21,8 @@
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Color x:Key="SystemAccentColor">#0046AA</Color>
+
             <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
