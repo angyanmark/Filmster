@@ -59,10 +59,8 @@ namespace Filmster.ViewModels
 
         private string GetVersionDescription()
         {
-            var appName = "AppDisplayName".GetLocalized();
             var version = Package.Current.Id.Version;
-
-            return $"{appName} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+            return $"v{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
         }
     }
 }

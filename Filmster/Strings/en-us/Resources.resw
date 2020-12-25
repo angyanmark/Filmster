@@ -122,7 +122,7 @@
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Browse films, shows, people...</value>
+    <value>Browse movies, shows, people...</value>
     <comment>Application description</comment>
   </data>
   <data name="Movies_Popular.Header" xml:space="preserve">
@@ -158,7 +158,7 @@
     <comment>People navigation view item name</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Choose Theme</value>
+    <value>Choose theme</value>
     <comment>Choose theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
@@ -173,21 +173,13 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
-    <comment>About this application title for Settings</comment>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Settings page placeholder text.  Your app description goes here.</value>
-    <comment>About this application description for Settings</comment>
-  </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
-    <comment>Here is your Privacy Statement url for Settings</comment>
+    <value>https://github.com/angyanmark/Filmster</value>
+    <comment>Privacy Statement link for Settings</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
@@ -292,5 +284,49 @@
   <data name="Media_Episodes_.Text" xml:space="preserve">
     <value>episodes</value>
     <comment>episodes text for media</comment>
+  </data>
+  <data name="Settings_AppDescription.Text" xml:space="preserve">
+    <value>Browse movies, shows, people...</value>
+    <comment>Application description</comment>
+  </data>
+  <data name="Settings_CreatedBy.Text" xml:space="preserve">
+    <value>Created by Márk Ángyán</value>
+    <comment>Created by text for Settings</comment>
+  </data>
+  <data name="Settings_GitHubIssuesLink.Content" xml:space="preserve">
+    <value>https://github.com/angyanmark/Filmster/issues</value>
+    <comment>GitHub issues link content for Settings</comment>
+  </data>
+  <data name="Settings_GitHubIssuesLink.NavigateUri" xml:space="preserve">
+    <value>https://github.com/angyanmark/Filmster/issues</value>
+    <comment>GitHub issues link for Settings</comment>
+  </data>
+  <data name="Settings_GitHubIssuesLinkPre.Text" xml:space="preserve">
+    <value>For issue reporting and feature requests:</value>
+    <comment>GitHub issues link pre text for Settings</comment>
+  </data>
+  <data name="Settings_GitHubLink.Content" xml:space="preserve">
+    <value>https://github.com/angyanmark/Filmster</value>
+    <comment>GitHub link content for Settings</comment>
+  </data>
+  <data name="Settings_GitHubLink.NavigateUri" xml:space="preserve">
+    <value>https://github.com/angyanmark/Filmster</value>
+    <comment>GitHub link for Settings</comment>
+  </data>
+  <data name="Settings_GitHubLinkPre.Text" xml:space="preserve">
+    <value>Source code is available on GitHub:</value>
+    <comment>GitHub link pre text for Settings</comment>
+  </data>
+  <data name="Settings_TMDb.Text" xml:space="preserve">
+    <value>TMDb</value>
+    <comment>TMDb text for Settings</comment>
+  </data>
+  <data name="Settings_TMDbLink.NavigateUri" xml:space="preserve">
+    <value>https://www.themoviedb.org/</value>
+    <comment>TMDb link for Settings</comment>
+  </data>
+  <data name="Settings_TMDbLinkPre.Text" xml:space="preserve">
+    <value>This product uses the TMDb API but is not endorsed or certified by</value>
+    <comment>TMDb link pre text for Settings</comment>
   </data>
 </root>

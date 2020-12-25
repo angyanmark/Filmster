@@ -12,13 +12,17 @@
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
     </Page.Resources>
 
-    <Grid Margin="{StaticResource MediumLeftRightMargin}">
-        <StackPanel>
-            <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                <TextBlock x:Uid="Settings_Theme" />
+    <ScrollViewer>
+        <Grid Margin="{StaticResource MediumLeftTopRightBottomMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-                <StackPanel Margin="{StaticResource XSmallTopMargin}">
+            <StackPanel Grid.Row="0" Spacing="{StaticResource XXXSmallSpacing}">
+                <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <StackPanel>
+                    <TextBlock x:Uid="Settings_Theme" />
                     <RadioButton x:Uid="Settings_Theme_Light"
                                  Command="{x:Bind ViewModel.SwitchThemeCommand}"
                                  FontSize="15"
@@ -49,16 +53,38 @@
                 </StackPanel>
             </StackPanel>
 
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <StackPanel Grid.Row="1">
+                <Image Width="320" Source="..\Assets\AppLogo\filmster-wide-small.png" />
+                <TextBlock Margin="{StaticResource XSmallTopMargin}"
+                           HorizontalAlignment="Center"
+                           Style="{ThemeResource TitleTextBlockStyle}"
+                           Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
+                <TextBlock x:Uid="Settings_AppDescription"
+                           Margin="{StaticResource SmallTopMargin}"
+                           HorizontalAlignment="Center"
+                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <TextBlock x:Uid="Settings_CreatedBy"
+                           Margin="{StaticResource SmallTopMargin}"
+                           HorizontalAlignment="Center" />
 
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
-                <TextBlock x:Uid="Settings_AboutDescription"
-                           Margin="{StaticResource XSmallTopMargin}"
-                           Style="{ThemeResource BodyTextBlockStyle}" />
-
-                <HyperlinkButton x:Uid="Settings_PrivacyTermsLink" Margin="{StaticResource XSmallTopMargin}" />
+                <StackPanel Spacing="{StaticResource MediumSpacing}">
+                    <StackPanel>
+                        <TextBlock x:Uid="Settings_GitHubLinkPre" />
+                        <HyperlinkButton x:Uid="Settings_GitHubLink" Padding="0" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Uid="Settings_GitHubIssuesLinkPre" />
+                        <HyperlinkButton x:Uid="Settings_GitHubIssuesLink" Padding="0" />
+                    </StackPanel>
+                    <TextBlock>
+                        <Run x:Uid="Settings_TMDbLinkPre" />
+                        <Hyperlink x:Uid="Settings_TMDbLink">
+                            <Run x:Uid="Settings_TMDb" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <HyperlinkButton x:Uid="Settings_PrivacyTermsLink" Padding="0" />
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
