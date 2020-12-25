@@ -74,7 +74,7 @@
                     <TextBlock x:Uid="Media_Cast"
                                HorizontalAlignment="Center"
                                Style="{StaticResource TitleTextBlockStyle}" />
-                    <Grid>
+                    <Grid ColumnSpacing="{StaticResource LargeSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -107,7 +107,7 @@
                     <TextBlock x:Uid="Media_Crew"
                                HorizontalAlignment="Center"
                                Style="{StaticResource TitleTextBlockStyle}" />
-                    <Grid>
+                    <Grid ColumnSpacing="{StaticResource LargeSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
