@@ -65,18 +65,19 @@
                            Style="{ThemeResource SubtitleTextBlockStyle}" />
                 <TextBlock x:Uid="Settings_CreatedBy"
                            Margin="{StaticResource SmallTopMargin}"
-                           HorizontalAlignment="Center" />
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource BodyTextBlockStyle}" />
 
-                <StackPanel Spacing="{StaticResource MediumSpacing}">
+                <StackPanel Margin="{StaticResource SmallTopMargin}" Spacing="{StaticResource MediumSpacing}">
                     <StackPanel>
-                        <TextBlock x:Uid="Settings_GitHubLinkPre" />
+                        <TextBlock x:Uid="Settings_GitHubLinkPre" Style="{StaticResource BodyTextBlockStyle}" />
                         <HyperlinkButton x:Uid="Settings_GitHubLink" Padding="0" />
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock x:Uid="Settings_GitHubIssuesLinkPre" />
+                        <TextBlock x:Uid="Settings_GitHubIssuesLinkPre" Style="{StaticResource BodyTextBlockStyle}" />
                         <HyperlinkButton x:Uid="Settings_GitHubIssuesLink" Padding="0" />
                     </StackPanel>
-                    <TextBlock>
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}">
                         <Run x:Uid="Settings_TMDbLinkPre" />
                         <Hyperlink x:Uid="Settings_TMDbLink">
                             <Run x:Uid="Settings_TMDb" />
