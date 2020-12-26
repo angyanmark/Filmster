@@ -45,11 +45,6 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallBackdropTemplate}" />
     </Style>
 
-    <Style x:Key="AdaptiveGridNoStretchMediumBackdrop" TargetType="controls:AdaptiveGridView">
-        <Setter Property="IsItemClickEnabled" Value="True" />
-        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumBackdropTemplate}" />
-    </Style>
-
     <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
     </DataTemplate>
@@ -69,10 +64,6 @@
                 </Grid>
             </StackPanel>
         </StackPanel>
-    </DataTemplate>
-
-    <DataTemplate x:Key="AdaptiveGridNoStretchMediumBackdropTemplate">
-        <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumBackdrop}" Style="{StaticResource AdaptiveGridNoStretchLandscapeImage}" />
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchSmallBackdropTemplate">
