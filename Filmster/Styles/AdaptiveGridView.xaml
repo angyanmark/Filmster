@@ -41,11 +41,28 @@
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterTemplate">
-        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+            <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                <Grid>
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Title}" />
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                </Grid>
+                <Grid>
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding EpisodeCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}" />
+                    <!--<TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"> TODO: localization
+                        <Run Text="{Binding EpisodeCount}" />
+                        <Run x:Uid="Media_Episodes_" />
+                    </TextBlock>-->
+                </Grid>
+            </StackPanel>
+        </StackPanel>
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumProfileTemplate">
-        <StackPanel Width="148" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
                 <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
