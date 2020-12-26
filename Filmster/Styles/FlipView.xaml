@@ -2,8 +2,8 @@
 
     <!--  Detail page posters  -->
     <Style x:Key="FlipView" TargetType="FlipView">
-        <Setter Property="MaxHeight" Value="450" />
-        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="{StaticResource DetailPosterHeight}" />
+        <Setter Property="Width" Value="{StaticResource DetailPosterWidth}" />
         <Setter Property="ItemTemplate" Value="{StaticResource FlipPosterTemplate}" />
     </Style>
 

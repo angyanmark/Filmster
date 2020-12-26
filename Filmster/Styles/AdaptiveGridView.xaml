@@ -5,13 +5,13 @@
 
     <!--  Main list pages  -->
     <Style x:Key="AdaptiveGridMediumPoster" TargetType="controls:AdaptiveGridView">
-        <Setter Property="DesiredWidth" Value="240" />
+        <Setter Property="DesiredWidth" Value="{StaticResource MainGridPosterDesiredWidth}" />
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridMediumPosterTemplate}" />
     </Style>
 
     <Style x:Key="AdaptiveGridMediumProfile" TargetType="controls:AdaptiveGridView">
-        <Setter Property="DesiredWidth" Value="240" />
+        <Setter Property="DesiredWidth" Value="{StaticResource MainGridPosterDesiredWidth}" />
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridMediumProfileTemplate}" />
     </Style>
@@ -89,21 +89,21 @@
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Height" Value="222" />
-        <Setter Property="Width" Value="148" />
+        <Setter Property="Height" Value="{StaticResource DetailPosterGridHeight}" />
+        <Setter Property="Width" Value="{StaticResource DetailPosterGridWidth}" />
     </Style>
 
     <Style x:Key="AdaptiveGridNoStretchLandscapeImage" TargetType="Image">
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Width" Value="300" />
+        <Setter Property="Width" Value="{StaticResource DetailBackdropGridWidth}" />
     </Style>
 
     <!--  Episode list  -->
     <Style x:Key="AdaptiveGridEpisodeListLargeStill" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
-        <Setter Property="DesiredWidth" Value="12000" />
+        <Setter Property="DesiredWidth" Value="{StaticResource DetailEpisoleListDesiredWidth}" />
         <Setter Property="SelectionMode" Value="None" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridEpisodeListLargeStillTemplate}" />
     </Style>
@@ -144,13 +144,13 @@
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Width" Value="300" />
+        <Setter Property="Width" Value="{StaticResource DetailEpisoleListImageWidth}" />
     </Style>
 
     <!--  Search list  -->
     <Style x:Key="AdaptiveGridSearchListMediumPoster" TargetType="controls:AdaptiveGridView">
-        <Setter Property="DesiredWidth" Value="12000" />
-        <Setter Property="ItemHeight" Value="240" />
+        <Setter Property="DesiredWidth" Value="{StaticResource DetailEpisoleListDesiredWidth}" />
+        <Setter Property="ItemHeight" Value="{StaticResource SearchListItemHeight}" />
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplateSelector" Value="{StaticResource SearchBaseDataTemplateSelector}" />
     </Style>
@@ -272,7 +272,7 @@
         <Setter Property="Stretch" Value="UniformToFill" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Width" Value="160" />
+        <Setter Property="Width" Value="{StaticResource SearchListImageWidth}" />
     </Style>
 
 </ResourceDictionary>
