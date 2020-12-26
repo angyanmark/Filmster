@@ -94,7 +94,7 @@
     <!--  Episode list  -->
     <Style x:Key="AdaptiveGridEpisodeListLargeStill" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
-        <Setter Property="DesiredWidth" Value="{StaticResource DetailEpisoleListDesiredWidth}" />
+        <Setter Property="DesiredWidth" Value="{StaticResource DetailEpisodeListDesiredWidth}" />
         <Setter Property="SelectionMode" Value="None" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridEpisodeListLargeStillTemplate}" />
     </Style>
@@ -134,12 +134,12 @@
     <Style x:Key="AdaptiveGridEpisodeListImage"
            BasedOn="{StaticResource StretchImageBase}"
            TargetType="Image">
-        <Setter Property="Width" Value="{StaticResource DetailEpisoleListImageWidth}" />
+        <Setter Property="Width" Value="{StaticResource DetailEpisodeListImageWidth}" />
     </Style>
 
     <!--  Search list  -->
     <Style x:Key="AdaptiveGridSearchListMediumPoster" TargetType="controls:AdaptiveGridView">
-        <Setter Property="DesiredWidth" Value="{StaticResource DetailEpisoleListDesiredWidth}" />
+        <Setter Property="DesiredWidth" Value="{StaticResource SearchListDesiredWidth}" />
         <Setter Property="ItemHeight" Value="{StaticResource SearchListItemHeight}" />
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplateSelector" Value="{StaticResource SearchBaseDataTemplateSelector}" />

@@ -3,7 +3,8 @@
     <!--  Main list pages  -->
     <x:Double x:Key="MainGridPosterDesiredWidth">240</x:Double>
 
-    <x:Double x:Key="SearchListItemHeight">12000</x:Double>
+    <x:Double x:Key="SearchListDesiredWidth">12000</x:Double>
+    <x:Double x:Key="SearchListItemHeight">240</x:Double>
     <x:Double x:Key="SearchListImageWidth">160</x:Double>
 
     <!--  Detail pages  -->
@@ -13,7 +14,7 @@
     <x:Double x:Key="DetailPosterGridWidth">148</x:Double>
     <x:Double x:Key="DetailBackdropGridWidth">300</x:Double>
 
-    <x:Double x:Key="DetailEpisoleListImageWidth">300</x:Double>
-    <x:Double x:Key="DetailEpisoleListDesiredWidth">12000</x:Double>
+    <x:Double x:Key="DetailEpisodeListImageWidth">300</x:Double>
+    <x:Double x:Key="DetailEpisodeListDesiredWidth">12000</x:Double>
 
 </ResourceDictionary>
