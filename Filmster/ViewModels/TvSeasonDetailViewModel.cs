@@ -1,11 +1,15 @@
-﻿using Filmster.Core.Services;
+﻿using Filmster.Core.Models;
+using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.TvShows;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace Filmster.ViewModels
 {
@@ -89,6 +93,21 @@ namespace Filmster.ViewModels
             foreach (var c in crew)
             {
                 Crew.Add(c);
+            }
+        }
+
+        public void PosterClicked(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is Image)
+            {
+                var paths = TvSeason.Images.Posters.Select(image => image.FilePath);
+                var selectedPath = SelectedPoster.FilePath;
+
+                NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
+                {
+                    ImagePaths = paths,
+                    SelectedImagePath = selectedPath
+                });
             }
         }
     }

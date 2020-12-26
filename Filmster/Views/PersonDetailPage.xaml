@@ -28,7 +28,8 @@
                               VerticalAlignment="Top"
                               ItemsSource="{x:Bind ViewModel.Person.Images.Profiles, Mode=OneWay}"
                               SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
-                              Style="{StaticResource FlipView}" />
+                              Style="{StaticResource FlipView}"
+                              Tapped="{x:Bind ViewModel.PosterClicked}" />
 
                     <Grid Grid.Column="1" RowSpacing="{StaticResource XSmallSpacing}">
                         <Grid.RowDefinitions>

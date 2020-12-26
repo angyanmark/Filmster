@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.People;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace Filmster.ViewModels
 {
@@ -145,6 +147,21 @@ namespace Filmster.ViewModels
                 ImagePaths = paths,
                 SelectedImagePath = selectedPath
             });
+        }
+
+        public void PosterClicked(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is Image)
+            {
+                var paths = Person.Images.Profiles.Select(image => image.FilePath);
+                var selectedPath = SelectedPoster.FilePath;
+
+                NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
+                {
+                    ImagePaths = paths,
+                    SelectedImagePath = selectedPath
+                });
+            }
         }
     }
 }
