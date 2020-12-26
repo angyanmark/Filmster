@@ -189,7 +189,7 @@ namespace Filmster.ViewModels
             }
             else if (args.QueryText is string searchValue && !string.IsNullOrWhiteSpace(searchValue))
             {
-                NavigationService.Navigate(typeof(SearchPage), searchValue);
+                NavigationService.Navigate<SearchPage>(searchValue);
             }
         }
 

@@ -49,22 +49,22 @@ namespace Filmster.Helpers
 
         private void TvShowClicked(TvShow tvShow)
         {
-            NavigationService.Navigate(typeof(TvShowDetailPage), tvShow.Id);
+            NavigationService.Navigate<TvShowDetailPage>(tvShow.Id);
         }
 
         private void SearchMovieClicked(SearchMovie searchMovie)
         {
-            NavigationService.Navigate(typeof(MovieDetailPage), searchMovie.Id);
+            NavigationService.Navigate<MovieDetailPage>(searchMovie.Id);
         }
 
         private void SearchTvClicked(SearchTv searchTv)
         {
-            NavigationService.Navigate(typeof(TvShowDetailPage), searchTv.Id);
+            NavigationService.Navigate<TvShowDetailPage>(searchTv.Id);
         }
 
         private void SearchPersonClicked(SearchPerson searchPerson)
         {
-            NavigationService.Navigate(typeof(PersonDetailPage), searchPerson.Id);
+            NavigationService.Navigate<PersonDetailPage>(searchPerson.Id);
         }
 
         private void SearchBaseClicked(SearchBase searchBase)
@@ -74,37 +74,37 @@ namespace Filmster.Helpers
 
         private void MovieCastClicked(MovieCast cast)
         {
-            NavigationService.Navigate(typeof(PersonDetailPage), cast.Id);
+            NavigationService.Navigate<PersonDetailPage>(cast.Id);
         }
 
         private void TvCastClicked(TvCast cast)
         {
-            NavigationService.Navigate(typeof(PersonDetailPage), cast.Id);
+            NavigationService.Navigate<PersonDetailPage>(cast.Id);
         }
 
         private void CrewClicked(Crew crew)
         {
-            NavigationService.Navigate(typeof(PersonDetailPage), crew.Id);
+            NavigationService.Navigate<PersonDetailPage>(crew.Id);
         }
 
         private void MovieRoleClicked(MovieRole movieRole)
         {
-            NavigationService.Navigate(typeof(MovieDetailPage), movieRole.Id);
+            NavigationService.Navigate<MovieDetailPage>(movieRole.Id);
         }
 
         private void TvRoleClicked(TvRole tvRole)
         {
-            NavigationService.Navigate(typeof(TvShowDetailPage), tvRole.Id);
+            NavigationService.Navigate<TvShowDetailPage>(tvRole.Id);
         }
 
         private void MovieJobClicked(MovieJob movieJob)
         {
-            NavigationService.Navigate(typeof(MovieDetailPage), movieJob.Id);
+            NavigationService.Navigate<MovieDetailPage>(movieJob.Id);
         }
 
         private void TvJobClicked(TvJob tvJob)
         {
-            NavigationService.Navigate(typeof(TvShowDetailPage), tvJob.Id);
+            NavigationService.Navigate<TvShowDetailPage>(tvJob.Id);
         }
     }
 }

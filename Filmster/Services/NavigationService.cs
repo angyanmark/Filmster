@@ -83,13 +83,13 @@ namespace Filmster.Services
             switch (searchBase.MediaType)
             {
                 case MediaType.Movie:
-                    Navigate(typeof(MovieDetailPage), searchBase.Id);
+                    Navigate<MovieDetailPage>(searchBase.Id);
                     break;
                 case MediaType.Tv:
-                    Navigate(typeof(TvShowDetailPage), searchBase.Id);
+                    Navigate<TvShowDetailPage>(searchBase.Id);
                     break;
                 case MediaType.Person:
-                    Navigate(typeof(PersonDetailPage), searchBase.Id);
+                    Navigate<PersonDetailPage>(searchBase.Id);
                     break;
                 case MediaType.Unknown:
                 default:
