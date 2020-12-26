@@ -17,18 +17,12 @@
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridMediumPosterTemplate">
-        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource AdaptiveGridImage}" />
+        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource StretchImageBase}" />
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridMediumProfileTemplate">
-        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridImage}" />
+        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource StretchImageBase}" />
     </DataTemplate>
-
-    <Style x:Key="AdaptiveGridImage" TargetType="Image">
-        <Setter Property="Stretch" Value="UniformToFill" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
 
     <!--  Detail pages, no stretch  -->
     <Style x:Key="AdaptiveGridNoStretchSmallPoster" TargetType="controls:AdaptiveGridView">
@@ -85,18 +79,16 @@
         <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallBackdrop}" Style="{StaticResource AdaptiveGridNoStretchLandscapeImage}" />
     </DataTemplate>
 
-    <Style x:Key="AdaptiveGridNoStretchImage" TargetType="Image">
-        <Setter Property="Stretch" Value="UniformToFill" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+    <Style x:Key="AdaptiveGridNoStretchImage"
+           BasedOn="{StaticResource StretchImageBase}"
+           TargetType="Image">
         <Setter Property="Height" Value="{StaticResource DetailPosterGridHeight}" />
         <Setter Property="Width" Value="{StaticResource DetailPosterGridWidth}" />
     </Style>
 
-    <Style x:Key="AdaptiveGridNoStretchLandscapeImage" TargetType="Image">
-        <Setter Property="Stretch" Value="UniformToFill" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+    <Style x:Key="AdaptiveGridNoStretchLandscapeImage"
+           BasedOn="{StaticResource StretchImageBase}"
+           TargetType="Image">
         <Setter Property="Width" Value="{StaticResource DetailBackdropGridWidth}" />
     </Style>
 
@@ -140,10 +132,9 @@
         </Grid>
     </DataTemplate>
 
-    <Style x:Key="AdaptiveGridEpisodeListImage" TargetType="Image">
-        <Setter Property="Stretch" Value="UniformToFill" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+    <Style x:Key="AdaptiveGridEpisodeListImage"
+           BasedOn="{StaticResource StretchImageBase}"
+           TargetType="Image">
         <Setter Property="Width" Value="{StaticResource DetailEpisoleListImageWidth}" />
     </Style>
 
@@ -268,10 +259,9 @@
                    Text="{Binding MediaType}" />
     </DataTemplate>
 
-    <Style x:Key="AdaptiveGridSearchListImage" TargetType="Image">
-        <Setter Property="Stretch" Value="UniformToFill" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+    <Style x:Key="AdaptiveGridSearchListImage"
+           BasedOn="{StaticResource StretchImageBase}"
+           TargetType="Image">
         <Setter Property="Width" Value="{StaticResource SearchListImageWidth}" />
     </Style>
 

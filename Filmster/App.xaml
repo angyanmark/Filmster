@@ -16,6 +16,7 @@
 
                 <ResourceDictionary Source="/Styles/AdaptiveGridView.xaml" />
                 <ResourceDictionary Source="/Styles/FlipView.xaml" />
+                <ResourceDictionary Source="/Styles/Image.xaml" />
                 <ResourceDictionary Source="/Styles/Page.xaml" />
                 <ResourceDictionary Source="/Styles/Pivot.xaml" />
                 <ResourceDictionary Source="/Styles/ProgressRing.xaml" />
