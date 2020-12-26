@@ -93,4 +93,16 @@
         <Setter Property="Margin" Value="{StaticResource SmallTopBottomMargin}" />
     </Style>
 
+    <Style x:Key="ImageGridTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="ImageGridSubtitleTextStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="Foreground" Value="{StaticResource SystemOffsetMediumBrush}" />
+    </Style>
+
 </ResourceDictionary>

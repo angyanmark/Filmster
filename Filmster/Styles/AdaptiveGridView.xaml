@@ -65,7 +65,16 @@
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumProfileTemplate">
-        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+        <StackPanel Width="148" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+            <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                <Grid>
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding Character}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding Job}" />
+                </Grid>
+            </StackPanel>
+        </StackPanel>
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumBackdropTemplate">
