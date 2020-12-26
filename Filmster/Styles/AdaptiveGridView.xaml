@@ -30,11 +30,6 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallPosterTemplate}" />
     </Style>
 
-    <Style x:Key="AdaptiveGridNoStretchMediumPoster" TargetType="controls:AdaptiveGridView">
-        <Setter Property="IsItemClickEnabled" Value="True" />
-        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumPosterTemplate}" />
-    </Style>
-
     <Style x:Key="AdaptiveGridNoStretchMediumProfile" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}" />
@@ -47,10 +42,6 @@
 
     <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
-    </DataTemplate>
-
-    <DataTemplate x:Key="AdaptiveGridNoStretchMediumPosterTemplate">
-        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumProfileTemplate">

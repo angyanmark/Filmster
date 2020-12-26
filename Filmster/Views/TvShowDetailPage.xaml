@@ -122,7 +122,7 @@
                     <TextBlock x:Uid="Media_Seasons" Style="{StaticResource TitleTextBlockStyle}" />
                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvSeasonClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.TvShow.Seasons, Mode=OneWay}"
-                                               Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                                               Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="2">

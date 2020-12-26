@@ -125,7 +125,7 @@
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
-                                               Style="{StaticResource AdaptiveGridNoStretchMediumPoster}" />
+                                               Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="2">
