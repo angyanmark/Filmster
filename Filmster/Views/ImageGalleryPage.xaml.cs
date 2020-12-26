@@ -1,5 +1,7 @@
-﻿using Filmster.ViewModels;
+﻿using Filmster.Core.Models;
+using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Filmster.Views
 {
@@ -10,6 +12,13 @@ namespace Filmster.Views
         public ImageGalleryPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var parameter = e.Parameter as ImageGalleryNavigationParameter;
+            ViewModel.LoadImages(parameter);
         }
     }
 }

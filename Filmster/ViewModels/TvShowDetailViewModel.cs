@@ -103,10 +103,12 @@ namespace Filmster.ViewModels
         }
 
         public ICommand SearchTvSeasonClickedCommand;
+        public ICommand ImageClickedCommand;
 
         public TvShowDetailViewModel()
         {
             SearchTvSeasonClickedCommand = new RelayCommand<SearchTvSeason>(SearchTvSeasonClicked);
+            ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
         }
 
         public async Task LoadTvShow(int id)
@@ -196,6 +198,18 @@ namespace Filmster.ViewModels
             {
                 Images.Add(i);
             }
+        }
+
+        private void ImageClicked(ImageData selectedImage)
+        {
+            var paths = TvShow.Images.Backdrops.Select(image => image.FilePath);
+            var selectedPath = selectedImage.FilePath;
+
+            NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
+            {
+                ImagePaths = paths,
+                SelectedImagePath = selectedPath
+            });
         }
     }
 }

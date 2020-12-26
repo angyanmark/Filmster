@@ -6,5 +6,11 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <Grid />
+    <FlipView ItemsSource="{x:Bind ViewModel.ImagePaths, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedImagePath, Mode=TwoWay}">
+        <FlipView.ItemTemplate>
+            <DataTemplate>
+                <Image Source="{Binding Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=Original}" />
+            </DataTemplate>
+        </FlipView.ItemTemplate>
+    </FlipView>
 </Page>

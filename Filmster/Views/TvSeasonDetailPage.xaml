@@ -26,7 +26,6 @@
 
                     <FlipView Grid.Column="0"
                               VerticalAlignment="Top"
-                              ItemTemplate="{StaticResource FlipPosterTemplate}"
                               ItemsSource="{x:Bind ViewModel.TvSeason.Images.Posters, Mode=OneWay}"
                               SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
                               Style="{StaticResource FlipView}" />

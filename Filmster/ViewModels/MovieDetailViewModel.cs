@@ -1,9 +1,12 @@
-﻿using Filmster.Core.Services;
+﻿using Filmster.Core.Models;
+using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TMDbLib.Objects.Collections;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
@@ -98,8 +101,11 @@ namespace Filmster.ViewModels
             }
         }
 
+        public ICommand ImageClickedCommand;
+
         public MovieDetailViewModel()
         {
+            ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
         }
 
         public async Task LoadMovie(int id)
@@ -194,6 +200,18 @@ namespace Filmster.ViewModels
             {
                 Images.Add(i);
             }
+        }
+
+        private void ImageClicked(ImageData selectedImage)
+        {
+            var paths = Movie.Images.Backdrops.Select(image => image.FilePath);
+            var selectedPath = selectedImage.FilePath;
+
+            NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
+            {
+                ImagePaths = paths,
+                SelectedImagePath = selectedPath
+            });
         }
     }
 }

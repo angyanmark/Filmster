@@ -28,7 +28,6 @@
 
                     <FlipView Grid.Column="0"
                               VerticalAlignment="Top"
-                              ItemTemplate="{StaticResource FlipPosterTemplate}"
                               ItemsSource="{x:Bind ViewModel.TvShow.Images.Posters, Mode=OneWay}"
                               SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
                               Style="{StaticResource FlipView}" />
@@ -154,7 +153,9 @@
 
                 <StackPanel Grid.Row="5">
                     <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemsSource="{x:Bind ViewModel.Images, Mode=OneWay}" Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.ImageClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Images, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
                     <ToggleButton x:Uid="Media_ShowAll"
                                   HorizontalAlignment="Center"
                                   IsChecked="{x:Bind ViewModel.IsImagesChecked, Mode=TwoWay}" />
