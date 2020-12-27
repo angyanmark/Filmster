@@ -126,5 +126,10 @@ namespace Filmster.Core.Services
         {
             return (await client.SearchMultiAsync(value)).Results;
         }
+
+        public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync()
+        {
+            return (await client.DiscoverMoviesAsync().Query()).Results;
+        }
     }
 }
