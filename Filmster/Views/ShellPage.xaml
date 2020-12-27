@@ -42,6 +42,8 @@
             <winui:NavigationViewItem x:Uid="Shell_Movies" helpers:NavHelper.NavigateTo="views:MoviesPage" />
             <winui:NavigationViewItem x:Uid="Shell_TvShows" helpers:NavHelper.NavigateTo="views:TvShowsPage" />
             <winui:NavigationViewItem x:Uid="Shell_People" helpers:NavHelper.NavigateTo="views:PeoplePage" />
+            <winui:NavigationViewItemSeparator />
+            <winui:NavigationViewItem x:Uid="Shell_Discover" helpers:NavHelper.NavigateTo="views:DiscoverPage" />
         </winui:NavigationView.MenuItems>
 
         <winui:NavigationView.AutoSuggestBox>
