@@ -25,11 +25,9 @@
                           SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
 
         <winui:NavigationView.PaneHeader>
-            <StackPanel Orientation="Horizontal">
-                <Image Height="20"
-                       Margin="20,0"
-                       Source="..\Assets\AppLogo\filmster-wide-small.png" />
-            </StackPanel>
+            <Image Height="18"
+                   Margin="-32,-72,-88,0"
+                   Source="..\Assets\AppLogo\filmster-wide-small.png" />
         </winui:NavigationView.PaneHeader>
 
         <winui:NavigationView.MenuItems>
