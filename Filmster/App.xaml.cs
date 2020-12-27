@@ -1,6 +1,9 @@
 ﻿using System;
 using Filmster.Services;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
 namespace Filmster
@@ -29,6 +32,8 @@ namespace Filmster
             {
                 await ActivationService.ActivateAsync(args);
             }
+
+            OverrideTitleBar();
         }
 
         protected override async void OnActivated(IActivatedEventArgs args)
@@ -50,6 +55,14 @@ namespace Filmster
         private UIElement CreateShell()
         {
             return new Views.ShellPage();
+        }
+
+        private void OverrideTitleBar()
+        {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
     }
 }
