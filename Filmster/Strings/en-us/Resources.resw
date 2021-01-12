@@ -345,4 +345,104 @@
     <value>Discover</value>
     <comment>Navigation view item name for Discover</comment>
   </data>
+  <data name="DiscoverMovieSortBy_OriginalTitle" xml:space="preserve">
+    <value>Original Title</value>
+    <comment>DiscoverMovieSortBy.OriginalTitle displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_OriginalTitleDesc" xml:space="preserve">
+    <value>Original Title (desc)</value>
+    <comment>DiscoverMovieSortBy.OriginalTitleDesc displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_Popularity" xml:space="preserve">
+    <value>Popularity</value>
+    <comment>DiscoverMovieSortBy.Popularity displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_PopularityDesc" xml:space="preserve">
+    <value>Popularity (desc)</value>
+    <comment>DiscoverMovieSortBy.PopularityDesc displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_PrimaryReleaseDate" xml:space="preserve">
+    <value>Primary Release Date</value>
+    <comment>DiscoverMovieSortBy.PrimaryReleaseDate displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_PrimaryReleaseDateDesc" xml:space="preserve">
+    <value>Primary Release Date (desc)</value>
+    <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_ReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+    <comment>DiscoverMovieSortBy.ReleaseDate displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_ReleaseDateDesc" xml:space="preserve">
+    <value>Release Date (desc)</value>
+    <comment>DiscoverMovieSortBy.ReleaseDateDesc displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_Revenue" xml:space="preserve">
+    <value>Revenue</value>
+    <comment>DiscoverMovieSortBy.Revenue displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_RevenueDesc" xml:space="preserve">
+    <value>Revenue (desc)</value>
+    <comment>DiscoverMovieSortBy.RevenueDesc displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_Undefined" xml:space="preserve">
+    <value>Undefined</value>
+    <comment>DiscoverMovieSortBy.Undefined displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_VoteAverage" xml:space="preserve">
+    <value>Vote Average</value>
+    <comment>DiscoverMovieSortBy.VoteAverage displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_VoteAverageDesc" xml:space="preserve">
+    <value>Vote Average (desc)</value>
+    <comment>DiscoverMovieSortBy.VoteAverageDesc displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_VoteCount" xml:space="preserve">
+    <value>Vote Count</value>
+    <comment>DiscoverMovieSortBy.VoteCount displayname</comment>
+  </data>
+  <data name="DiscoverMovieSortBy_VoteCountDesc" xml:space="preserve">
+    <value>Vote Count (desc)</value>
+    <comment>DiscoverMovieSortBy.VoteCountDesc displayname</comment>
+  </data>
+  <data name="Discover_Clear.Content" xml:space="preserve">
+    <value>Clear</value>
+    <comment>Clear text for discover</comment>
+  </data>
+  <data name="Discover_Discover.Content" xml:space="preserve">
+    <value>Discover</value>
+    <comment>Discover text for discover</comment>
+  </data>
+  <data name="Discover_Genre.Header" xml:space="preserve">
+    <value>Genre</value>
+    <comment>Genre text for discover</comment>
+  </data>
+  <data name="Discover_MinimumVotes.Header" xml:space="preserve">
+    <value>Minimum Votes</value>
+    <comment>Minimum Votes text for discover</comment>
+  </data>
+  <data name="Discover_MinimumVotes:.Text" xml:space="preserve">
+    <value>Minimum Votes:</value>
+    <comment>Minimum Votes: text for discover</comment>
+  </data>
+  <data name="Discover_ReleaseDate.Text" xml:space="preserve">
+    <value>Release Date</value>
+    <comment>Release Date text for discover</comment>
+  </data>
+  <data name="Discover_ReleaseDate:.Text" xml:space="preserve">
+    <value>Release Date:</value>
+    <comment>Release Date: text for discover</comment>
+  </data>
+  <data name="Discover_SortBy.Header" xml:space="preserve">
+    <value>Sort by</value>
+    <comment>Sort by text for discover</comment>
+  </data>
+  <data name="Discover_VoteAverage.Text" xml:space="preserve">
+    <value>Vote Average</value>
+    <comment>Vote Average text for discover</comment>
+  </data>
+  <data name="Discover_VoteAverage:.Text" xml:space="preserve">
+    <value>Vote Average:</value>
+    <comment>Vote Average: text for discover</comment>
+  </data>
 </root>

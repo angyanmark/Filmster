@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Filmster.Core.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMDbLib.Client;
 using TMDbLib.Objects.Collections;
+using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
@@ -127,9 +129,24 @@ namespace Filmster.Core.Services
             return (await client.SearchMultiAsync(value)).Results;
         }
 
-        public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync()
+        public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options)
         {
-            return (await client.DiscoverMoviesAsync().Query()).Results;
+            var query = await client.DiscoverMoviesAsync()
+                .WherePrimaryReleaseDateIsAfter(options.PrimaryReleaseDateAfter)
+                .WherePrimaryReleaseDateIsBefore(options.PrimaryReleaseDateBefore)
+                .WhereVoteAverageIsAtLeast(options.VoteAverageAtLeast)
+                .WhereVoteAverageIsAtMost(options.VoteAverageAtMost)
+                .WhereVoteCountIsAtLeast(options.VoteCountAtLeast)
+                .IncludeWithAllOfGenre(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
+                .OrderBy(options.SortBy)
+                .Query();
+
+            return query.Results;
+        }
+
+        public static async Task<List<Genre>> GetMovieGenresAsync()
+        {
+            return await client.GetMovieGenresAsync();
         }
     }
 }
