@@ -179,10 +179,7 @@
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Column="1"
-                       Margin="{StaticResource MediumLeftTopRightBottomMargin}"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Bottom"
-                       Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                       Style="{StaticResource SearchMediaTypeStyle}"
                        Text="{Binding MediaType}" />
         </Grid>
     </DataTemplate>
@@ -215,10 +212,7 @@
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Column="1"
-                       Margin="{StaticResource MediumLeftTopRightBottomMargin}"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Bottom"
-                       Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                       Style="{StaticResource SearchMediaTypeStyle}"
                        Text="{Binding MediaType}" />
         </Grid>
     </DataTemplate>
@@ -243,10 +237,7 @@
                            Text="{Binding Name}" />
             </StackPanel>
             <TextBlock Grid.Column="1"
-                       Margin="{StaticResource MediumLeftTopRightBottomMargin}"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Bottom"
-                       Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                       Style="{StaticResource SearchMediaTypeStyle}"
                        Text="{Binding MediaType}" />
         </Grid>
     </DataTemplate>

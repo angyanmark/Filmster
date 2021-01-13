@@ -55,7 +55,7 @@
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Style="{StaticResource DirectorCreatorTextStyle}"
                                    Visibility="{x:Bind ViewModel.Directors, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                             <Run x:Uid="Media_DirectedBy" Foreground="{StaticResource SystemOffsetMediumBrush}" />
                             <Run Text="{x:Bind ViewModel.Directors, Mode=OneWay}" />
