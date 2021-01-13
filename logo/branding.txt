@@ -1,0 +1,13 @@
+Primary color:    0, 70, 170 - #0046AA
+Secondary color: 13, 17,  23 - #0D1117
+
+Font: Arial, Bold
+
+Logo widths:
+Small - 480
+Medium - 1080
+Large - 1920
+
+Padding version scaled from:
+Square - 2080x1313
+Wide - 2080x314
