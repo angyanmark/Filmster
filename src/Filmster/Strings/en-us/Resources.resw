@@ -445,4 +445,12 @@
     <value>Vote Average:</value>
     <comment>Vote Average: text for discover</comment>
   </data>
+  <data name="Media_Movies.Text" xml:space="preserve">
+    <value>Movies</value>
+    <comment>Movies text for media</comment>
+  </data>
+  <data name="Media_TvShows.Text" xml:space="preserve">
+    <value>TV Shows</value>
+    <comment>TV Shows text for media</comment>
+  </data>
 </root>
