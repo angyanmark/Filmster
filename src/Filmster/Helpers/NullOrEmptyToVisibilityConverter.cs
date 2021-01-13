@@ -9,13 +9,15 @@ namespace Filmster.Helpers
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var v = value?.ToString() ?? string.Empty;
+            bool.TryParse(parameter as string, out bool negate);
+
             if (string.IsNullOrEmpty(v))
             {
-                return Visibility.Collapsed;
+                return negate ? Visibility.Visible : Visibility.Collapsed;
             }
             else
             {
-                return Visibility.Visible;
+                return negate ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 

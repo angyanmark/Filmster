@@ -51,11 +51,9 @@
                 <Grid>
                     <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
                     <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding EpisodeCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}" />
-                    <!--<TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"> TODO: localization
-                        <Run Text="{Binding EpisodeCount}" />
-                        <Run x:Uid="Media_Episodes_" />
-                    </TextBlock>-->
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
+                               Text="{Binding EpisodeCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}"
+                               Visibility="{Binding FirstAirDate, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
                 </Grid>
             </StackPanel>
         </StackPanel>
