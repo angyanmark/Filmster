@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="400" align="center" src="Filmster/Assets/AppLogo/filmster-wide-small.png">
+  <img width="480" align="center" src="logo/filmster-wide-small.png">
 </p>
 
 <h1 align="center">
