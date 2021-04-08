@@ -290,7 +290,7 @@
     <comment>Application description</comment>
   </data>
   <data name="Settings_Copyright.Text" xml:space="preserve">
-    <value>Copyright (c) 2020 Márk Ángyán</value>
+    <value>Copyright (c) 2021 Márk Ángyán</value>
     <comment>Copyright text for Settings</comment>
   </data>
   <data name="Settings_CreatedBy.Text" xml:space="preserve">
