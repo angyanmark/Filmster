@@ -23,7 +23,7 @@ namespace Filmster.Helpers
 
             if (!int.TryParse(parameters[0], out int from) || !int.TryParse(parameters[1], out int to))
             {
-                throw new ArgumentException(string.Format("Parameters must be int values. {0} or {1} are not int values.", parameters[0], parameters[1]), "parameter");
+                throw new ArgumentException(string.Format("Parameters must be int values. {0} or {1} is not an int value.", parameters[0], parameters[1]), "parameter");
             }
 
             var ratio = (double) to / from;
