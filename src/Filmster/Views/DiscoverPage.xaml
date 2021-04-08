@@ -26,8 +26,8 @@
                                             Margin="{StaticResource XSmallTopMargin}"
                                             Maximum="{x:Bind ViewModel.ReleaseDateMax}"
                                             Minimum="{x:Bind ViewModel.ReleaseDateMin}"
-                                            RangeMax="{x:Bind ViewModel.ReleaseDateTo, Mode=TwoWay}"
-                                            RangeMin="{x:Bind ViewModel.ReleaseDateFrom, Mode=TwoWay}"
+                                            RangeEnd="{x:Bind ViewModel.ReleaseDateTo, Mode=TwoWay}"
+                                            RangeStart="{x:Bind ViewModel.ReleaseDateFrom, Mode=TwoWay}"
                                             StepFrequency="1" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource LargeSpacing}">
@@ -37,8 +37,8 @@
                                                 Margin="{StaticResource XSmallTopMargin}"
                                                 Maximum="{x:Bind ViewModel.VoteAverageMax}"
                                                 Minimum="{x:Bind ViewModel.VoteAverageMin}"
-                                                RangeMax="{x:Bind ViewModel.VoteAverageAtMost, Mode=TwoWay}"
-                                                RangeMin="{x:Bind ViewModel.VoteAverageAtLeast, Mode=TwoWay}"
+                                                RangeEnd="{x:Bind ViewModel.VoteAverageAtMost, Mode=TwoWay}"
+                                                RangeStart="{x:Bind ViewModel.VoteAverageAtLeast, Mode=TwoWay}"
                                                 StepFrequency="0.1" />
                     </StackPanel>
                     <Slider x:Uid="Discover_MinimumVotes"
