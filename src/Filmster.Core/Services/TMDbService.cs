@@ -124,9 +124,9 @@ namespace Filmster.Core.Services
             return await client.GetPersonAsync(id, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
         }
 
-        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value)
+        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value, bool includeAdult)
         {
-            return (await client.SearchMultiAsync(value)).Results;
+            return (await client.SearchMultiAsync(value, includeAdult: includeAdult)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options)

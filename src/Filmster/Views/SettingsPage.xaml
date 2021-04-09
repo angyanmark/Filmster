@@ -21,6 +21,7 @@
 
             <StackPanel Grid.Row="0" Spacing="{StaticResource XXXSmallSpacing}">
                 <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
                 <StackPanel>
                     <TextBlock x:Uid="Settings_Theme" />
                     <RadioButton x:Uid="Settings_Theme_Light"
@@ -50,6 +51,8 @@
                             <xaml:ElementTheme>Default</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
+
+                    <ToggleSwitch x:Uid="Settings_IncludeAdult" IsOn="{x:Bind ViewModel.IncludeAdult, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
 

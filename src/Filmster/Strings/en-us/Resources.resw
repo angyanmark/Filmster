@@ -453,4 +453,8 @@
     <value>TV Shows</value>
     <comment>TV Shows text for media</comment>
   </data>
+  <data name="Settings_IncludeAdult.Header" xml:space="preserve">
+    <value>Include adult content in search results</value>
+    <comment>Include adult content in search results text for Settings</comment>
+  </data>
 </root>

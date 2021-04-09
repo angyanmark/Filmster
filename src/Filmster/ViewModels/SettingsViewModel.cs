@@ -47,14 +47,33 @@ namespace Filmster.ViewModels
             }
         }
 
+        private bool _includeAdult;
+
+        public bool IncludeAdult
+        {
+            get { return _includeAdult; }
+
+            set
+            {
+                Set(ref _includeAdult, value);
+                _ = IncludeAdultToggledAsync(IncludeAdult);
+            }
+        }
+
         public SettingsViewModel()
         {
         }
 
         public async Task InitializeAsync()
         {
+            IncludeAdult = await IncludeAdultService.LoadIncludeAdultAsync();
+
             VersionDescription = GetVersionDescription();
-            await Task.CompletedTask;
+        }
+
+        private async Task IncludeAdultToggledAsync(bool isToggled)
+        {
+            await IncludeAdultService.SaveIncludeAdultAsync(isToggled);
         }
 
         private string GetVersionDescription()

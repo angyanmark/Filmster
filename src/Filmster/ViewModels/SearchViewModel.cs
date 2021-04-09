@@ -1,5 +1,6 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
+using Filmster.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Search;
@@ -23,7 +24,7 @@ namespace Filmster.ViewModels
 
         public async Task Search(string searchValue)
         {
-            var searchItems = await TMDbService.GetMultiSearchAsync(searchValue);
+            var searchItems = await TMDbService.GetMultiSearchAsync(searchValue, await IncludeAdultService.LoadIncludeAdultAsync());
             foreach (var searchItem in searchItems)
             {
                 SearchItems.Add(searchItem);
