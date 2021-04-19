@@ -1,8 +1,11 @@
 ﻿using Filmster.Core.Models;
+using Filmster.Core.Models.Enums;
 using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.Views;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,11 +33,40 @@ namespace Filmster.ViewModels
             set { Set(ref _selectedPoster, value); }
         }
 
+        private PersonCastCrewSortType _selectedCastSortType = PersonCastCrewSortType.ReleaseDate;
+        public PersonCastCrewSortType SelectedCastSortType
+        {
+            get { return _selectedCastSortType; }
+            set
+            {
+                if (value != SelectedCastSortType)
+                {
+                    Set(ref _selectedCastSortType, value);
+                    CastSortTypeChanged(SelectedCastSortType);
+                }
+            }
+        }
+
+        private PersonCastCrewSortType _selectedCrewSortType = PersonCastCrewSortType.ReleaseDate;
+        public PersonCastCrewSortType SelectedCrewSortType
+        {
+            get { return _selectedCrewSortType; }
+            set
+            {
+                if (value != SelectedCrewSortType)
+                {
+                    Set(ref _selectedCrewSortType, value);
+                    CrewSortTypeChanged(SelectedCrewSortType);
+                }
+            }
+        }
+
         public ObservableCollection<MovieRole> MovieCast { get; set; } = new ObservableCollection<MovieRole>();
         public ObservableCollection<TvRole> TvShowCast { get; set; } = new ObservableCollection<TvRole>();
         public ObservableCollection<MovieJob> MovieCrew { get; set; } = new ObservableCollection<MovieJob>();
         public ObservableCollection<TvJob> TvShowCrew { get; set; } = new ObservableCollection<TvJob>();
         public ObservableCollection<TaggedImage> Images { get; set; } = new ObservableCollection<TaggedImage>();
+        public IEnumerable<PersonCastCrewSortType> SortTypes { get; set; } = Enum.GetValues(typeof(PersonCastCrewSortType)).Cast<PersonCastCrewSortType>();
 
         private bool _isCastChecked;
         public bool IsCastChecked
@@ -90,6 +122,38 @@ namespace Filmster.ViewModels
             ImagesToggled(false);
         }
 
+        private void CastSortTypeChanged(PersonCastCrewSortType sortType)
+        {
+            var movieCast = SortHelper.SortMovieCast(MovieCast, sortType);
+            var tvShowCast = SortHelper.SortTvShowCast(TvShowCast, sortType);
+            MovieCast.Clear();
+            TvShowCast.Clear();
+            foreach (var c in movieCast)
+            {
+                MovieCast.Add(c);
+            }
+            foreach (var c in tvShowCast)
+            {
+                TvShowCast.Add(c);
+            }
+        }
+
+        private void CrewSortTypeChanged(PersonCastCrewSortType sortType)
+        {
+            var movieCrew = SortHelper.SortMovieCrew(MovieCrew, sortType);
+            var tvShowCrew = SortHelper.SortTvShowCrew(TvShowCrew, sortType);
+            MovieCrew.Clear();
+            TvShowCrew.Clear();
+            foreach (var c in movieCrew)
+            {
+                MovieCrew.Add(c);
+            }
+            foreach (var c in tvShowCrew)
+            {
+                TvShowCrew.Add(c);
+            }
+        }
+
         private ImageData GetSelectedPoster()
         {
             return Person.Images.Profiles.Find(poster => poster.FilePath == Person.ProfilePath) ?? Person.Images.Profiles.FirstOrDefault();
@@ -97,8 +161,10 @@ namespace Filmster.ViewModels
 
         private void CastToggled(bool isChecked)
         {
-            var movieCast = isChecked ? Person.MovieCredits.Cast : Person.MovieCredits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount);
-            var tvShowCast = isChecked ? Person.TvCredits.Cast : Person.TvCredits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount);
+            var movieCast = SortHelper.SortMovieCast(Person.MovieCredits.Cast, SelectedCastSortType);
+            var tvShowCast = SortHelper.SortTvShowCast(Person.TvCredits.Cast, SelectedCastSortType);
+            movieCast = isChecked ? movieCast : movieCast.Take(TMDbService.DefaultCastCrewBackdropCount);
+            tvShowCast = isChecked ? tvShowCast : tvShowCast.Take(TMDbService.DefaultCastCrewBackdropCount);
             MovieCast.Clear();
             TvShowCast.Clear();
             foreach (var c in movieCast)
@@ -113,8 +179,10 @@ namespace Filmster.ViewModels
 
         private void CrewToggled(bool isChecked)
         {
-            var movieCrew = isChecked ? Person.MovieCredits.Crew : Person.MovieCredits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount);
-            var tvShowCrew = isChecked ? Person.TvCredits.Crew : Person.TvCredits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount);
+            var movieCrew = SortHelper.SortMovieCrew(Person.MovieCredits.Crew, SelectedCrewSortType);
+            var tvShowCrew = SortHelper.SortTvShowCrew(Person.TvCredits.Crew, SelectedCrewSortType);
+            movieCrew = isChecked ? movieCrew : movieCrew.Take(TMDbService.DefaultCastCrewBackdropCount);
+            tvShowCrew = isChecked ? tvShowCrew : tvShowCrew.Take(TMDbService.DefaultCastCrewBackdropCount);
             MovieCrew.Clear();
             TvShowCrew.Clear();
             foreach (var c in movieCrew)

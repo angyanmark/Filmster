@@ -81,7 +81,7 @@ namespace Filmster.Helpers
             throw new NotImplementedException();
         }
 
-        private object GetPlaceholder(ImageSizeType imageType)
+        private string GetPlaceholder(ImageSizeType imageType)
         {
             switch (imageType)
             {

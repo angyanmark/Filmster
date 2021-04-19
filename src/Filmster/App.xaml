@@ -33,6 +33,7 @@
             <helpers:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
             <helpers:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <helpers:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />
+            <helpers:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

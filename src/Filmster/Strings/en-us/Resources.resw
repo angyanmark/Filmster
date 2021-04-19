@@ -457,4 +457,16 @@
     <value>Include adult content in search results</value>
     <comment>Include adult content in search results text for Settings</comment>
   </data>
+  <data name="Media_SortBy.Header" xml:space="preserve">
+    <value>Sort by</value>
+    <comment>Sort by text for media</comment>
+  </data>
+  <data name="PersonCastCrewSortType_ReleaseDate" xml:space="preserve">
+    <value>Release date</value>
+    <comment>Release date translation for PersonCastCrewSortType</comment>
+  </data>
+  <data name="PersonCastCrewSortType_Title" xml:space="preserve">
+    <value>Title</value>
+    <comment>Title translation for PersonCastCrewSortType</comment>
+  </data>
 </root>

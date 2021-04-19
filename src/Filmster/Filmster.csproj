@@ -147,10 +147,12 @@
     <Compile Include="Helpers\NullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Helpers\Observable.cs" />
     <Compile Include="Helpers\ImagePathToFullPathConverter.cs" />
+    <Compile Include="Helpers\PersonCastCrewSortTypeToLocalizedStringConverter.cs" />
     <Compile Include="Helpers\RatingToScaledRatingConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\SearchBaseDataTemplateSelector.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
+    <Compile Include="Helpers\SortHelper.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\IncludeAdultService.cs" />

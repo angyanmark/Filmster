@@ -71,9 +71,23 @@
                 </Grid>
 
                 <StackPanel Grid.Row="1">
-                    <TextBlock x:Uid="Media_Cast"
-                               HorizontalAlignment="Center"
-                               Style="{StaticResource TitleTextBlockStyle}" />
+                    <Grid>
+                        <TextBlock x:Uid="Media_Cast"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource TitleTextBlockStyle}" />
+                        <ComboBox x:Uid="Media_SortBy"
+                                  Width="200"
+                                  HorizontalAlignment="Right"
+                                  ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneWay}"
+                                  SelectedItem="{x:Bind ViewModel.SelectedCastSortType, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource PersonCastCrewSortTypeToLocalizedStringConverter}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+
                     <Grid ColumnSpacing="{StaticResource LargeSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -104,9 +118,23 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="2">
-                    <TextBlock x:Uid="Media_Crew"
-                               HorizontalAlignment="Center"
-                               Style="{StaticResource TitleTextBlockStyle}" />
+                    <Grid>
+                        <TextBlock x:Uid="Media_Crew"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource TitleTextBlockStyle}" />
+                        <ComboBox x:Uid="Media_SortBy"
+                                  Width="200"
+                                  HorizontalAlignment="Right"
+                                  ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneWay}"
+                                  SelectedItem="{x:Bind ViewModel.SelectedCrewSortType, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource PersonCastCrewSortTypeToLocalizedStringConverter}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+
                     <Grid ColumnSpacing="{StaticResource LargeSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
