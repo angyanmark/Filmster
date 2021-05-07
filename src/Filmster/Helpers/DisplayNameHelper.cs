@@ -2,7 +2,7 @@
 
 namespace Filmster.Helpers
 {
-    public class DisplayNameHelper
+    public static class DisplayNameHelper
     {
         public static string GetSearchMovieDisplayName(SearchMovie searchMovie)
         {

@@ -6,7 +6,7 @@ using TMDbLib.Objects.People;
 
 namespace Filmster.Helpers
 {
-    public class SortHelper
+    public static class SortHelper
     {
         public static IEnumerable<MovieRole> SortMovieCast(IEnumerable<MovieRole> movieCast, PersonCastCrewSortType sortType)
         {

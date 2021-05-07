@@ -12,7 +12,7 @@ using TMDbLib.Objects.TvShows;
 
 namespace Filmster.Core.Services
 {
-    public class TMDbService
+    public static class TMDbService
     {
         private static readonly TMDbClient client = new TMDbClient("5e9bcb638329a15acf75c1b2d85ae67e");
 
