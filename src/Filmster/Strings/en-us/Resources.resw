@@ -329,17 +329,9 @@
     <value>Source code is available on GitHub:</value>
     <comment>GitHub link pre text for Settings</comment>
   </data>
-  <data name="Settings_TMDb.Text" xml:space="preserve">
-    <value>TMDb</value>
-    <comment>TMDb text for Settings</comment>
-  </data>
-  <data name="Settings_TMDbLink.NavigateUri" xml:space="preserve">
-    <value>https://www.themoviedb.org/</value>
-    <comment>TMDb link for Settings</comment>
-  </data>
-  <data name="Settings_TMDbLinkPre.Text" xml:space="preserve">
-    <value>This product uses the TMDb API but is not endorsed or certified by</value>
-    <comment>TMDb link pre text for Settings</comment>
+  <data name="Settings_TMDbNotice.Text" xml:space="preserve">
+    <value>This product uses the TMDb API but is not endorsed or certified by TMDb.</value>
+    <comment>TMDb notice for Settings</comment>
   </data>
   <data name="Shell_Discover.Content" xml:space="preserve">
     <value>Discover</value>

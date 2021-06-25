@@ -83,12 +83,7 @@
                         <TextBlock x:Uid="Settings_GitHubIssuesLinkPre" Style="{StaticResource BodyTextBlockStyle}" />
                         <HyperlinkButton x:Uid="Settings_GitHubIssuesLink" Padding="0" />
                     </StackPanel>
-                    <TextBlock Style="{StaticResource BodyTextBlockStyle}">
-                        <Run x:Uid="Settings_TMDbLinkPre" />
-                        <Hyperlink x:Uid="Settings_TMDbLink">
-                            <Run x:Uid="Settings_TMDb" />
-                        </Hyperlink>
-                    </TextBlock>
+                    <TextBlock x:Uid="Settings_TMDbNotice" Style="{StaticResource BodyTextBlockStyle}" />
                     <StackPanel Spacing="{StaticResource XXXSmallSpacing}">
                         <TextBlock x:Uid="Settings_Disclaimer" Style="{ThemeResource SubtitleTextBlockStyle}" />
                         <TextBlock x:Uid="Settings_Disclaim" Style="{ThemeResource BodyTextBlockStyle}" />
