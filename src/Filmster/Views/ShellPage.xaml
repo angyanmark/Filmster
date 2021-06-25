@@ -25,9 +25,10 @@
                           SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
 
         <winui:NavigationView.PaneHeader>
-            <Image Height="18"
-                   Margin="-32,-72,-88,0"
-                   Source="..\Assets\AppLogo\filmster-wide-small.png" />
+            <TextBlock x:Uid="AppLogo"
+                       Margin="-36,-28,-100,0"
+                       FontSize="28"
+                       Style="{StaticResource AppLogoStyle}" />
         </winui:NavigationView.PaneHeader>
 
         <winui:NavigationView.MenuItems>

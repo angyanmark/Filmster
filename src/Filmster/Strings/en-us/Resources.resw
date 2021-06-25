@@ -469,4 +469,8 @@
     <value>Title</value>
     <comment>Title translation for PersonCastCrewSortType</comment>
   </data>
+  <data name="AppLogo.Text" xml:space="preserve">
+    <value>FILMSTER</value>
+    <comment>Application logo text</comment>
+  </data>
 </root>

@@ -6,6 +6,13 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
+    <!--  Application texts  -->
+    <Style x:Key="AppLogoStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemAccentColor}" />
+    </Style>
+
     <!--  Common texts  -->
     <Style x:Key="BodyTextStyle"
            BasedOn="{StaticResource TextWrap}"

@@ -57,7 +57,10 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1">
-                <Image Width="300" Source="..\Assets\AppLogo\filmster-wide-small.png" />
+                <TextBlock x:Uid="AppLogo"
+                           HorizontalAlignment="Center"
+                           FontSize="64"
+                           Style="{StaticResource AppLogoStyle}" />
                 <TextBlock Margin="{StaticResource XSmallTopMargin}"
                            HorizontalAlignment="Center"
                            Style="{ThemeResource TitleTextBlockStyle}"
