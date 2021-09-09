@@ -335,7 +335,7 @@
   </data>
   <data name="Shell_Discover.Content" xml:space="preserve">
     <value>Discover</value>
-    <comment>Navigation view item name for Discover</comment>
+    <comment>Discover navigation view item name</comment>
   </data>
   <data name="DiscoverMovieSortBy_OriginalTitle" xml:space="preserve">
     <value>Original Title</value>
@@ -464,5 +464,9 @@
   <data name="AppLogo.Text" xml:space="preserve">
     <value>FILMSTER</value>
     <comment>Application logo text</comment>
+  </data>
+  <data name="Shell_Profile.Content" xml:space="preserve">
+    <value>Guest</value>
+    <comment>Profile page navigation view item name</comment>
   </data>
 </root>

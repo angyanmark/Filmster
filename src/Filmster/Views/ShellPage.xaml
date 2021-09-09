@@ -57,6 +57,12 @@
                             TextMemberPath="DisplayName" />
         </winui:NavigationView.AutoSuggestBox>
 
+        <winui:NavigationView.FooterMenuItems>
+            <winui:NavigationViewItem x:Uid="Shell_Profile"
+                                      helpers:NavHelper.NavigateTo="views:ProfilePage"
+                                      Icon="Contact" />
+        </winui:NavigationView.FooterMenuItems>
+
         <i:Interaction.Behaviors>
             <ic:EventTriggerBehavior EventName="ItemInvoked">
                 <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemInvokedCommand}" />
