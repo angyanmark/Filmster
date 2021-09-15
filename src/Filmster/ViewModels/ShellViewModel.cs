@@ -22,6 +22,8 @@ namespace Filmster.ViewModels
 {
     public class ShellViewModel : Observable
     {
+        public int AvatarSize { get; } = 36;
+
         private readonly KeyboardAccelerator _altLeftKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu);
         private readonly KeyboardAccelerator _backKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.GoBack);
 
@@ -44,12 +46,93 @@ namespace Filmster.ViewModels
             set { Set(ref _selected, value); }
         }
 
+        private string _avatarSource = TMDbService.GravatarBaseUrl;
+        public string AvatarSource
+        {
+            get { return _avatarSource; }
+            set { Set(ref _avatarSource, value); }
+        }
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set { Set(ref _name, value); }
+        }
+
+        private bool _hasAvatar;
+        public bool HasAvatar
+        {
+            get { return _hasAvatar; }
+            set { Set(ref _hasAvatar, value); }
+        }
+
+        private bool _hasNoAvatar;
+        public bool HasNoAvatar
+        {
+            get { return _hasNoAvatar; }
+            set { Set(ref _hasNoAvatar, value); }
+        }
+
         public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(OnLoaded));
 
         public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.NavigationViewItemInvokedEventArgs>(OnItemInvoked));
 
         public ShellViewModel()
         {
+            _ = InitializeUserProperties();
+
+            UserSessionService.LoggedInEvent += OnLoggedInAsync;
+            UserSessionService.LoggedOutEvent += OnLoggedOut;
+        }
+
+        private async Task InitializeUserProperties()
+        {
+            var isLoggedIn = await UserSessionService.IsLoggedIn();
+
+            if (isLoggedIn)
+            {
+                await SetLoggedInPropertiesAsync();
+            }
+            else
+            {
+                SetLoggedOutProperties();
+            }
+        }
+
+        private async void OnLoggedInAsync(object sender, EventArgs e)
+        {
+            await SetLoggedInPropertiesAsync();
+        }
+
+        private void OnLoggedOut(object sender, EventArgs e)
+        {
+            SetLoggedOutProperties();
+        }
+
+        private async Task SetLoggedInPropertiesAsync()
+        {
+            var accountDetails = await TMDbService.GetAccountDetailsAsync();
+            if (string.IsNullOrEmpty(accountDetails.Avatar.Gravatar.Hash))
+            {
+                HasAvatar = false;
+                HasNoAvatar = !HasAvatar;
+            }
+            else
+            {
+                AvatarSource = $"{TMDbService.GravatarBaseUrl}{accountDetails.Avatar.Gravatar.Hash}.jpg?s={AvatarSize}";
+                HasNoAvatar = false;
+                HasAvatar = !HasNoAvatar;
+            }
+            Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
+        }
+
+        private void SetLoggedOutProperties()
+        {
+            AvatarSource = TMDbService.GravatarBaseUrl;
+            HasAvatar = false;
+            HasNoAvatar = !HasAvatar;
+            Name = "Profile_GuestName".GetLocalized();
         }
 
         public void Initialize(Frame frame, WinUI.NavigationView navigationView, IList<KeyboardAccelerator> keyboardAccelerators)

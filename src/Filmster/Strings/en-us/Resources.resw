@@ -465,8 +465,12 @@
     <value>FILMSTER</value>
     <comment>Application logo text</comment>
   </data>
-  <data name="Shell_Profile.Content" xml:space="preserve">
+  <data name="Profile_GuestName" xml:space="preserve">
     <value>Guest</value>
-    <comment>Profile page navigation view item name</comment>
+    <comment>Name of the guest user</comment>
+  </data>
+  <data name="Profile_GuestUsername" xml:space="preserve">
+    <value>guest</value>
+    <comment>Username of the guest user</comment>
   </data>
 </root>

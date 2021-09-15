@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Filmster.Activation;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -49,13 +50,14 @@ namespace Filmster.Services
                 Window.Current.Activate();
 
                 // Tasks after activation
-                await StartupAsync();
+                await StartupAsync(activationArgs as IActivatedEventArgs);
             }
         }
 
         private async Task InitializeAsync()
         {
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
+            await UserSessionService.StartUserSessionAsync();
         }
 
         private async Task HandleActivationAsync(object activationArgs)
@@ -78,9 +80,27 @@ namespace Filmster.Services
             }
         }
 
-        private async Task StartupAsync()
+        private async Task StartupAsync(IActivatedEventArgs activationArgs)
         {
             await ThemeSelectorService.SetRequestedThemeAsync();
+
+            if (activationArgs.Kind == ActivationKind.Protocol)
+            {
+                var protocolArgs = activationArgs as ProtocolActivatedEventArgs;
+                var query = protocolArgs.Uri.Query;
+
+                var requestToken = HttpUtility.ParseQueryString(query).Get("request_token");
+                var approved = bool.Parse(HttpUtility.ParseQueryString(query).Get("approved"));
+
+                if (approved)
+                {
+                    await UserSessionService.LoggedInAsync(requestToken);
+                }
+                else
+                {
+                    // TODO: handle unsuccessful login
+                }
+            }
         }
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()

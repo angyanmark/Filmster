@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMDbLib.Client;
+using TMDbLib.Objects.Account;
+using TMDbLib.Objects.Authentication;
 using TMDbLib.Objects.Collections;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
@@ -51,6 +53,9 @@ namespace Filmster.Core.Services
         public static readonly string FacebookBaseUrl = "https://www.facebook.com/";
         public static readonly string TwitterBaseUrl = "https://twitter.com/";
         public static readonly string InstagramBaseUrl = "https://www.instagram.com/";
+
+        public static readonly string TMDbLogInBaseUrl = "https://www.themoviedb.org/authenticate/";
+        public static readonly string GravatarBaseUrl = "https://secure.gravatar.com/avatar/";
 
         public static readonly int DefaultCastCrewBackdropCount = 15;
 
@@ -147,6 +152,32 @@ namespace Filmster.Core.Services
         public static async Task<List<Genre>> GetMovieGenresAsync()
         {
             return await client.GetMovieGenresAsync();
+        }
+
+        public static async Task<Token> GetAutenticationTokenAsync()
+        {
+            return await client.AuthenticationRequestAutenticationTokenAsync();
+        }
+
+        public static async Task<UserSession> GetUserSessionAsync(string requestToken)
+        {
+            return await client.AuthenticationGetUserSessionAsync(requestToken);
+        }
+
+        public static async Task SetSessionInformationAsync(string sessionId, SessionType sessionType)
+        {
+            await client.SetSessionInformationAsync(sessionId, sessionType);
+        }
+
+        public static async Task<bool> DeleteUserSessionAsync()
+        {
+            // TODO: delete session
+            return true;
+        }
+
+        public static async Task<AccountDetails> GetAccountDetailsAsync()
+        {
+            return await client.AccountGetDetailsAsync();
         }
     }
 }

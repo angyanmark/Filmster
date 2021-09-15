@@ -1,5 +1,6 @@
 ﻿using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Filmster.Views
 {
@@ -10,6 +11,13 @@ namespace Filmster.Views
         public ProfilePage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            await ViewModel.LoadProfile();
+            ViewModel.DataLoaded = true;
         }
     }
 }

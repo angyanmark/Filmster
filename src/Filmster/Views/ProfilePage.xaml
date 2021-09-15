@@ -7,8 +7,66 @@
       mc:Ignorable="d">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="Profile page" />
+        <ProgressRing IsActive="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{StaticResource ProgressRing}" />
+        <ScrollViewer Visibility="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource MediumSpacing}">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="{x:Bind ViewModel.AvatarSize, Mode=OneWay}" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      ColumnSpacing="24"
+                      RowSpacing="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <PersonPicture Grid.Row="0"
+                                   Grid.RowSpan="3"
+                                   Grid.Column="0"
+                                   Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                                   Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                                   DisplayName="{x:Bind ViewModel.Name, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.HasNoAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                    <PersonPicture Grid.Row="0"
+                                   Grid.RowSpan="3"
+                                   Grid.Column="0"
+                                   Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                                   Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                                   ProfilePicture="{x:Bind ViewModel.AvatarSource, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.HasAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="1"
+                               FontWeight="Bold"
+                               Style="{StaticResource DetailPageTitleStyle}"
+                               Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Foreground="{StaticResource SystemOffsetMediumBrush}"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="{x:Bind ViewModel.Username, Mode=OneWay}" />
+
+                    <Button Grid.Row="2"
+                            Grid.Column="1"
+                            VerticalAlignment="Bottom"
+                            Command="{x:Bind ViewModel.LogInClickedCommand}"
+                            Content="Log in"
+                            Visibility="{x:Bind ViewModel.IsLoggedOut, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                    <Button Grid.Row="3"
+                            Grid.Column="1"
+                            VerticalAlignment="Bottom"
+                            Command="{x:Bind ViewModel.LogOutClickedCommand}"
+                            Content="Log out"
+                            Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

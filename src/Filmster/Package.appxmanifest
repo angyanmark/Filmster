@@ -44,6 +44,11 @@
       </uap:VisualElements>
 
       <Extensions>
+
+        <uap:Extension Category="windows.protocol">
+
+          <uap:Protocol Name="filmster.login"/>
+        </uap:Extension>
       </Extensions>
     </Application>
   </Applications>

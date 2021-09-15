@@ -158,6 +158,7 @@
     <Compile Include="Services\IncludeAdultService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
+    <Compile Include="Services\UserSessionService.cs" />
     <Compile Include="ViewModels\DiscoverViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryViewModel.cs" />
     <Compile Include="ViewModels\MovieDetailViewModel.cs" />
