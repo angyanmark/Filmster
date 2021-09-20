@@ -1,4 +1,5 @@
-﻿using Filmster.ViewModels;
+﻿using Filmster.Helpers;
+using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
 
 namespace Filmster.Views
@@ -12,6 +13,8 @@ namespace Filmster.Views
             InitializeComponent();
             DataContext = ViewModel;
             ViewModel.Initialize(shellFrame, navigationView, KeyboardAccelerators);
+
+            BackgroundTaskHelper.RegisterTileBackgroundTaskAsync();
         }
     }
 }

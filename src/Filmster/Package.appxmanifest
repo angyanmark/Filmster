@@ -49,6 +49,14 @@
 
           <uap:Protocol Name="filmster.login"/>
         </uap:Extension>
+
+        <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTasks.TrendingMoviesBackgroundTask">
+
+          <BackgroundTasks>
+
+            <Task Type="timer"/>
+          </BackgroundTasks>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>
