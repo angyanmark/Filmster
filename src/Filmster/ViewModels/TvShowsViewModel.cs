@@ -10,7 +10,6 @@ namespace Filmster.ViewModels
     public class TvShowsViewModel : MediaViewModelBase
     {
         public ObservableCollection<SearchTv> TrendingTvShows { get; set; } = new ObservableCollection<SearchTv>();
-        public ObservableCollection<SearchTv> PopularTvShows { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<SearchTv> TopRatedTvShows { get; set; } = new ObservableCollection<SearchTv>();
 
         public TvShowsViewModel()
@@ -21,7 +20,6 @@ namespace Filmster.ViewModels
         private async Task GetTvShowsAsync()
         {
             await GetTrendingTvShowsAsync();
-            await GetPopularTvShowsAsync();
             await GetTopRatedTvShowsAsync();
         }
 
@@ -31,15 +29,6 @@ namespace Filmster.ViewModels
             foreach (var tvshow in tvshows)
             {
                 TrendingTvShows.Add(tvshow);
-            }
-        }
-
-        private async Task GetPopularTvShowsAsync()
-        {
-            var tvshows = await TMDbService.GetPopularTvShowsAsync();
-            foreach (var tvshow in tvshows)
-            {
-                PopularTvShows.Add(tvshow);
             }
         }
 

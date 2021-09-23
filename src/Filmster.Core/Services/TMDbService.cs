@@ -64,16 +64,6 @@ namespace Filmster.Core.Services
             return (await client.GetTrendingMoviesAsync(timeWindow)).Results;
         }
 
-        public static async Task<List<SearchMovie>> GetPopularMoviesAsync()
-        {
-            return (await client.GetMoviePopularListAsync()).Results;
-        }
-
-        public static async Task<List<SearchMovie>> GetNowPlayingMoviesAsync()
-        {
-            return (await client.GetMovieNowPlayingListAsync()).Results;
-        }
-
         public static async Task<List<SearchMovie>> GetUpcomingMoviesAsync()
         {
             return (await client.GetMovieUpcomingListAsync()).Results;
@@ -97,11 +87,6 @@ namespace Filmster.Core.Services
         public static async Task<List<SearchTv>> GetTrendingTvShowsAsync(TimeWindow timeWindow)
         {
             return (await client.GetTrendingTvAsync(timeWindow)).Results;
-        }
-
-        public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
-        {
-            return (await client.GetTvShowPopularAsync()).Results;
         }
 
         public static async Task<List<SearchTv>> GetTopRatedTvShowsAsync()

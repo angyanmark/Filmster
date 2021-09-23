@@ -14,18 +14,6 @@
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
-        <PivotItem x:Uid="Movies_Popular">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
-                                       ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}"
-                                       Style="{StaticResource AdaptiveGridMediumPoster}" />
-        </PivotItem>
-
-        <PivotItem x:Uid="Movies_NowPlaying">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
-                                       ItemsSource="{x:Bind ViewModel.NowPlayingMovies, Mode=OneWay}"
-                                       Style="{StaticResource AdaptiveGridMediumPoster}" />
-        </PivotItem>
-
         <PivotItem x:Uid="Movies_Upcoming">
             <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}"

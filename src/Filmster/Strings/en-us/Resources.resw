@@ -125,25 +125,9 @@
     <value>Browse movies, shows, people...</value>
     <comment>Application description</comment>
   </data>
-  <data name="Movies_Popular.Header" xml:space="preserve">
-    <value>Popular</value>
-    <comment>Popular pivot item title for Movies</comment>
-  </data>
-  <data name="Movies_NowPlaying.Header" xml:space="preserve">
-    <value>Now Playing</value>
-    <comment>Now Playing pivot item title for Movies</comment>
-  </data>
   <data name="Shell_Movies.Content" xml:space="preserve">
     <value>Movies</value>
     <comment>Movies navigation view item name</comment>
-  </data>
-  <data name="TvShows_Popular.Header" xml:space="preserve">
-    <value>Popular</value>
-    <comment>Popular pivot item title for TvShows</comment>
-  </data>
-  <data name="TvShows_AiringToday.Header" xml:space="preserve">
-    <value>Airing Today</value>
-    <comment>Airing Today pivot item title for TvShows</comment>
   </data>
   <data name="Shell_TvShows.Content" xml:space="preserve">
     <value>TV Shows</value>
@@ -188,10 +172,6 @@
   <data name="Movies_Upcoming.Header" xml:space="preserve">
     <value>Upcoming</value>
     <comment>Upcoming pivot item title for Movies</comment>
-  </data>
-  <data name="TvShows_OnTv.Header" xml:space="preserve">
-    <value>On TV</value>
-    <comment>On TV pivot item title for TvShows</comment>
   </data>
   <data name="Movies_TopRated.Header" xml:space="preserve">
     <value>Top Rated</value>
