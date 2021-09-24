@@ -164,5 +164,35 @@ namespace Filmster.Core.Services
         {
             return await client.AccountGetDetailsAsync();
         }
+
+        public static async Task<List<SearchMovie>> GetMovieWatchlistAsync()
+        {
+            return (await client.AccountGetMovieWatchlistAsync()).Results;
+        }
+
+        public static async Task<List<SearchTv>> GetTvShowWatchlistAsync()
+        {
+            return (await client.AccountGetTvWatchlistAsync()).Results;
+        }
+
+        public static async Task<List<SearchMovie>> GetFavoriteMoviesAsync()
+        {
+            return (await client.AccountGetFavoriteMoviesAsync()).Results;
+        }
+
+        public static async Task<List<SearchTv>> GetFavoriteTvShowsAsync()
+        {
+            return (await client.AccountGetFavoriteTvAsync()).Results;
+        }
+
+        public static async Task<List<SearchMovieWithRating>> GetRatedMoviesAsync()
+        {
+            return (await client.AccountGetRatedMoviesAsync()).Results;
+        }
+
+        public static async Task<List<AccountSearchTv>> GetRatedTvShowsAsync()
+        {
+            return (await client.AccountGetRatedTvShowsAsync()).Results;
+        }
     }
 }

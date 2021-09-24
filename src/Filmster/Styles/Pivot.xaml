@@ -4,4 +4,8 @@
         <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
     </DataTemplate>
 
+    <DataTemplate x:Key="PivotSubHeaderTemplate">
+        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{Binding}" />
+    </DataTemplate>
+
 </ResourceDictionary>

@@ -453,4 +453,32 @@
     <value>guest</value>
     <comment>Username of the guest user</comment>
   </data>
+  <data name="Profile_LogIn.Content" xml:space="preserve">
+    <value>Log in</value>
+    <comment>Log in text for Profile</comment>
+  </data>
+  <data name="Profile_LogOut.Content" xml:space="preserve">
+    <value>Log out</value>
+    <comment>Log out text for Profile</comment>
+  </data>
+  <data name="Profile_Watchlist.Header" xml:space="preserve">
+    <value>Watchlist</value>
+    <comment>Watchlist text for Profile</comment>
+  </data>
+  <data name="Profile_Favorites.Header" xml:space="preserve">
+    <value>Favourites</value>
+    <comment>Favourites text for Profile</comment>
+  </data>
+  <data name="Profile_Movies.Header" xml:space="preserve">
+    <value>Movies</value>
+    <comment>Movies text for Profile</comment>
+  </data>
+  <data name="Profile_TvShows.Header" xml:space="preserve">
+    <value>TV Shows</value>
+    <comment>TV Shows text for Profile</comment>
+  </data>
+  <data name="Profile_Rated.Header" xml:space="preserve">
+    <value>Rated</value>
+    <comment>Rated text for Profile</comment>
+  </data>
 </root>

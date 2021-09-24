@@ -7,8 +7,8 @@ namespace Filmster.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var rating = (double)value;
-            if(rating == 0)
+            var rating = value is double r ? r : (float)value;
+            if (rating == 0)
             {
                 return -1.0;
             }
@@ -26,7 +26,7 @@ namespace Filmster.Helpers
                 throw new ArgumentException(string.Format("Parameters must be int values. {0} or {1} is not an int value.", parameters[0], parameters[1]), "parameter");
             }
 
-            var ratio = (double) to / from;
+            var ratio = (double)to / from;
             return rating * ratio;
         }
 

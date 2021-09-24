@@ -30,6 +30,11 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallPosterTemplate}" />
     </Style>
 
+    <Style x:Key="AdaptiveGridNoStretchSmallPosterWithRating" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallPosterWithRatingTemplate}" />
+    </Style>
+
     <Style x:Key="AdaptiveGridNoStretchMediumProfile" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}" />
@@ -44,6 +49,26 @@
         <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                <Grid>
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Title}" />
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                </Grid>
+                <Grid>
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
+                               Text="{Binding EpisodeCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}"
+                               Visibility="{Binding FirstAirDate, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterWithRatingTemplate">
+        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+            <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                <RatingControl IsReadOnly="True" Value="{Binding Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
                 <Grid>
                     <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Title}" />
                     <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
