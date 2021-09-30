@@ -7,12 +7,35 @@ namespace Filmster.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            if (value == null)
+            {
+                return -1.0;
+            }
+
             var rating = value is double r ? r : (float)value;
             if (rating == 0)
             {
                 return -1.0;
             }
 
+            var ratio = GetRatioFromParameter(parameter);
+            return rating * ratio;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            var rating = (double)value;
+            if (rating == -1.0)
+            {
+                return -1.0;
+            }
+
+            var ratio = GetRatioFromParameter(parameter);
+            return rating / ratio;
+        }
+
+        private double GetRatioFromParameter(object parameter)
+        {
             string parameterString = parameter as string;
             string[] parameters = parameterString.Split('|');
 
@@ -26,13 +49,7 @@ namespace Filmster.Helpers
                 throw new ArgumentException(string.Format("Parameters must be int values. {0} or {1} is not an int value.", parameters[0], parameters[1]), "parameter");
             }
 
-            var ratio = (double)to / from;
-            return rating * ratio;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            throw new NotImplementedException();
+            return (double)to / from;
         }
     }
 }
