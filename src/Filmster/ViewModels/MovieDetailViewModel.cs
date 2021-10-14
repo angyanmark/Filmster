@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 
 namespace Filmster.ViewModels
 {
-    public class MovieDetailViewModel : MediaViewModelBase
+    public class MovieDetailViewModel : RatableMediaViewModelBase
     {
         private Movie _movie;
         public Movie Movie
@@ -118,6 +118,9 @@ namespace Filmster.ViewModels
                 NavigationService.GoBack();
                 return;
             }
+            var accountState = await TMDbService.GetMovieAccountStateAsync(id);
+            SetAccountState(accountState);
+
             SelectedPoster = GetSelectedPoster();
             Directors = GetDirectors();
             Certification = GetCertification();
@@ -228,6 +231,27 @@ namespace Filmster.ViewModels
                     ImagePaths = paths,
                     SelectedImagePath = selectedPath
                 });
+            }
+        }
+
+        public async void RatingChangedAsync(RatingControl sender, object args)
+        {
+            await ChangeRatingAsync(MediaType.Movie, Movie.Id, sender.Value);
+        }
+
+        public async void FavoriteClickedAsync(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is TextBlock)
+            {
+                await ChangeFavoriteAsync(MediaType.Movie, Movie.Id);
+            }
+        }
+
+        public async void WatchlistClickedAsync(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is TextBlock)
+            {
+                await ChangeWatchlistAsync(MediaType.Movie, Movie.Id);
             }
         }
     }

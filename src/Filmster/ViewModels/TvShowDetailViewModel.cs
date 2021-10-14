@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 
 namespace Filmster.ViewModels
 {
-    public class TvShowDetailViewModel : MediaViewModelBase
+    public class TvShowDetailViewModel : RatableMediaViewModelBase
     {
         private TvShow _tvShow;
         public TvShow TvShow
@@ -121,6 +121,9 @@ namespace Filmster.ViewModels
                 NavigationService.GoBack();
                 return;
             }
+            var accountState = await TMDbService.GetTvShowAccountStateAsync(id);
+            SetAccountState(accountState);
+
             SelectedPoster = GetSelectedPoster();
             Creators = GetCreators();
             EpisodeRuntime = Convert.ToInt32(TvShow.EpisodeRunTime.DefaultIfEmpty(0).Average());
@@ -226,6 +229,27 @@ namespace Filmster.ViewModels
                     ImagePaths = paths,
                     SelectedImagePath = selectedPath
                 });
+            }
+        }
+
+        public async void RatingChangedAsync(RatingControl sender, object args)
+        {
+            await ChangeRatingAsync(MediaType.Tv, TvShow.Id, sender.Value);
+        }
+
+        public async void FavoriteClickedAsync(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is TextBlock)
+            {
+                await ChangeFavoriteAsync(MediaType.Tv, TvShow.Id);
+            }
+        }
+
+        public async void WatchlistClickedAsync(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is TextBlock)
+            {
+                await ChangeWatchlistAsync(MediaType.Tv, TvShow.Id);
             }
         }
     }

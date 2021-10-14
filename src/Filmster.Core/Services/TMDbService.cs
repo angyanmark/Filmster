@@ -1,4 +1,5 @@
 ﻿using Filmster.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMDbLib.Client;
@@ -79,6 +80,11 @@ namespace Filmster.Core.Services
             return await client.GetMovieAsync(id, MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
         }
 
+        public static async Task<AccountState> GetMovieAccountStateAsync(int id)
+        {
+            return await client.GetMovieAccountStateAsync(id);
+        }
+
         public static async Task<Collection> GetCollectionAsync(int id)
         {
             return await client.GetCollectionAsync(id);
@@ -97,6 +103,11 @@ namespace Filmster.Core.Services
         public static async Task<TvShow> GetTvShowAsync(int id)
         {
             return await client.GetTvShowAsync(id, TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds);
+        }
+
+        public static async Task<AccountState> GetTvShowAccountStateAsync(int id)
+        {
+            return await client.GetTvShowAccountStateAsync(id);
         }
 
         public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber)
@@ -193,6 +204,41 @@ namespace Filmster.Core.Services
         public static async Task<List<AccountSearchTv>> GetRatedTvShowsAsync()
         {
             return (await client.AccountGetRatedTvShowsAsync()).Results;
+        }
+
+        public static async Task<bool> SetRatingAsync(MediaType mediaType, int id, double value)
+        {
+            bool success;
+
+            switch (mediaType)
+            {
+                case MediaType.Movie:
+                    success = value == -1
+                        ? await client.MovieRemoveRatingAsync(id)
+                        : await client.MovieSetRatingAsync(id, value * 2);
+                    break;
+                case MediaType.Tv:
+                    success = value == -1
+                        ? await client.TvShowRemoveRatingAsync(id)
+                        : await client.TvShowSetRatingAsync(id, value * 2);
+                    break;
+                case MediaType.Person:
+                case MediaType.Unknown:
+                default:
+                    throw new ArgumentException(string.Format("Cannot set rating to media type {0}.", mediaType), nameof(mediaType));
+            }
+
+            return success;
+        }
+
+        public static async Task<bool> ChangeFavoriteStatusAsync(MediaType mediaType, int id, bool isFavorite)
+        {
+            return await client.AccountChangeFavoriteStatusAsync(mediaType, id, isFavorite);
+        }
+
+        public static async Task<bool> ChangeWatchlistStatusAsync(MediaType mediaType, int id, bool isWatchlist)
+        {
+            return await client.AccountChangeWatchlistStatusAsync(mediaType, id, isWatchlist);
         }
     }
 }

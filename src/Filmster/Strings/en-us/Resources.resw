@@ -481,4 +481,12 @@
     <value>Rated</value>
     <comment>Rated text for Profile</comment>
   </data>
+  <data name="Media_Favorite.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Favorite</value>
+    <comment>Favorite tooltip text for media</comment>
+  </data>
+  <data name="Media_Watchlist.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Watchlist</value>
+    <comment>Watchlist tooltip text for media</comment>
+  </data>
 </root>

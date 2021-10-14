@@ -45,6 +45,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -79,20 +80,50 @@
                                        Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                         </StackPanel>
 
-                        <TextBlock Grid.Row="4"
+                        <StackPanel Grid.Row="4"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource SmallSpacing}">
+                            <RatingControl ValueChanged="{x:Bind ViewModel.RatingChangedAsync}" Value="{x:Bind ViewModel.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+
+                            <Grid x:Uid="Media_Favorite">
+                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                          Glyph="&#xEB52;"
+                                          Tapped="{x:Bind ViewModel.FavoriteClickedAsync}"
+                                          Visibility="{x:Bind ViewModel.IsNotFavorite, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                          Foreground="Red"
+                                          Glyph="&#xEB52;"
+                                          Tapped="{x:Bind ViewModel.FavoriteClickedAsync}"
+                                          Visibility="{x:Bind ViewModel.IsFavorite, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </Grid>
+
+                            <Grid x:Uid="Media_Watchlist">
+                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                          Glyph="&#xEC92;"
+                                          Tapped="{x:Bind ViewModel.WatchlistClickedAsync}"
+                                          Visibility="{x:Bind ViewModel.IsNotWatchlist, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                          Foreground="Green"
+                                          Glyph="&#xEC92;"
+                                          Tapped="{x:Bind ViewModel.WatchlistClickedAsync}"
+                                          Visibility="{x:Bind ViewModel.IsWatchlist, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="5"
                                    Foreground="{StaticResource SystemOffsetMediumBrush}"
                                    Style="{StaticResource TaglineTextStyle}"
                                    Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
 
-                        <TextBlock Grid.Row="5"
+                        <TextBlock Grid.Row="6"
                                    Style="{StaticResource OverviewTextStyle}"
                                    Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
 
-                        <TextBlock Grid.Row="6"
+                        <TextBlock Grid.Row="7"
                                    Style="{StaticResource GenresTextStyle}"
                                    Text="{x:Bind ViewModel.Genres, Mode=OneWay}" />
 
-                        <StackPanel Grid.Row="7"
+                        <StackPanel Grid.Row="8"
                                     Orientation="Horizontal"
                                     Spacing="{StaticResource XSmallSpacing}">
                             <HyperlinkButton Padding="0"
@@ -112,7 +143,7 @@
                             </HyperlinkButton>
                         </StackPanel>
 
-                        <HyperlinkButton Grid.Row="8"
+                        <HyperlinkButton Grid.Row="9"
                                          Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
                                          Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
