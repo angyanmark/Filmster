@@ -64,7 +64,7 @@ namespace Filmster.Helpers
                     size = TMDbService.OriginalSize;
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("parameter", (int)imageType, typeof(ImageSizeType));
+                    throw new InvalidEnumArgumentException(nameof(parameter), (int)imageType, typeof(ImageSizeType));
             }
 
             var path = value as string;

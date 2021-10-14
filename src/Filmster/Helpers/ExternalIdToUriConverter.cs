@@ -57,7 +57,7 @@ namespace Filmster.Helpers
                     baseUrl = TMDbService.InstagramBaseUrl;
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("parameter", (int)externalIdType, typeof(ExternalIdType));
+                    throw new InvalidEnumArgumentException(nameof(parameter), (int)externalIdType, typeof(ExternalIdType));
             }
 
             return new Uri($"{baseUrl}{id}");

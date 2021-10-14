@@ -19,7 +19,7 @@ namespace Filmster.Helpers
                     movieCast = movieCast.OrderBy(c => c.Title);
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("sortType", (int)sortType, typeof(PersonCastCrewSortType));
+                    throw new InvalidEnumArgumentException(nameof(sortType), (int)sortType, typeof(PersonCastCrewSortType));
             }
             return movieCast.ToList();
         }
@@ -35,7 +35,7 @@ namespace Filmster.Helpers
                     tvShowCast = tvShowCast.OrderBy(c => c.Name);
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("sortType", (int)sortType, typeof(PersonCastCrewSortType));
+                    throw new InvalidEnumArgumentException(nameof(sortType), (int)sortType, typeof(PersonCastCrewSortType));
             }
             return tvShowCast.ToList();
         }
@@ -51,7 +51,7 @@ namespace Filmster.Helpers
                     movieCrew = movieCrew.OrderBy(c => c.Title);
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("sortType", (int)sortType, typeof(PersonCastCrewSortType));
+                    throw new InvalidEnumArgumentException(nameof(sortType), (int)sortType, typeof(PersonCastCrewSortType));
             }
             return movieCrew.ToList();
         }
@@ -67,7 +67,7 @@ namespace Filmster.Helpers
                     tvShowCrew = tvShowCrew.OrderBy(c => c.Name);
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("sortType", (int)sortType, typeof(PersonCastCrewSortType));
+                    throw new InvalidEnumArgumentException(nameof(sortType), (int)sortType, typeof(PersonCastCrewSortType));
             }
             return tvShowCrew.ToList();
         }
