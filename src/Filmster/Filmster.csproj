@@ -158,6 +158,7 @@
     <Compile Include="Helpers\SearchBaseDataTemplateSelector.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Helpers\SortHelper.cs" />
+    <Compile Include="Helpers\LocalizedStringFormatConverter.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\IncludeAdultService.cs" />

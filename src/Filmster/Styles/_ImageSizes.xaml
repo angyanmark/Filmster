@@ -17,4 +17,6 @@
     <x:Double x:Key="DetailEpisodeListImageWidth">300</x:Double>
     <x:Double x:Key="DetailEpisodeListDesiredWidth">12000</x:Double>
 
+    <x:Double x:Key="DetailAccountListDesiredWidth">400</x:Double>
+
 </ResourceDictionary>

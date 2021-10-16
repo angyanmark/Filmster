@@ -28,6 +28,7 @@
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
             <helpers:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
             <helpers:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
+            <helpers:LocalizedStringFormatConverter x:Key="LocalizedStringFormatConverter" />
             <helpers:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
             <helpers:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <helpers:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />

@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
 
 namespace Filmster.ViewModels
@@ -13,12 +14,13 @@ namespace Filmster.ViewModels
     {
         public int AvatarSize { get; } = 144;
 
+        public ObservableCollection<SearchMovieWithRating> RatedMovies { get; set; } = new ObservableCollection<SearchMovieWithRating>();
+        public ObservableCollection<AccountSearchTv> RatedTvShows { get; set; } = new ObservableCollection<AccountSearchTv>();
         public ObservableCollection<SearchMovie> MovieWatchlist { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchTv> TvShowWatchlist { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<SearchMovie> FavoriteMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchTv> FavoriteTvShows { get; set; } = new ObservableCollection<SearchTv>();
-        public ObservableCollection<SearchMovieWithRating> RatedMovies { get; set; } = new ObservableCollection<SearchMovieWithRating>();
-        public ObservableCollection<AccountSearchTv> RatedTvShows { get; set; } = new ObservableCollection<AccountSearchTv>();
+        public ObservableCollection<AccountList> Lists { get; set; } = new ObservableCollection<AccountList>();
 
         private string _avatarSource = TMDbService.GravatarBaseUrl;
         public string AvatarSource
@@ -70,13 +72,14 @@ namespace Filmster.ViewModels
         }
 
         public ICommand LogInClickedCommand;
-
         public ICommand LogOutClickedCommand;
+        public ICommand AccountListClickedCommand;
 
         public ProfileViewModel()
         {
             LogInClickedCommand = new RelayCommand(LogInClickedAsync);
             LogOutClickedCommand = new RelayCommand(LogOutClickedAsync);
+            AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClickedAsync);
 
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
@@ -131,12 +134,31 @@ namespace Filmster.ViewModels
 
         private async Task GetDetailsAsync()
         {
+            await GetRatedMoviesAsync();
+            await GetRatedTvShowsAsync();
             await GetMovieWatchlistAsync();
             await GetTvShowWatchlistAsync();
             await GetFavoriteMoviesAsync();
             await GetFavoriteTvShowsAsync();
-            await GetRatedMoviesAsync();
-            await GetRatedTvShowsAsync();
+            await GetListsAsync();
+        }
+
+        private async Task GetRatedMoviesAsync()
+        {
+            var movies = await TMDbService.GetRatedMoviesAsync();
+            foreach (var movie in movies)
+            {
+                RatedMovies.Add(movie);
+            }
+        }
+
+        private async Task GetRatedTvShowsAsync()
+        {
+            var tvShows = await TMDbService.GetRatedTvShowsAsync();
+            foreach (var tvShow in tvShows)
+            {
+                RatedTvShows.Add(tvShow);
+            }
         }
 
         private async Task GetMovieWatchlistAsync()
@@ -175,21 +197,12 @@ namespace Filmster.ViewModels
             }
         }
 
-        private async Task GetRatedMoviesAsync()
+        private async Task GetListsAsync()
         {
-            var movies = await TMDbService.GetRatedMoviesAsync();
-            foreach (var movie in movies)
+            var lists = await TMDbService.GetListsAsync();
+            foreach (var list in lists)
             {
-                RatedMovies.Add(movie);
-            }
-        }
-
-        private async Task GetRatedTvShowsAsync()
-        {
-            var tvShows = await TMDbService.GetRatedTvShowsAsync();
-            foreach (var tvShow in tvShows)
-            {
-                RatedTvShows.Add(tvShow);
+                Lists.Add(list);
             }
         }
 
@@ -202,12 +215,13 @@ namespace Filmster.ViewModels
             HasAvatar = !HasNoAvatar;
             Name = "Profile_GuestName".GetLocalized();
             Username = "Profile_GuestUsername".GetLocalized();
+            RatedMovies.Clear();
+            RatedTvShows.Clear();
             MovieWatchlist.Clear();
             TvShowWatchlist.Clear();
             FavoriteMovies.Clear();
             FavoriteTvShows.Clear();
-            RatedMovies.Clear();
-            RatedTvShows.Clear();
+            Lists.Clear();
             IsLoggedOut = !IsLoggedIn;
             DataLoaded = true;
         }
@@ -237,6 +251,12 @@ namespace Filmster.ViewModels
                     await UserSessionService.LoggedOutAsync();
                 }
             }
+        }
+
+        private async void AccountListClickedAsync(AccountList accountList)
+        {
+            // TODO: list detail page navigation
+            // NavigationService.Navigate<ListDetailPage>(accountList.Id);
         }
     }
 }

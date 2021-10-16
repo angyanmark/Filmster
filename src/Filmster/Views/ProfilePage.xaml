@@ -119,6 +119,12 @@
                             </PivotItem>
                         </Pivot>
                     </PivotItem>
+
+                    <PivotItem x:Uid="Profile_Lists">
+                        <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.AccountListClickedCommand}"
+                                                   ItemsSource="{x:Bind ViewModel.Lists, Mode=OneWay}"
+                                                   Style="{StaticResource AdaptiveGridAccountList}" />
+                    </PivotItem>
                 </Pivot>
             </Grid>
         </ScrollViewer>

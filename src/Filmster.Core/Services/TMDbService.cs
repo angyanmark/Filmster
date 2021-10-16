@@ -7,6 +7,7 @@ using TMDbLib.Objects.Account;
 using TMDbLib.Objects.Authentication;
 using TMDbLib.Objects.Collections;
 using TMDbLib.Objects.General;
+using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
@@ -239,6 +240,11 @@ namespace Filmster.Core.Services
         public static async Task<bool> ChangeWatchlistStatusAsync(MediaType mediaType, int id, bool isWatchlist)
         {
             return await client.AccountChangeWatchlistStatusAsync(mediaType, id, isWatchlist);
+        }
+
+        public static async Task<List<AccountList>> GetListsAsync()
+        {
+            return (await client.AccountGetListsAsync()).Results;
         }
     }
 }

@@ -466,8 +466,8 @@
     <comment>Watchlist text for Profile</comment>
   </data>
   <data name="Profile_Favorites.Header" xml:space="preserve">
-    <value>Favourites</value>
-    <comment>Favourites text for Profile</comment>
+    <value>Favorites</value>
+    <comment>Favorites text for Profile</comment>
   </data>
   <data name="Profile_Movies.Header" xml:space="preserve">
     <value>Movies</value>
@@ -488,5 +488,13 @@
   <data name="Media_Watchlist.ToolTipService.ToolTip" xml:space="preserve">
     <value>Watchlist</value>
     <comment>Watchlist tooltip text for media</comment>
+  </data>
+  <data name="Profile_Lists.Header" xml:space="preserve">
+    <value>Lists</value>
+    <comment>Lists text for Profile</comment>
+  </data>
+  <data name="Profile_ListItemCount" xml:space="preserve">
+    <value>{0} items</value>
+    <comment>Item count text for Profile</comment>
   </data>
 </root>

@@ -160,6 +160,34 @@
         <Setter Property="Width" Value="{StaticResource DetailEpisodeListImageWidth}" />
     </Style>
 
+    <!--  Profile lists list  -->
+    <Style x:Key="AdaptiveGridAccountList" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="DesiredWidth" Value="{StaticResource DetailAccountListDesiredWidth}" />
+        <Setter Property="SelectionMode" Value="None" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridAccountListTemplate}" />
+    </Style>
+
+    <DataTemplate x:Key="AdaptiveGridAccountListTemplate">
+        <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <StackPanel Padding="{StaticResource SmallLeftTopRightBottomMargin}"
+                        VerticalAlignment="Center"
+                        Spacing="{StaticResource XXSmallSpacing}">
+                <TextBlock HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Style="{StaticResource SearchListTitleStyle}"
+                           Text="{Binding Name}" />
+                <TextBlock HorizontalAlignment="Center"
+                           Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                           Style="{StaticResource SearchListOverviewTextStyle}"
+                           Text="{Binding Description}" />
+                <TextBlock HorizontalAlignment="Center"
+                           FontStyle="Italic"
+                           Text="{Binding ItemCount, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Profile_ListItemCount'}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
     <!--  Search list  -->
     <Style x:Key="AdaptiveGridSearchListMediumPoster" TargetType="controls:AdaptiveGridView">
         <Setter Property="DesiredWidth" Value="{StaticResource SearchListDesiredWidth}" />
