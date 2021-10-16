@@ -68,12 +68,10 @@ namespace Filmster.Helpers
             }
 
             var path = value as string;
-            if (string.IsNullOrEmpty(path))
-            {
-                return GetPlaceholder(imageType);
-            }
 
-            return $"{TMDbService.SecureBaseUrl}{size}{path}";
+            return string.IsNullOrEmpty(path)
+                ? GetPlaceholder(imageType)
+                : $"{TMDbService.SecureBaseUrl}{size}{path}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
@@ -102,6 +100,7 @@ namespace Filmster.Helpers
                 case ImageSizeType.LargePoster:
                 case ImageSizeType.LargeProfile:
                 case ImageSizeType.LargeStill:
+                case ImageSizeType.Original:
                     return @"..\Assets\Placeholders\placeholder-poster-large.png";
                 default:
                     return string.Empty;
