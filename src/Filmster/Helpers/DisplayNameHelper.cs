@@ -6,26 +6,16 @@ namespace Filmster.Helpers
     {
         public static string GetSearchMovieDisplayName(SearchMovie searchMovie)
         {
-            if (searchMovie.ReleaseDate.HasValue)
-            {
-                return $"{searchMovie.Title} ({searchMovie.ReleaseDate.Value.Year})";
-            }
-            else
-            {
-                return searchMovie.Title;
-            }
+            return searchMovie.ReleaseDate.HasValue
+                ? $"{searchMovie.Title} ({searchMovie.ReleaseDate.Value.Year})"
+                : searchMovie.Title;
         }
 
         public static string GetSearchTvDisplayName(SearchTv searchTv)
         {
-            if (searchTv.FirstAirDate.HasValue)
-            {
-                return $"{searchTv.Name} ({searchTv.FirstAirDate.Value.Year})";
-            }
-            else
-            {
-                return searchTv.Name;
-            }
+            return searchTv.FirstAirDate.HasValue
+                ? $"{searchTv.Name} ({searchTv.FirstAirDate.Value.Year})"
+                : searchTv.Name;
         }
     }
 }
