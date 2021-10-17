@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TileHelperLibrary;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
 
@@ -21,6 +22,13 @@ namespace Filmster.ViewModels
         public ObservableCollection<SearchMovie> FavoriteMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchTv> FavoriteTvShows { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<AccountList> Lists { get; set; } = new ObservableCollection<AccountList>();
+
+        private int _pivotSelectedIndex;
+        public int PivotSelectedIndex
+        {
+            get { return _pivotSelectedIndex; }
+            set { Set(ref _pivotSelectedIndex, value); }
+        }
 
         private string _avatarSource = TMDbService.GravatarBaseUrl;
         public string AvatarSource
@@ -69,6 +77,20 @@ namespace Filmster.ViewModels
         {
             get { return _isLoggedOut; }
             set { Set(ref _isLoggedOut, value); }
+        }
+
+        private bool _isWatchlistPinned;
+        public bool IsWatchlistPinned
+        {
+            get { return _isWatchlistPinned; }
+            set
+            {
+                if (_isWatchlistPinned != value)
+                {
+                    Set(ref _isWatchlistPinned, value);
+                    WatchlistPinnedChangedAsync();
+                }
+            }
         }
 
         public ICommand LogInClickedCommand;
@@ -128,6 +150,7 @@ namespace Filmster.ViewModels
             Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
             Username = accountDetails.Username;
             await GetDetailsAsync();
+            IsWatchlistPinned = TilePinHelper.IsTilePinned(Constants.MovieWatchlistTileId);
             IsLoggedIn = !IsLoggedOut;
             DataLoaded = true;
         }
@@ -250,6 +273,22 @@ namespace Filmster.ViewModels
                 {
                     await UserSessionService.LoggedOutAsync();
                 }
+            }
+        }
+
+        private async void WatchlistPinnedChangedAsync()
+        {
+            if (IsWatchlistPinned)
+            {
+                bool isPinned = await TilePinHelper.PinWatchlistAsync("Tile_Watchlist".GetLocalized());
+                if (!isPinned)
+                {
+                    IsWatchlistPinned = isPinned;
+                }
+            }
+            else
+            {
+                await TilePinHelper.UnpinTileAsync(Constants.MovieWatchlistTileId);
             }
         }
 

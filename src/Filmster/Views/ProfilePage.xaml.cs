@@ -16,6 +16,7 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            ViewModel.PivotSelectedIndex = e.Parameter == null ? 0 : (int)e.Parameter;
             await ViewModel.LoadProfile();
             ViewModel.DataLoaded = true;
         }

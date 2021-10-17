@@ -410,6 +410,10 @@
       <Project>{8C4AEB2D-C2E0-4CF5-B2AA-28080A79BD12}</Project>
       <Name>Filmster.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TileHelperLibrary\TileHelperLibrary.csproj">
+      <Project>{359C77D8-AECA-437F-A030-13C00A55FFF3}</Project>
+      <Name>TileHelperLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

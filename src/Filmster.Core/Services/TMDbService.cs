@@ -177,9 +177,9 @@ namespace Filmster.Core.Services
             return await client.AccountGetDetailsAsync();
         }
 
-        public static async Task<List<SearchMovie>> GetMovieWatchlistAsync()
+        public static async Task<List<SearchMovie>> GetMovieWatchlistAsync(AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
         {
-            return (await client.AccountGetMovieWatchlistAsync()).Results;
+            return (await client.AccountGetMovieWatchlistAsync(sortBy: sortBy, sortOrder: sortOrder)).Results;
         }
 
         public static async Task<List<SearchTv>> GetTvShowWatchlistAsync()

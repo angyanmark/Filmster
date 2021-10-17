@@ -497,4 +497,16 @@
     <value>{0} items</value>
     <comment>Item count text for Profile</comment>
   </data>
+  <data name="Tile_Watchlist" xml:space="preserve">
+    <value>Watchlist</value>
+    <comment>Watchlist text for Tile</comment>
+  </data>
+  <data name="Profile_WatchlistSwitch.OffContent" xml:space="preserve">
+    <value>Pin tile</value>
+    <comment>Pint tile text for Profile</comment>
+  </data>
+  <data name="Profile_WatchlistSwitch.OnContent" xml:space="preserve">
+    <value>Tile pinned</value>
+    <comment>Tile pinned text for Profile</comment>
+  </data>
 </root>

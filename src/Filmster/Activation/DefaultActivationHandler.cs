@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web;
 using Filmster.Services;
+using Filmster.Views;
 using Windows.ApplicationModel.Activation;
 
 namespace Filmster.Activation
@@ -19,12 +21,27 @@ namespace Filmster.Activation
             // When the navigation stack isn't restored, navigate to the first page and configure
             // the new page by passing required information in the navigation parameter
             object arguments = null;
+            bool navigateToWatchlist = false;
             if (args is LaunchActivatedEventArgs launchArgs)
             {
                 arguments = launchArgs.Arguments;
+
+                var action = HttpUtility.ParseQueryString(launchArgs.Arguments).Get("action");
+                if (action == "movie_watchlist")
+                {
+                    navigateToWatchlist = true;
+                }
             }
 
-            NavigationService.Navigate(_navElement, arguments);
+            if (navigateToWatchlist)
+            {
+                NavigationService.Navigate<ProfilePage>(2);
+            }
+            else
+            {
+                NavigationService.Navigate(_navElement, arguments);
+            }
+
             await Task.CompletedTask;
         }
 

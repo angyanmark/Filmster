@@ -2,6 +2,7 @@
 using Filmster.Helpers;
 using System;
 using System.Threading.Tasks;
+using TileHelperLibrary;
 using TMDbLib.Objects.Authentication;
 using Windows.Storage;
 
@@ -54,6 +55,7 @@ namespace Filmster.Services
         {
             await SaveSessionIdAsync(string.Empty);
             LoggedOutEvent(null, EventArgs.Empty);
+            await TilePinHelper.UnpinUserTilesAsync();
         }
     }
 }

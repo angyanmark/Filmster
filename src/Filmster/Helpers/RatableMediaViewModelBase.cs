@@ -1,5 +1,6 @@
 ﻿using Filmster.Core.Services;
 using System.Threading.Tasks;
+using TileHelperLibrary;
 using TMDbLib.Objects.General;
 
 namespace Filmster.Helpers
@@ -80,6 +81,8 @@ namespace Filmster.Helpers
             {
                 IsWatchlist = !IsWatchlist;
                 IsNotWatchlist = !IsWatchlist;
+
+                await TileUpdateHelper.UpdateWatchlistTileAsync();
             }
         }
     }
