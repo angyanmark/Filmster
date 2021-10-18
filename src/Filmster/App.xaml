@@ -31,6 +31,7 @@
             <helpers:LocalizedStringFormatConverter x:Key="LocalizedStringFormatConverter" />
             <helpers:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
             <helpers:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
+            <helpers:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
             <helpers:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />
             <helpers:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
         </ResourceDictionary>

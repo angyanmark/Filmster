@@ -45,7 +45,6 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -74,17 +73,14 @@
                         <StackPanel Grid.Row="3"
                                     Orientation="Horizontal"
                                     Spacing="{StaticResource SmallSpacing}">
-                            <RatingControl IsReadOnly="True" Value="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
-                            <TextBlock Margin="{StaticResource XXSmallTopMargin}"
-                                       Foreground="{StaticResource SystemOffsetMediumBrush}"
-                                       Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="4"
-                                    Orientation="Horizontal"
-                                    Spacing="{StaticResource SmallSpacing}">
-                            <RatingControl ValueChanged="{x:Bind ViewModel.RatingChangedAsync}" Value="{x:Bind ViewModel.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
-
+                            <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                           PlaceholderValue="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}"
+                                           ValueChanged="{x:Bind ViewModel.RatingChangedAsync}"
+                                           Value="{x:Bind ViewModel.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                            <TextBlock VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                                <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                            </TextBlock>
                             <Grid x:Uid="Media_Favorite">
                                 <FontIcon FontFamily="Segoe MDL2 Assets"
                                           Glyph="&#xEB52;"
@@ -96,7 +92,6 @@
                                           Tapped="{x:Bind ViewModel.FavoriteClickedAsync}"
                                           Visibility="{x:Bind ViewModel.IsFavorite, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </Grid>
-
                             <Grid x:Uid="Media_Watchlist">
                                 <FontIcon FontFamily="Segoe MDL2 Assets"
                                           Glyph="&#xEC92;"
@@ -110,20 +105,20 @@
                             </Grid>
                         </StackPanel>
 
-                        <TextBlock Grid.Row="5"
+                        <TextBlock Grid.Row="4"
                                    Foreground="{StaticResource SystemOffsetMediumBrush}"
                                    Style="{StaticResource TaglineTextStyle}"
                                    Text="{x:Bind ViewModel.Movie.Tagline.ToUpper(), Mode=OneWay}" />
 
-                        <TextBlock Grid.Row="6"
+                        <TextBlock Grid.Row="5"
                                    Style="{StaticResource OverviewTextStyle}"
                                    Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
 
-                        <TextBlock Grid.Row="7"
+                        <TextBlock Grid.Row="6"
                                    Style="{StaticResource GenresTextStyle}"
                                    Text="{x:Bind ViewModel.Genres, Mode=OneWay}" />
 
-                        <StackPanel Grid.Row="8"
+                        <StackPanel Grid.Row="7"
                                     Orientation="Horizontal"
                                     Spacing="{StaticResource XSmallSpacing}">
                             <HyperlinkButton Padding="0"
@@ -143,7 +138,7 @@
                             </HyperlinkButton>
                         </StackPanel>
 
-                        <HyperlinkButton Grid.Row="9"
+                        <HyperlinkButton Grid.Row="8"
                                          Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
                                          Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">

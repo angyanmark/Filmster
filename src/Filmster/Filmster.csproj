@@ -154,6 +154,7 @@
     <Compile Include="Helpers\PersonCastCrewSortTypeToLocalizedStringConverter.cs" />
     <Compile Include="Helpers\RatableMediaViewModelBase.cs" />
     <Compile Include="Helpers\RatingToScaledRatingConverter.cs" />
+    <Compile Include="Helpers\RatingToScaledRatingStringConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\SearchBaseDataTemplateSelector.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
