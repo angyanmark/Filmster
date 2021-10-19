@@ -5,8 +5,8 @@ namespace Filmster.Helpers
 {
     public static class BackgroundTaskHelper
     {
-        private static readonly string TaskName = "TrendingMoviesBackgroundTask";
-        private static readonly string TaskEntryPoint = "BackgroundTasks.TrendingMoviesBackgroundTask";
+        private static readonly string TaskName = "TileUpdateBackgroundTask";
+        private static readonly string TaskEntryPoint = "BackgroundTasks.TileUpdateBackgroundTask";
 
         public static async void RegisterTileBackgroundTaskAsync()
         {
