@@ -379,43 +379,43 @@
   </data>
   <data name="Discover_Clear.Content" xml:space="preserve">
     <value>Clear</value>
-    <comment>Clear text for discover</comment>
+    <comment>Clear text for Discover</comment>
   </data>
   <data name="Discover_Discover.Content" xml:space="preserve">
     <value>Discover</value>
-    <comment>Discover text for discover</comment>
+    <comment>Discover text for Discover</comment>
   </data>
   <data name="Discover_Genre.Header" xml:space="preserve">
     <value>Genre</value>
-    <comment>Genre text for discover</comment>
+    <comment>Genre text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes.Header" xml:space="preserve">
     <value>Minimum Votes</value>
-    <comment>Minimum Votes text for discover</comment>
+    <comment>Minimum Votes text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes:.Text" xml:space="preserve">
     <value>Minimum Votes:</value>
-    <comment>Minimum Votes: text for discover</comment>
+    <comment>Minimum Votes: text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate.Text" xml:space="preserve">
     <value>Release Date</value>
-    <comment>Release Date text for discover</comment>
+    <comment>Release Date text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate:.Text" xml:space="preserve">
     <value>Release Date:</value>
-    <comment>Release Date: text for discover</comment>
+    <comment>Release Date: text for Discover</comment>
   </data>
   <data name="Discover_SortBy.Header" xml:space="preserve">
     <value>Sort by</value>
-    <comment>Sort by text for discover</comment>
+    <comment>Sort by text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage.Text" xml:space="preserve">
     <value>Vote Average</value>
-    <comment>Vote Average text for discover</comment>
+    <comment>Vote Average text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage:.Text" xml:space="preserve">
     <value>Vote Average:</value>
-    <comment>Vote Average: text for discover</comment>
+    <comment>Vote Average: text for Discover</comment>
   </data>
   <data name="Media_Movies.Text" xml:space="preserve">
     <value>Movies</value>
@@ -508,5 +508,9 @@
   <data name="Profile_WatchlistSwitch.OnContent" xml:space="preserve">
     <value>Tile pinned</value>
     <comment>Tile pinned text for Profile</comment>
+  </data>
+  <data name="List_CreatedBy" xml:space="preserve">
+    <value>by {0}</value>
+    <comment>by text for List</comment>
   </data>
 </root>

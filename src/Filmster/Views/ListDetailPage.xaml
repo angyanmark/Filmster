@@ -1,0 +1,44 @@
+﻿<Page x:Class="Filmster.Views.ListDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Style="{StaticResource PageStyle}"
+      mc:Ignorable="d">
+
+    <Grid>
+        <ProgressRing IsActive="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{StaticResource ProgressRing}" />
+        <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}"
+              RowSpacing="{StaticResource MediumSpacing}"
+              Visibility="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Style="{StaticResource DetailPageTitleStyle}">
+                <Run FontWeight="Bold" Text="{x:Bind ViewModel.GenericList.Name, Mode=OneWay}" />
+                <Run FontSize="{StaticResource LargeFontSize}"
+                     Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                     Text="{x:Bind ViewModel.GenericList.CreatedBy, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='List_CreatedBy'}" />
+            </TextBlock>
+
+            <TextBlock Grid.Row="1"
+                       Foreground="{StaticResource SystemOffsetMediumBrush}"
+                       Style="{StaticResource OverviewTextStyle}"
+                       Text="{x:Bind ViewModel.GenericList.Description, Mode=OneWay}" />
+
+            <TextBlock Grid.Row="2"
+                       FontStyle="Italic"
+                       Text="{x:Bind ViewModel.GenericList.ItemCount, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Profile_ListItemCount'}" />
+
+            <controls:AdaptiveGridView Grid.Row="3"
+                                       ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
+                                       ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+                                       Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+        </Grid>
+    </Grid>
+</Page>

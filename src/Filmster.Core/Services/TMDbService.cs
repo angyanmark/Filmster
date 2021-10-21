@@ -246,5 +246,10 @@ namespace Filmster.Core.Services
         {
             return (await client.AccountGetListsAsync()).Results;
         }
+
+        public static async Task<GenericList> GetListAsync(int id)
+        {
+            return await client.GetListAsync(id.ToString());
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Filmster.Core.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -101,7 +102,7 @@ namespace Filmster.ViewModels
         {
             LogInClickedCommand = new RelayCommand(LogInClickedAsync);
             LogOutClickedCommand = new RelayCommand(LogOutClickedAsync);
-            AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClickedAsync);
+            AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClicked);
 
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
@@ -292,10 +293,9 @@ namespace Filmster.ViewModels
             }
         }
 
-        private async void AccountListClickedAsync(AccountList accountList)
+        private void AccountListClicked(AccountList accountList)
         {
-            // TODO: list detail page navigation
-            // NavigationService.Navigate<ListDetailPage>(accountList.Id);
+            NavigationService.Navigate<ListDetailPage>(accountList.Id);
         }
     }
 }
