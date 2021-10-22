@@ -75,9 +75,9 @@ namespace Filmster.Core.Services
             }
         }
 
-        public static async Task<List<SearchMovie>> GetTrendingMoviesAsync(TimeWindow timeWindow)
+        public static async Task<List<SearchMovie>> GetPopularMoviesAsync()
         {
-            return (await client.GetTrendingMoviesAsync(timeWindow)).Results; // NOTE: no language filter
+            return (await client.GetMoviePopularListAsync(CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetUpcomingMoviesAsync()
@@ -105,9 +105,9 @@ namespace Filmster.Core.Services
             return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage);
         }
 
-        public static async Task<List<SearchTv>> GetTrendingTvShowsAsync(TimeWindow timeWindow)
+        public static async Task<List<SearchTv>> GetPopularTvShowsAsync()
         {
-            return (await client.GetTrendingTvAsync(timeWindow)).Results; // NOTE: no language filter
+            return (await client.GetTvShowPopularAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchTv>> GetTopRatedTvShowsAsync()

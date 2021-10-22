@@ -3,13 +3,12 @@ using Filmster.Helpers;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Search;
-using TMDbLib.Objects.Trending;
 
 namespace Filmster.ViewModels
 {
     public class MoviesViewModel : MediaViewModelBase
     {
-        public ObservableCollection<SearchMovie> TrendingMovies { get; set; } = new ObservableCollection<SearchMovie>();
+        public ObservableCollection<SearchMovie> PopularMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> UpcomingMovies { get; set; } = new ObservableCollection<SearchMovie>();
         public ObservableCollection<SearchMovie> TopRatedMovies { get; set; } = new ObservableCollection<SearchMovie>();
 
@@ -20,17 +19,17 @@ namespace Filmster.ViewModels
 
         private async Task GetMoviesAsync()
         {
-            await GetTrendingMoviesAsync();
+            await GetPopularMoviesAsync();
             await GetUpcomingMoviesAsync();
             await GetTopRatedMoviesAsync();
         }
 
-        private async Task GetTrendingMoviesAsync()
+        private async Task GetPopularMoviesAsync()
         {
-            var movies = await TMDbService.GetTrendingMoviesAsync(TimeWindow.Week);
+            var movies = await TMDbService.GetPopularMoviesAsync();
             foreach (var movie in movies)
             {
-                TrendingMovies.Add(movie);
+                PopularMovies.Add(movie);
             }
         }
 

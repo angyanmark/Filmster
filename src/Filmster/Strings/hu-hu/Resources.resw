@@ -193,13 +193,13 @@
     <value>p</value>
     <comment>Runtime minute tag for media</comment>
   </data>
-  <data name="Movies_Trending.Header" xml:space="preserve">
-    <value>Felkapott</value>
-    <comment>Trending pivot item title for Movies</comment>
+  <data name="Movies_Popular.Header" xml:space="preserve">
+    <value>Népszerű</value>
+    <comment>Popular pivot item title for Movies</comment>
   </data>
-  <data name="TvShows_Trending.Header" xml:space="preserve">
-    <value>Felkapott</value>
-    <comment>Trending pivot item title for TvShows</comment>
+  <data name="TvShows_Popular.Header" xml:space="preserve">
+    <value>Népszerű</value>
+    <comment>Popular pivot item title for TvShows</comment>
   </data>
   <data name="Media_Cast.Text" xml:space="preserve">
     <value>Szereposztás</value>

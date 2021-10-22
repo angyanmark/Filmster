@@ -8,9 +8,9 @@
       mc:Ignorable="d">
 
     <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
-        <PivotItem x:Uid="TvShows_Trending">
+        <PivotItem x:Uid="TvShows_Popular">
             <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
-                                       ItemsSource="{x:Bind ViewModel.TrendingTvShows, Mode=OneWay}"
+                                       ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 

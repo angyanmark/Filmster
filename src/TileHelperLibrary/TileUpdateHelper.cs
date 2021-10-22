@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using TMDbLib.Objects.Account;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Search;
-using TMDbLib.Objects.Trending;
 using Windows.UI.Notifications;
 using Windows.UI.StartScreen;
 
@@ -17,7 +16,7 @@ namespace TileHelperLibrary
         public static async Task UpdatePrimaryTileAsync()
         {
             var updater = TileUpdateManager.CreateTileUpdaterForApplication();
-            var movies = await TMDbService.GetTrendingMoviesAsync(TimeWindow.Week);
+            var movies = await TMDbService.GetPopularMoviesAsync();
             UpdateTile(updater, movies);
         }
 
