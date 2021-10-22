@@ -122,43 +122,43 @@
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Browse movies, shows, people...</value>
+    <value>Böngéssz filmeket, sorozatokat, embereket...</value>
     <comment>Application description</comment>
   </data>
   <data name="Shell_Movies.Content" xml:space="preserve">
-    <value>Movies</value>
+    <value>Filmek</value>
     <comment>Movies navigation view item name</comment>
   </data>
   <data name="Shell_TvShows.Content" xml:space="preserve">
-    <value>TV Shows</value>
+    <value>Sorozatok</value>
     <comment>TV Shows navigation view item name</comment>
   </data>
   <data name="People_Trending.Header" xml:space="preserve">
-    <value>Trending</value>
+    <value>Felkapott</value>
     <comment>Trending pivot item title for People</comment>
   </data>
   <data name="Shell_People.Content" xml:space="preserve">
-    <value>People</value>
+    <value>Emberek</value>
     <comment>People navigation view item name</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Choose theme</value>
+    <value>Válassz témát</value>
     <comment>Choose theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Sötét</value>
     <comment>Dark theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows default</value>
+    <value>Windows alapértelmezett</value>
     <comment>Windows default theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Világos</value>
     <comment>Light theme text for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Adatvédelmi nyilatkozat</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
@@ -166,59 +166,59 @@
     <comment>Privacy Statement link for Settings</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Személyre szabás</value>
     <comment>Personalization text for Settings</comment>
   </data>
   <data name="Movies_Upcoming.Header" xml:space="preserve">
-    <value>Upcoming</value>
+    <value>Közelgő</value>
     <comment>Upcoming pivot item title for Movies</comment>
   </data>
   <data name="Movies_TopRated.Header" xml:space="preserve">
-    <value>Top Rated</value>
+    <value>Legjobbnak értékelt</value>
     <comment>Top Rated pivot item title for Movies</comment>
   </data>
   <data name="TvShows_TopRated.Header" xml:space="preserve">
-    <value>Top Rated</value>
+    <value>Legjobbnak értékelt</value>
     <comment>Top Rated pivot item title for TvShows</comment>
   </data>
   <data name="Shell_SearchBoxPlaceholderText.PlaceholderText" xml:space="preserve">
-    <value>Search movies, shows, people...</value>
+    <value>Keress filmeket, sorozatokat, embereket...</value>
     <comment>SearchBox placeholder text in navigation bar</comment>
   </data>
   <data name="Media_RuntimeHours" xml:space="preserve">
-    <value>h</value>
+    <value>ó</value>
     <comment>Runtime hour tag for media</comment>
   </data>
   <data name="Media_RuntimeMinutes" xml:space="preserve">
-    <value>m</value>
+    <value>p</value>
     <comment>Runtime minute tag for media</comment>
   </data>
   <data name="Movies_Trending.Header" xml:space="preserve">
-    <value>Trending</value>
+    <value>Felkapott</value>
     <comment>Trending pivot item title for Movies</comment>
   </data>
   <data name="TvShows_Trending.Header" xml:space="preserve">
-    <value>Trending</value>
+    <value>Felkapott</value>
     <comment>Trending pivot item title for TvShows</comment>
   </data>
   <data name="Media_Cast.Text" xml:space="preserve">
-    <value>Cast</value>
+    <value>Szereposztás</value>
     <comment>Cast text for media</comment>
   </data>
   <data name="Media_Crew.Text" xml:space="preserve">
-    <value>Crew</value>
+    <value>Stáb</value>
     <comment>Crew text for media</comment>
   </data>
   <data name="Media_DirectedBy.Text" xml:space="preserve">
-    <value>Directed by</value>
+    <value>Rendezte</value>
     <comment>Directed by text for media</comment>
   </data>
   <data name="Media_Homepage.Text" xml:space="preserve">
-    <value>Homepage</value>
+    <value>Honlap</value>
     <comment>Homepage text for media</comment>
   </data>
   <data name="Media_Images.Text" xml:space="preserve">
-    <value>Images</value>
+    <value>Képek</value>
     <comment>Images text for media</comment>
   </data>
   <data name="Media_IMDb.Text" xml:space="preserve">
@@ -226,11 +226,11 @@
     <comment>IMDb text for media</comment>
   </data>
   <data name="Media_Recommendations.Text" xml:space="preserve">
-    <value>Recommendations</value>
+    <value>Ajánlások</value>
     <comment>Recommendations text for media</comment>
   </data>
   <data name="Media_ShowAll.Content" xml:space="preserve">
-    <value>Show all</value>
+    <value>Mutasd mindet</value>
     <comment>Show all text for media</comment>
   </data>
   <data name="Media_TMDb.Text" xml:space="preserve">
@@ -238,39 +238,39 @@
     <comment>TMDb text for media</comment>
   </data>
   <data name="Media_Trailer.Text" xml:space="preserve">
-    <value>Trailer</value>
+    <value>Előzetes</value>
     <comment>Trailer text for media</comment>
   </data>
   <data name="AppPublisher" xml:space="preserve">
-    <value>Márk Ángyán</value>
+    <value>Ángyán Márk</value>
     <comment>Application publisher name</comment>
   </data>
   <data name="Media_CreatedBy.Text" xml:space="preserve">
-    <value>Created by</value>
+    <value>Készítette</value>
     <comment>Created by text for media</comment>
   </data>
   <data name="Media_Seasons.Text" xml:space="preserve">
-    <value>Seasons</value>
+    <value>Évadok</value>
     <comment>Seasons text for media</comment>
   </data>
   <data name="Media_Episodes.Text" xml:space="preserve">
-    <value>Episodes</value>
+    <value>Epizódok</value>
     <comment>Episodes text for media</comment>
   </data>
   <data name="Media_EpisodesCount" xml:space="preserve">
-    <value>{0} episodes</value>
+    <value>{0} epizód</value>
     <comment>Episode count text for media</comment>
   </data>
   <data name="Settings_AppDescription.Text" xml:space="preserve">
-    <value>Browse movies, shows, people...</value>
+    <value>Böngéssz filmeket, sorozatokat, embereket...</value>
     <comment>Application description</comment>
   </data>
   <data name="Settings_Copyright.Text" xml:space="preserve">
-    <value>Copyright (c) 2021 Márk Ángyán</value>
+    <value>Copyright (c) 2021 Ángyán Márk</value>
     <comment>Copyright text for Settings</comment>
   </data>
   <data name="Settings_CreatedBy.Text" xml:space="preserve">
-    <value>Created by Márk Ángyán</value>
+    <value>Készítette: Ángyán Márk</value>
     <comment>Created by text for Settings</comment>
   </data>
   <data name="Settings_Disclaim.Text" xml:space="preserve">
@@ -278,7 +278,7 @@
     <comment>Disclaim text for Settings</comment>
   </data>
   <data name="Settings_Disclaimer.Text" xml:space="preserve">
-    <value>Disclaimer</value>
+    <value>Felelősségkizárás</value>
     <comment>Disclaimer text for Settings</comment>
   </data>
   <data name="Settings_GitHubIssuesLink.Content" xml:space="preserve">
@@ -290,7 +290,7 @@
     <comment>GitHub issues link for Settings</comment>
   </data>
   <data name="Settings_GitHubIssuesLinkPre.Text" xml:space="preserve">
-    <value>For issue reporting and feature requests:</value>
+    <value>Hibabejelentések és funkciókérések esetén:</value>
     <comment>GitHub issues link pre text for Settings</comment>
   </data>
   <data name="Settings_GitHubLink.Content" xml:space="preserve">
@@ -302,139 +302,139 @@
     <comment>GitHub link for Settings</comment>
   </data>
   <data name="Settings_GitHubLinkPre.Text" xml:space="preserve">
-    <value>Source code is available on GitHub:</value>
+    <value>A forráskód elérhető a GitHubon:</value>
     <comment>GitHub link pre text for Settings</comment>
   </data>
   <data name="Settings_TMDbNotice.Text" xml:space="preserve">
-    <value>This product uses the TMDb API but is not endorsed or certified by TMDb.</value>
+    <value>Ez a termék a TMDb API-t használja, de a TMDb nem hagyta jóvá és nem hitelesítette.</value>
     <comment>TMDb notice for Settings</comment>
   </data>
   <data name="Shell_Discover.Content" xml:space="preserve">
-    <value>Discover</value>
+    <value>Felfedezés</value>
     <comment>Discover navigation view item name</comment>
   </data>
   <data name="DiscoverMovieSortBy_OriginalTitle" xml:space="preserve">
-    <value>Original Title</value>
+    <value>Eredeti cím</value>
     <comment>DiscoverMovieSortBy.OriginalTitle displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_OriginalTitleDesc" xml:space="preserve">
-    <value>Original Title (desc)</value>
+    <value>Eredeti cím (csökkenő)</value>
     <comment>DiscoverMovieSortBy.OriginalTitleDesc displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_Popularity" xml:space="preserve">
-    <value>Popularity</value>
+    <value>Népszerűség</value>
     <comment>DiscoverMovieSortBy.Popularity displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_PopularityDesc" xml:space="preserve">
-    <value>Popularity (desc)</value>
+    <value>Népszerűség (csökkenő)</value>
     <comment>DiscoverMovieSortBy.PopularityDesc displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_PrimaryReleaseDate" xml:space="preserve">
-    <value>Primary Release Date</value>
+    <value>Elsődleges megjelenési dátum</value>
     <comment>DiscoverMovieSortBy.PrimaryReleaseDate displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_PrimaryReleaseDateDesc" xml:space="preserve">
-    <value>Primary Release Date (desc)</value>
+    <value>Elsődleges megjelenési dátum (csökkenő)</value>
     <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_ReleaseDate" xml:space="preserve">
-    <value>Release Date</value>
+    <value>Megjelenési dátum</value>
     <comment>DiscoverMovieSortBy.ReleaseDate displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_ReleaseDateDesc" xml:space="preserve">
-    <value>Release Date (desc)</value>
+    <value>Megjelenési dátum (csökkenő)</value>
     <comment>DiscoverMovieSortBy.ReleaseDateDesc displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_Revenue" xml:space="preserve">
-    <value>Revenue</value>
+    <value>Bevétel</value>
     <comment>DiscoverMovieSortBy.Revenue displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_RevenueDesc" xml:space="preserve">
-    <value>Revenue (desc)</value>
+    <value>Bevétel (csökkenő)</value>
     <comment>DiscoverMovieSortBy.RevenueDesc displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_Undefined" xml:space="preserve">
-    <value>Undefined</value>
+    <value>Ismeretlen</value>
     <comment>DiscoverMovieSortBy.Undefined displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverage" xml:space="preserve">
-    <value>Vote Average</value>
+    <value>Szavazatátlag</value>
     <comment>DiscoverMovieSortBy.VoteAverage displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverageDesc" xml:space="preserve">
-    <value>Vote Average (desc)</value>
+    <value>Szavazatátlag (csökkenő)</value>
     <comment>DiscoverMovieSortBy.VoteAverageDesc displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteCount" xml:space="preserve">
-    <value>Vote Count</value>
+    <value>Szavazatszám</value>
     <comment>DiscoverMovieSortBy.VoteCount displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteCountDesc" xml:space="preserve">
-    <value>Vote Count (desc)</value>
+    <value>Szavazatszám (csökkenő)</value>
     <comment>DiscoverMovieSortBy.VoteCountDesc displayname</comment>
   </data>
   <data name="Discover_Clear.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>Törlés</value>
     <comment>Clear text for Discover</comment>
   </data>
   <data name="Discover_Discover.Content" xml:space="preserve">
-    <value>Discover</value>
+    <value>Felfedezés</value>
     <comment>Discover text for Discover</comment>
   </data>
   <data name="Discover_Genre.Header" xml:space="preserve">
-    <value>Genre</value>
+    <value>Műfaj</value>
     <comment>Genre text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes.Header" xml:space="preserve">
-    <value>Minimum Votes</value>
+    <value>Minimális szavazat</value>
     <comment>Minimum Votes text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes:.Text" xml:space="preserve">
-    <value>Minimum Votes:</value>
+    <value>Minimális szavazat:</value>
     <comment>Minimum Votes: text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate.Text" xml:space="preserve">
-    <value>Release Date</value>
+    <value>Megjelenési dátum</value>
     <comment>Release Date text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate:.Text" xml:space="preserve">
-    <value>Release Date:</value>
+    <value>Megjelenési dátum:</value>
     <comment>Release Date: text for Discover</comment>
   </data>
   <data name="Discover_SortBy.Header" xml:space="preserve">
-    <value>Sort by</value>
+    <value>Rendezés</value>
     <comment>Sort by text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage.Text" xml:space="preserve">
-    <value>Vote Average</value>
+    <value>Szavazatátlag</value>
     <comment>Vote Average text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage:.Text" xml:space="preserve">
-    <value>Vote Average:</value>
+    <value>Szavazatátlag:</value>
     <comment>Vote Average: text for Discover</comment>
   </data>
   <data name="Media_Movies.Text" xml:space="preserve">
-    <value>Movies</value>
+    <value>Filmek</value>
     <comment>Movies text for media</comment>
   </data>
   <data name="Media_TvShows.Text" xml:space="preserve">
-    <value>TV Shows</value>
+    <value>Sorozatok</value>
     <comment>TV Shows text for media</comment>
   </data>
   <data name="Settings_IncludeAdult.Header" xml:space="preserve">
-    <value>Include adult content in search results</value>
+    <value>Felnőtt tartalom megjelenítése a keresési eredményekben</value>
     <comment>Include adult content in search results text for Settings</comment>
   </data>
   <data name="Media_SortBy.Header" xml:space="preserve">
-    <value>Sort by</value>
+    <value>Rendezés</value>
     <comment>Sort by text for media</comment>
   </data>
   <data name="PersonCastCrewSortType_ReleaseDate" xml:space="preserve">
-    <value>Release date</value>
+    <value>Megjelenési dátum</value>
     <comment>Release date translation for PersonCastCrewSortType</comment>
   </data>
   <data name="PersonCastCrewSortType_Title" xml:space="preserve">
-    <value>Title</value>
+    <value>Cím</value>
     <comment>Title translation for PersonCastCrewSortType</comment>
   </data>
   <data name="AppLogo.Text" xml:space="preserve">
@@ -442,103 +442,103 @@
     <comment>Application logo text</comment>
   </data>
   <data name="Profile_GuestName" xml:space="preserve">
-    <value>Guest</value>
+    <value>Vendég</value>
     <comment>Name of the guest user</comment>
   </data>
   <data name="Profile_GuestUsername" xml:space="preserve">
-    <value>guest</value>
+    <value>vendég</value>
     <comment>Username of the guest user</comment>
   </data>
   <data name="Profile_LogIn.Content" xml:space="preserve">
-    <value>Log in</value>
+    <value>Bejelentkezés</value>
     <comment>Log in text for Profile</comment>
   </data>
   <data name="Profile_LogOut.Content" xml:space="preserve">
-    <value>Log out</value>
+    <value>Kijelentkezés</value>
     <comment>Log out text for Profile</comment>
   </data>
   <data name="Profile_Watchlist.Header" xml:space="preserve">
-    <value>Watchlist</value>
+    <value>Megnézendő</value>
     <comment>Watchlist text for Profile</comment>
   </data>
   <data name="Profile_Favorites.Header" xml:space="preserve">
-    <value>Favorites</value>
+    <value>Kedvencek</value>
     <comment>Favorites text for Profile</comment>
   </data>
   <data name="Profile_Movies.Header" xml:space="preserve">
-    <value>Movies</value>
+    <value>Filmek</value>
     <comment>Movies text for Profile</comment>
   </data>
   <data name="Profile_TvShows.Header" xml:space="preserve">
-    <value>TV Shows</value>
+    <value>Sorozatok</value>
     <comment>TV Shows text for Profile</comment>
   </data>
   <data name="Profile_Rated.Header" xml:space="preserve">
-    <value>Rated</value>
+    <value>Értékelt</value>
     <comment>Rated text for Profile</comment>
   </data>
   <data name="Media_Favorite.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Favorite</value>
+    <value>Kedvenc</value>
     <comment>Favorite tooltip text for media</comment>
   </data>
   <data name="Media_Watchlist.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Watchlist</value>
+    <value>Megnézendő</value>
     <comment>Watchlist tooltip text for media</comment>
   </data>
   <data name="Profile_Lists.Header" xml:space="preserve">
-    <value>Lists</value>
+    <value>Listák</value>
     <comment>Lists text for Profile</comment>
   </data>
   <data name="Profile_ListItemCount" xml:space="preserve">
-    <value>{0} items</value>
+    <value>{0} elem</value>
     <comment>Item count text for Profile</comment>
   </data>
   <data name="Tile_Watchlist" xml:space="preserve">
-    <value>Watchlist</value>
+    <value>Megnézendők</value>
     <comment>Watchlist text for Tile</comment>
   </data>
   <data name="Profile_WatchlistSwitch.OffContent" xml:space="preserve">
-    <value>Pin tile</value>
+    <value>Csempe kitűzése</value>
     <comment>Pint tile text for Profile</comment>
   </data>
   <data name="Profile_WatchlistSwitch.OnContent" xml:space="preserve">
-    <value>Tile pinned</value>
+    <value>Csempe kitűzve</value>
     <comment>Tile pinned text for Profile</comment>
   </data>
   <data name="List_CreatedBy" xml:space="preserve">
-    <value>by {0}</value>
+    <value>készítette: {0}</value>
     <comment>by text for List</comment>
   </data>
   <data name="AppLanguage_en-US" xml:space="preserve">
-    <value>English</value>
+    <value>Angol</value>
     <comment>English text for Settings</comment>
   </data>
   <data name="AppLanguage_hu" xml:space="preserve">
-    <value>Hungarian</value>
+    <value>Magyar</value>
     <comment>Hungarian text for Settings</comment>
   </data>
   <data name="Settings_Language.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>Nyelv</value>
     <comment>Language text for Settings</comment>
   </data>
   <data name="Settings_Restart.Content" xml:space="preserve">
-    <value>Restart application</value>
+    <value>Alkalmazás újraindítása</value>
     <comment>Restart application text for Settings</comment>
   </data>
   <data name="Media_EpisodeNumber" xml:space="preserve">
-    <value>E{0:00}</value>
+    <value>{0}. rész</value>
     <comment>Episode number text for Media</comment>
   </data>
   <data name="Media_SeasonNumber" xml:space="preserve">
-    <value>S{0:00}</value>
+    <value>{0}. évad</value>
     <comment>Season number text for Media</comment>
   </data>
   <data name="Date_ShortDate" xml:space="preserve">
-    <value>{0:MM/dd/yyyy}</value>
+    <value>{0:yyyy. MM. dd.}</value>
     <comment>Short date format</comment>
   </data>
   <data name="Media_Season" xml:space="preserve">
-    <value>Season {0}</value>
+    <value>{0}. évad</value>
     <comment>Season text for media</comment>
   </data>
 </root>

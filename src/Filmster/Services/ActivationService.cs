@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Filmster.Activation;
+using Filmster.Core.Services;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -57,6 +58,7 @@ namespace Filmster.Services
         private async Task InitializeAsync()
         {
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
+            TMDbService.CurrentLanguage = LanguageService.CurrentLanguage;
             await UserSessionService.StartUserSessionAsync();
         }
 

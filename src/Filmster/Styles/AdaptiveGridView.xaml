@@ -54,10 +54,10 @@
                     <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
                 </Grid>
                 <Grid>
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate.Year}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate.Year}" />
                     <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
-                               Text="{Binding EpisodeCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}"
+                               Text="{Binding EpisodeCount, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodesCount'}"
                                Visibility="{Binding FirstAirDate, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
                 </Grid>
             </StackPanel>
@@ -74,10 +74,10 @@
                     <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
                 </Grid>
                 <Grid>
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate.Year}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate.Year}" />
                     <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
-                               Text="{Binding EpisodeCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0\} episodes'}"
+                               Text="{Binding EpisodeCount, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodesCount'}"
                                Visibility="{Binding FirstAirDate, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
                 </Grid>
             </StackPanel>
@@ -137,11 +137,11 @@
                         Spacing="{StaticResource XXXSmallSpacing}">
                 <TextBlock Style="{StaticResource ListTitleStyle}">
                     <Run FontWeight="Bold" Text="{Binding Name}" />
-                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding AirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:MM/dd/yyyy}'}" />
+                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding AirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}" />
                 </TextBlock>
                 <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
-                    <Run Text="{Binding SeasonNumber, Converter={StaticResource StringFormatConverter}, ConverterParameter='S{0:00}'}" />
-                    <Run Text="{Binding EpisodeNumber, Converter={StaticResource StringFormatConverter}, ConverterParameter='E{0:00}'}" />
+                    <Run Text="{Binding SeasonNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
+                    <Run Text="{Binding EpisodeNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource ListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
@@ -219,7 +219,7 @@
                         Spacing="{StaticResource SmallSpacing}">
                 <TextBlock Style="{StaticResource SearchListTitleStyle}">
                     <Run FontWeight="Bold" Text="{Binding Title}" />
-                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding ReleaseDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding ReleaseDate.Year}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
@@ -252,7 +252,7 @@
                         Spacing="{StaticResource SmallSpacing}">
                 <TextBlock Style="{StaticResource SearchListTitleStyle}">
                     <Run FontWeight="Bold" Text="{Binding Name}" />
-                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding FirstAirDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy}'}" />
+                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding FirstAirDate.Year}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">

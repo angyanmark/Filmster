@@ -25,7 +25,7 @@ namespace Filmster.Core.Services
         public static readonly string SmallBackdropSize = "w300";
         public static readonly string MediumBackdropSize = "w780";
         public static readonly string LargeBackdropSize = "w1280";
-        
+
         public static readonly string SmallLogoSize = "w92";
         public static readonly string MediumLogoSize = "w185";
         public static readonly string LargeLogoSize = "w300";
@@ -61,24 +61,38 @@ namespace Filmster.Core.Services
 
         public static readonly int DefaultCastCrewBackdropCount = 15;
 
+        public static string CurrentLanguage { get; set; }
+
+        private static string IncludeImageLanguage
+        {
+            get
+            {
+                var includeLanguage = "null,en";
+                var code = CurrentLanguage.Substring(0, 2);
+                return code == "en"
+                    ? includeLanguage
+                    : $"{code},{includeLanguage}";
+            }
+        }
+
         public static async Task<List<SearchMovie>> GetTrendingMoviesAsync(TimeWindow timeWindow)
         {
-            return (await client.GetTrendingMoviesAsync(timeWindow)).Results;
+            return (await client.GetTrendingMoviesAsync(timeWindow)).Results; // NOTE: no language filter
         }
 
         public static async Task<List<SearchMovie>> GetUpcomingMoviesAsync()
         {
-            return (await client.GetMovieUpcomingListAsync()).Results;
+            return (await client.GetMovieUpcomingListAsync(CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetTopRatedMoviesAsync()
         {
-            return (await client.GetMovieTopRatedListAsync()).Results;
+            return (await client.GetMovieTopRatedListAsync(CurrentLanguage)).Results;
         }
 
         public static async Task<Movie> GetMovieAsync(int id)
         {
-            return await client.GetMovieAsync(id, MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
+            return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
         }
 
         public static async Task<AccountState> GetMovieAccountStateAsync(int id)
@@ -88,22 +102,22 @@ namespace Filmster.Core.Services
 
         public static async Task<Collection> GetCollectionAsync(int id)
         {
-            return await client.GetCollectionAsync(id);
+            return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage);
         }
 
         public static async Task<List<SearchTv>> GetTrendingTvShowsAsync(TimeWindow timeWindow)
         {
-            return (await client.GetTrendingTvAsync(timeWindow)).Results;
+            return (await client.GetTrendingTvAsync(timeWindow)).Results; // NOTE: no language filter
         }
 
         public static async Task<List<SearchTv>> GetTopRatedTvShowsAsync()
         {
-            return (await client.GetTvShowTopRatedAsync()).Results;
+            return (await client.GetTvShowTopRatedAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<TvShow> GetTvShowAsync(int id)
         {
-            return await client.GetTvShowAsync(id, TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds);
+            return await client.GetTvShowAsync(id, TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
         }
 
         public static async Task<AccountState> GetTvShowAccountStateAsync(int id)
@@ -113,22 +127,22 @@ namespace Filmster.Core.Services
 
         public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber)
         {
-            return await client.GetTvSeasonAsync(tvShowId, seasonNumber, TvSeasonMethods.Images | TvSeasonMethods.Credits);
+            return await client.GetTvSeasonAsync(tvShowId, seasonNumber, TvSeasonMethods.Images | TvSeasonMethods.Credits, CurrentLanguage, IncludeImageLanguage);
         }
 
         public static async Task<List<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow)
         {
-            return (await client.GetTrendingPeopleAsync(timeWindow)).Results;
+            return (await client.GetTrendingPeopleAsync(timeWindow)).Results;  // NOTE: no language filter
         }
 
         public static async Task<Person> GetPersonAsync(int id)
         {
-            return await client.GetPersonAsync(id, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
+            return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
         }
 
         public static async Task<List<SearchBase>> GetMultiSearchAsync(string value, bool includeAdult)
         {
-            return (await client.SearchMultiAsync(value, includeAdult: includeAdult)).Results;
+            return (await client.SearchMultiAsync(value, CurrentLanguage, includeAdult: includeAdult)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options)
@@ -141,14 +155,14 @@ namespace Filmster.Core.Services
                 .WhereVoteCountIsAtLeast(options.VoteCountAtLeast)
                 .IncludeWithAllOfGenre(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
                 .OrderBy(options.SortBy)
-                .Query();
+                .Query(CurrentLanguage);
 
             return query.Results;
         }
 
         public static async Task<List<Genre>> GetMovieGenresAsync()
         {
-            return await client.GetMovieGenresAsync();
+            return await client.GetMovieGenresAsync(CurrentLanguage);
         }
 
         public static async Task<Token> GetAutenticationTokenAsync()
@@ -179,32 +193,32 @@ namespace Filmster.Core.Services
 
         public static async Task<List<SearchMovie>> GetMovieWatchlistAsync(AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
         {
-            return (await client.AccountGetMovieWatchlistAsync(sortBy: sortBy, sortOrder: sortOrder)).Results;
+            return (await client.AccountGetMovieWatchlistAsync(sortBy: sortBy, sortOrder: sortOrder, language: CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchTv>> GetTvShowWatchlistAsync()
         {
-            return (await client.AccountGetTvWatchlistAsync()).Results;
+            return (await client.AccountGetTvWatchlistAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetFavoriteMoviesAsync()
         {
-            return (await client.AccountGetFavoriteMoviesAsync()).Results;
+            return (await client.AccountGetFavoriteMoviesAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchTv>> GetFavoriteTvShowsAsync()
         {
-            return (await client.AccountGetFavoriteTvAsync()).Results;
+            return (await client.AccountGetFavoriteTvAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchMovieWithRating>> GetRatedMoviesAsync()
         {
-            return (await client.AccountGetRatedMoviesAsync()).Results;
+            return (await client.AccountGetRatedMoviesAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<List<AccountSearchTv>> GetRatedTvShowsAsync()
         {
-            return (await client.AccountGetRatedTvShowsAsync()).Results;
+            return (await client.AccountGetRatedTvShowsAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<bool> SetRatingAsync(MediaType mediaType, int id, double value)
@@ -244,12 +258,12 @@ namespace Filmster.Core.Services
 
         public static async Task<List<AccountList>> GetListsAsync()
         {
-            return (await client.AccountGetListsAsync()).Results;
+            return (await client.AccountGetListsAsync(language: CurrentLanguage)).Results;
         }
 
         public static async Task<GenericList> GetListAsync(int id)
         {
-            return await client.GetListAsync(id.ToString());
+            return await client.GetListAsync(id.ToString()); // TODO: language
         }
     }
 }

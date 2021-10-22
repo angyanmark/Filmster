@@ -163,6 +163,7 @@
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\IncludeAdultService.cs" />
+    <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\UserSessionService.cs" />
@@ -403,6 +404,7 @@
   <ItemGroup>
     <None Include=".editorconfig" />
     <None Include="Filmster_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\hu-hu\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
