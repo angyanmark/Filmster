@@ -59,6 +59,11 @@ namespace Filmster.Helpers
             {
                 IsWatchlist = !IsWatchlist;
                 IsNotWatchlist = !IsWatchlist;
+
+                if (mediaType == MediaType.Movie)
+                {
+                    await TileUpdateHelper.UpdateWatchlistTileAsync();
+                }
             }
         }
 
@@ -82,7 +87,10 @@ namespace Filmster.Helpers
                 IsWatchlist = !IsWatchlist;
                 IsNotWatchlist = !IsWatchlist;
 
-                await TileUpdateHelper.UpdateWatchlistTileAsync();
+                if (mediaType == MediaType.Movie)
+                {
+                    await TileUpdateHelper.UpdateWatchlistTileAsync();
+                }
             }
         }
     }
