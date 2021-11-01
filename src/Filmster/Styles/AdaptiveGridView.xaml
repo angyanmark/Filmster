@@ -46,7 +46,7 @@
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterTemplate">
-        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
             <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
                 <Grid>
@@ -65,7 +65,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchSmallPosterWithRatingTemplate">
-        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
             <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
                 <RatingControl IsReadOnly="True" Value="{Binding Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
@@ -85,7 +85,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumProfileTemplate">
-        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
             <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
                 <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
@@ -169,7 +169,7 @@
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridAccountListTemplate">
-        <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <Grid Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
             <StackPanel Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                         VerticalAlignment="Center"
                         Spacing="{StaticResource XXSmallSpacing}">
