@@ -1,4 +1,6 @@
 ﻿using Filmster.Core.Services;
+using Filmster.Services;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using TileHelperLibrary;
 using TMDbLib.Objects.General;
@@ -7,6 +9,13 @@ namespace Filmster.Helpers
 {
     public class RatableMediaViewModelBase : MediaViewModelBase
     {
+        private bool _isLoggedIn;
+        public bool IsLoggedIn
+        {
+            get { return _isLoggedIn; }
+            set { Set(ref _isLoggedIn, value); }
+        }
+
         private double _rating;
         public double Rating
         {
@@ -42,8 +51,37 @@ namespace Filmster.Helpers
             set { Set(ref _isNotWatchlist, value); }
         }
 
-        private protected void SetAccountState(AccountState accountState)
+        public RatableMediaViewModelBase()
         {
+            _ = SetLoggedIn();
+        }
+
+        private async Task SetLoggedIn()
+        {
+            IsLoggedIn = await UserSessionService.IsLoggedIn();
+        }
+
+        private protected async Task SetAccountStateAsync(MediaType mediaType, int id)
+        {
+            if (!IsLoggedIn)
+            {
+                return;
+            }
+
+            AccountState accountState;
+
+            switch (mediaType)
+            {
+                case MediaType.Movie:
+                    accountState = await TMDbService.GetMovieAccountStateAsync(id);
+                    break;
+                case MediaType.Tv:
+                    accountState = await TMDbService.GetTvShowAccountStateAsync(id);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException(nameof(mediaType), (int)mediaType, typeof(MediaType));
+            }
+
             Rating = accountState.Rating ?? -1;
             IsFavorite = accountState.Favorite;
             IsNotFavorite = !IsFavorite;
@@ -53,6 +91,11 @@ namespace Filmster.Helpers
 
         private protected async Task ChangeRatingAsync(MediaType mediaType, int id, double value)
         {
+            if (!IsLoggedIn)
+            {
+                return;
+            }
+
             bool success = await TMDbService.SetRatingAsync(mediaType, id, value);
 
             if (success && value != -1 && IsWatchlist)
@@ -69,6 +112,11 @@ namespace Filmster.Helpers
 
         private protected async Task ChangeFavoriteAsync(MediaType mediaType, int id)
         {
+            if (!IsLoggedIn)
+            {
+                return;
+            }
+
             var success = await TMDbService.ChangeFavoriteStatusAsync(mediaType, id, !IsFavorite);
 
             if (success)
@@ -80,6 +128,11 @@ namespace Filmster.Helpers
 
         private protected async Task ChangeWatchlistAsync(MediaType mediaType, int id)
         {
+            if (!IsLoggedIn)
+            {
+                return;
+            }
+
             var success = await TMDbService.ChangeWatchlistStatusAsync(mediaType, id, !IsWatchlist);
 
             if (success)

@@ -73,6 +73,7 @@
                                     Orientation="Horizontal"
                                     Spacing="{StaticResource SmallSpacing}">
                             <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                           IsReadOnly="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
                                            PlaceholderValue="{x:Bind ViewModel.TvShow.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}"
                                            ValueChanged="{x:Bind ViewModel.RatingChangedAsync}"
                                            Value="{x:Bind ViewModel.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />

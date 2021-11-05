@@ -118,8 +118,8 @@ namespace Filmster.ViewModels
                 NavigationService.GoBack();
                 return;
             }
-            var accountState = await TMDbService.GetMovieAccountStateAsync(id);
-            SetAccountState(accountState);
+            
+            await SetAccountStateAsync(MediaType.Movie, id);
 
             SelectedPoster = GetSelectedPoster();
             Directors = GetDirectors();
