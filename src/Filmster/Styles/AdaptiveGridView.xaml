@@ -175,11 +175,11 @@
                         Spacing="{StaticResource XXSmallSpacing}">
                 <TextBlock HorizontalAlignment="Center"
                            FontWeight="Bold"
-                           Style="{StaticResource SearchListTitleStyle}"
+                           Style="{StaticResource AccountListNameStyle}"
                            Text="{Binding Name}" />
                 <TextBlock HorizontalAlignment="Center"
                            Foreground="{StaticResource SystemOffsetMediumLowBrush}"
-                           Style="{StaticResource SearchListOverviewTextStyle}"
+                           Style="{StaticResource AccountListDescriptionTextStyle}"
                            Text="{Binding Description}" />
                 <TextBlock HorizontalAlignment="Center"
                            FontStyle="Italic"

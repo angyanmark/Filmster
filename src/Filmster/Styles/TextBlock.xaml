@@ -117,6 +117,20 @@
         <Setter Property="Margin" Value="{StaticResource MediumLeftTopRightBottomMargin}" />
     </Style>
 
+    <Style x:Key="AccountListNameStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="MaxLines" Value="1" />
+    </Style>
+
+    <Style x:Key="AccountListDescriptionTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="MaxLines" Value="1" />
+    </Style>
+
     <Style x:Key="ImageGridTitleTextStyle" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
