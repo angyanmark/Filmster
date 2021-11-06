@@ -3,6 +3,7 @@ using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -157,6 +158,32 @@ namespace Filmster.ViewModels
         {
             DataLoaded = false;
             IsLoggedOut = false;
+            await GetDetailsAsync();
+            IsMovieWatchlistPinned = TilePinHelper.IsTilePinned(Constants.MovieWatchlistTileId);
+            IsTvShowWatchlistPinned = TilePinHelper.IsTilePinned(Constants.TvShowWatchlistTileId);
+            IsLoggedIn = !IsLoggedOut;
+            DataLoaded = true;
+        }
+
+        private async Task GetDetailsAsync()
+        {
+            var tasks = new List<Task>
+            {
+                GetAccountDetailsAsync(),
+                GetRatedMoviesAsync(),
+                GetRatedTvShowsAsync(),
+                GetMovieWatchlistAsync(),
+                GetTvShowWatchlistAsync(),
+                GetFavoriteMoviesAsync(),
+                GetFavoriteTvShowsAsync(),
+                GetListsAsync(),
+            };
+
+            await Task.WhenAll(tasks);
+        }
+
+        private async Task GetAccountDetailsAsync()
+        {
             var accountDetails = await TMDbService.GetAccountDetailsAsync();
             if (string.IsNullOrEmpty(accountDetails.Avatar.Gravatar.Hash))
             {
@@ -171,22 +198,6 @@ namespace Filmster.ViewModels
             }
             Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
             Username = accountDetails.Username;
-            await GetDetailsAsync();
-            IsMovieWatchlistPinned = TilePinHelper.IsTilePinned(Constants.MovieWatchlistTileId);
-            IsTvShowWatchlistPinned = TilePinHelper.IsTilePinned(Constants.TvShowWatchlistTileId);
-            IsLoggedIn = !IsLoggedOut;
-            DataLoaded = true;
-        }
-
-        private async Task GetDetailsAsync()
-        {
-            await GetRatedMoviesAsync();
-            await GetRatedTvShowsAsync();
-            await GetMovieWatchlistAsync();
-            await GetTvShowWatchlistAsync();
-            await GetFavoriteMoviesAsync();
-            await GetFavoriteTvShowsAsync();
-            await GetListsAsync();
         }
 
         private async Task GetRatedMoviesAsync()
