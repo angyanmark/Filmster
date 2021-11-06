@@ -11,25 +11,45 @@ namespace TileHelperLibrary
             return SecondaryTile.Exists(tileId);
         }
 
-        public static async Task<bool> PinWatchlistAsync(string displayName)
+        public static async Task<bool> PinMovieWatchlistAsync(string displayName)
         {
-            bool isAlreadyPinned = SecondaryTile.Exists(Constants.MovieWatchlistTileId);
+            return await PinWatchlistAsync(Constants.MovieWatchlistTileId, displayName);
+        }
+
+        public static async Task<bool> PinTvShowWatchlistAsync(string displayName)
+        {
+            return await PinWatchlistAsync(Constants.TvShowWatchlistTileId, displayName);
+        }
+
+        private static async Task<bool> PinWatchlistAsync(string tileId, string displayName)
+        {
+            bool isAlreadyPinned = SecondaryTile.Exists(tileId);
             if (isAlreadyPinned)
             {
                 return true;
             }
 
             SecondaryTile tile = new SecondaryTile(
-                Constants.MovieWatchlistTileId,
+                tileId,
                 displayName,
-                "action=movie_watchlist",
+                $"action={tileId}",
                 new Uri("ms-appx:///Assets/Square150x150Logo.png"),
                 TileSize.Default);
 
             bool isPinned = await tile.RequestCreateAsync();
             if (isPinned)
             {
-                await TileUpdateHelper.UpdateWatchlistTileAsync();
+                switch (tileId)
+                {
+                    case Constants.MovieWatchlistTileId:
+                        await TileUpdateHelper.UpdateMovieWatchlistTileAsync();
+                        break;
+                    case Constants.TvShowWatchlistTileId:
+                        await TileUpdateHelper.UpdateTvShowWatchlistTileAsync();
+                        break;
+                    default:
+                        throw new ArgumentException(string.Format("Invalid tile ID: {0}.", tileId), nameof(tileId));
+                }
             }
 
             return isPinned;
@@ -48,6 +68,7 @@ namespace TileHelperLibrary
         public static async Task UnpinUserTilesAsync()
         {
             await UnpinTileAsync(Constants.MovieWatchlistTileId);
+            await UnpinTileAsync(Constants.TvShowWatchlistTileId);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Filmster.ViewModels;
+﻿using Filmster.Core.Models;
+using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -16,7 +17,9 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel.PivotSelectedIndex = e.Parameter == null ? 0 : (int)e.Parameter;
+            var parameter = e.Parameter as WatchlistActivationNavigationParameter;
+            ViewModel.PrimaryPivotSelectedIndex = parameter?.PrimaryPivotIndex ?? 0;
+            ViewModel.WatchlistPivotSelectedIndex = parameter?.WatchlistPivotIndex ?? 0;
             await ViewModel.LoadProfile();
             ViewModel.DataLoaded = true;
         }

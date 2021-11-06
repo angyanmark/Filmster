@@ -17,7 +17,7 @@ namespace TileHelperLibrary
         {
             var updater = TileUpdateManager.CreateTileUpdaterForApplication();
             var movies = await TMDbService.GetPopularMoviesAsync();
-            UpdateTile(updater, movies);
+            UpdateMovieTile(updater, movies);
         }
 
         public static async Task UpdateSecondaryTilesAsync()
@@ -29,7 +29,10 @@ namespace TileHelperLibrary
                 switch (tile.TileId)
                 {
                     case Constants.MovieWatchlistTileId:
-                        await UpdateWatchlistTileAsync();
+                        await UpdateMovieWatchlistTileAsync();
+                        break;
+                    case Constants.TvShowWatchlistTileId:
+                        await UpdateTvShowWatchlistTileAsync();
                         break;
                     default:
                         break;
@@ -37,21 +40,40 @@ namespace TileHelperLibrary
             }
         }
 
-        public static async Task UpdateWatchlistTileAsync()
+        public static async Task UpdateMovieWatchlistTileAsync()
         {
             var updater = TileUpdateManager.CreateTileUpdaterForSecondaryTile(Constants.MovieWatchlistTileId);
             var movies = await TMDbService.GetMovieWatchlistAsync(AccountSortBy.CreatedAt, SortOrder.Descending);
-            UpdateTile(updater, movies);
+            UpdateMovieTile(updater, movies);
         }
 
-        private static void UpdateTile(TileUpdater updater, List<SearchMovie> movies)
+        public static async Task UpdateTvShowWatchlistTileAsync()
+        {
+            var updater = TileUpdateManager.CreateTileUpdaterForSecondaryTile(Constants.TvShowWatchlistTileId);
+            var tvShows = await TMDbService.GetTvShowWatchlistAsync(AccountSortBy.CreatedAt, SortOrder.Descending);
+            UpdateTvShowTile(updater, tvShows);
+        }
+
+        private static void UpdateMovieTile(TileUpdater updater, List<SearchMovie> movies)
         {
             updater.EnableNotificationQueue(true);
             updater.Clear();
 
             foreach (var movie in movies.Take(5).Reverse())
             {
-                var notification = new TileNotification(TileContentHelper.GetContent(movie).GetXml());
+                var notification = new TileNotification(TileContentHelper.GetContent(movie.Title, movie.ReleaseDate, movie.VoteAverage, movie.VoteCount, movie.PosterPath, movie.BackdropPath).GetXml());
+                updater.Update(notification);
+            }
+        }
+
+        private static void UpdateTvShowTile(TileUpdater updater, List<SearchTv> tvShows)
+        {
+            updater.EnableNotificationQueue(true);
+            updater.Clear();
+
+            foreach (var tvShow in tvShows.Take(5).Reverse())
+            {
+                var notification = new TileNotification(TileContentHelper.GetContent(tvShow.Name, tvShow.FirstAirDate, tvShow.VoteAverage, tvShow.VoteCount, tvShow.PosterPath, tvShow.BackdropPath).GetXml());
                 updater.Update(notification);
             }
         }

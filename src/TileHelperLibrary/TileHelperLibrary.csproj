@@ -134,9 +134,6 @@
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>7.1.1</Version>
     </PackageReference>
-    <PackageReference Include="TMDbLib">
-      <Version>1.8.1</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Filmster.Core\Filmster.Core.csproj">

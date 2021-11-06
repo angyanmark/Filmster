@@ -71,7 +71,7 @@
 
                 <Pivot Grid.Row="1"
                        HeaderTemplate="{StaticResource PivotHeaderTemplate}"
-                       SelectedIndex="{x:Bind ViewModel.PivotSelectedIndex, Mode=TwoWay}"
+                       SelectedIndex="{x:Bind ViewModel.PrimaryPivotSelectedIndex, Mode=TwoWay}"
                        Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
                     <PivotItem x:Uid="Profile_Rated">
                         <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}">
@@ -106,10 +106,10 @@
                     </PivotItem>
 
                     <PivotItem x:Uid="Profile_Watchlist">
-                        <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}">
+                        <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}" SelectedIndex="{x:Bind ViewModel.WatchlistPivotSelectedIndex, Mode=TwoWay}">
                             <PivotItem x:Uid="Profile_Movies">
                                 <StackPanel>
-                                    <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsWatchlistPinned, Mode=TwoWay}" />
+                                    <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsMovieWatchlistPinned, Mode=TwoWay}" />
                                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                                                ItemsSource="{x:Bind ViewModel.MovieWatchlist, Mode=OneWay}"
                                                                Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
@@ -117,9 +117,12 @@
                             </PivotItem>
 
                             <PivotItem x:Uid="Profile_TvShows">
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
-                                                           ItemsSource="{x:Bind ViewModel.TvShowWatchlist, Mode=OneWay}"
-                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                                <StackPanel>
+                                    <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsTvShowWatchlistPinned, Mode=TwoWay}" />
+                                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                                                               ItemsSource="{x:Bind ViewModel.TvShowWatchlist, Mode=OneWay}"
+                                                               Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                                </StackPanel>
                             </PivotItem>
                         </Pivot>
                     </PivotItem>

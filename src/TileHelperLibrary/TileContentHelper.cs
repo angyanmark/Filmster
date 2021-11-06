@@ -1,29 +1,29 @@
 ﻿using Filmster.Core.Services;
 using Microsoft.Toolkit.Uwp.Notifications;
-using TMDbLib.Objects.Search;
+using System;
 
 namespace TileHelperLibrary
 {
     public static class TileContentHelper
     {
-        public static TileContent GetContent(SearchMovie movie)
+        public static TileContent GetContent(string title, DateTime? releaseDate, double voteAverage, int voteCount, string posterPathKey, string backdropPathKey)
         {
             var backgroundImageOverlay = 60;
-            var longTitle = $"{movie.Title} ({movie.ReleaseDate.Value.Year})";
-            var shortTitle = movie.Title;
-            var subtitle = $"{movie.VoteAverage / 2}★ ({movie.VoteCount})";
-            var posterPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{movie.PosterPath}";
-            var backdropPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{movie.BackdropPath}";
+            var longTitle = $"{title} ({releaseDate.Value.Year})";
+            var shortTitle = title;
+            var subtitle = $"{voteAverage / 2}★ ({voteCount})";
+            var posterPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{posterPathKey}";
+            var backdropPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{backdropPathKey}";
 
             return new TileContent()
             {
                 Visual = new TileVisual()
                 {
                     Branding = TileBranding.Name,
-                    TileLarge = CreateTile(backgroundImageOverlay, longTitle, subtitle, posterPath, movie.Title, 3),
-                    TileMedium = CreateTile(backgroundImageOverlay, shortTitle, subtitle, posterPath, movie.Title, 2),
-                    TileWide = CreateTile(backgroundImageOverlay, longTitle, subtitle, backdropPath, movie.Title, 2),
-                    TileSmall = CreateTile(null, string.Empty, string.Empty, posterPath, movie.Title, null),
+                    TileLarge = CreateTile(backgroundImageOverlay, longTitle, subtitle, posterPath, title, 3),
+                    TileMedium = CreateTile(backgroundImageOverlay, shortTitle, subtitle, posterPath, title, 2),
+                    TileWide = CreateTile(backgroundImageOverlay, longTitle, subtitle, backdropPath, title, 2),
+                    TileSmall = CreateTile(null, string.Empty, string.Empty, posterPath, title, null),
                 }
             };
         }

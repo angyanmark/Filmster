@@ -24,11 +24,18 @@ namespace Filmster.ViewModels
         public ObservableCollection<SearchTv> FavoriteTvShows { get; set; } = new ObservableCollection<SearchTv>();
         public ObservableCollection<AccountList> Lists { get; set; } = new ObservableCollection<AccountList>();
 
-        private int _pivotSelectedIndex;
-        public int PivotSelectedIndex
+        private int _primaryPivotSelectedIndex;
+        public int PrimaryPivotSelectedIndex
         {
-            get { return _pivotSelectedIndex; }
-            set { Set(ref _pivotSelectedIndex, value); }
+            get { return _primaryPivotSelectedIndex; }
+            set { Set(ref _primaryPivotSelectedIndex, value); }
+        }
+
+        private int _watchlistPivotSelectedIndex;
+        public int WatchlistPivotSelectedIndex
+        {
+            get { return _watchlistPivotSelectedIndex; }
+            set { Set(ref _watchlistPivotSelectedIndex, value); }
         }
 
         private string _avatarSource = TMDbService.GravatarBaseUrl;
@@ -80,16 +87,30 @@ namespace Filmster.ViewModels
             set { Set(ref _isLoggedOut, value); }
         }
 
-        private bool _isWatchlistPinned;
-        public bool IsWatchlistPinned
+        private bool _isMovieWatchlistPinned;
+        public bool IsMovieWatchlistPinned
         {
-            get { return _isWatchlistPinned; }
+            get { return _isMovieWatchlistPinned; }
             set
             {
-                if (_isWatchlistPinned != value)
+                if (_isMovieWatchlistPinned != value)
                 {
-                    Set(ref _isWatchlistPinned, value);
-                    WatchlistPinnedChangedAsync();
+                    Set(ref _isMovieWatchlistPinned, value);
+                    MovieWatchlistPinnedChangedAsync();
+                }
+            }
+        }
+
+        private bool _isTvShowWatchlistPinned;
+        public bool IsTvShowWatchlistPinned
+        {
+            get { return _isTvShowWatchlistPinned; }
+            set
+            {
+                if (_isTvShowWatchlistPinned != value)
+                {
+                    Set(ref _isTvShowWatchlistPinned, value);
+                    TvShowWatchlistPinnedChangedAsync();
                 }
             }
         }
@@ -151,7 +172,8 @@ namespace Filmster.ViewModels
             Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
             Username = accountDetails.Username;
             await GetDetailsAsync();
-            IsWatchlistPinned = TilePinHelper.IsTilePinned(Constants.MovieWatchlistTileId);
+            IsMovieWatchlistPinned = TilePinHelper.IsTilePinned(Constants.MovieWatchlistTileId);
+            IsTvShowWatchlistPinned = TilePinHelper.IsTilePinned(Constants.TvShowWatchlistTileId);
             IsLoggedIn = !IsLoggedOut;
             DataLoaded = true;
         }
@@ -277,19 +299,35 @@ namespace Filmster.ViewModels
             }
         }
 
-        private async void WatchlistPinnedChangedAsync()
+        private async void MovieWatchlistPinnedChangedAsync()
         {
-            if (IsWatchlistPinned)
+            if (IsMovieWatchlistPinned)
             {
-                bool isPinned = await TilePinHelper.PinWatchlistAsync("Tile_Watchlist".GetLocalized());
+                bool isPinned = await TilePinHelper.PinMovieWatchlistAsync("Tile_Watchlist".GetLocalized());
                 if (!isPinned)
                 {
-                    IsWatchlistPinned = isPinned;
+                    IsMovieWatchlistPinned = isPinned;
                 }
             }
             else
             {
                 await TilePinHelper.UnpinTileAsync(Constants.MovieWatchlistTileId);
+            }
+        }
+
+        private async void TvShowWatchlistPinnedChangedAsync()
+        {
+            if (IsTvShowWatchlistPinned)
+            {
+                bool isPinned = await TilePinHelper.PinTvShowWatchlistAsync("Tile_Watchlist".GetLocalized());
+                if (!isPinned)
+                {
+                    IsTvShowWatchlistPinned = isPinned;
+                }
+            }
+            else
+            {
+                await TilePinHelper.UnpinTileAsync(Constants.TvShowWatchlistTileId);
             }
         }
 

@@ -105,7 +105,11 @@ namespace Filmster.Helpers
 
                 if (mediaType == MediaType.Movie)
                 {
-                    await TileUpdateHelper.UpdateWatchlistTileAsync();
+                    await TileUpdateHelper.UpdateMovieWatchlistTileAsync();
+                }
+                else if (mediaType == MediaType.Tv)
+                {
+                    await TileUpdateHelper.UpdateTvShowWatchlistTileAsync();
                 }
             }
         }
@@ -142,7 +146,11 @@ namespace Filmster.Helpers
 
                 if (mediaType == MediaType.Movie)
                 {
-                    await TileUpdateHelper.UpdateWatchlistTileAsync();
+                    await TileUpdateHelper.UpdateMovieWatchlistTileAsync();
+                }
+                else if (mediaType == MediaType.Tv)
+                {
+                    await TileUpdateHelper.UpdateTvShowWatchlistTileAsync();
                 }
             }
         }

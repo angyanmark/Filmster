@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web;
+using Filmster.Core.Models;
 using Filmster.Services;
 using Filmster.Views;
+using TileHelperLibrary;
 using Windows.ApplicationModel.Activation;
 
 namespace Filmster.Activation
@@ -21,21 +23,33 @@ namespace Filmster.Activation
             // When the navigation stack isn't restored, navigate to the first page and configure
             // the new page by passing required information in the navigation parameter
             object arguments = null;
-            bool navigateToWatchlist = false;
+            WatchlistActivationNavigationParameter watchlistActivationNavigationParameter = null;
             if (args is LaunchActivatedEventArgs launchArgs)
             {
                 arguments = launchArgs.Arguments;
 
                 var action = HttpUtility.ParseQueryString(launchArgs.Arguments).Get("action");
-                if (action == "movie_watchlist")
+                if (action == Constants.MovieWatchlistTileId)
                 {
-                    navigateToWatchlist = true;
+                    watchlistActivationNavigationParameter = new WatchlistActivationNavigationParameter
+                    {
+                        PrimaryPivotIndex = 2,
+                        WatchlistPivotIndex = 0,
+                    };
+                }
+                if (action == Constants.TvShowWatchlistTileId)
+                {
+                    watchlistActivationNavigationParameter = new WatchlistActivationNavigationParameter
+                    {
+                        PrimaryPivotIndex = 2,
+                        WatchlistPivotIndex = 1,
+                    };
                 }
             }
 
-            if (navigateToWatchlist)
+            if (watchlistActivationNavigationParameter != null)
             {
-                NavigationService.Navigate<ProfilePage>(2);
+                NavigationService.Navigate<ProfilePage>(watchlistActivationNavigationParameter);
             }
             else
             {
