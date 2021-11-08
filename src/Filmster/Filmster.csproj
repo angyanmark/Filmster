@@ -142,23 +142,23 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Helpers\BackgroundTaskHelper.cs" />
     <Compile Include="Helpers\DisplayNameHelper.cs" />
-    <Compile Include="Helpers\EnumToBooleanConverter.cs" />
-    <Compile Include="Helpers\ExternalIdToUriConverter.cs" />
-    <Compile Include="Helpers\IntToRuntimeConverter.cs" />
+    <Compile Include="Converters\EnumToBooleanConverter.cs" />
+    <Compile Include="Converters\ExternalIdToUriConverter.cs" />
+    <Compile Include="Converters\IntToRuntimeConverter.cs" />
     <Compile Include="Helpers\LoadingObservable.cs" />
     <Compile Include="Helpers\MediaViewModelBase.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
-    <Compile Include="Helpers\NullOrEmptyToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Helpers\Observable.cs" />
-    <Compile Include="Helpers\ImagePathToFullPathConverter.cs" />
-    <Compile Include="Helpers\PersonCastCrewSortTypeToLocalizedStringConverter.cs" />
+    <Compile Include="Converters\ImagePathToFullPathConverter.cs" />
+    <Compile Include="Converters\PersonCastCrewSortTypeToLocalizedStringConverter.cs" />
     <Compile Include="Helpers\RatableMediaViewModelBase.cs" />
-    <Compile Include="Helpers\RatingToScaledRatingConverter.cs" />
-    <Compile Include="Helpers\RatingToScaledRatingStringConverter.cs" />
+    <Compile Include="Converters\RatingToScaledRatingConverter.cs" />
+    <Compile Include="Converters\RatingToScaledRatingStringConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\SearchBaseDataTemplateSelector.cs" />
     <Compile Include="Helpers\SortHelper.cs" />
-    <Compile Include="Helpers\LocalizedStringFormatConverter.cs" />
+    <Compile Include="Converters\LocalizedStringFormatConverter.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\IncludeAdultService.cs" />
@@ -416,6 +416,7 @@
       <Name>Filmster.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,8 +1,8 @@
 ﻿<Application x:Class="Filmster.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
-             xmlns:helpers="using:Filmster.Helpers">
+             xmlns:c="using:Microsoft.Toolkit.Uwp.UI.Converters"
+             xmlns:converters="using:Filmster.Converters">
 
     <Application.Resources>
         <ResourceDictionary>
@@ -23,17 +23,17 @@
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
-            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-            <converters:StringFormatConverter x:Key="StringFormatConverter" />
-            <helpers:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
-            <helpers:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
-            <helpers:LocalizedStringFormatConverter x:Key="LocalizedStringFormatConverter" />
-            <helpers:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
-            <helpers:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
-            <helpers:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
-            <helpers:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />
-            <helpers:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
+            <c:BoolNegationConverter x:Key="BoolNegationConverter" />
+            <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <c:StringFormatConverter x:Key="StringFormatConverter" />
+            <converters:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
+            <converters:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
+            <converters:LocalizedStringFormatConverter x:Key="LocalizedStringFormatConverter" />
+            <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
+            <converters:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
+            <converters:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
+            <converters:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />
+            <converters:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

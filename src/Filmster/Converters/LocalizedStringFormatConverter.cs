@@ -2,13 +2,20 @@
 using System;
 using Windows.UI.Xaml.Data;
 
-namespace Filmster.Helpers
+namespace Filmster.Converters
 {
-    public class PersonCastCrewSortTypeToLocalizedStringConverter : IValueConverter
+    public class LocalizedStringFormatConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return $"PersonCastCrewSortType_{value}".GetLocalized();
+            if (value == null || parameter == null)
+            {
+                return null;
+            }
+
+            var str = (parameter as string).GetLocalized();
+
+            return string.Format(str, value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using Windows.UI.Xaml.Data;
 
-namespace Filmster.Helpers
+namespace Filmster.Converters
 {
     public class ExternalIdToUriConverter : IValueConverter
     {

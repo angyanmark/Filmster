@@ -2,7 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Filmster.Helpers
+namespace Filmster.Converters
 {
     public class NullOrEmptyToVisibilityConverter : IValueConverter
     {

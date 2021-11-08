@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace Filmster.Helpers
+namespace Filmster.Converters
 {
     public class RatingToScaledRatingConverter : IValueConverter
     {
