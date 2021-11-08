@@ -1,6 +1,6 @@
 ﻿using Filmster.Common.Services;
-using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.ViewModelBases;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Lists;

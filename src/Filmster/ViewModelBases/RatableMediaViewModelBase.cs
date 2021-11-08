@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using TMDbLib.Objects.General;
 
-namespace Filmster.Helpers
+namespace Filmster.ViewModelBases
 {
     public class RatableMediaViewModelBase : MediaViewModelBase
     {

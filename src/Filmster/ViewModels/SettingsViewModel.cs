@@ -7,6 +7,7 @@ using Filmster.Common.Models;
 using Filmster.Common.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.ViewModelBases;
 using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 

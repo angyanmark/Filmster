@@ -2,6 +2,7 @@
 using Filmster.Common.Models;
 using Filmster.Common.Services;
 using Filmster.Helpers;
+using Filmster.ViewModelBases;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

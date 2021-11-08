@@ -1,5 +1,5 @@
 ﻿using Filmster.Common.Models;
-using Filmster.Helpers;
+using Filmster.ViewModelBases;
 using System.Collections.ObjectModel;
 
 namespace Filmster.ViewModels

@@ -1,4 +1,4 @@
-﻿namespace Filmster.Helpers
+﻿namespace Filmster.ViewModelBases
 {
     public class LoadingObservable : Observable
     {

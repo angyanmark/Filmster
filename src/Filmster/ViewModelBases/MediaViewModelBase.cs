@@ -1,4 +1,5 @@
-﻿using Filmster.Services;
+﻿using Filmster.Helpers;
+using Filmster.Services;
 using Filmster.Views;
 using System.Windows.Input;
 using TMDbLib.Objects.General;
@@ -9,7 +10,7 @@ using TMDbLib.Objects.TvShows;
 using MovieCast = TMDbLib.Objects.Movies.Cast;
 using TvCast = TMDbLib.Objects.TvShows.Cast;
 
-namespace Filmster.Helpers
+namespace Filmster.ViewModelBases
 {
     public class MediaViewModelBase : LoadingObservable
     {

@@ -9,6 +9,7 @@ using Filmster.Common.Models;
 using Filmster.Common.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.ViewModelBases;
 using Filmster.Views;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Search;

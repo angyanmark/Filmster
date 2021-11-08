@@ -3,6 +3,7 @@ using Filmster.Common.Models.Enums;
 using Filmster.Common.Services;
 using Filmster.Helpers;
 using Filmster.Services;
+using Filmster.ViewModelBases;
 using Filmster.Views;
 using System;
 using System.Collections.Generic;
