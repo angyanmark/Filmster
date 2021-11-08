@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Filmster.Core.Models;
+using Filmster.Common.Helpers;
+using Filmster.Common.Models;
+using Filmster.Common.Services;
 using Filmster.Helpers;
 using Filmster.Services;
 using Windows.ApplicationModel;
@@ -98,7 +100,7 @@ namespace Filmster.ViewModels
                 Languages.Add(new ApplicationLanguage
                 {
                     Code = language,
-                    DisplayName = (LanguageService.LanguageLocalizationPrefix + language).GetLocalized()
+                    DisplayName = (LanguageService.LanguageLocalizationPrefix + language).GetLocalized(),
                 });
             }
 

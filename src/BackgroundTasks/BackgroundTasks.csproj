@@ -136,13 +136,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Filmster.Core\Filmster.Core.csproj">
-      <Project>{8C4AEB2D-C2E0-4CF5-B2AA-28080A79BD12}</Project>
-      <Name>Filmster.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TileHelperLibrary\TileHelperLibrary.csproj">
+    <ProjectReference Include="..\Filmster.Common\Filmster.Common.csproj">
       <Project>{359C77D8-AECA-437F-A030-13C00A55FFF3}</Project>
-      <Name>TileHelperLibrary</Name>
+      <Name>Filmster.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

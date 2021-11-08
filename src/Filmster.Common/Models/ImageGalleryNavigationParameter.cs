@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Filmster.Core.Models
+namespace Filmster.Common.Models
 {
     public class ImageGalleryNavigationParameter
     {

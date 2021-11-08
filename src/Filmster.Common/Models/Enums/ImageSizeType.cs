@@ -1,4 +1,4 @@
-﻿namespace Filmster.Core.Models.Enums
+﻿namespace Filmster.Common.Models.Enums
 {
     public enum ImageSizeType
     {
@@ -17,6 +17,6 @@
         SmallStill = 13,
         MediumStill = 14,
         LargeStill = 15,
-        Original = 16
+        Original = 16,
     }
 }

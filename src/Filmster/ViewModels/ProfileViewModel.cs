@@ -1,4 +1,6 @@
-﻿using Filmster.Core.Services;
+﻿using Filmster.Common.Helper.Tile;
+using Filmster.Common.Helpers;
+using Filmster.Common.Services;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.Views;
@@ -7,7 +9,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TileHelperLibrary;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
 
@@ -314,7 +315,7 @@ namespace Filmster.ViewModels
         {
             if (IsMovieWatchlistPinned)
             {
-                bool isPinned = await TilePinHelper.PinMovieWatchlistAsync("Tile_Watchlist".GetLocalized());
+                bool isPinned = await TilePinHelper.PinWatchlistAsync(Constants.MovieWatchlistTileId, "Tile_Watchlist".GetLocalized());
                 if (!isPinned)
                 {
                     IsMovieWatchlistPinned = isPinned;
@@ -330,7 +331,7 @@ namespace Filmster.ViewModels
         {
             if (IsTvShowWatchlistPinned)
             {
-                bool isPinned = await TilePinHelper.PinTvShowWatchlistAsync("Tile_Watchlist".GetLocalized());
+                bool isPinned = await TilePinHelper.PinWatchlistAsync(Constants.TvShowWatchlistTileId, "Tile_Watchlist".GetLocalized());
                 if (!isPinned)
                 {
                     IsTvShowWatchlistPinned = isPinned;

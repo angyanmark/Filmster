@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Filmster.Core.Helpers
+namespace Filmster.Common.Helpers
 {
     public static class Json
     {

@@ -1,5 +1,6 @@
-﻿using Filmster.Core.Models;
-using Filmster.Core.Services;
+﻿using Filmster.Common.Helpers;
+using Filmster.Common.Models;
+using Filmster.Common.Services;
 using Filmster.Helpers;
 using System;
 using System.Collections.Generic;

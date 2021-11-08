@@ -1,5 +1,5 @@
-﻿using Filmster.Core.Models.Enums;
-using Filmster.Core.Services;
+﻿using Filmster.Common.Models.Enums;
+using Filmster.Common.Services;
 using System;
 using System.ComponentModel;
 using Windows.UI.Xaml.Data;

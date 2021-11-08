@@ -1,8 +1,8 @@
-﻿using Filmster.Core.Services;
+﻿using Filmster.Common.Services;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 
-namespace TileHelperLibrary
+namespace Filmster.Common.Helper.Tile
 {
     public static class TileContentHelper
     {

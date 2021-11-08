@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web;
-using Filmster.Core.Models;
+using Filmster.Common.Helper.Tile;
+using Filmster.Common.Models;
 using Filmster.Services;
 using Filmster.Views;
-using TileHelperLibrary;
 using Windows.ApplicationModel.Activation;
 
 namespace Filmster.Activation

@@ -1,5 +1,5 @@
-﻿using Filmster.Core.Models;
-using Filmster.Core.Services;
+﻿using Filmster.Common.Models;
+using Filmster.Common.Services;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.Views;

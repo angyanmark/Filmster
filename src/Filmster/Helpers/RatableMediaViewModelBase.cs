@@ -1,8 +1,7 @@
-﻿using Filmster.Core.Services;
-using Filmster.Services;
+﻿using Filmster.Common.Helper.Tile;
+using Filmster.Common.Services;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using TileHelperLibrary;
 using TMDbLib.Objects.General;
 
 namespace Filmster.Helpers

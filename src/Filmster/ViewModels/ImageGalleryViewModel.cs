@@ -1,4 +1,4 @@
-﻿using Filmster.Core.Models;
+﻿using Filmster.Common.Models;
 using Filmster.Helpers;
 using System.Collections.ObjectModel;
 

@@ -1,4 +1,5 @@
-﻿using TileHelperLibrary;
+﻿using Filmster.Common.Helper.Tile;
+using Filmster.Common.Services;
 using Windows.ApplicationModel.Background;
 
 namespace BackgroundTasks
@@ -9,6 +10,7 @@ namespace BackgroundTasks
         {
             BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
 
+            await UserSessionService.StartUserSessionAsync();
             await TileUpdateHelper.UpdatePrimaryTileAsync();
             await TileUpdateHelper.UpdateSecondaryTilesAsync();
 

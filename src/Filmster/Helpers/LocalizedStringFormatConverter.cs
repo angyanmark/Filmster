@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Filmster.Common.Helpers;
+using System;
 using Windows.UI.Xaml.Data;
 
 namespace Filmster.Helpers

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Windows.UI.StartScreen;
 
-namespace TileHelperLibrary
+namespace Filmster.Common.Helper.Tile
 {
     public static class TilePinHelper
     {
@@ -11,17 +11,7 @@ namespace TileHelperLibrary
             return SecondaryTile.Exists(tileId);
         }
 
-        public static async Task<bool> PinMovieWatchlistAsync(string displayName)
-        {
-            return await PinWatchlistAsync(Constants.MovieWatchlistTileId, displayName);
-        }
-
-        public static async Task<bool> PinTvShowWatchlistAsync(string displayName)
-        {
-            return await PinWatchlistAsync(Constants.TvShowWatchlistTileId, displayName);
-        }
-
-        private static async Task<bool> PinWatchlistAsync(string tileId, string displayName)
+        public static async Task<bool> PinWatchlistAsync(string tileId, string displayName)
         {
             bool isAlreadyPinned = SecondaryTile.Exists(tileId);
             if (isAlreadyPinned)

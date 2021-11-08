@@ -1,7 +1,7 @@
 ﻿using System;
 using TMDbLib.Objects.Discover;
 
-namespace Filmster.Core.Models
+namespace Filmster.Common.Models
 {
     public class DiscoverMovieOptions
     {

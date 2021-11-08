@@ -1,4 +1,4 @@
-﻿namespace Filmster.Core.Models.Enums
+﻿namespace Filmster.Common.Models.Enums
 {
     public enum ExternalIdType
     {
@@ -12,6 +12,6 @@
         YouTube = 8,
         Facebook = 9,
         Instagram = 10,
-        Twitter = 11
+        Twitter = 11,
     }
 }

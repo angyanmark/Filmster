@@ -1,4 +1,4 @@
-﻿using Filmster.Helpers;
+﻿using Filmster.Common.Helpers;
 using System.Threading.Tasks;
 using Windows.Storage;
 

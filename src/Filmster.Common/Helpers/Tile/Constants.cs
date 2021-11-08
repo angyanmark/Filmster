@@ -1,4 +1,4 @@
-﻿namespace TileHelperLibrary
+﻿namespace Filmster.Common.Helper.Tile
 {
     public static class Constants
     {

@@ -157,16 +157,13 @@
     <Compile Include="Helpers\RatingToScaledRatingStringConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\SearchBaseDataTemplateSelector.cs" />
-    <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Helpers\SortHelper.cs" />
     <Compile Include="Helpers\LocalizedStringFormatConverter.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\IncludeAdultService.cs" />
-    <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
-    <Compile Include="Services\UserSessionService.cs" />
     <Compile Include="ViewModels\DiscoverViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryViewModel.cs" />
     <Compile Include="ViewModels\ListDetailViewModel.cs" />
@@ -342,9 +339,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\ResourceExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -417,13 +411,9 @@
       <Project>{cfaf410a-5006-46ea-b993-53f58aa5a67d}</Project>
       <Name>BackgroundTasks</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Filmster.Core\Filmster.Core.csproj">
-      <Project>{8C4AEB2D-C2E0-4CF5-B2AA-28080A79BD12}</Project>
-      <Name>Filmster.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TileHelperLibrary\TileHelperLibrary.csproj">
+    <ProjectReference Include="..\Filmster.Common\Filmster.Common.csproj">
       <Project>{359C77D8-AECA-437F-A030-13C00A55FFF3}</Project>
-      <Name>TileHelperLibrary</Name>
+      <Name>Filmster.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

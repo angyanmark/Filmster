@@ -1,4 +1,4 @@
-﻿using Filmster.Core.Models;
+﻿using Filmster.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,7 +14,7 @@ using TMDbLib.Objects.Search;
 using TMDbLib.Objects.Trending;
 using TMDbLib.Objects.TvShows;
 
-namespace Filmster.Core.Services
+namespace Filmster.Common.Services
 {
     public static class TMDbService
     {
@@ -61,7 +61,7 @@ namespace Filmster.Core.Services
 
         public static readonly int DefaultCastCrewBackdropCount = 15;
 
-        public static string CurrentLanguage { get; set; }
+        private static string CurrentLanguage { get; } = LanguageService.CurrentLanguage;
 
         private static string IncludeImageLanguage
         {

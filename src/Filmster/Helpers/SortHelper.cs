@@ -1,4 +1,4 @@
-﻿using Filmster.Core.Models.Enums;
+﻿using Filmster.Common.Models.Enums;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
