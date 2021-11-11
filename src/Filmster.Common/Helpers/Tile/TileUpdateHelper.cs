@@ -18,7 +18,7 @@ namespace Filmster.Common.Helper.Tile
         {
             var updater = TileUpdateManager.CreateTileUpdaterForApplication();
             var movies = await TMDbService.GetPopularMoviesAsync();
-            await UpdateMovieTileAsync(updater, movies);
+            await UpdateMovieTileAsync(updater, movies.Results);
         }
 
         public static async Task UpdateSecondaryTilesAsync()

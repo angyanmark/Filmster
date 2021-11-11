@@ -145,6 +145,7 @@
     <Compile Include="Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Converters\ExternalIdToUriConverter.cs" />
     <Compile Include="Converters\IntToRuntimeConverter.cs" />
+    <Compile Include="Helpers\IncrementalSources.cs" />
     <Compile Include="ViewModelBases\LoadingObservable.cs" />
     <Compile Include="ViewModelBases\MediaViewModelBase.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
