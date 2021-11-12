@@ -5,9 +5,8 @@ using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
 using Filmster.Views;
+using Microsoft.Toolkit.Uwp;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
@@ -19,13 +18,13 @@ namespace Filmster.ViewModels
     {
         public int AvatarSize { get; } = 144;
 
-        public ObservableCollection<SearchMovieWithRating> RatedMovies { get; set; } = new ObservableCollection<SearchMovieWithRating>();
-        public ObservableCollection<AccountSearchTv> RatedTvShows { get; set; } = new ObservableCollection<AccountSearchTv>();
-        public ObservableCollection<SearchMovie> MovieWatchlist { get; set; } = new ObservableCollection<SearchMovie>();
-        public ObservableCollection<SearchTv> TvShowWatchlist { get; set; } = new ObservableCollection<SearchTv>();
-        public ObservableCollection<SearchMovie> FavoriteMovies { get; set; } = new ObservableCollection<SearchMovie>();
-        public ObservableCollection<SearchTv> FavoriteTvShows { get; set; } = new ObservableCollection<SearchTv>();
-        public ObservableCollection<AccountList> Lists { get; set; } = new ObservableCollection<AccountList>();
+        public IncrementalLoadingCollection<RatedMoviesSource, SearchMovieWithRating> RatedMovies { get; set; } = new IncrementalLoadingCollection<RatedMoviesSource, SearchMovieWithRating>();
+        public IncrementalLoadingCollection<RatedTvShowsSource, AccountSearchTv> RatedTvShows { get; set; } = new IncrementalLoadingCollection<RatedTvShowsSource, AccountSearchTv>();
+        public IncrementalLoadingCollection<MovieWatchlistSource, SearchMovie> MovieWatchlist { get; set; } = new IncrementalLoadingCollection<MovieWatchlistSource, SearchMovie>();
+        public IncrementalLoadingCollection<TvShowWatchlistSource, SearchTv> TvShowWatchlist { get; set; } = new IncrementalLoadingCollection<TvShowWatchlistSource, SearchTv>();
+        public IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie> FavoriteMovies { get; set; } = new IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie>();
+        public IncrementalLoadingCollection<FavoriteTvShowsSource, SearchTv> FavoriteTvShows { get; set; } = new IncrementalLoadingCollection<FavoriteTvShowsSource, SearchTv>();
+        public IncrementalLoadingCollection<ListsSource, AccountList> Lists { get; set; } = new IncrementalLoadingCollection<ListsSource, AccountList>();
 
         private int _primaryPivotSelectedIndex;
         public int PrimaryPivotSelectedIndex
@@ -160,28 +159,11 @@ namespace Filmster.ViewModels
         {
             DataLoaded = false;
             IsLoggedOut = false;
-            await GetDetailsAsync();
+            await GetAccountDetailsAsync();
             IsMovieWatchlistPinned = TilePinHelper.IsTilePinned(Constants.MovieWatchlistTileId);
             IsTvShowWatchlistPinned = TilePinHelper.IsTilePinned(Constants.TvShowWatchlistTileId);
             IsLoggedIn = !IsLoggedOut;
             DataLoaded = true;
-        }
-
-        private async Task GetDetailsAsync()
-        {
-            var tasks = new List<Task>
-            {
-                GetAccountDetailsAsync(),
-                GetRatedMoviesAsync(),
-                GetRatedTvShowsAsync(),
-                GetMovieWatchlistAsync(),
-                GetTvShowWatchlistAsync(),
-                GetFavoriteMoviesAsync(),
-                GetFavoriteTvShowsAsync(),
-                GetListsAsync(),
-            };
-
-            await Task.WhenAll(tasks);
         }
 
         private async Task GetAccountDetailsAsync()
@@ -200,69 +182,6 @@ namespace Filmster.ViewModels
             }
             Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
             Username = accountDetails.Username;
-        }
-
-        private async Task GetRatedMoviesAsync()
-        {
-            var movies = await TMDbService.GetRatedMoviesAsync();
-            foreach (var movie in movies)
-            {
-                RatedMovies.Add(movie);
-            }
-        }
-
-        private async Task GetRatedTvShowsAsync()
-        {
-            var tvShows = await TMDbService.GetRatedTvShowsAsync();
-            foreach (var tvShow in tvShows)
-            {
-                RatedTvShows.Add(tvShow);
-            }
-        }
-
-        private async Task GetMovieWatchlistAsync()
-        {
-            var movies = await TMDbService.GetMovieWatchlistAsync();
-            foreach (var movie in movies)
-            {
-                MovieWatchlist.Add(movie);
-            }
-        }
-
-        private async Task GetTvShowWatchlistAsync()
-        {
-            var tvShows = await TMDbService.GetTvShowWatchlistAsync();
-            foreach (var tvShow in tvShows)
-            {
-                TvShowWatchlist.Add(tvShow);
-            }
-        }
-
-        private async Task GetFavoriteMoviesAsync()
-        {
-            var movies = await TMDbService.GetFavoriteMoviesAsync();
-            foreach (var movie in movies)
-            {
-                FavoriteMovies.Add(movie);
-            }
-        }
-
-        private async Task GetFavoriteTvShowsAsync()
-        {
-            var tvShows = await TMDbService.GetFavoriteTvShowsAsync();
-            foreach (var tvShow in tvShows)
-            {
-                FavoriteTvShows.Add(tvShow);
-            }
-        }
-
-        private async Task GetListsAsync()
-        {
-            var lists = await TMDbService.GetListsAsync();
-            foreach (var list in lists)
-            {
-                Lists.Add(list);
-            }
         }
 
         private void SetLoggedOutProperties()

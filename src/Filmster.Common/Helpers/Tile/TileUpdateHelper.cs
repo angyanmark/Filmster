@@ -44,15 +44,15 @@ namespace Filmster.Common.Helper.Tile
         public static async Task UpdateMovieWatchlistTileAsync()
         {
             var updater = TileUpdateManager.CreateTileUpdaterForSecondaryTile(Constants.MovieWatchlistTileId);
-            var movies = await TMDbService.GetMovieWatchlistAsync(AccountSortBy.CreatedAt, SortOrder.Descending);
-            await UpdateMovieTileAsync(updater, movies);
+            var movies = await TMDbService.GetMovieWatchlistAsync(sortBy: AccountSortBy.CreatedAt, sortOrder: SortOrder.Descending);
+            await UpdateMovieTileAsync(updater, movies.Results);
         }
 
         public static async Task UpdateTvShowWatchlistTileAsync()
         {
             var updater = TileUpdateManager.CreateTileUpdaterForSecondaryTile(Constants.TvShowWatchlistTileId);
-            var tvShows = await TMDbService.GetTvShowWatchlistAsync(AccountSortBy.CreatedAt, SortOrder.Descending);
-            await UpdateTvShowTileAsync(updater, tvShows);
+            var tvShows = await TMDbService.GetTvShowWatchlistAsync(sortBy: AccountSortBy.CreatedAt, sortOrder: SortOrder.Descending);
+            await UpdateTvShowTileAsync(updater, tvShows.Results);
         }
 
         private static async Task UpdateMovieTileAsync(TileUpdater updater, List<SearchMovie> movies)

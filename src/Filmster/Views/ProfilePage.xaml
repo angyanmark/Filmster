@@ -9,131 +9,131 @@
 
     <Grid>
         <ProgressRing IsActive="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{StaticResource ProgressRing}" />
-        <ScrollViewer Visibility="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-            <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource MediumSpacing}">
+        <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}"
+              RowSpacing="{StaticResource MediumSpacing}"
+              Visibility="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="{x:Bind ViewModel.AvatarSize, Mode=OneWay}" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                  ColumnSpacing="24"
+                  RowSpacing="4">
                 <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="{x:Bind ViewModel.AvatarSize, Mode=OneWay}" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0"
-                      ColumnSpacing="24"
-                      RowSpacing="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                <PersonPicture Grid.Row="0"
+                               Grid.RowSpan="3"
+                               Grid.Column="0"
+                               Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                               Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                               DisplayName="{x:Bind ViewModel.Name, Mode=OneWay}"
+                               Visibility="{x:Bind ViewModel.HasNoAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <PersonPicture Grid.Row="0"
+                               Grid.RowSpan="3"
+                               Grid.Column="0"
+                               Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                               Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
+                               ProfilePicture="{x:Bind ViewModel.AvatarSource, Mode=OneWay}"
+                               Visibility="{x:Bind ViewModel.HasAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
 
-                    <PersonPicture Grid.Row="0"
-                                   Grid.RowSpan="3"
-                                   Grid.Column="0"
-                                   Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
-                                   Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
-                                   DisplayName="{x:Bind ViewModel.Name, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.HasNoAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
-                    <PersonPicture Grid.Row="0"
-                                   Grid.RowSpan="3"
-                                   Grid.Column="0"
-                                   Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
-                                   Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
-                                   ProfilePicture="{x:Bind ViewModel.AvatarSource, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.HasAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <TextBlock Grid.Row="0"
+                           Grid.Column="1"
+                           FontWeight="Bold"
+                           Style="{StaticResource DetailPageTitleStyle}"
+                           Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
+                <TextBlock Grid.Row="1"
+                           Grid.Column="1"
+                           Foreground="{StaticResource SystemOffsetMediumBrush}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           Text="{x:Bind ViewModel.Username, Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="0"
-                               Grid.Column="1"
-                               FontWeight="Bold"
-                               Style="{StaticResource DetailPageTitleStyle}"
-                               Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
-                    <TextBlock Grid.Row="1"
-                               Grid.Column="1"
-                               Foreground="{StaticResource SystemOffsetMediumBrush}"
-                               Style="{StaticResource SubtitleTextBlockStyle}"
-                               Text="{x:Bind ViewModel.Username, Mode=OneWay}" />
-
-                    <Button x:Uid="Profile_LogIn"
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            VerticalAlignment="Bottom"
-                            Command="{x:Bind ViewModel.LogInClickedCommand}"
-                            Visibility="{x:Bind ViewModel.IsLoggedOut, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
-                    <Button x:Uid="Profile_LogOut"
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            VerticalAlignment="Bottom"
-                            Command="{x:Bind ViewModel.LogOutClickedCommand}"
-                            Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
-                </Grid>
-
-                <Pivot Grid.Row="1"
-                       HeaderTemplate="{StaticResource PivotHeaderTemplate}"
-                       SelectedIndex="{x:Bind ViewModel.PrimaryPivotSelectedIndex, Mode=TwoWay}"
-                       Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-                    <PivotItem x:Uid="Profile_Rated">
-                        <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}">
-                            <PivotItem x:Uid="Profile_Movies">
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
-                                                           ItemsSource="{x:Bind ViewModel.RatedMovies, Mode=OneWay}"
-                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
-                            </PivotItem>
-
-                            <PivotItem x:Uid="Profile_TvShows">
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
-                                                           ItemsSource="{x:Bind ViewModel.RatedTvShows, Mode=OneWay}"
-                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
-                            </PivotItem>
-                        </Pivot>
-                    </PivotItem>
-
-                    <PivotItem x:Uid="Profile_Favorites">
-                        <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}">
-                            <PivotItem x:Uid="Profile_Movies">
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
-                                                           ItemsSource="{x:Bind ViewModel.FavoriteMovies, Mode=OneWay}"
-                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-                            </PivotItem>
-
-                            <PivotItem x:Uid="Profile_TvShows">
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
-                                                           ItemsSource="{x:Bind ViewModel.FavoriteTvShows, Mode=OneWay}"
-                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-                            </PivotItem>
-                        </Pivot>
-                    </PivotItem>
-
-                    <PivotItem x:Uid="Profile_Watchlist">
-                        <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}" SelectedIndex="{x:Bind ViewModel.WatchlistPivotSelectedIndex, Mode=TwoWay}">
-                            <PivotItem x:Uid="Profile_Movies">
-                                <StackPanel>
-                                    <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsMovieWatchlistPinned, Mode=TwoWay}" />
-                                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
-                                                               ItemsSource="{x:Bind ViewModel.MovieWatchlist, Mode=OneWay}"
-                                                               Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-                                </StackPanel>
-                            </PivotItem>
-
-                            <PivotItem x:Uid="Profile_TvShows">
-                                <StackPanel>
-                                    <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsTvShowWatchlistPinned, Mode=TwoWay}" />
-                                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
-                                                               ItemsSource="{x:Bind ViewModel.TvShowWatchlist, Mode=OneWay}"
-                                                               Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-                                </StackPanel>
-                            </PivotItem>
-                        </Pivot>
-                    </PivotItem>
-
-                    <PivotItem x:Uid="Profile_Lists">
-                        <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.AccountListClickedCommand}"
-                                                   ItemsSource="{x:Bind ViewModel.Lists, Mode=OneWay}"
-                                                   Style="{StaticResource AdaptiveGridAccountList}" />
-                    </PivotItem>
-                </Pivot>
+                <Button x:Uid="Profile_LogIn"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalAlignment="Bottom"
+                        Command="{x:Bind ViewModel.LogInClickedCommand}"
+                        Visibility="{x:Bind ViewModel.IsLoggedOut, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <Button x:Uid="Profile_LogOut"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        VerticalAlignment="Bottom"
+                        Command="{x:Bind ViewModel.LogOutClickedCommand}"
+                        Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
             </Grid>
-        </ScrollViewer>
+
+            <Pivot Grid.Row="1"
+                   HeaderTemplate="{StaticResource PivotHeaderTemplate}"
+                   SelectedIndex="{x:Bind ViewModel.PrimaryPivotSelectedIndex, Mode=TwoWay}"
+                   Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                <PivotItem x:Uid="Profile_Rated">
+                    <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}">
+                        <PivotItem x:Uid="Profile_Movies">
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.RatedMovies, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
+                        </PivotItem>
+
+                        <PivotItem x:Uid="Profile_TvShows">
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.RatedTvShows, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
+                        </PivotItem>
+                    </Pivot>
+                </PivotItem>
+
+                <PivotItem x:Uid="Profile_Favorites">
+                    <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}">
+                        <PivotItem x:Uid="Profile_Movies">
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.FavoriteMovies, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                        </PivotItem>
+
+                        <PivotItem x:Uid="Profile_TvShows">
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.FavoriteTvShows, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                        </PivotItem>
+                    </Pivot>
+                </PivotItem>
+
+                <PivotItem x:Uid="Profile_Watchlist">
+                    <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}" SelectedIndex="{x:Bind ViewModel.WatchlistPivotSelectedIndex, Mode=TwoWay}">
+                        <PivotItem x:Uid="Profile_Movies">
+                            <StackPanel>
+                                <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsMovieWatchlistPinned, Mode=TwoWay}" />
+                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                                           ItemsSource="{x:Bind ViewModel.MovieWatchlist, Mode=OneWay}"
+                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                            </StackPanel>
+                        </PivotItem>
+
+                        <PivotItem x:Uid="Profile_TvShows">
+                            <StackPanel>
+                                <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsTvShowWatchlistPinned, Mode=TwoWay}" />
+                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                                                           ItemsSource="{x:Bind ViewModel.TvShowWatchlist, Mode=OneWay}"
+                                                           Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                            </StackPanel>
+                        </PivotItem>
+                    </Pivot>
+                </PivotItem>
+
+                <PivotItem x:Uid="Profile_Lists">
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.AccountListClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Lists, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridAccountList}" />
+                </PivotItem>
+            </Pivot>
+        </Grid>
     </Grid>
 </Page>
