@@ -50,8 +50,10 @@
                         <TextBlock Grid.Row="0"
                                    Style="{StaticResource DetailPageTitleStyle}"
                                    ToolTipService.ToolTip="{x:Bind ViewModel.Movie.ReleaseDate.Value.ToShortDateString(), Mode=OneWay}">
-                            <Run FontWeight="Bold" Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
-                            <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.Movie.ReleaseDate.Value.Year, Mode=OneWay}" />
+                            <Run Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
+                            <Run FontWeight="Normal"
+                                 Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                                 Text="{x:Bind ViewModel.Movie.ReleaseDate.Value.Year, Mode=OneWay}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"

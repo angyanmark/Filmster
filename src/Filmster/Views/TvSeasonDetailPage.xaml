@@ -42,8 +42,10 @@
                         <TextBlock Grid.Row="0"
                                    Style="{StaticResource DetailPageTitleStyle}"
                                    ToolTipService.ToolTip="{x:Bind ViewModel.TvSeason.AirDate.Value.ToShortDateString(), Mode=OneWay}">
-                            <Run FontWeight="Bold" Text="{x:Bind ViewModel.TvSeason.Name, Mode=OneWay}" />
-                            <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.TvSeason.AirDate.Value.Year, Mode=OneWay}" />
+                            <Run Text="{x:Bind ViewModel.TvSeason.Name, Mode=OneWay}" />
+                            <Run FontWeight="Normal"
+                                 Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                                 Text="{x:Bind ViewModel.TvSeason.AirDate.Value.Year, Mode=OneWay}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"

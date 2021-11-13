@@ -39,9 +39,13 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Style="{StaticResource DetailPageTitleStyle}">
-                            <Run FontWeight="Bold" Text="{x:Bind ViewModel.Collection.Name, Mode=OneWay}" />
-                            <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.StartDate.Value.Year, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0} -'}" />
-                            <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{x:Bind ViewModel.EndDate.Value.Year, Mode=OneWay}" />
+                            <Run Text="{x:Bind ViewModel.Collection.Name, Mode=OneWay}" />
+                            <Run FontWeight="Normal"
+                                 Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                                 Text="{x:Bind ViewModel.StartDate.Value.Year, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='\{0} -'}" />
+                            <Run FontWeight="Normal"
+                                 Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                                 Text="{x:Bind ViewModel.EndDate.Value.Year, Mode=OneWay}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"

@@ -20,8 +20,9 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Style="{StaticResource DetailPageTitleStyle}">
-                <Run FontWeight="Bold" Text="{x:Bind ViewModel.GenericList.Name, Mode=OneWay}" />
+                <Run Text="{x:Bind ViewModel.GenericList.Name, Mode=OneWay}" />
                 <Run FontSize="{StaticResource LargeFontSize}"
+                     FontWeight="Normal"
                      Foreground="{StaticResource SystemOffsetMediumLowBrush}"
                      Text="{x:Bind ViewModel.GenericList.CreatedBy, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='List_CreatedBy'}" />
             </TextBlock>

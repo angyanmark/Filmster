@@ -47,7 +47,6 @@
 
                 <TextBlock Grid.Row="0"
                            Grid.Column="1"
-                           FontWeight="Bold"
                            Style="{StaticResource DetailPageTitleStyle}"
                            Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
                 <TextBlock Grid.Row="1"
