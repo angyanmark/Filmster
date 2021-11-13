@@ -208,13 +208,10 @@ namespace Filmster.ViewModels
 
         private void ImageClicked(TaggedImage selectedImage)
         {
-            var paths = Person.TaggedImages.Results.Select(image => image.FilePath);
-            var selectedPath = selectedImage.FilePath;
-
             NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
             {
-                ImagePaths = paths,
-                SelectedImagePath = selectedPath
+                ImagePaths = Person.TaggedImages.Results.Select(image => image.FilePath),
+                SelectedImagePath = selectedImage.FilePath,
             });
         }
 
@@ -222,13 +219,10 @@ namespace Filmster.ViewModels
         {
             if (e.OriginalSource is Image)
             {
-                var paths = Person.Images.Profiles.Select(image => image.FilePath);
-                var selectedPath = SelectedPoster.FilePath;
-
                 NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
                 {
-                    ImagePaths = paths,
-                    SelectedImagePath = selectedPath
+                    ImagePaths = Person.Images.Profiles.Select(image => image.FilePath),
+                    SelectedImagePath = SelectedPoster.FilePath,
                 });
             }
         }

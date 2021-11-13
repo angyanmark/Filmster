@@ -100,13 +100,10 @@ namespace Filmster.ViewModels
         {
             if (e.OriginalSource is Image)
             {
-                var paths = TvSeason.Images.Posters.Select(image => image.FilePath);
-                var selectedPath = SelectedPoster.FilePath;
-
                 NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
                 {
-                    ImagePaths = paths,
-                    SelectedImagePath = selectedPath
+                    ImagePaths = TvSeason.Images.Posters.Select(image => image.FilePath),
+                    SelectedImagePath = SelectedPoster.FilePath,
                 });
             }
         }
