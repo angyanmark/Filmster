@@ -26,6 +26,7 @@ namespace Filmster.ViewModelBases
         public ICommand TvRoleClickedCommand;
         public ICommand MovieJobClickedCommand;
         public ICommand TvJobClickedCommand;
+        public ICommand CollectionClickedCommand;
 
         public MediaViewModelBase()
         {
@@ -46,6 +47,7 @@ namespace Filmster.ViewModelBases
             TvRoleClickedCommand = new RelayCommand<TvRole>(TvRoleClicked);
             MovieJobClickedCommand = new RelayCommand<MovieJob>(MovieJobClicked);
             TvJobClickedCommand = new RelayCommand<TvJob>(TvJobClicked);
+            CollectionClickedCommand = new RelayCommand<int>(CollectionClicked);
         }
 
         private void TvShowClicked(TvShow tvShow)
@@ -106,6 +108,11 @@ namespace Filmster.ViewModelBases
         private void TvJobClicked(TvJob tvJob)
         {
             NavigationService.Navigate<TvShowDetailPage>(tvJob.Id);
+        }
+
+        private void CollectionClicked(int id)
+        {
+            NavigationService.Navigate<CollectionDetailPage>(id);
         }
     }
 }

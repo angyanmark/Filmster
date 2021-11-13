@@ -172,7 +172,8 @@ namespace Filmster.ViewModels
                 var collection = await TMDbService.GetCollectionAsync(Movie.BelongsToCollection.Id);
                 collection.Parts = collection.Parts
                     .OrderByDescending(part => part.ReleaseDate.HasValue)
-                    .ThenBy(p => p.ReleaseDate).ToList();
+                    .ThenBy(p => p.ReleaseDate)
+                    .ToList();
                 return collection;
             }
             return default;

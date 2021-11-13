@@ -541,4 +541,12 @@
     <value>Season {0}</value>
     <comment>Season text for media</comment>
   </data>
+  <data name="Media_Parts.Text" xml:space="preserve">
+    <value>Parts</value>
+    <comment>Parts text for media</comment>
+  </data>
+  <data name="Media_FilmsCount" xml:space="preserve">
+    <value>{0} films</value>
+    <comment>Film count text for media</comment>
+  </data>
 </root>

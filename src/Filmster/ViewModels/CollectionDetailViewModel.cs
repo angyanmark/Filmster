@@ -1,0 +1,111 @@
+﻿using Filmster.Common.Models;
+using Filmster.Common.Services;
+using Filmster.Helpers;
+using Filmster.Services;
+using Filmster.ViewModelBases;
+using Filmster.Views;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using TMDbLib.Objects.Collections;
+using TMDbLib.Objects.General;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+
+namespace Filmster.ViewModels
+{
+    public class CollectionDetailViewModel : MediaViewModelBase
+    {
+        private Collection _collection;
+        public Collection Collection
+        {
+            get { return _collection; }
+            set { Set(ref _collection, value); }
+        }
+
+        private ImageData _selectedPoster;
+        public ImageData SelectedPoster
+        {
+            get { return _selectedPoster; }
+            set { Set(ref _selectedPoster, value); }
+        }
+
+        private DateTime? _startDate;
+        public DateTime? StartDate
+        {
+            get { return _startDate; }
+            set { Set(ref _startDate, value); }
+        }
+
+        private DateTime? _endDate;
+        public DateTime? EndDate
+        {
+            get { return _endDate; }
+            set { Set(ref _endDate, value); }
+        }
+
+        public ICommand ImageClickedCommand;
+
+        public CollectionDetailViewModel()
+        {
+            ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
+        }
+
+        public async Task LoadCollection(int id)
+        {
+            Collection = await GetCollectionAsync(id);
+            SelectedPoster = GetSelectedPoster();
+            SetStartEndDate();
+        }
+
+        private async Task<Collection> GetCollectionAsync(int id)
+        {
+            var collection = await TMDbService.GetCollectionAsync(id, CollectionMethods.Images);
+            collection.Parts = collection.Parts
+                .OrderByDescending(part => part.ReleaseDate.HasValue)
+                .ThenBy(p => p.ReleaseDate)
+                .ToList();
+            return collection;
+        }
+
+        private ImageData GetSelectedPoster()
+        {
+            return Collection.Images.Posters.Find(poster => poster.FilePath == Collection.PosterPath) ?? Collection.Images.Posters.FirstOrDefault();
+        }
+
+        private void SetStartEndDate()
+        {
+            var dates = Collection.Parts.Select(part => part.ReleaseDate);
+            StartDate = dates.Min();
+            EndDate = dates.Any(date => !date.HasValue) ? null : dates.Max();
+        }
+
+        private void ImageClicked(ImageData selectedImage)
+        {
+            var paths = Collection.Images.Backdrops.Select(image => image.FilePath);
+            var selectedPath = selectedImage.FilePath;
+
+            NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
+            {
+                ImagePaths = paths,
+                SelectedImagePath = selectedPath
+            });
+        }
+
+        public void PosterClicked(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is Image)
+            {
+                var paths = Collection.Images.Posters.Select(image => image.FilePath);
+                var selectedPath = SelectedPoster.FilePath;
+
+                NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
+                {
+                    ImagePaths = paths,
+                    SelectedImagePath = selectedPath
+                });
+            }
+        }
+    }
+}

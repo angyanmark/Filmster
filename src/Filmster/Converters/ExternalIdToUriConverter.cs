@@ -35,6 +35,9 @@ namespace Filmster.Converters
                 case ExternalIdType.TMDbPerson:
                     baseUrl = TMDbService.TMDbPersonBaseUrl;
                     break;
+                case ExternalIdType.TMDbCollection:
+                    baseUrl = TMDbService.TMDbCollectionBaseUrl;
+                    break;
                 case ExternalIdType.IMDbMovie:
                     baseUrl = TMDbService.IMDbMovieBaseUrl;
                     break;

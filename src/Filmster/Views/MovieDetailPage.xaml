@@ -149,7 +149,11 @@
                 </Grid>
 
                 <StackPanel Grid.Row="1" Visibility="{x:Bind ViewModel.Movie.BelongsToCollection, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
+                    <HyperlinkButton Padding="0"
+                                     Command="{x:Bind ViewModel.CollectionClickedCommand}"
+                                     CommandParameter="{x:Bind ViewModel.Movie.BelongsToCollection.Id, Mode=OneWay}">
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Movie.BelongsToCollection.Name, Mode=OneWay}" />
+                    </HyperlinkButton>
                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />

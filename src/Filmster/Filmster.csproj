@@ -165,6 +165,7 @@
     <Compile Include="Services\IncludeAdultService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
+    <Compile Include="ViewModels\CollectionDetailViewModel.cs" />
     <Compile Include="ViewModels\DiscoverViewModel.cs" />
     <Compile Include="ViewModels\ImageGalleryViewModel.cs" />
     <Compile Include="ViewModels\ListDetailViewModel.cs" />
@@ -179,6 +180,9 @@
     <Compile Include="ViewModels\TvSeasonDetailViewModel.cs" />
     <Compile Include="ViewModels\TvShowDetailViewModel.cs" />
     <Compile Include="ViewModels\TvShowsViewModel.cs" />
+    <Compile Include="Views\CollectionDetailPage.xaml.cs">
+      <DependentUpon>CollectionDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DiscoverPage.xaml.cs">
       <DependentUpon>DiscoverPage.xaml</DependentUpon>
     </Compile>
@@ -276,6 +280,10 @@
     <Page Include="Styles\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CollectionDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DiscoverPage.xaml">
       <Generator>MSBuild:Compile</Generator>

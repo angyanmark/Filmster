@@ -541,4 +541,12 @@
     <value>{0}. évad</value>
     <comment>Season text for media</comment>
   </data>
+  <data name="Media_Parts.Text" xml:space="preserve">
+    <value>Részek</value>
+    <comment>Parts text for media</comment>
+  </data>
+  <data name="Media_FilmsCount" xml:space="preserve">
+    <value>{0} film</value>
+    <comment>Film count text for media</comment>
+  </data>
 </root>

@@ -48,6 +48,7 @@ namespace Filmster.Common.Services
         public static readonly string TMDbMovieBaseUrl = "https://www.themoviedb.org/movie/";
         public static readonly string TMDbTvShowBaseUrl = "https://www.themoviedb.org/tv/";
         public static readonly string TMDbPersonBaseUrl = "https://www.themoviedb.org/person/";
+        public static readonly string TMDbCollectionBaseUrl = "https://www.themoviedb.org/collection/";
         public static readonly string IMDbMovieBaseUrl = "https://www.imdb.com/title/";
         public static readonly string IMDbTvShowBaseUrl = "https://www.imdb.com/title/";
         public static readonly string IMDbPersonBaseUrl = "https://www.imdb.com/name/";
@@ -100,9 +101,9 @@ namespace Filmster.Common.Services
             return await client.GetMovieAccountStateAsync(id);
         }
 
-        public static async Task<Collection> GetCollectionAsync(int id)
+        public static async Task<Collection> GetCollectionAsync(int id, CollectionMethods extraMethods = CollectionMethods.Undefined)
         {
-            return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage);
+            return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage, extraMethods);
         }
 
         public static async Task<SearchContainer<SearchTv>> GetPopularTvShowsAsync(int page = 0)
