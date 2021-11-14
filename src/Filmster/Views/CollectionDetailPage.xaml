@@ -36,6 +36,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Style="{StaticResource DetailPageTitleStyle}">
@@ -52,11 +53,23 @@
                                    Foreground="{StaticResource SystemOffsetMediumBrush}"
                                    Text="{x:Bind ViewModel.Collection.Parts.Count, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_FilmsCount'}" />
 
-                        <TextBlock Grid.Row="2"
+                        <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource SmallSpacing}">
+                            <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                           IsReadOnly="True"
+                                           PlaceholderValue="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                            <TextBlock VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                                <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                            </TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="3"
                                    Style="{StaticResource OverviewTextStyle}"
                                    Text="{x:Bind ViewModel.Collection.Overview, Mode=OneWay}" />
 
-                        <HyperlinkButton Grid.Row="3"
+                        <HyperlinkButton Grid.Row="4"
                                          Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Collection.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbCollection}"
                                          Visibility="{x:Bind ViewModel.Collection.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">

@@ -37,6 +37,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -56,7 +57,19 @@
                                    Foreground="{StaticResource SystemOffsetMediumBrush}"
                                    Text="{x:Bind ViewModel.TvSeason.Episodes.Count, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodesCount'}" />
 
-                        <TextBlock Grid.Row="3"
+                        <StackPanel Grid.Row="3"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource SmallSpacing}">
+                            <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                           IsReadOnly="True"
+                                           PlaceholderValue="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                            <TextBlock VerticalAlignment="Center">
+                                <Run FontWeight="Bold" Text="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                                <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                            </TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="4"
                                    Style="{StaticResource OverviewTextStyle}"
                                    Text="{x:Bind ViewModel.TvSeason.Overview, Mode=OneWay}" />
                     </Grid>

@@ -30,6 +30,20 @@ namespace Filmster.ViewModels
             set { Set(ref _selectedPoster, value); }
         }
 
+        private double _voteAverage;
+        public double VoteAverage
+        {
+            get { return _voteAverage; }
+            set { Set(ref _voteAverage, value); }
+        }
+
+        private double _voteCount;
+        public double VoteCount
+        {
+            get { return _voteCount; }
+            set { Set(ref _voteCount, value); }
+        }
+
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
 
@@ -68,6 +82,8 @@ namespace Filmster.ViewModels
                 return;
             }
             SelectedPoster = GetSelectedPoster();
+            VoteAverage = TvSeason.Episodes.Where(part => part.VoteCount > 0).Average(part => part.VoteAverage);
+            VoteCount = TvSeason.Episodes.Sum(part => part.VoteCount);
             Cast.AddRange(TvSeason.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
         }

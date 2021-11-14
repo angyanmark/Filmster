@@ -45,6 +45,20 @@ namespace Filmster.ViewModels
             set { Set(ref _endDate, value); }
         }
 
+        private double _voteAverage;
+        public double VoteAverage
+        {
+            get { return _voteAverage; }
+            set { Set(ref _voteAverage, value); }
+        }
+
+        private double _voteCount;
+        public double VoteCount
+        {
+            get { return _voteCount; }
+            set { Set(ref _voteCount, value); }
+        }
+
         public ICommand ImageClickedCommand;
 
         public CollectionDetailViewModel()
@@ -57,6 +71,8 @@ namespace Filmster.ViewModels
             Collection = await GetCollectionAsync(id);
             SelectedPoster = GetSelectedPoster();
             SetStartEndDate();
+            VoteAverage = Collection.Parts.Where(part => part.VoteCount > 0).Average(part => part.VoteAverage);
+            VoteCount = Collection.Parts.Sum(part => part.VoteCount);
         }
 
         private async Task<Collection> GetCollectionAsync(int id)

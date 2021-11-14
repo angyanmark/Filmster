@@ -145,10 +145,13 @@
                 </TextBlock>
                 <TextBlock Style="{StaticResource ListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
-                    <RatingControl IsReadOnly="True" Value="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
-                    <TextBlock Margin="{StaticResource XXSmallTopMargin}"
-                               Foreground="{StaticResource SystemOffsetMediumBrush}"
-                               Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                   IsReadOnly="True"
+                                   PlaceholderValue="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <TextBlock VerticalAlignment="Center">
+                        <Run FontWeight="Bold" Text="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                        <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    </TextBlock>
                 </StackPanel>
             </StackPanel>
         </Grid>
