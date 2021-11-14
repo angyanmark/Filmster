@@ -1,6 +1,7 @@
 ﻿using Filmster.Common.Helpers;
 using Filmster.Common.Models;
 using Filmster.Common.Services;
+using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.ViewModelBases;
 using System;
@@ -160,11 +161,7 @@ namespace Filmster.ViewModels
             };
 
             var movies = await TMDbService.GetDiscoverMoviesAsync(options);
-            Movies.Clear();
-            foreach (var movie in movies)
-            {
-                Movies.Add(movie);
-            }
+            Movies.Refresh(movies);
         }
     }
 }

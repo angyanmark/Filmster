@@ -1,4 +1,5 @@
 ﻿using Filmster.Common.Models;
+using Filmster.Extensions;
 using Filmster.ViewModelBases;
 using System.Collections.ObjectModel;
 
@@ -21,11 +22,7 @@ namespace Filmster.ViewModels
 
         public void LoadImages(ImageGalleryNavigationParameter parameter)
         {
-            foreach (var path in parameter.ImagePaths)
-            {
-                ImagePaths.Add(path);
-            }
-
+            ImagePaths.AddRange(parameter.ImagePaths);
             SelectedImagePath = parameter.SelectedImagePath;
         }
     }

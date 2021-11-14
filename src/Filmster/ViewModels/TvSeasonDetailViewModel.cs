@@ -1,5 +1,6 @@
 ﻿using Filmster.Common.Models;
 using Filmster.Common.Services;
+using Filmster.Extensions;
 using Filmster.Services;
 using Filmster.ViewModelBases;
 using Filmster.Views;
@@ -67,8 +68,8 @@ namespace Filmster.ViewModels
                 return;
             }
             SelectedPoster = GetSelectedPoster();
-            CastToggled(false);
-            CrewToggled(false);
+            Cast.AddRange(TvSeason.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
+            Crew.AddRange(TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
         private ImageData GetSelectedPoster()
@@ -78,21 +79,25 @@ namespace Filmster.ViewModels
 
         private void CastToggled(bool isChecked)
         {
-            var cast = isChecked ? TvSeason.Credits.Cast : TvSeason.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Cast.Clear();
-            foreach (var c in cast)
+            if (isChecked)
             {
-                Cast.Add(c);
+                Cast.AddRange(TvSeason.Credits.Cast.Skip(TMDbService.DefaultCastCrewBackdropCount));
+            }
+            else
+            {
+                Cast.Keep(TMDbService.DefaultCastCrewBackdropCount);
             }
         }
 
         private void CrewToggled(bool isChecked)
         {
-            var crew = isChecked ? TvSeason.Credits.Crew : TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Crew.Clear();
-            foreach (var c in crew)
+            if (isChecked)
             {
-                Crew.Add(c);
+                Crew.AddRange(TvSeason.Credits.Crew.Skip(TMDbService.DefaultCastCrewBackdropCount));
+            }
+            else
+            {
+                Crew.Keep(TMDbService.DefaultCastCrewBackdropCount);
             }
         }
 

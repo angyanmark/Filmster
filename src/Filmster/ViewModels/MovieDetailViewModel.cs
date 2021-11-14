@@ -1,5 +1,6 @@
 ﻿using Filmster.Common.Models;
 using Filmster.Common.Services;
+using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
@@ -128,9 +129,9 @@ namespace Filmster.ViewModels
             Genres = GetGenres();
             Video = Movie.Videos.Results.FirstOrDefault();
             Collection = await GetCollectionAsync();
-            CastToggled(false);
-            CrewToggled(false);
-            ImagesToggled(false);
+            Cast.AddRange(Movie.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
+            Crew.AddRange(Movie.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
+            Images.AddRange(Movie.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
         private ImageData GetSelectedPoster()
@@ -181,31 +182,37 @@ namespace Filmster.ViewModels
 
         private void CastToggled(bool isChecked)
         {
-            var cast = isChecked ? Movie.Credits.Cast : Movie.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Cast.Clear();
-            foreach (var c in cast)
+            if (isChecked)
             {
-                Cast.Add(c);
+                Cast.AddRange(Movie.Credits.Cast.Skip(TMDbService.DefaultCastCrewBackdropCount));
+            }
+            else
+            {
+                Cast.Keep(TMDbService.DefaultCastCrewBackdropCount);
             }
         }
 
         private void CrewToggled(bool isChecked)
         {
-            var crew = isChecked ? Movie.Credits.Crew : Movie.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Crew.Clear();
-            foreach (var c in crew)
+            if (isChecked)
             {
-                Crew.Add(c);
+                Crew.AddRange(Movie.Credits.Crew.Skip(TMDbService.DefaultCastCrewBackdropCount));
+            }
+            else
+            {
+                Crew.Keep(TMDbService.DefaultCastCrewBackdropCount);
             }
         }
 
         private void ImagesToggled(bool isChecked)
         {
-            var images = isChecked ? Movie.Images.Backdrops : Movie.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Images.Clear();
-            foreach (var i in images)
+            if (isChecked)
             {
-                Images.Add(i);
+                Images.AddRange(Movie.Images.Backdrops.Skip(TMDbService.DefaultCastCrewBackdropCount));
+            }
+            else
+            {
+                Images.Keep(TMDbService.DefaultCastCrewBackdropCount);
             }
         }
 

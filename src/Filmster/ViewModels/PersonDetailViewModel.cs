@@ -1,6 +1,7 @@
 ﻿using Filmster.Common.Models;
 using Filmster.Common.Models.Enums;
 using Filmster.Common.Services;
+using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
@@ -120,39 +121,7 @@ namespace Filmster.ViewModels
             SelectedPoster = GetSelectedPoster();
             CastToggled(false);
             CrewToggled(false);
-            ImagesToggled(false);
-        }
-
-        private void CastSortTypeChanged(PersonCastCrewSortType sortType)
-        {
-            var movieCast = SortHelper.SortMovieCast(MovieCast, sortType);
-            var tvShowCast = SortHelper.SortTvShowCast(TvShowCast, sortType);
-            MovieCast.Clear();
-            TvShowCast.Clear();
-            foreach (var c in movieCast)
-            {
-                MovieCast.Add(c);
-            }
-            foreach (var c in tvShowCast)
-            {
-                TvShowCast.Add(c);
-            }
-        }
-
-        private void CrewSortTypeChanged(PersonCastCrewSortType sortType)
-        {
-            var movieCrew = SortHelper.SortMovieCrew(MovieCrew, sortType);
-            var tvShowCrew = SortHelper.SortTvShowCrew(TvShowCrew, sortType);
-            MovieCrew.Clear();
-            TvShowCrew.Clear();
-            foreach (var c in movieCrew)
-            {
-                MovieCrew.Add(c);
-            }
-            foreach (var c in tvShowCrew)
-            {
-                TvShowCrew.Add(c);
-            }
+            Images.AddRange(Person.TaggedImages.Results.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
         private ImageData GetSelectedPoster()
@@ -160,49 +129,55 @@ namespace Filmster.ViewModels
             return Person.Images.Profiles.Find(poster => poster.FilePath == Person.ProfilePath) ?? Person.Images.Profiles.FirstOrDefault();
         }
 
+        private void CastSortTypeChanged(PersonCastCrewSortType sortType)
+        {
+            SetCast(IsCastChecked, sortType);
+        }
+
+        private void CrewSortTypeChanged(PersonCastCrewSortType sortType)
+        {
+            SetCrew(IsCrewChecked, sortType);
+        }
+
         private void CastToggled(bool isChecked)
         {
-            var movieCast = SortHelper.SortMovieCast(Person.MovieCredits.Cast, SelectedCastSortType);
-            var tvShowCast = SortHelper.SortTvShowCast(Person.TvCredits.Cast, SelectedCastSortType);
-            movieCast = isChecked ? movieCast : movieCast.Take(TMDbService.DefaultCastCrewBackdropCount);
-            tvShowCast = isChecked ? tvShowCast : tvShowCast.Take(TMDbService.DefaultCastCrewBackdropCount);
-            MovieCast.Clear();
-            TvShowCast.Clear();
-            foreach (var c in movieCast)
-            {
-                MovieCast.Add(c);
-            }
-            foreach (var c in tvShowCast)
-            {
-                TvShowCast.Add(c);
-            }
+            SetCast(isChecked, SelectedCastSortType);
         }
 
         private void CrewToggled(bool isChecked)
         {
-            var movieCrew = SortHelper.SortMovieCrew(Person.MovieCredits.Crew, SelectedCrewSortType);
-            var tvShowCrew = SortHelper.SortTvShowCrew(Person.TvCredits.Crew, SelectedCrewSortType);
+            SetCrew(isChecked, SelectedCrewSortType);
+        }
+
+        private void SetCast(bool isChecked, PersonCastCrewSortType sortType)
+        {
+            var movieCast = SortHelper.SortMovieCast(Person.MovieCredits.Cast, sortType);
+            var tvShowCast = SortHelper.SortTvShowCast(Person.TvCredits.Cast, sortType);
+            movieCast = isChecked ? movieCast : movieCast.Take(TMDbService.DefaultCastCrewBackdropCount);
+            tvShowCast = isChecked ? tvShowCast : tvShowCast.Take(TMDbService.DefaultCastCrewBackdropCount);
+            MovieCast.Refresh(movieCast);
+            TvShowCast.Refresh(tvShowCast);
+        }
+
+        private void SetCrew(bool isChecked, PersonCastCrewSortType sortType)
+        {
+            var movieCrew = SortHelper.SortMovieCrew(Person.MovieCredits.Crew, sortType);
+            var tvShowCrew = SortHelper.SortTvShowCrew(Person.TvCredits.Crew, sortType);
             movieCrew = isChecked ? movieCrew : movieCrew.Take(TMDbService.DefaultCastCrewBackdropCount);
             tvShowCrew = isChecked ? tvShowCrew : tvShowCrew.Take(TMDbService.DefaultCastCrewBackdropCount);
-            MovieCrew.Clear();
-            TvShowCrew.Clear();
-            foreach (var c in movieCrew)
-            {
-                MovieCrew.Add(c);
-            }
-            foreach (var c in tvShowCrew)
-            {
-                TvShowCrew.Add(c);
-            }
+            MovieCrew.Refresh(movieCrew);
+            TvShowCrew.Refresh(tvShowCrew);
         }
 
         private void ImagesToggled(bool isChecked)
         {
-            var images = isChecked ? Person.TaggedImages.Results : Person.TaggedImages.Results.Take(TMDbService.DefaultCastCrewBackdropCount);
-            Images.Clear();
-            foreach (var i in images)
+            if (isChecked)
             {
-                Images.Add(i);
+                Images.AddRange(Person.TaggedImages.Results.Skip(TMDbService.DefaultCastCrewBackdropCount));
+            }
+            else
+            {
+                Images.Keep(TMDbService.DefaultCastCrewBackdropCount);
             }
         }
 

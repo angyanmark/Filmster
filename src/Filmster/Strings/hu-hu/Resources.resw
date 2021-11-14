@@ -181,9 +181,9 @@
     <value>Legjobbnak értékelt</value>
     <comment>Top Rated pivot item title for TvShows</comment>
   </data>
-  <data name="Shell_SearchBoxPlaceholderText.PlaceholderText" xml:space="preserve">
+  <data name="Shell_AutoSuggestBox.PlaceholderText" xml:space="preserve">
     <value>Keress filmeket, sorozatokat, embereket...</value>
-    <comment>SearchBox placeholder text in navigation bar</comment>
+    <comment>AutoSuggestBox placeholder text in navigation bar</comment>
   </data>
   <data name="Media_RuntimeHours" xml:space="preserve">
     <value>ó</value>

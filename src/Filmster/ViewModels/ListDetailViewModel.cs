@@ -1,10 +1,8 @@
 ﻿using Filmster.Common.Services;
 using Filmster.Services;
 using Filmster.ViewModelBases;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Lists;
-using TMDbLib.Objects.Search;
 
 namespace Filmster.ViewModels
 {
@@ -17,8 +15,6 @@ namespace Filmster.ViewModels
             set { Set(ref _genericList, value); }
         }
 
-        public ObservableCollection<SearchMovie> Items { get; set; } = new ObservableCollection<SearchMovie>();
-
         public ListDetailViewModel()
         {
         }
@@ -30,11 +26,6 @@ namespace Filmster.ViewModels
             {
                 NavigationService.GoBack();
                 return;
-            }
-
-            foreach (var item in GenericList.Items)
-            {
-                Items.Add(item);
             }
         }
     }

@@ -38,7 +38,7 @@
 
             <controls:AdaptiveGridView Grid.Row="3"
                                        ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
-                                       ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+                                       ItemsSource="{x:Bind ViewModel.GenericList.Items, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
         </Grid>
     </Grid>

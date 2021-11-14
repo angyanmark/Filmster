@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Filmster.Common.Helpers;
 using Filmster.Common.Models;
 using Filmster.Common.Services;
+using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
@@ -245,16 +246,11 @@ namespace Filmster.ViewModels
             if (!string.IsNullOrWhiteSpace(sender.Text) && args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
                 var multiSearchItems = await TMDbService.GetMultiSearchAsync(sender.Text, await IncludeAdultService.LoadIncludeAdultAsync());
-                SearchItems.Clear();
-                foreach (var multiSearchItem in multiSearchItems)
+                SearchItems.Reset(multiSearchItems.Select(item => new SearchItem
                 {
-                    var searchItem = new SearchItem
-                    {
-                        SearchBase = multiSearchItem,
-                        DisplayName = GetSearchItemDisplayName(multiSearchItem)
-                    };
-                    SearchItems.Add(searchItem);
-                }
+                    SearchBase = item,
+                    DisplayName = GetSearchItemDisplayName(item),
+                }));
             }
         }
 
