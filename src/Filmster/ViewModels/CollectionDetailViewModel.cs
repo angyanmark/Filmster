@@ -52,8 +52,8 @@ namespace Filmster.ViewModels
             set { Set(ref _voteAverage, value); }
         }
 
-        private double _voteCount;
-        public double VoteCount
+        private int _voteCount;
+        public int VoteCount
         {
             get { return _voteCount; }
             set { Set(ref _voteCount, value); }
