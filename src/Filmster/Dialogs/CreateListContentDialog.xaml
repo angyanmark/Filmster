@@ -1,0 +1,15 @@
+﻿<ContentDialog x:Class="Filmster.Dialogs.CreateListContentDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               x:Uid="CreateListContentDialog"
+               DefaultButton="Primary"
+               PrimaryButtonClick="CreateListButtonClick"
+               mc:Ignorable="d">
+
+    <StackPanel Margin="{StaticResource SmallTopBottomMargin}" Spacing="{StaticResource SmallSpacing}">
+        <TextBox x:Uid="CreateListContentDialog_ListName" Text="{x:Bind ListName, Mode=TwoWay}" />
+        <TextBox x:Uid="CreateListContentDialog_ListDescription" Text="{x:Bind ListDescription, Mode=TwoWay}" />
+    </StackPanel>
+</ContentDialog>

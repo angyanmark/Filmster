@@ -71,8 +71,7 @@ namespace Filmster.ViewModels
             Collection = await GetCollectionAsync(id);
             SelectedPoster = GetSelectedPoster();
             SetStartEndDate();
-            VoteAverage = Collection.Parts.Where(part => part.VoteCount > 0).Average(part => part.VoteAverage);
-            VoteCount = Collection.Parts.Sum(part => part.VoteCount);
+            SetVoteAverageVoteCount();
         }
 
         private async Task<Collection> GetCollectionAsync(int id)
@@ -95,6 +94,15 @@ namespace Filmster.ViewModels
             var dates = Collection.Parts.Select(part => part.ReleaseDate);
             StartDate = dates.Min();
             EndDate = dates.Any(date => !date.HasValue) ? null : dates.Max();
+        }
+
+        private void SetVoteAverageVoteCount()
+        {
+            if (Collection.Parts.Any(part => part.VoteCount > 0))
+            {
+                VoteAverage = Collection.Parts.Where(part => part.VoteCount > 0).Average(part => part.VoteAverage);
+            }
+            VoteCount = Collection.Parts.Sum(part => part.VoteCount);
         }
 
         private void ImageClicked(ImageData selectedImage)

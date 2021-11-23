@@ -28,6 +28,7 @@
             <c:StringFormatConverter x:Key="StringFormatConverter" />
             <converters:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
             <converters:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
             <converters:LocalizedStringFormatConverter x:Key="LocalizedStringFormatConverter" />
             <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
             <converters:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />

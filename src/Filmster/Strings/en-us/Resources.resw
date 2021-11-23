@@ -549,4 +549,56 @@
     <value>{0} films</value>
     <comment>Film count text for media</comment>
   </data>
+  <data name="List_Add.Content" xml:space="preserve">
+    <value>Add</value>
+    <comment>Add text for List</comment>
+  </data>
+  <data name="List_Clear.Content" xml:space="preserve">
+    <value>Clear</value>
+    <comment>Clear text for List</comment>
+  </data>
+  <data name="List_Create.Content" xml:space="preserve">
+    <value>Create</value>
+    <comment>Create text for List</comment>
+  </data>
+  <data name="List_Delete.Content" xml:space="preserve">
+    <value>Delete</value>
+    <comment>Delete text for List</comment>
+  </data>
+  <data name="CreateListContentDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Create</value>
+    <comment>Create text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog.Title" xml:space="preserve">
+    <value>Create list</value>
+    <comment>Create list text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog_ListDescription.Header" xml:space="preserve">
+    <value>Description</value>
+    <comment>Description text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog_ListName.Header" xml:space="preserve">
+    <value>Name</value>
+    <comment>Name text for CreateListContentDialog</comment>
+  </data>
+  <data name="ListAddContentDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel text for ListAddContentDialog</comment>
+  </data>
+  <data name="ListAddContentDialog.Title" xml:space="preserve">
+    <value>Add item</value>
+    <comment>Add item text for ListAddContentDialog</comment>
+  </data>
+  <data name="ListAddContentDialog_SearchBox.Header" xml:space="preserve">
+    <value>Search</value>
+    <comment>Search text for ListAddContentDialog</comment>
+  </data>
+  <data name="List_DeleteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Delete</value>
+    <comment>Delete text for List</comment>
+  </data>
 </root>

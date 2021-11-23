@@ -1,6 +1,7 @@
 ﻿using Filmster.Common.Helper.Tile;
 using Filmster.Common.Helpers;
 using Filmster.Common.Services;
+using Filmster.Dialogs;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
+using Windows.UI.Xaml.Controls;
 
 namespace Filmster.ViewModels
 {
@@ -119,12 +121,14 @@ namespace Filmster.ViewModels
 
         public ICommand LogInClickedCommand;
         public ICommand LogOutClickedCommand;
+        public ICommand CreateListClickedCommand;
         public ICommand AccountListClickedCommand;
 
         public ProfileViewModel()
         {
             LogInClickedCommand = new RelayCommand(LogInClickedAsync);
             LogOutClickedCommand = new RelayCommand(LogOutClickedAsync);
+            CreateListClickedCommand = new RelayCommand(CreateListClickedAsync);
             AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClicked);
 
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
@@ -260,6 +264,17 @@ namespace Filmster.ViewModels
             else
             {
                 await TilePinHelper.UnpinTileAsync(Constants.TvShowWatchlistTileId);
+            }
+        }
+
+        private async void CreateListClickedAsync()
+        {
+            var dialog = new CreateListContentDialog();
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary && !string.IsNullOrEmpty(dialog.ListId))
+            {
+                NavigationService.Navigate<ListDetailPage>(int.Parse(dialog.ListId));
             }
         }
 

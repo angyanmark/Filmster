@@ -141,7 +141,12 @@ namespace Filmster.Common.Services
             return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
         }
 
-        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value, bool includeAdult)
+        public static async Task<List<SearchMovie>> GetSearchMovieAsync(string value, bool includeAdult = false)
+        {
+            return (await client.SearchMovieAsync(value, CurrentLanguage, includeAdult: includeAdult)).Results;
+        }
+
+        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value, bool includeAdult = false)
         {
             return (await client.SearchMultiAsync(value, CurrentLanguage, includeAdult: includeAdult)).Results;
         }
@@ -265,6 +270,31 @@ namespace Filmster.Common.Services
         public static async Task<GenericList> GetListAsync(int id)
         {
             return await client.GetListAsync(id.ToString()); // TODO: language
+        }
+
+        public static async Task<string> ListCreateAsync(string name, string description = "")
+        {
+            return await client.ListCreateAsync(name, description);
+        }
+
+        public static async Task<bool> ListAddMovieAsync(string listId, int id)
+        {
+            return await client.ListAddMovieAsync(listId, id);
+        }
+
+        public static async Task<bool> ListRemoveMovieAsync(string listId, int id)
+        {
+            return await client.ListRemoveMovieAsync(listId, id);
+        }
+
+        public static async Task<bool> ListClearAsync(string listId)
+        {
+            return await client.ListClearAsync(listId);
+        }
+
+        public static async Task<bool> ListDeleteAsync(string listId)
+        {
+            return await client.ListDeleteAsync(listId);
         }
     }
 }

@@ -32,14 +32,52 @@
                        Style="{StaticResource OverviewTextStyle}"
                        Text="{x:Bind ViewModel.GenericList.Description, Mode=OneWay}" />
 
-            <TextBlock Grid.Row="2"
-                       FontStyle="Italic"
-                       Text="{x:Bind ViewModel.GenericList.ItemCount, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Profile_ListItemCount'}" />
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Spacing="{StaticResource SmallSpacing}">
+                <TextBlock VerticalAlignment="Center"
+                           FontStyle="Italic"
+                           Text="{x:Bind ViewModel.Items.Count, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Profile_ListItemCount'}" />
+                <Button x:Uid="List_Add" Command="{x:Bind ViewModel.ListAddClickedCommand}" />
+                <Button x:Uid="List_Clear"
+                        Command="{x:Bind ViewModel.ListClearClickedCommand}"
+                        IsEnabled="{x:Bind ViewModel.Items.Count, Mode=OneWay, Converter={StaticResource IntToBoolConverter}}" />
+                <Button x:Uid="List_Delete" Command="{x:Bind ViewModel.ListDeleteClickedCommand}" />
+            </StackPanel>
 
             <controls:AdaptiveGridView Grid.Row="3"
+                                       IsItemClickEnabled="True"
                                        ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
-                                       ItemsSource="{x:Bind ViewModel.GenericList.Items, Mode=OneWay}"
-                                       Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
+                                       ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}">
+                <controls:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
+                            <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
+                            <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                                <Grid>
+                                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Title}" />
+                                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                                </Grid>
+                                <Grid>
+                                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate.Year}" />
+                                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding FirstAirDate.Year}" />
+                                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
+                                               Text="{Binding EpisodeCount, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodesCount'}"
+                                               Visibility="{Binding FirstAirDate, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Uid="List_DeleteMenuFlyoutItem"
+                                                    Click="DeleteMenuFlyoutItem_Click"
+                                                    Icon="Delete" />
+                                </MenuFlyout>
+                            </StackPanel.ContextFlyout>
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:AdaptiveGridView.ItemTemplate>
+            </controls:AdaptiveGridView>
         </Grid>
     </Grid>
 </Page>

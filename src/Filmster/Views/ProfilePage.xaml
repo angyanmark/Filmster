@@ -108,29 +108,56 @@
                 <PivotItem x:Uid="Profile_Watchlist">
                     <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}" SelectedIndex="{x:Bind ViewModel.WatchlistPivotSelectedIndex, Mode=TwoWay}">
                         <PivotItem x:Uid="Profile_Movies">
-                            <StackPanel>
-                                <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsMovieWatchlistPinned, Mode=TwoWay}" />
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <ToggleSwitch x:Uid="Profile_WatchlistSwitch"
+                                              Grid.Row="0"
+                                              IsOn="{x:Bind ViewModel.IsMovieWatchlistPinned, Mode=TwoWay}" />
+                                <controls:AdaptiveGridView Grid.Row="1"
+                                                           ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                                            ItemsSource="{x:Bind ViewModel.MovieWatchlist, Mode=OneWay}"
                                                            Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-                            </StackPanel>
+                            </Grid>
                         </PivotItem>
 
                         <PivotItem x:Uid="Profile_TvShows">
-                            <StackPanel>
-                                <ToggleSwitch x:Uid="Profile_WatchlistSwitch" IsOn="{x:Bind ViewModel.IsTvShowWatchlistPinned, Mode=TwoWay}" />
-                                <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <ToggleSwitch x:Uid="Profile_WatchlistSwitch"
+                                              Grid.Row="0"
+                                              IsOn="{x:Bind ViewModel.IsTvShowWatchlistPinned, Mode=TwoWay}" />
+                                <controls:AdaptiveGridView Grid.Row="1"
+                                                           ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
                                                            ItemsSource="{x:Bind ViewModel.TvShowWatchlist, Mode=OneWay}"
                                                            Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
-                            </StackPanel>
+                            </Grid>
                         </PivotItem>
                     </Pivot>
                 </PivotItem>
 
                 <PivotItem x:Uid="Profile_Lists">
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.AccountListClickedCommand}"
-                                               ItemsSource="{x:Bind ViewModel.Lists, Mode=OneWay}"
-                                               Style="{StaticResource AdaptiveGridAccountList}" />
+                    <Grid RowSpacing="{StaticResource XSmallSpacing}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Uid="List_Create"
+                                Grid.Row="0"
+                                Command="{x:Bind ViewModel.CreateListClickedCommand}" />
+                        <controls:AdaptiveGridView Grid.Row="1"
+                                                   ItemClickCommand="{x:Bind ViewModel.AccountListClickedCommand}"
+                                                   ItemsSource="{x:Bind ViewModel.Lists, Mode=OneWay}"
+                                                   Style="{StaticResource AdaptiveGridAccountList}" />
+                    </Grid>
                 </PivotItem>
             </Pivot>
         </Grid>

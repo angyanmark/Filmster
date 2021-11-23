@@ -140,6 +140,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
+    <Compile Include="Converters\IntToBoolConverter.cs" />
+    <Compile Include="Dialogs\CreateListContentDialog.xaml.cs">
+      <DependentUpon>CreateListContentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ListAddContentDialog.xaml.cs">
+      <DependentUpon>ListAddContentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Helpers\BackgroundTaskHelper.cs" />
     <Compile Include="Helpers\DisplayNameHelper.cs" />
@@ -234,6 +241,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogs\CreateListContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ListAddContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\FlipView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

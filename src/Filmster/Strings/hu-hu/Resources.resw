@@ -549,4 +549,56 @@
     <value>{0} film</value>
     <comment>Film count text for media</comment>
   </data>
+  <data name="List_Add.Content" xml:space="preserve">
+    <value>Hozzáadás</value>
+    <comment>Add text for List</comment>
+  </data>
+  <data name="List_Clear.Content" xml:space="preserve">
+    <value>Kiürítés</value>
+    <comment>Clear text for List</comment>
+  </data>
+  <data name="List_Create.Content" xml:space="preserve">
+    <value>Létrehozás</value>
+    <comment>Create text for List</comment>
+  </data>
+  <data name="List_Delete.Content" xml:space="preserve">
+    <value>Törlés</value>
+    <comment>Delete text for List</comment>
+  </data>
+  <data name="CreateListContentDialog.CloseButtonText" xml:space="preserve">
+    <value>Mégse</value>
+    <comment>Cancel text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Létrehozás</value>
+    <comment>Create text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog.Title" xml:space="preserve">
+    <value>Lista létrehozása</value>
+    <comment>Create list text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog_ListDescription.Header" xml:space="preserve">
+    <value>Leírás</value>
+    <comment>Description text for CreateListContentDialog</comment>
+  </data>
+  <data name="CreateListContentDialog_ListName.Header" xml:space="preserve">
+    <value>Név</value>
+    <comment>Name text for CreateListContentDialog</comment>
+  </data>
+  <data name="ListAddContentDialog.CloseButtonText" xml:space="preserve">
+    <value>Mégse</value>
+    <comment>Cancel text for ListAddContentDialog</comment>
+  </data>
+  <data name="ListAddContentDialog.Title" xml:space="preserve">
+    <value>Elem hozzáadása</value>
+    <comment>Add item text for ListAddContentDialog</comment>
+  </data>
+  <data name="ListAddContentDialog_SearchBox.Header" xml:space="preserve">
+    <value>Keresés</value>
+    <comment>Search text for ListAddContentDialog</comment>
+  </data>
+  <data name="List_DeleteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Törlés</value>
+    <comment>Delete text for List</comment>
+  </data>
 </root>

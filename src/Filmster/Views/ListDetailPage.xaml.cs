@@ -1,4 +1,5 @@
 ﻿using Filmster.ViewModels;
+using TMDbLib.Objects.Search;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -19,6 +20,11 @@ namespace Filmster.Views
             var id = (int)e.Parameter;
             await ViewModel.LoadList(id);
             ViewModel.DataLoaded = true;
+        }
+
+        private void DeleteMenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.ListRemoveClickedCommand.Execute((sender as MenuFlyoutItem).DataContext as SearchMovie);
         }
     }
 }

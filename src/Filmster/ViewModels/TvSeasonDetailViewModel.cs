@@ -82,8 +82,7 @@ namespace Filmster.ViewModels
                 return;
             }
             SelectedPoster = GetSelectedPoster();
-            VoteAverage = TvSeason.Episodes.Where(part => part.VoteCount > 0).Average(part => part.VoteAverage);
-            VoteCount = TvSeason.Episodes.Sum(part => part.VoteCount);
+            SetVoteAverageVoteCount();
             Cast.AddRange(TvSeason.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
@@ -91,6 +90,15 @@ namespace Filmster.ViewModels
         private ImageData GetSelectedPoster()
         {
             return TvSeason.Images.Posters.Find(poster => poster.FilePath == TvSeason.PosterPath) ?? TvSeason.Images.Posters.FirstOrDefault();
+        }
+
+        private void SetVoteAverageVoteCount()
+        {
+            if (TvSeason.Episodes.Any(part => part.VoteCount > 0))
+            {
+                VoteAverage = TvSeason.Episodes.Where(part => part.VoteCount > 0).Average(part => part.VoteAverage);
+            }
+            VoteCount = TvSeason.Episodes.Sum(part => part.VoteCount);
         }
 
         private void CastToggled(bool isChecked)
