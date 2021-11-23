@@ -54,32 +54,16 @@ namespace Filmster.ViewModelBases
         {
         }
 
-        private protected async Task SetAccountStateAsync(MediaType mediaType, int id)
+        private protected void SetAccountState(AccountState accountState)
         {
-            if (!IsLoggedIn)
+            if (accountState != null)
             {
-                return;
+                Rating = accountState.Rating ?? -1;
+                IsFavorite = accountState.Favorite;
+                IsNotFavorite = !IsFavorite;
+                IsWatchlist = accountState.Watchlist;
+                IsNotWatchlist = !IsWatchlist;
             }
-
-            AccountState accountState;
-
-            switch (mediaType)
-            {
-                case MediaType.Movie:
-                    accountState = await TMDbService.GetMovieAccountStateAsync(id);
-                    break;
-                case MediaType.Tv:
-                    accountState = await TMDbService.GetTvShowAccountStateAsync(id);
-                    break;
-                default:
-                    throw new InvalidEnumArgumentException(nameof(mediaType), (int)mediaType, typeof(MediaType));
-            }
-
-            Rating = accountState.Rating ?? -1;
-            IsFavorite = accountState.Favorite;
-            IsNotFavorite = !IsFavorite;
-            IsWatchlist = accountState.Watchlist;
-            IsNotWatchlist = !IsWatchlist;
         }
 
         private protected async Task ChangeRatingAsync(MediaType mediaType, int id, double value)

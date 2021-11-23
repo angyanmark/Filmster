@@ -117,15 +117,14 @@ namespace Filmster.ViewModels
 
         public async Task LoadTvShow(int id)
         {
-            TvShow = await TMDbService.GetTvShowAsync(id);
+            TvShow = await TMDbService.GetTvShowAsync(id, IsLoggedIn);
             if (TvShow == null)
             {
                 NavigationService.GoBack();
                 return;
             }
 
-            await SetAccountStateAsync(MediaType.Tv, id);
-
+            SetAccountState(TvShow.AccountStates);
             SelectedPoster = GetSelectedPoster();
             Creators = GetCreators();
             EpisodeRuntime = Convert.ToInt32(TvShow.EpisodeRunTime.DefaultIfEmpty(0).Average());

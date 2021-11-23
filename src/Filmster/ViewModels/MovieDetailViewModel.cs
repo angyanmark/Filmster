@@ -114,15 +114,14 @@ namespace Filmster.ViewModels
 
         public async Task LoadMovie(int id)
         {
-            Movie = await TMDbService.GetMovieAsync(id);
+            Movie = await TMDbService.GetMovieAsync(id, IsLoggedIn);
             if (Movie == null)
             {
                 NavigationService.GoBack();
                 return;
             }
             
-            await SetAccountStateAsync(MediaType.Movie, id);
-
+            SetAccountState(Movie.AccountStates);
             SelectedPoster = GetSelectedPoster();
             Directors = GetDirectors();
             Certification = GetCertification();

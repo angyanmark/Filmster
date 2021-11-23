@@ -91,14 +91,9 @@ namespace Filmster.Common.Services
             return await client.GetMovieTopRatedListAsync(CurrentLanguage, page);
         }
 
-        public static async Task<Movie> GetMovieAsync(int id)
+        public static async Task<Movie> GetMovieAsync(int id, bool includeAccountState = false)
         {
-            return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
-        }
-
-        public static async Task<AccountState> GetMovieAccountStateAsync(int id)
-        {
-            return await client.GetMovieAccountStateAsync(id);
+            return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, (includeAccountState ? MovieMethods.AccountStates : MovieMethods.Undefined) | MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
         }
 
         public static async Task<Collection> GetCollectionAsync(int id, CollectionMethods extraMethods = CollectionMethods.Undefined)
@@ -116,14 +111,9 @@ namespace Filmster.Common.Services
             return await client.GetTvShowTopRatedAsync(page, CurrentLanguage);
         }
 
-        public static async Task<TvShow> GetTvShowAsync(int id)
+        public static async Task<TvShow> GetTvShowAsync(int id, bool includeAccountState = false)
         {
-            return await client.GetTvShowAsync(id, TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
-        }
-
-        public static async Task<AccountState> GetTvShowAccountStateAsync(int id)
-        {
-            return await client.GetTvShowAccountStateAsync(id);
+            return await client.GetTvShowAsync(id, (includeAccountState ? TvShowMethods.AccountStates : TvShowMethods.Undefined) | TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
         }
 
         public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber)
@@ -244,8 +234,6 @@ namespace Filmster.Common.Services
                         ? await client.TvShowRemoveRatingAsync(id)
                         : await client.TvShowSetRatingAsync(id, value * 2);
                     break;
-                case MediaType.Person:
-                case MediaType.Unknown:
                 default:
                     throw new ArgumentException(string.Format("Cannot set rating to media type {0}.", mediaType), nameof(mediaType));
             }
