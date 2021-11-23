@@ -189,6 +189,7 @@ namespace Filmster.Common.Services
         public static async Task<bool> DeleteUserSessionAsync()
         {
             // TODO: delete session
+            await client.SetSessionInformationAsync(string.Empty, SessionType.Unassigned);
             return true;
         }
 

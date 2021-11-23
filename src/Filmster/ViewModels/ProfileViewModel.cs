@@ -137,9 +137,7 @@ namespace Filmster.ViewModels
 
         public async Task LoadProfile()
         {
-            var isLoggenIn = await UserSessionService.IsLoggedIn();
-
-            if (isLoggenIn)
+            if (UserSessionService.IsLoggedIn)
             {
                 await SetLoggedInPropertiesAsync();
             }
@@ -210,9 +208,7 @@ namespace Filmster.ViewModels
 
         private async void LogInClickedAsync()
         {
-            var isLoggenIn = await UserSessionService.IsLoggedIn();
-
-            if (!isLoggenIn)
+            if (!UserSessionService.IsLoggedIn)
             {
                 var token = await TMDbService.GetAutenticationTokenAsync();
                 var logInUri = new Uri(TMDbService.TMDbLogInBaseUrl + token.RequestToken + "?redirect_to=filmster.login:");
@@ -222,16 +218,9 @@ namespace Filmster.ViewModels
 
         private async void LogOutClickedAsync()
         {
-            var isLoggenIn = await UserSessionService.IsLoggedIn();
-
-            if (isLoggenIn)
+            if (UserSessionService.IsLoggedIn)
             {
-                var success = await TMDbService.DeleteUserSessionAsync();
-
-                if (success)
-                {
-                    await UserSessionService.LoggedOutAsync();
-                }
+                await UserSessionService.LoggedOutAsync();
             }
         }
 

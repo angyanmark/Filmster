@@ -11,13 +11,10 @@ namespace Filmster.Common.Services
     {
         private const string SessionIdKey = "SessionIdKey";
 
+        public static bool IsLoggedIn { get; private set; }
+
         public static event EventHandler LoggedInEvent = delegate { };
         public static event EventHandler LoggedOutEvent = delegate { };
-
-        public static async Task<bool> IsLoggedIn()
-        {
-            return !string.IsNullOrEmpty(await LoadSessionIdAsync());
-        }
 
         private static async Task SaveSessionIdAsync(string sessionId)
         {
@@ -34,6 +31,7 @@ namespace Filmster.Common.Services
             var sessionId = await LoadSessionIdAsync();
             if (!string.IsNullOrEmpty(sessionId))
             {
+                IsLoggedIn = true;
                 await TMDbService.SetSessionInformationAsync(sessionId, SessionType.UserSession);
             }
         }
@@ -45,15 +43,21 @@ namespace Filmster.Common.Services
             {
                 await TMDbService.SetSessionInformationAsync(userSession.SessionId, SessionType.UserSession);
                 await SaveSessionIdAsync(userSession.SessionId);
+                IsLoggedIn = true;
                 LoggedInEvent(null, EventArgs.Empty);
             }
         }
 
         public static async Task LoggedOutAsync()
         {
-            await SaveSessionIdAsync(string.Empty);
-            LoggedOutEvent(null, EventArgs.Empty);
-            await TilePinHelper.UnpinUserTilesAsync();
+            var success = await TMDbService.DeleteUserSessionAsync();
+            if (success)
+            {
+                await SaveSessionIdAsync(string.Empty);
+                IsLoggedIn = false;
+                LoggedOutEvent(null, EventArgs.Empty);
+                await TilePinHelper.UnpinUserTilesAsync();
+            }
         }
     }
 }

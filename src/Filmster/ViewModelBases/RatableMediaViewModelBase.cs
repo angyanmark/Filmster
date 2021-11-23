@@ -8,7 +8,7 @@ namespace Filmster.ViewModelBases
 {
     public class RatableMediaViewModelBase : MediaViewModelBase
     {
-        private bool _isLoggedIn;
+        private bool _isLoggedIn = UserSessionService.IsLoggedIn;
         public bool IsLoggedIn
         {
             get { return _isLoggedIn; }
@@ -52,12 +52,6 @@ namespace Filmster.ViewModelBases
 
         public RatableMediaViewModelBase()
         {
-            _ = SetLoggedIn();
-        }
-
-        private async Task SetLoggedIn()
-        {
-            IsLoggedIn = await UserSessionService.IsLoggedIn();
         }
 
         private protected async Task SetAccountStateAsync(MediaType mediaType, int id)

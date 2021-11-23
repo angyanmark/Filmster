@@ -91,9 +91,7 @@ namespace Filmster.ViewModels
 
         private async Task InitializeUserProperties()
         {
-            var isLoggedIn = await UserSessionService.IsLoggedIn();
-
-            if (isLoggedIn)
+            if (UserSessionService.IsLoggedIn)
             {
                 await SetLoggedInPropertiesAsync();
             }
