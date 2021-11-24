@@ -458,8 +458,8 @@
     <comment>Log out text for Profile</comment>
   </data>
   <data name="Profile_Watchlist.Header" xml:space="preserve">
-    <value>Watchlist</value>
-    <comment>Watchlist text for Profile</comment>
+    <value>Watchlists</value>
+    <comment>Watchlists text for Profile</comment>
   </data>
   <data name="Profile_Favorites.Header" xml:space="preserve">
     <value>Favorites</value>
@@ -474,8 +474,8 @@
     <comment>TV Shows text for Profile</comment>
   </data>
   <data name="Profile_Rated.Header" xml:space="preserve">
-    <value>Rated</value>
-    <comment>Rated text for Profile</comment>
+    <value>Ratings</value>
+    <comment>Ratings text for Profile</comment>
   </data>
   <data name="Media_Favorite.ToolTipService.ToolTip" xml:space="preserve">
     <value>Favorite</value>

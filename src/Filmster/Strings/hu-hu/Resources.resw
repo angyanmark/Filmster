@@ -458,8 +458,8 @@
     <comment>Log out text for Profile</comment>
   </data>
   <data name="Profile_Watchlist.Header" xml:space="preserve">
-    <value>Megnézendő</value>
-    <comment>Watchlist text for Profile</comment>
+    <value>Megnézendők</value>
+    <comment>Watchlists text for Profile</comment>
   </data>
   <data name="Profile_Favorites.Header" xml:space="preserve">
     <value>Kedvencek</value>
@@ -474,8 +474,8 @@
     <comment>TV Shows text for Profile</comment>
   </data>
   <data name="Profile_Rated.Header" xml:space="preserve">
-    <value>Értékelt</value>
-    <comment>Rated text for Profile</comment>
+    <value>Értékeltek</value>
+    <comment>Ratings text for Profile</comment>
   </data>
   <data name="Media_Favorite.ToolTipService.ToolTip" xml:space="preserve">
     <value>Kedvenc</value>
