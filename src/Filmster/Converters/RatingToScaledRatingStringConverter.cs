@@ -7,7 +7,7 @@ namespace Filmster.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return new RatingToScaledRatingConverter().Convert(value, targetType, parameter, language).ToString();
+            return ((double)new RatingToScaledRatingConverter().Convert(value, targetType, parameter, language)).ToString("0.##");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

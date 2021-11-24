@@ -10,22 +10,16 @@ namespace Filmster.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var id = value;
             Enum.TryParse(parameter as string, out ExternalIdType externalIdType);
             string baseUrl;
 
             switch (externalIdType)
             {
                 case ExternalIdType.Homepage:
-                    var homepage = id as string;
-                    if (string.IsNullOrEmpty(homepage))
-                    {
-                        return new Uri(TMDbService.TMDbBaseUrl);
-                    }
-                    else
-                    {
-                        return new Uri(homepage);
-                    }
+                    var homepage = value as string;
+                    return string.IsNullOrEmpty(homepage)
+                        ? new Uri(TMDbService.TMDbBaseUrl)
+                        : new Uri(homepage);
                 case ExternalIdType.TMDbMovie:
                     baseUrl = TMDbService.TMDbMovieBaseUrl;
                     break;
@@ -63,7 +57,7 @@ namespace Filmster.Converters
                     throw new InvalidEnumArgumentException(nameof(parameter), (int)externalIdType, typeof(ExternalIdType));
             }
 
-            return new Uri($"{baseUrl}{id}");
+            return new Uri($"{baseUrl}{value}");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
