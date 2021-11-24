@@ -23,7 +23,7 @@
                 <StackPanel>
                     <TextBlock x:Uid="Discover_ReleaseDate" />
                     <controls:RangeSelector Width="328"
-                                            Margin="{StaticResource XSmallTopMargin}"
+                                            Margin="{StaticResource SmallTopMargin}"
                                             Maximum="{x:Bind ViewModel.ReleaseDateMax}"
                                             Minimum="{x:Bind ViewModel.ReleaseDateMin}"
                                             RangeEnd="{x:Bind ViewModel.ReleaseDateTo, Mode=TwoWay}"
@@ -34,19 +34,23 @@
                     <StackPanel>
                         <TextBlock x:Uid="Discover_VoteAverage" />
                         <controls:RangeSelector Width="152"
-                                                Margin="{StaticResource XSmallTopMargin}"
+                                                Margin="{StaticResource SmallTopMargin}"
                                                 Maximum="{x:Bind ViewModel.VoteAverageMax}"
                                                 Minimum="{x:Bind ViewModel.VoteAverageMin}"
                                                 RangeEnd="{x:Bind ViewModel.VoteAverageAtMost, Mode=TwoWay}"
                                                 RangeStart="{x:Bind ViewModel.VoteAverageAtLeast, Mode=TwoWay}"
                                                 StepFrequency="0.1" />
                     </StackPanel>
-                    <Slider x:Uid="Discover_MinimumVotes"
-                            Width="152"
-                            Maximum="{x:Bind ViewModel.VoteCountMax}"
-                            Minimum="{x:Bind ViewModel.VoteCountMin}"
-                            StepFrequency="500"
-                            Value="{x:Bind ViewModel.VoteCountAtLeast, Mode=TwoWay}" />
+                    <StackPanel>
+                        <TextBlock x:Uid="Discover_MinimumVotes" />
+                        <Slider Width="152"
+                                Margin="{StaticResource XSmallTopMargin}"
+                                Maximum="{x:Bind ViewModel.VoteCountMax}"
+                                Minimum="{x:Bind ViewModel.VoteCountMin}"
+                                StepFrequency="500"
+                                Value="{x:Bind ViewModel.VoteCountAtLeast, Mode=TwoWay}" />
+                    </StackPanel>
+
                 </StackPanel>
             </StackPanel>
 

@@ -385,7 +385,7 @@
     <value>Műfaj</value>
     <comment>Genre text for Discover</comment>
   </data>
-  <data name="Discover_MinimumVotes.Header" xml:space="preserve">
+  <data name="Discover_MinimumVotes.Text" xml:space="preserve">
     <value>Minimális szavazat</value>
     <comment>Minimum Votes text for Discover</comment>
   </data>

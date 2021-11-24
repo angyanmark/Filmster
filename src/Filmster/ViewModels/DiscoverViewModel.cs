@@ -153,8 +153,8 @@ namespace Filmster.ViewModels
             {
                 PrimaryReleaseDateAfter = new DateTime(ReleaseDateFrom, 1, 1),
                 PrimaryReleaseDateBefore = new DateTime(ReleaseDateTo, 1, 1),
-                VoteAverageAtLeast = VoteAverageAtLeast * 2,
-                VoteAverageAtMost = VoteAverageAtMost * 2,
+                VoteAverageAtLeast = Math.Round(VoteAverageAtLeast * 2, 1),
+                VoteAverageAtMost = Math.Round(VoteAverageAtMost * 2, 1),
                 VoteCountAtLeast = VoteCountAtLeast,
                 GenreId = GenreId,
                 SortBy = SelectedSortByItem.SortBy
