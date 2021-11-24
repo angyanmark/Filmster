@@ -188,6 +188,26 @@ namespace Filmster.Common.Services
             return await client.AccountGetDetailsAsync();
         }
 
+        public static async Task<SearchContainer<SearchMovieWithRating>> GetRatedMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
+        {
+            return await client.AccountGetRatedMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
+        }
+
+        public static async Task<SearchContainer<AccountSearchTv>> GetRatedTvShowsAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
+        {
+            return await client.AccountGetRatedTvShowsAsync(page, accountSortBy, sortOrder, CurrentLanguage);
+        }
+
+        public static async Task<SearchContainer<SearchMovie>> GetFavoriteMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
+        {
+            return await client.AccountGetFavoriteMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
+        }
+
+        public static async Task<SearchContainer<SearchTv>> GetFavoriteTvShowsAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
+        {
+            return await client.AccountGetFavoriteTvAsync(page, accountSortBy, sortOrder, CurrentLanguage);
+        }
+
         public static async Task<SearchContainer<SearchMovie>> GetMovieWatchlistAsync(int page = 0, AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
         {
             return await client.AccountGetMovieWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
@@ -196,26 +216,6 @@ namespace Filmster.Common.Services
         public static async Task<SearchContainer<SearchTv>> GetTvShowWatchlistAsync(int page = 0, AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
         {
             return await client.AccountGetTvWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
-        }
-
-        public static async Task<SearchContainer<SearchMovie>> GetFavoriteMoviesAsync(int page = 0)
-        {
-            return await client.AccountGetFavoriteMoviesAsync(page, language: CurrentLanguage);
-        }
-
-        public static async Task<SearchContainer<SearchTv>> GetFavoriteTvShowsAsync(int page = 0)
-        {
-            return await client.AccountGetFavoriteTvAsync(page, language: CurrentLanguage);
-        }
-
-        public static async Task<SearchContainer<SearchMovieWithRating>> GetRatedMoviesAsync(int page = 0)
-        {
-            return await client.AccountGetRatedMoviesAsync(page, language: CurrentLanguage);
-        }
-
-        public static async Task<SearchContainer<AccountSearchTv>> GetRatedTvShowsAsync(int page = 0)
-        {
-            return await client.AccountGetRatedTvShowsAsync(page, language: CurrentLanguage);
         }
 
         public static async Task<bool> SetRatingAsync(MediaType mediaType, int id, double value)

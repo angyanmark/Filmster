@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using TMDbLib.Objects.Account;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
@@ -128,7 +129,7 @@ namespace Filmster.Helpers
 
             if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
             {
-                Movies = await TMDbService.GetRatedMoviesAsync(pageIndex);
+                Movies = await TMDbService.GetRatedMoviesAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
                 return Movies.Results;
             }
 
@@ -146,43 +147,7 @@ namespace Filmster.Helpers
 
             if (pageIndex == 1 || pageIndex <= TvShows.TotalPages)
             {
-                TvShows = await TMDbService.GetRatedTvShowsAsync(pageIndex);
-                return TvShows.Results;
-            }
-
-            return default;
-        }
-    }
-
-    public class MovieWatchlistSource : IIncrementalSource<SearchMovie>
-    {
-        private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
-
-        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
-        {
-            pageIndex++;
-
-            if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
-            {
-                Movies = await TMDbService.GetMovieWatchlistAsync(pageIndex);
-                return Movies.Results;
-            }
-
-            return default;
-        }
-    }
-
-    public class TvShowWatchlistSource : IIncrementalSource<SearchTv>
-    {
-        private SearchContainer<SearchTv> TvShows = new SearchContainer<SearchTv>();
-
-        public async Task<IEnumerable<SearchTv>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
-        {
-            pageIndex++;
-
-            if (pageIndex == 1 || pageIndex <= TvShows.TotalPages)
-            {
-                TvShows = await TMDbService.GetTvShowWatchlistAsync(pageIndex);
+                TvShows = await TMDbService.GetRatedTvShowsAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
                 return TvShows.Results;
             }
 
@@ -200,7 +165,7 @@ namespace Filmster.Helpers
 
             if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
             {
-                Movies = await TMDbService.GetFavoriteMoviesAsync(pageIndex);
+                Movies = await TMDbService.GetFavoriteMoviesAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
                 return Movies.Results;
             }
 
@@ -218,7 +183,43 @@ namespace Filmster.Helpers
 
             if (pageIndex == 1 || pageIndex <= TvShows.TotalPages)
             {
-                TvShows = await TMDbService.GetFavoriteTvShowsAsync(pageIndex);
+                TvShows = await TMDbService.GetFavoriteTvShowsAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
+                return TvShows.Results;
+            }
+
+            return default;
+        }
+    }
+
+    public class MovieWatchlistSource : IIncrementalSource<SearchMovie>
+    {
+        private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
+
+        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
+            {
+                Movies = await TMDbService.GetMovieWatchlistAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
+                return Movies.Results;
+            }
+
+            return default;
+        }
+    }
+
+    public class TvShowWatchlistSource : IIncrementalSource<SearchTv>
+    {
+        private SearchContainer<SearchTv> TvShows = new SearchContainer<SearchTv>();
+
+        public async Task<IEnumerable<SearchTv>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= TvShows.TotalPages)
+            {
+                TvShows = await TMDbService.GetTvShowWatchlistAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
                 return TvShows.Results;
             }
 
