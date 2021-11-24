@@ -1,4 +1,5 @@
-﻿using Filmster.ViewModels;
+﻿using Filmster.Services;
+using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -16,9 +17,11 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var id = (int)e.Parameter;
-            await ViewModel.LoadMovie(id);
-            ViewModel.DataLoaded = true;
+            if (e.Parameter is int id)
+            {
+                await ViewModel.LoadMovie(id);
+                ViewModel.DataLoaded = true;
+            }
         }
     }
 }

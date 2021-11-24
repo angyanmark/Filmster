@@ -16,9 +16,12 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel.SearchValue = e.Parameter as string;
-            await ViewModel.Search(ViewModel.SearchValue);
-            ViewModel.DataLoaded = true;
+            if (e.Parameter is string searchValue)
+            {
+                ViewModel.SearchValue = searchValue;
+                await ViewModel.Search(ViewModel.SearchValue);
+                ViewModel.DataLoaded = true;
+            }
         }
     }
 }

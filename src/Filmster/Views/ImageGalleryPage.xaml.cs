@@ -17,8 +17,10 @@ namespace Filmster.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var parameter = e.Parameter as ImageGalleryNavigationParameter;
-            ViewModel.LoadImages(parameter);
+            if (e.Parameter is ImageGalleryNavigationParameter parameter)
+            {
+                ViewModel.LoadImages(parameter);
+            }
         }
     }
 }

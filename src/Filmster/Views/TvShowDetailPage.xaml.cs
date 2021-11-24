@@ -16,9 +16,11 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var id = (int)e.Parameter;
-            await ViewModel.LoadTvShow(id);
-            ViewModel.DataLoaded = true;
+            if (e.Parameter is int id)
+            {
+                await ViewModel.LoadTvShow(id);
+                ViewModel.DataLoaded = true;
+            }
         }
     }
 }

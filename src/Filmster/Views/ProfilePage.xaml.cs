@@ -17,9 +17,11 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var parameter = e.Parameter as WatchlistActivationNavigationParameter;
-            ViewModel.PrimaryPivotSelectedIndex = parameter?.PrimaryPivotIndex ?? 0;
-            ViewModel.WatchlistPivotSelectedIndex = parameter?.WatchlistPivotIndex ?? 0;
+            if (e.Parameter is WatchlistActivationNavigationParameter parameter)
+            {
+                ViewModel.PrimaryPivotSelectedIndex = parameter.PrimaryPivotIndex;
+                ViewModel.WatchlistPivotSelectedIndex = parameter.WatchlistPivotIndex;
+            }
             await ViewModel.LoadProfile();
             ViewModel.DataLoaded = true;
         }

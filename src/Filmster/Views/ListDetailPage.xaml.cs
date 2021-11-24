@@ -17,9 +17,11 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var id = (int)e.Parameter;
-            await ViewModel.LoadList(id);
-            ViewModel.DataLoaded = true;
+            if (e.Parameter is int id)
+            {
+                await ViewModel.LoadList(id);
+                ViewModel.DataLoaded = true;
+            }
         }
 
         private void DeleteMenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
