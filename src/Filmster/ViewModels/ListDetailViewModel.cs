@@ -22,7 +22,7 @@ namespace Filmster.ViewModels
             set { Set(ref _genericList, value); }
         }
 
-        public ObservableCollection<SearchMovie> Items { get; set; } = new ObservableCollection<SearchMovie>();
+        public ObservableCollection<SearchBase> Items { get; set; } = new ObservableCollection<SearchBase>();
 
         public ICommand ListAddClickedCommand;
         public ICommand ListClearClickedCommand;

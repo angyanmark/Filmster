@@ -259,7 +259,7 @@ namespace Filmster.Common.Services
 
         public static async Task<GenericList> GetListAsync(int id)
         {
-            return await client.GetListAsync(id.ToString()); // TODO: language
+            return await client.GetListAsync(id.ToString(), CurrentLanguage);
         }
 
         public static async Task<string> ListCreateAsync(string name, string description = "")
