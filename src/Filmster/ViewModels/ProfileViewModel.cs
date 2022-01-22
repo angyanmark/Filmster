@@ -2,12 +2,14 @@
 using Filmster.Common.Helpers;
 using Filmster.Common.Services;
 using Filmster.Dialogs;
+using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
 using Filmster.Views;
 using Microsoft.Toolkit.Uwp;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
@@ -27,6 +29,7 @@ namespace Filmster.ViewModels
         public IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie> FavoriteMovies { get; set; } = new IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie>();
         public IncrementalLoadingCollection<FavoriteTvShowsSource, SearchTv> FavoriteTvShows { get; set; } = new IncrementalLoadingCollection<FavoriteTvShowsSource, SearchTv>();
         public IncrementalLoadingCollection<ListsSource, AccountList> Lists { get; set; } = new IncrementalLoadingCollection<ListsSource, AccountList>();
+        public ObservableCollection<SearchMovie> Recommendations { get; set; } = new ObservableCollection<SearchMovie>();
 
         private int _primaryPivotSelectedIndex;
         public int PrimaryPivotSelectedIndex
@@ -123,6 +126,7 @@ namespace Filmster.ViewModels
         public ICommand LogOutClickedCommand;
         public ICommand CreateListClickedCommand;
         public ICommand AccountListClickedCommand;
+        public ICommand RecommendClickedCommand;
 
         public ProfileViewModel()
         {
@@ -130,6 +134,7 @@ namespace Filmster.ViewModels
             LogOutClickedCommand = new RelayCommand(LogOutClickedAsync);
             CreateListClickedCommand = new RelayCommand(CreateListClickedAsync);
             AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClicked);
+            RecommendClickedCommand = new RelayCommand(RecommendClickedAsync);
 
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
@@ -270,6 +275,12 @@ namespace Filmster.ViewModels
         private void AccountListClicked(AccountList accountList)
         {
             NavigationService.Navigate<ListDetailPage>(accountList.Id);
+        }
+
+        private async void RecommendClickedAsync()
+        {
+            var recommendations = await RecommendationService.RecommendMoviesAsync();
+            Recommendations.Reset(recommendations);
         }
     }
 }

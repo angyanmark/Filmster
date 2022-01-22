@@ -191,7 +191,7 @@
         </Grid>
     </DataTemplate>
 
-    <!--  Search list  -->
+    <!--  Search and profile recommendations list  -->
     <Style x:Key="AdaptiveGridSearchListMediumPoster" TargetType="controls:AdaptiveGridView">
         <Setter Property="DesiredWidth" Value="{StaticResource SearchListDesiredWidth}" />
         <Setter Property="ItemHeight" Value="{StaticResource SearchListItemHeight}" />
@@ -234,7 +234,7 @@
             </StackPanel>
             <TextBlock Grid.Column="1"
                        Style="{StaticResource SearchMediaTypeStyle}"
-                       Text="{Binding MediaType}" />
+                       Text="{Binding MediaType, Converter={StaticResource MediaTypeToLocalizedStringConverter}}" />
         </Grid>
     </DataTemplate>
 
@@ -267,7 +267,7 @@
             </StackPanel>
             <TextBlock Grid.Column="1"
                        Style="{StaticResource SearchMediaTypeStyle}"
-                       Text="{Binding MediaType}" />
+                       Text="{Binding MediaType, Converter={StaticResource MediaTypeToLocalizedStringConverter}}" />
         </Grid>
     </DataTemplate>
 
@@ -292,7 +292,7 @@
             </StackPanel>
             <TextBlock Grid.Column="1"
                        Style="{StaticResource SearchMediaTypeStyle}"
-                       Text="{Binding MediaType}" />
+                       Text="{Binding MediaType, Converter={StaticResource MediaTypeToLocalizedStringConverter}}" />
         </Grid>
     </DataTemplate>
 
@@ -300,7 +300,7 @@
         <TextBlock HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Foreground="{StaticResource SystemOffsetMediumLowBrush}"
-                   Text="{Binding MediaType}" />
+                   Text="{Binding MediaType, Converter={StaticResource MediaTypeToLocalizedStringConverter}}" />
     </DataTemplate>
 
     <Style x:Key="AdaptiveGridSearchListImage"

@@ -601,4 +601,32 @@
     <value>Törlés</value>
     <comment>Delete text for List</comment>
   </data>
+  <data name="MediaType_Episode" xml:space="preserve">
+    <value>Epizód</value>
+    <comment>Episode translation for MediaType</comment>
+  </data>
+  <data name="MediaType_Movie" xml:space="preserve">
+    <value>Film</value>
+    <comment>Movie translation for MediaType</comment>
+  </data>
+  <data name="MediaType_Person" xml:space="preserve">
+    <value>Személy</value>
+    <comment>Person translation for MediaType</comment>
+  </data>
+  <data name="MediaType_Tv" xml:space="preserve">
+    <value>Sorozat</value>
+    <comment>TV translation for MediaType</comment>
+  </data>
+  <data name="MediaType_Unknown" xml:space="preserve">
+    <value>Ismeretlen</value>
+    <comment>Unknown translation for MediaType</comment>
+  </data>
+  <data name="Profile_Recommend.Content" xml:space="preserve">
+    <value>Ajánlj</value>
+    <comment>Recommend text for Profile</comment>
+  </data>
+  <data name="Profile_Recommendations.Header" xml:space="preserve">
+    <value>Ajánlások</value>
+    <comment>Recommendations text for Profile</comment>
+  </data>
 </root>

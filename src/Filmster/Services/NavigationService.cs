@@ -91,7 +91,6 @@ namespace Filmster.Services
                 case MediaType.Person:
                     Navigate<PersonDetailPage>(searchBase.Id);
                     break;
-                case MediaType.Unknown:
                 default:
                     break;
             }

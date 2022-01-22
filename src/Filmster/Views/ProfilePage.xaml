@@ -159,6 +159,23 @@
                                                    Style="{StaticResource AdaptiveGridAccountList}" />
                     </Grid>
                 </PivotItem>
+
+                <PivotItem x:Uid="Profile_Recommendations">
+                    <Grid RowSpacing="{StaticResource XSmallSpacing}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Uid="Profile_Recommend"
+                                Grid.Row="0"
+                                Command="{x:Bind ViewModel.RecommendClickedCommand}" />
+                        <controls:AdaptiveGridView Grid.Row="1"
+                                                   ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                                   ItemsSource="{x:Bind ViewModel.Recommendations, Mode=OneWay}"
+                                                   Style="{StaticResource AdaptiveGridSearchListMediumPoster}" />
+                    </Grid>
+                </PivotItem>
             </Pivot>
         </Grid>
     </Grid>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using TMDbLib.Objects.People;
@@ -35,6 +36,19 @@ namespace Filmster.Extensions
             {
                 oldList.RemoveAt(keepCount);
             }
+        }
+
+        public static List<T> Shuffle<T>(this List<T> list)
+        {
+            Random random = new Random();
+            for (int i = list.Count - 1; i > 0; i--)
+            {
+                int j = random.Next(i + 1);
+                var temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+            return list;
         }
 
         public static void Refresh(this ObservableCollection<SearchMovie> oldList, IEnumerable<SearchMovie> newList)

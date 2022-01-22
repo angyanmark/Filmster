@@ -3,7 +3,7 @@
     <!--  Main list pages  -->
     <x:Double x:Key="MainGridPosterDesiredWidth">240</x:Double>
 
-    <x:Double x:Key="SearchListDesiredWidth">12000</x:Double>
+    <x:Double x:Key="SearchListDesiredWidth">600</x:Double>
     <x:Double x:Key="SearchListItemHeight">240</x:Double>
     <x:Double x:Key="SearchListImageWidth">160</x:Double>
 

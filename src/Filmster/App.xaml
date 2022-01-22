@@ -30,6 +30,7 @@
             <converters:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
             <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
             <converters:LocalizedStringFormatConverter x:Key="LocalizedStringFormatConverter" />
+            <converters:MediaTypeToLocalizedStringConverter x:Key="MediaTypeToLocalizedStringConverter" />
             <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
             <converters:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <converters:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
