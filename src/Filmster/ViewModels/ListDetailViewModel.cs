@@ -1,4 +1,5 @@
-﻿using Filmster.Common.Services;
+﻿using Filmster.Common.Helpers;
+using Filmster.Common.Services;
 using Filmster.Dialogs;
 using Filmster.Extensions;
 using Filmster.Helpers;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
+using Windows.UI.Xaml.Controls;
 
 namespace Filmster.ViewModels
 {
@@ -61,19 +63,45 @@ namespace Filmster.ViewModels
 
         private async void ListClearClickedAsync()
         {
-            var success = await TMDbService.ListClearAsync(GenericList.Id);
-            if (success)
+            var dialog = new ContentDialog
             {
-                Items.Clear();
+                Title = "ConfirmDialog_Clear".GetLocalized(),
+                Content = "ConfirmDialog_Clear_Content".GetLocalized(),
+                CloseButtonText = "ConfirmDialog_Close".GetLocalized(),
+                PrimaryButtonText = "ConfirmDialog_Clear".GetLocalized(),
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                var success = await TMDbService.ListClearAsync(GenericList.Id);
+                if (success)
+                {
+                    Items.Clear();
+                }
             }
         }
 
         private async void ListDeleteClickedAsync()
         {
-            var success = await TMDbService.ListDeleteAsync(GenericList.Id);
-            if (success)
+            var dialog = new ContentDialog
             {
-                NavigationService.GoBack();
+                Title = "ConfirmDialog_Delete".GetLocalized(),
+                Content = "ConfirmDialog_Delete_Content".GetLocalized(),
+                CloseButtonText = "ConfirmDialog_Close".GetLocalized(),
+                PrimaryButtonText = "ConfirmDialog_Delete".GetLocalized(),
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                var success = await TMDbService.ListDeleteAsync(GenericList.Id);
+                if (success)
+                {
+                    NavigationService.GoBack();
+                }
             }
         }
 

@@ -629,4 +629,24 @@
     <value>Ajánlások</value>
     <comment>Recommendations text for Profile</comment>
   </data>
+  <data name="ConfirmDialog_Clear" xml:space="preserve">
+    <value>Kiürítés</value>
+    <comment>Clear text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Clear_Content" xml:space="preserve">
+    <value>Biztosan kiüríti ezt a listát?</value>
+    <comment>Clear content text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Close" xml:space="preserve">
+    <value>Mégse</value>
+    <comment>Cancel text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Delete" xml:space="preserve">
+    <value>Törlés</value>
+    <comment>Delete text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Delete_Content" xml:space="preserve">
+    <value>Biztosan törli ezt a listát?</value>
+    <comment>Delete content text for ConfirmDialog</comment>
+  </data>
 </root>

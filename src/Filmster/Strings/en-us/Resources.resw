@@ -629,4 +629,24 @@
     <value>Recommendations</value>
     <comment>Recommendations text for Profile</comment>
   </data>
+  <data name="ConfirmDialog_Clear" xml:space="preserve">
+    <value>Clear</value>
+    <comment>Clear text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Clear_Content" xml:space="preserve">
+    <value>Are you sure you want to clear this list?</value>
+    <comment>Clear content text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Close" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Delete" xml:space="preserve">
+    <value>Delete</value>
+    <comment>Delete text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_Delete_Content" xml:space="preserve">
+    <value>Are you sure you want to delete this list?</value>
+    <comment>Delete content text for ConfirmDialog</comment>
+  </data>
 </root>
