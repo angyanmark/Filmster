@@ -127,7 +127,7 @@ namespace Filmster.ViewModels
             SetAccountState(TvShow.AccountStates);
             SelectedPoster = GetSelectedPoster();
             Creators = GetCreators();
-            EpisodeRuntime = Convert.ToInt32(TvShow.EpisodeRunTime.DefaultIfEmpty(0).Average());
+            EpisodeRuntime = Convert.ToInt32(TvShow.EpisodeRunTime.DefaultIfEmpty().Average());
             Certification = GetCertification();
             Genres = GetGenres();
             Video = TvShow.Videos.Results.FirstOrDefault();

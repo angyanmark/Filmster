@@ -155,6 +155,7 @@
     <Compile Include="Converters\ExternalIdToUriConverter.cs" />
     <Compile Include="Converters\IntToRuntimeConverter.cs" />
     <Compile Include="Helpers\IncrementalSources.cs" />
+    <Compile Include="Helpers\VoteHelper.cs" />
     <Compile Include="Services\RecommendationService.cs" />
     <Compile Include="ViewModelBases\LoadingObservable.cs" />
     <Compile Include="ViewModelBases\MediaViewModelBase.cs" />

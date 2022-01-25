@@ -17,6 +17,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -33,14 +34,26 @@
                        Style="{StaticResource OverviewTextStyle}"
                        Text="{x:Bind ViewModel.GenericList.Description, Mode=OneWay}" />
 
-            <HyperlinkButton Grid.Row="2"
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Spacing="{StaticResource SmallSpacing}">
+                <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                               IsReadOnly="True"
+                               PlaceholderValue="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                <TextBlock VerticalAlignment="Center">
+                    <Run FontWeight="Bold" Text="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                    <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                </TextBlock>
+            </StackPanel>
+
+            <HyperlinkButton Grid.Row="3"
                              Padding="0"
                              NavigateUri="{x:Bind ViewModel.GenericList.Id, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=TMDbList}"
                              Visibility="{x:Bind ViewModel.GenericList.Id, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                 <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
             </HyperlinkButton>
 
-            <StackPanel Grid.Row="3"
+            <StackPanel Grid.Row="4"
                         Orientation="Horizontal"
                         Spacing="{StaticResource SmallSpacing}">
                 <TextBlock VerticalAlignment="Center"
@@ -53,7 +66,7 @@
                 <Button x:Uid="List_Delete" Command="{x:Bind ViewModel.ListDeleteClickedCommand}" />
             </StackPanel>
 
-            <controls:AdaptiveGridView Grid.Row="4"
+            <controls:AdaptiveGridView Grid.Row="5"
                                        IsItemClickEnabled="True"
                                        ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}">

@@ -7,6 +7,7 @@ using Filmster.Services;
 using Filmster.ViewModelBases;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
@@ -22,6 +23,20 @@ namespace Filmster.ViewModels
         {
             get { return _genericList; }
             set { Set(ref _genericList, value); }
+        }
+
+        private double _voteAverage;
+        public double VoteAverage
+        {
+            get { return _voteAverage; }
+            set { Set(ref _voteAverage, value); }
+        }
+
+        private int _voteCount;
+        public int VoteCount
+        {
+            get { return _voteCount; }
+            set { Set(ref _voteCount, value); }
         }
 
         public ObservableCollection<SearchBase> Items { get; set; } = new ObservableCollection<SearchBase>();
@@ -48,6 +63,12 @@ namespace Filmster.ViewModels
                 return;
             }
             Items.AddRange(GenericList.Items);
+            SetVoteAverageVoteCount();
+        }
+
+        private void SetVoteAverageVoteCount()
+        {
+            (VoteAverage, VoteCount) = VoteHelper.GetVoteAverageVoteCount(Items.Select(item => ((item as SearchMovieTvBase).VoteAverage, (item as SearchMovieTvBase).VoteCount)));
         }
 
         private async void ListAddClickedAsync()
@@ -58,6 +79,7 @@ namespace Filmster.ViewModels
             if (dialog.AddedMovie != null)
             {
                 Items.Add(dialog.AddedMovie);
+                SetVoteAverageVoteCount();
             }
         }
 
@@ -79,6 +101,7 @@ namespace Filmster.ViewModels
                 if (success)
                 {
                     Items.Clear();
+                    SetVoteAverageVoteCount();
                 }
             }
         }
@@ -111,6 +134,7 @@ namespace Filmster.ViewModels
             if (success)
             {
                 Items.Remove(item);
+                SetVoteAverageVoteCount();
             }
         }
     }
