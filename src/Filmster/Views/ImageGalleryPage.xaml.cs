@@ -1,5 +1,6 @@
 ﻿using Filmster.Common.Models;
 using Filmster.ViewModels;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -21,6 +22,11 @@ namespace Filmster.Views
             {
                 ViewModel.LoadImages(parameter);
             }
+        }
+
+        private void OpenOriginalMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.OpenOriginalClickedCommand.Execute((sender as MenuFlyoutItem).DataContext as string);
         }
     }
 }

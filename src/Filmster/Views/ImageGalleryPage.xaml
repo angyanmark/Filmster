@@ -9,7 +9,15 @@
     <FlipView ItemsSource="{x:Bind ViewModel.ImagePaths, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedImagePath, Mode=TwoWay}">
         <FlipView.ItemTemplate>
             <DataTemplate>
-                <Image Source="{Binding Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=Original}" />
+                <Image Source="{Binding Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=Original}">
+                    <Image.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem x:Uid="ImageGallery_OpenOriginalMenuFlyoutItem"
+                                            Click="OpenOriginalMenuFlyoutItem_Click"
+                                            Icon="Globe" />
+                        </MenuFlyout>
+                    </Image.ContextFlyout>
+                </Image>
             </DataTemplate>
         </FlipView.ItemTemplate>
     </FlipView>

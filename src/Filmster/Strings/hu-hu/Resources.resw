@@ -649,4 +649,8 @@
     <value>Biztosan törli ezt a listát?</value>
     <comment>Delete content text for ConfirmDialog</comment>
   </data>
+  <data name="ImageGallery_OpenOriginalMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Eredeti megnyitása</value>
+    <comment>Open original text for ImageGallery</comment>
+  </data>
 </root>

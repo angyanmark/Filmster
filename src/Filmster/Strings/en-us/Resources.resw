@@ -649,4 +649,8 @@
     <value>Are you sure you want to delete this list?</value>
     <comment>Delete content text for ConfirmDialog</comment>
   </data>
+  <data name="ImageGallery_OpenOriginalMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Open original</value>
+    <comment>Open original text for ImageGallery</comment>
+  </data>
 </root>
