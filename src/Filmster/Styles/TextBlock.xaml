@@ -74,6 +74,7 @@
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
         <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="MaxLines" Value="2" />
     </Style>
 

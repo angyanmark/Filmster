@@ -154,8 +154,10 @@
                         VerticalAlignment="Center"
                         Spacing="{StaticResource XXXSmallSpacing}">
                 <TextBlock Style="{StaticResource ListTitleStyle}">
-                    <Run FontWeight="Bold" Text="{Binding Name}" />
-                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding AirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}" />
+                    <Run Text="{Binding Name}" />
+                    <Run FontWeight="Normal"
+                         Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                         Text="{Binding AirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}" />
                 </TextBlock>
                 <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
                     <Run Text="{Binding SeasonNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
