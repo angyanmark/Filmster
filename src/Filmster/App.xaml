@@ -34,6 +34,7 @@
             <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
             <converters:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <converters:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
+            <converters:SearchMovieTvBaseToTitleReleaseDateStringConverter x:Key="SearchMovieTvBaseToTitleReleaseDateStringConverter" />
             <converters:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />
             <converters:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
         </ResourceDictionary>

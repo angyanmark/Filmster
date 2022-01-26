@@ -142,6 +142,7 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Converters\IntToBoolConverter.cs" />
     <Compile Include="Converters\MediaTypeToLocalizedStringConverter.cs" />
+    <Compile Include="Converters\SearchMovieTvBaseToTitleReleaseDateStringConverter.cs" />
     <Compile Include="Dialogs\CreateListContentDialog.xaml.cs">
       <DependentUpon>CreateListContentDialog.xaml</DependentUpon>
     </Compile>

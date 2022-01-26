@@ -17,11 +17,15 @@
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridMediumPosterTemplate">
-        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource StretchImageBase}" />
+        <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}"
+               Style="{StaticResource StretchImageBase}"
+               ToolTipService.ToolTip="{Binding Converter={StaticResource SearchMovieTvBaseToTitleReleaseDateStringConverter}}" />
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridMediumProfileTemplate">
-        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource StretchImageBase}" />
+        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}"
+               Style="{StaticResource StretchImageBase}"
+               ToolTipService.ToolTip="{Binding Name}" />
     </DataTemplate>
 
     <!--  Detail pages, no stretch  -->
@@ -50,8 +54,12 @@
             <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=SmallPoster}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
                 <Grid>
-                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Title}" />
-                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}"
+                               Text="{Binding Title}"
+                               ToolTipService.ToolTip="{Binding Title}" />
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}"
+                               Text="{Binding Name}"
+                               ToolTipService.ToolTip="{Binding Name}" />
                 </Grid>
                 <Grid>
                     <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate.Year}" />
@@ -70,8 +78,12 @@
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
                 <RatingControl IsReadOnly="True" Value="{Binding Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
                 <Grid>
-                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Title}" />
-                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}"
+                               Text="{Binding Title}"
+                               ToolTipService.ToolTip="{Binding Title}" />
+                    <TextBlock Style="{StaticResource ImageGridTitleTextStyle}"
+                               Text="{Binding Name}"
+                               ToolTipService.ToolTip="{Binding Name}" />
                 </Grid>
                 <Grid>
                     <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding ReleaseDate.Year}" />
@@ -88,10 +100,16 @@
         <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
             <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
             <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
-                <TextBlock Style="{StaticResource ImageGridTitleTextStyle}" Text="{Binding Name}" />
+                <TextBlock Style="{StaticResource ImageGridTitleTextStyle}"
+                           Text="{Binding Name}"
+                           ToolTipService.ToolTip="{Binding Name}" />
                 <Grid>
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding Character}" />
-                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding Job}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
+                               Text="{Binding Character}"
+                               ToolTipService.ToolTip="{Binding Character}" />
+                    <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}"
+                               Text="{Binding Job}"
+                               ToolTipService.ToolTip="{Binding Job}" />
                 </Grid>
             </StackPanel>
         </StackPanel>
@@ -179,11 +197,13 @@
                 <TextBlock HorizontalAlignment="Center"
                            FontWeight="Bold"
                            Style="{StaticResource AccountListNameStyle}"
-                           Text="{Binding Name}" />
+                           Text="{Binding Name}"
+                           ToolTipService.ToolTip="{Binding Name}" />
                 <TextBlock HorizontalAlignment="Center"
                            Foreground="{StaticResource SystemOffsetMediumLowBrush}"
                            Style="{StaticResource AccountListDescriptionTextStyle}"
-                           Text="{Binding Description}" />
+                           Text="{Binding Description}"
+                           ToolTipService.ToolTip="{Binding Description}" />
                 <TextBlock HorizontalAlignment="Center"
                            FontStyle="Italic"
                            Text="{Binding ItemCount, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Profile_ListItemCount'}" />
@@ -220,16 +240,19 @@
                         Margin="{StaticResource SmallLeftTopRightBottomMargin}"
                         VerticalAlignment="Center"
                         Spacing="{StaticResource SmallSpacing}">
-                <TextBlock Style="{StaticResource SearchListTitleStyle}">
+                <TextBlock Style="{StaticResource SearchListTitleStyle}" ToolTipService.ToolTip="{Binding ReleaseDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}">
                     <Run FontWeight="Bold" Text="{Binding Title}" />
                     <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding ReleaseDate.Year}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
-                    <RatingControl IsReadOnly="True" Value="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
-                    <TextBlock Margin="{StaticResource XXSmallTopMargin}"
-                               Foreground="{StaticResource SystemOffsetMediumBrush}"
-                               Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                   IsReadOnly="True"
+                                   PlaceholderValue="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <TextBlock VerticalAlignment="Center">
+                        <Run FontWeight="Bold" Text="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                        <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    </TextBlock>
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Column="1"
@@ -253,16 +276,19 @@
                         Margin="{StaticResource SmallLeftTopRightBottomMargin}"
                         VerticalAlignment="Center"
                         Spacing="{StaticResource SmallSpacing}">
-                <TextBlock Style="{StaticResource SearchListTitleStyle}">
+                <TextBlock Style="{StaticResource SearchListTitleStyle}" ToolTipService.ToolTip="{Binding FirstAirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}">
                     <Run FontWeight="Bold" Text="{Binding Name}" />
                     <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding FirstAirDate.Year}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
-                    <RatingControl IsReadOnly="True" Value="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
-                    <TextBlock Margin="{StaticResource XXSmallTopMargin}"
-                               Foreground="{StaticResource SystemOffsetMediumBrush}"
-                               Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    <RatingControl Margin="{StaticResource XSmallTopMargin}"
+                                   IsReadOnly="True"
+                                   PlaceholderValue="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <TextBlock VerticalAlignment="Center">
+                        <Run FontWeight="Bold" Text="{Binding VoteAverage, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                        <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{Binding VoteCount, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                    </TextBlock>
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Column="1"
