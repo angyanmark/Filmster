@@ -124,6 +124,7 @@
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="MaxLines" Value="1" />
     </Style>
 

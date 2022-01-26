@@ -197,7 +197,6 @@
                         VerticalAlignment="Center"
                         Spacing="{StaticResource XXSmallSpacing}">
                 <TextBlock HorizontalAlignment="Center"
-                           FontWeight="Bold"
                            Style="{StaticResource AccountListNameStyle}"
                            Text="{Binding Name}"
                            ToolTipService.ToolTip="{Binding Name}" />
