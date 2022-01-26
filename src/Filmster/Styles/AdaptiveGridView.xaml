@@ -241,8 +241,10 @@
                         VerticalAlignment="Center"
                         Spacing="{StaticResource SmallSpacing}">
                 <TextBlock Style="{StaticResource SearchListTitleStyle}" ToolTipService.ToolTip="{Binding ReleaseDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}">
-                    <Run FontWeight="Bold" Text="{Binding Title}" />
-                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding ReleaseDate.Year}" />
+                    <Run Text="{Binding Title}" />
+                    <Run FontWeight="Normal"
+                         Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                         Text="{Binding ReleaseDate.Year}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
@@ -277,8 +279,10 @@
                         VerticalAlignment="Center"
                         Spacing="{StaticResource SmallSpacing}">
                 <TextBlock Style="{StaticResource SearchListTitleStyle}" ToolTipService.ToolTip="{Binding FirstAirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}">
-                    <Run FontWeight="Bold" Text="{Binding Name}" />
-                    <Run Foreground="{StaticResource SystemOffsetMediumLowBrush}" Text="{Binding FirstAirDate.Year}" />
+                    <Run Text="{Binding Name}" />
+                    <Run FontWeight="Normal"
+                         Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                         Text="{Binding FirstAirDate.Year}" />
                 </TextBlock>
                 <TextBlock Style="{StaticResource SearchListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
@@ -312,9 +316,7 @@
                         Margin="{StaticResource SmallLeftTopRightBottomMargin}"
                         VerticalAlignment="Center"
                         Spacing="{StaticResource SmallSpacing}">
-                <TextBlock FontWeight="Bold"
-                           Style="{StaticResource SearchListTitleStyle}"
-                           Text="{Binding Name}" />
+                <TextBlock Style="{StaticResource SearchListTitleStyle}" Text="{Binding Name}" />
             </StackPanel>
             <TextBlock Grid.Column="1"
                        Style="{StaticResource SearchMediaTypeStyle}"
