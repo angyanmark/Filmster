@@ -119,7 +119,7 @@ namespace Filmster.Common.Services
 
         public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber)
         {
-            return await client.GetTvSeasonAsync(tvShowId, seasonNumber, TvSeasonMethods.Images | TvSeasonMethods.Credits, CurrentLanguage, IncludeImageLanguage);
+            return await client.GetTvSeasonAsync(tvShowId, seasonNumber, TvSeasonMethods.Images | TvSeasonMethods.Credits | TvSeasonMethods.Videos, CurrentLanguage, IncludeImageLanguage);
         }
 
         public static async Task<SearchContainer<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow, int page = 0)

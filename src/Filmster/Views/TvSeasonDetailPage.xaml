@@ -38,6 +38,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -72,6 +73,13 @@
                         <TextBlock Grid.Row="4"
                                    Style="{StaticResource OverviewTextStyle}"
                                    Text="{x:Bind ViewModel.TvSeason.Overview, Mode=OneWay}" />
+
+                        <HyperlinkButton Grid.Row="5"
+                                         Padding="0"
+                                         NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
+                                         Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                            <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
+                        </HyperlinkButton>
                     </Grid>
                 </Grid>
 
