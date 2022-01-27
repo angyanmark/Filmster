@@ -136,6 +136,7 @@
                             </HyperlinkButton>
                             <HyperlinkButton Padding="0"
                                              NavigateUri="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=Homepage}"
+                                             ToolTipService.ToolTip="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay}"
                                              Visibility="{x:Bind ViewModel.Movie.Homepage, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                                 <TextBlock x:Uid="Media_Homepage" Style="{StaticResource ExternalLinkTextStyle}" />
                             </HyperlinkButton>
