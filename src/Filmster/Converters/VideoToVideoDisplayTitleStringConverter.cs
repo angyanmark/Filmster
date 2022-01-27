@@ -9,8 +9,9 @@ namespace Filmster.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var video = value as Video;
-            return $"{video.Name} ({video.Site}) [{video.Size}{"Video_PixelSize".GetLocalized()}]";
+            return value is Video video
+                ? $"{video.Name} ({video.Site}) [{video.Size}{"Video_PixelSize".GetLocalized()}]"
+                : string.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
