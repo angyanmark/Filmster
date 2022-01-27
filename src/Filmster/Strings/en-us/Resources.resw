@@ -653,4 +653,8 @@
     <value>Open original</value>
     <comment>Open original text for ImageGallery</comment>
   </data>
+  <data name="Video_PixelSize" xml:space="preserve">
+    <value>p</value>
+    <comment>Pixel size short text for Video</comment>
+  </data>
 </root>

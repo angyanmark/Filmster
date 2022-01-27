@@ -37,6 +37,7 @@
             <converters:SearchMovieTvBaseToTitleReleaseDateStringConverter x:Key="SearchMovieTvBaseToTitleReleaseDateStringConverter" />
             <converters:IntToRuntimeConverter x:Key="IntToRuntimeConverter" />
             <converters:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
+            <converters:VideoToVideoDisplayTitleStringConverter x:Key="VideoToVideoDisplayTitleStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
