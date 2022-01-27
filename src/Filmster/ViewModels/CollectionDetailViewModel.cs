@@ -69,6 +69,11 @@ namespace Filmster.ViewModels
         public async Task LoadCollection(int id)
         {
             Collection = await GetCollectionAsync(id);
+            if (Collection == null)
+            {
+                NavigationService.GoBack();
+                return;
+            }
             SelectedPoster = GetSelectedPoster();
             SetStartEndDate();
             (VoteAverage, VoteCount) = VoteHelper.GetVoteAverageVoteCount(Collection.Parts.Select(part => (part.VoteAverage, part.VoteCount)));
