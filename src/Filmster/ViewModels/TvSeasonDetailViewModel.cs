@@ -31,6 +31,13 @@ namespace Filmster.ViewModels
             set { Set(ref _selectedPoster, value); }
         }
 
+        private TvShowSeasonEpisodeNumbers _tvShowSeasonEpisodeNumbers;
+        public TvShowSeasonEpisodeNumbers TvShowSeasonEpisodeNumbers
+        {
+            get { return _tvShowSeasonEpisodeNumbers; }
+            set { Set(ref _tvShowSeasonEpisodeNumbers, value); }
+        }
+
         private Video _video;
         public Video Video
         {
@@ -81,14 +88,15 @@ namespace Filmster.ViewModels
         {
         }
 
-        public async Task LoadTvSeason(int tvShowId, int seasonNumber)
+        public async Task LoadTvSeason(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
         {
-            TvSeason = await TMDbService.GetTvSeasonAsync(tvShowId, seasonNumber);
+            TvSeason = await TMDbService.GetTvSeasonAsync(tvShowSeasonEpisodeNumbers.TvShowId, tvShowSeasonEpisodeNumbers.TvSeasonNumber);
             if (TvSeason == null)
             {
                 NavigationService.GoBack();
                 return;
             }
+            TvShowSeasonEpisodeNumbers = tvShowSeasonEpisodeNumbers;
             SelectedPoster = GetSelectedPoster();
             (VoteAverage, VoteCount) = VoteHelper.GetVoteAverageVoteCount(TvSeason.Episodes.Select(episode => (episode.VoteAverage, episode.VoteCount)));
             Video = TvSeason.Videos.Results.FirstOrDefault();

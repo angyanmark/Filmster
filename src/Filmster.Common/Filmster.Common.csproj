@@ -131,7 +131,7 @@
     <Compile Include="Models\Enums\PersonCastCrewSortType.cs" />
     <Compile Include="Models\ImageGalleryNavigationParameter.cs" />
     <Compile Include="Models\SearchItem.cs" />
-    <Compile Include="Models\TvSeasonNavigationParameter.cs" />
+    <Compile Include="Models\TvShowSeasonEpisodeNumbers.cs" />
     <Compile Include="Models\WatchlistActivationNavigationParameter.cs" />
     <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Services\TMDbService.cs" />

@@ -39,6 +39,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -75,6 +76,13 @@
                                    Text="{x:Bind ViewModel.TvSeason.Overview, Mode=OneWay}" />
 
                         <HyperlinkButton Grid.Row="5"
+                                         Padding="0"
+                                         NavigateUri="{x:Bind ViewModel.TvShowSeasonEpisodeNumbers, Mode=OneWay, Converter={StaticResource TvShowSeasonEpisodeNumbersToUriConverter}}"
+                                         Visibility="{x:Bind ViewModel.TvShowSeasonEpisodeNumbers, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                            <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
+                        </HyperlinkButton>
+
+                        <HyperlinkButton Grid.Row="6"
                                          Padding="0"
                                          NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
                                          ToolTipService.ToolTip="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource VideoToVideoDisplayTitleStringConverter}}"

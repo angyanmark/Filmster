@@ -169,10 +169,10 @@ namespace Filmster.ViewModels
 
         private void SearchTvSeasonClicked(SearchTvSeason searchTvSeason)
         {
-            NavigationService.Navigate<TvSeasonDetailPage>(new TvSeasonNavigationParameter
+            NavigationService.Navigate<TvSeasonDetailPage>(new TvShowSeasonEpisodeNumbers
             {
                 TvShowId = TvShow.Id,
-                SeasonNumber = searchTvSeason.SeasonNumber
+                TvSeasonNumber = searchTvSeason.SeasonNumber,
             });
         }
 

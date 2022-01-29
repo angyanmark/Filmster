@@ -58,6 +58,9 @@ namespace Filmster.Common.Services
         public static readonly string TwitterBaseUrl = "https://twitter.com/";
         public static readonly string InstagramBaseUrl = "https://www.instagram.com/";
 
+        public static readonly string TMDbTvSeasonUrl = "https://www.themoviedb.org/tv/{0}/season/{1}";
+        public static readonly string TMDbTvEpisodeUrl = "https://www.themoviedb.org/tv/{0}/season/{1}/episode/{2}";
+
         public static readonly string TMDbLogInBaseUrl = "https://www.themoviedb.org/authenticate/";
         public static readonly string GravatarBaseUrl = "https://secure.gravatar.com/avatar/";
 

@@ -17,9 +17,9 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e.Parameter is TvSeasonNavigationParameter parameter)
+            if (e.Parameter is TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
             {
-                await ViewModel.LoadTvSeason(parameter.TvShowId, parameter.SeasonNumber);
+                await ViewModel.LoadTvSeason(tvShowSeasonEpisodeNumbers);
                 ViewModel.DataLoaded = true;
             }
         }
