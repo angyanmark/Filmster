@@ -37,6 +37,7 @@
             <converters:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <converters:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
             <converters:SearchMovieTvBaseToTitleReleaseDateStringConverter x:Key="SearchMovieTvBaseToTitleReleaseDateStringConverter" />
+            <converters:TvShowSeasonEpisodeNumbersToImdbSeasonUriConverter x:Key="TvShowSeasonEpisodeNumbersToImdbSeasonUriConverter" />
             <converters:TvShowSeasonEpisodeNumbersToUriConverter x:Key="TvShowSeasonEpisodeNumbersToUriConverter" />
             <converters:VideoToVideoDisplayTitleStringConverter x:Key="VideoToVideoDisplayTitleStringConverter" />
         </ResourceDictionary>

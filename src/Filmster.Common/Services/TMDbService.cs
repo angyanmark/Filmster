@@ -50,6 +50,7 @@ namespace Filmster.Common.Services
         public static readonly string TMDbPersonBaseUrl = "https://www.themoviedb.org/person/";
         public static readonly string TMDbCollectionBaseUrl = "https://www.themoviedb.org/collection/";
         public static readonly string TMDbListBaseUrl = "https://www.themoviedb.org/list/";
+        public static readonly string IMDbBaseUrl = "https://www.imdb.com/";
         public static readonly string IMDbMovieBaseUrl = "https://www.imdb.com/title/";
         public static readonly string IMDbTvShowBaseUrl = "https://www.imdb.com/title/";
         public static readonly string IMDbPersonBaseUrl = "https://www.imdb.com/name/";
@@ -60,6 +61,7 @@ namespace Filmster.Common.Services
 
         public static readonly string TMDbTvSeasonUrl = "https://www.themoviedb.org/tv/{0}/season/{1}";
         public static readonly string TMDbTvEpisodeUrl = "https://www.themoviedb.org/tv/{0}/season/{1}/episode/{2}";
+        public static readonly string IMDbTvSeasonUrl = "https://www.imdb.com/title/{0}/episodes?season={1}";
 
         public static readonly string TMDbLogInBaseUrl = "https://www.themoviedb.org/authenticate/";
         public static readonly string GravatarBaseUrl = "https://secure.gravatar.com/avatar/";

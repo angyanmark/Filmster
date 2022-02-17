@@ -173,6 +173,7 @@ namespace Filmster.ViewModels
             {
                 TvShowId = TvShow.Id,
                 TvSeasonNumber = searchTvSeason.SeasonNumber,
+                TvShowImdbId = TvShow.ExternalIds.ImdbId,
             });
         }
 

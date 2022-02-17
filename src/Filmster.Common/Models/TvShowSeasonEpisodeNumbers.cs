@@ -5,5 +5,6 @@
         public int TvShowId { get; set; }
         public int TvSeasonNumber { get; set; }
         public int? TvEpisodeNumber { get; set; }
+        public string TvShowImdbId { get; set; }
     }
 }
