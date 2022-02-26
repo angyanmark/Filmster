@@ -223,9 +223,22 @@ namespace Filmster.ViewModels
 
         private async void LogOutClickedAsync()
         {
-            if (UserSessionService.IsLoggedIn)
+            var dialog = new ContentDialog
             {
-                await UserSessionService.LoggedOutAsync();
+                Title = "ConfirmDialog_LogOut".GetLocalized(),
+                Content = "ConfirmDialog_LogOut_Content".GetLocalized(),
+                CloseButtonText = "ConfirmDialog_Close".GetLocalized(),
+                PrimaryButtonText = "ConfirmDialog_LogOut".GetLocalized(),
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                if (UserSessionService.IsLoggedIn)
+                {
+                    await UserSessionService.LoggedOutAsync();
+                }
             }
         }
 

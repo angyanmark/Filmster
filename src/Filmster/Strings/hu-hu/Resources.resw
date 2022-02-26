@@ -661,4 +661,12 @@
     <value>Megosztás</value>
     <comment>Share tooltip text for media</comment>
   </data>
+  <data name="ConfirmDialog_LogOut" xml:space="preserve">
+    <value>Kijelentkezés</value>
+    <comment>Log out text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_LogOut_Content" xml:space="preserve">
+    <value>Biztosan kijelentkezik?</value>
+    <comment>Log out content text for ConfirmDialog</comment>
+  </data>
 </root>

@@ -661,4 +661,12 @@
     <value>Share</value>
     <comment>Share tooltip text for media</comment>
   </data>
+  <data name="ConfirmDialog_LogOut" xml:space="preserve">
+    <value>Log out</value>
+    <comment>Log out text for ConfirmDialog</comment>
+  </data>
+  <data name="ConfirmDialog_LogOut_Content" xml:space="preserve">
+    <value>Are you sure you want to log out?</value>
+    <comment>Log out content text for ConfirmDialog</comment>
+  </data>
 </root>
