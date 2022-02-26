@@ -5,6 +5,7 @@ using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
 using Filmster.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -106,10 +107,12 @@ namespace Filmster.ViewModels
         }
 
         public ICommand ImageClickedCommand;
+        public ICommand ShareClickedCommand;
 
         public MovieDetailViewModel()
         {
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
+            ShareClickedCommand = new RelayCommand(ShareClicked);
         }
 
         public async Task LoadMovie(int id)
@@ -221,6 +224,15 @@ namespace Filmster.ViewModels
             {
                 ImagePaths = Movie.Images.Backdrops.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
+            });
+        }
+
+        private void ShareClicked()
+        {
+            ShareService.Share(new ShareParameter
+            {
+                Text = Movie.Title,
+                Uri = new Uri($"{TMDbService.TMDbMovieBaseUrl}{Movie.Id}"),
             });
         }
 

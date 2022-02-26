@@ -108,11 +108,13 @@ namespace Filmster.ViewModels
 
         public ICommand SearchTvSeasonClickedCommand;
         public ICommand ImageClickedCommand;
+        public ICommand ShareClickedCommand;
 
         public TvShowDetailViewModel()
         {
             SearchTvSeasonClickedCommand = new RelayCommand<SearchTvSeason>(SearchTvSeasonClicked);
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
+            ShareClickedCommand = new RelayCommand(ShareClicked);
         }
 
         public async Task LoadTvShow(int id)
@@ -219,6 +221,15 @@ namespace Filmster.ViewModels
             {
                 ImagePaths = TvShow.Images.Backdrops.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
+            });
+        }
+
+        private void ShareClicked()
+        {
+            ShareService.Share(new ShareParameter
+            {
+                Text = TvShow.Name,
+                Uri = new Uri($"{TMDbService.TMDbTvShowBaseUrl}{TvShow.Id}"),
             });
         }
 

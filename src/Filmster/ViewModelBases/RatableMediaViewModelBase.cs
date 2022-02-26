@@ -1,6 +1,5 @@
 ﻿using Filmster.Common.Helper.Tile;
 using Filmster.Common.Services;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using TMDbLib.Objects.General;
 

@@ -161,6 +161,7 @@
     <Compile Include="Helpers\IncrementalSources.cs" />
     <Compile Include="Helpers\VoteHelper.cs" />
     <Compile Include="Services\RecommendationService.cs" />
+    <Compile Include="Services\ShareService.cs" />
     <Compile Include="ViewModelBases\LoadingObservable.cs" />
     <Compile Include="ViewModelBases\MediaViewModelBase.cs" />
     <Compile Include="Helpers\NavHelper.cs" />

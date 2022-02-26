@@ -657,4 +657,8 @@
     <value>p</value>
     <comment>Pixel size short text for Video</comment>
   </data>
+  <data name="Media_Share.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Share</value>
+    <comment>Share tooltip text for media</comment>
+  </data>
 </root>

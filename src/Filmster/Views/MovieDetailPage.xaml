@@ -45,6 +45,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -85,22 +86,22 @@
                                 <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.Movie.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
                             <Grid x:Uid="Media_Favorite">
-                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                           Glyph="&#xEB52;"
                                           Tapped="{x:Bind ViewModel.FavoriteClickedAsync}"
                                           Visibility="{x:Bind ViewModel.IsNotFavorite, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                           Foreground="Red"
                                           Glyph="&#xEB52;"
                                           Tapped="{x:Bind ViewModel.FavoriteClickedAsync}"
                                           Visibility="{x:Bind ViewModel.IsFavorite, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </Grid>
                             <Grid x:Uid="Media_Watchlist">
-                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                           Glyph="&#xEC92;"
                                           Tapped="{x:Bind ViewModel.WatchlistClickedAsync}"
                                           Visibility="{x:Bind ViewModel.IsNotWatchlist, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                           Foreground="Green"
                                           Glyph="&#xEC92;"
                                           Tapped="{x:Bind ViewModel.WatchlistClickedAsync}"
@@ -148,6 +149,13 @@
                                          ToolTipService.ToolTip="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource VideoToVideoDisplayTitleStringConverter}}"
                                          Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                             <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
+                        </HyperlinkButton>
+
+                        <HyperlinkButton x:Uid="Media_Share"
+                                         Grid.Row="9"
+                                         Padding="0"
+                                         Command="{x:Bind ViewModel.ShareClickedCommand}">
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72D;" />
                         </HyperlinkButton>
                     </Grid>
                 </Grid>
