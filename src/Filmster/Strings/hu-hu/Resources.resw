@@ -122,7 +122,7 @@
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Böngéssz filmeket, sorozatokat, embereket...</value>
+    <value>Böngéssz filmeket, sorozatokat, embereket…</value>
     <comment>Application description</comment>
   </data>
   <data name="Shell_Movies.Content" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>Top Rated pivot item title for TvShows</comment>
   </data>
   <data name="Shell_AutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Keress filmeket, sorozatokat, embereket...</value>
+    <value>Keress filmeket, sorozatokat, embereket…</value>
     <comment>AutoSuggestBox placeholder text in navigation bar</comment>
   </data>
   <data name="Media_RuntimeHours" xml:space="preserve">
@@ -262,7 +262,7 @@
     <comment>Episode count text for media</comment>
   </data>
   <data name="Settings_AppDescription.Text" xml:space="preserve">
-    <value>Böngéssz filmeket, sorozatokat, embereket...</value>
+    <value>Böngéssz filmeket, sorozatokat, embereket…</value>
     <comment>Application description</comment>
   </data>
   <data name="Settings_Copyright.Text" xml:space="preserve">

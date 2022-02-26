@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center">
-  Browse movies, shows, people...
+  Browse movies, shows, people…
 </p>
 
 ## Data
