@@ -11,7 +11,7 @@
         <PivotItem x:Uid="People_Trending">
             <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchPersonClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TrendingPeople, Mode=OneWay}"
-                                       Style="{StaticResource AdaptiveGridMediumProfile}" />
+                                       Style="{StaticResource AdaptiveGridLargeProfile}" />
         </PivotItem>
     </Pivot>
 </Page>

@@ -10,10 +10,10 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridMediumPosterTemplate}" />
     </Style>
 
-    <Style x:Key="AdaptiveGridMediumProfile" TargetType="controls:AdaptiveGridView">
+    <Style x:Key="AdaptiveGridLargeProfile" TargetType="controls:AdaptiveGridView">
         <Setter Property="DesiredWidth" Value="{StaticResource MainGridPosterDesiredWidth}" />
         <Setter Property="IsItemClickEnabled" Value="True" />
-        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridMediumProfileTemplate}" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridLargeProfileTemplate}" />
     </Style>
 
     <DataTemplate x:Key="AdaptiveGridMediumPosterTemplate">
@@ -22,8 +22,8 @@
                ToolTipService.ToolTip="{Binding Converter={StaticResource SearchMovieTvBaseToTitleReleaseDateStringConverter}}" />
     </DataTemplate>
 
-    <DataTemplate x:Key="AdaptiveGridMediumProfileTemplate">
-        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}"
+    <DataTemplate x:Key="AdaptiveGridLargeProfileTemplate">
+        <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=LargeProfile}"
                Style="{StaticResource StretchImageBase}"
                ToolTipService.ToolTip="{Binding Name}" />
     </DataTemplate>
