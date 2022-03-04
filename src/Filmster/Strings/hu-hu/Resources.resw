@@ -162,7 +162,7 @@
     <comment>Privacy Statement link content for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://github.com/angyanmark/Filmster</value>
+    <value>https://github.com/angyanmark/Filmster#privacy-statement</value>
     <comment>Privacy Statement link for Settings</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
