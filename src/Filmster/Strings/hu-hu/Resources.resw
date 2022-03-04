@@ -241,10 +241,6 @@
     <value>Előzetes</value>
     <comment>Trailer text for media</comment>
   </data>
-  <data name="AppPublisher" xml:space="preserve">
-    <value>Ángyán Márk</value>
-    <comment>Application publisher name</comment>
-  </data>
   <data name="Media_CreatedBy.Text" xml:space="preserve">
     <value>Készítette</value>
     <comment>Created by text for media</comment>

@@ -8,15 +8,15 @@
   IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="1010D804-90C7-4978-9627-2A112C059A6D"
-    Publisher="CN=angya"
+    Name="5482Mrkngyn.Filmster"
+    Publisher="CN=4D4DCF06-811F-4E12-BC82-5AE03034C76A"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="1010D804-90C7-4978-9627-2A112C059A6D" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="a699ec2e-8d64-425d-84df-720efd8f565e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ms-resource:AppDisplayName</DisplayName>
-    <PublisherDisplayName>ms-resource:AppPublisher</PublisherDisplayName>
+    <PublisherDisplayName>Márk Ángyán</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
