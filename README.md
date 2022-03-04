@@ -22,7 +22,13 @@
 * [Releases](https://github.com/angyanmark/Filmster/releases)
 
 ## Data
-This product uses the [TMDb API](https://www.themoviedb.org/documentation/api) but is not endorsed or certified by [TMDb](https://www.themoviedb.org/).
+* This product uses the [TMDb API](https://www.themoviedb.org/documentation/api) but is not endorsed or certified by [TMDb](https://www.themoviedb.org/).
+* Communication with TMDb is done with the [TMDbLib](https://github.com/LordMike/TMDbLib) NuGet package.
+
+## Privacy statement
+* Filmster does not collect any user information in terms of privacy.
+* By logging in via TMDb, all I can see is your TMDb username, provided to me by TMDb through the API Sessions settings page.
+* I am using Microsoft Partner Center to view basic [analytics data](https://docs.microsoft.com/en-us/windows/uwp/publish/analytics).
 
 ## Screenshots
 ![Movies](screenshots/01_movies.png?raw=true "Movies")
