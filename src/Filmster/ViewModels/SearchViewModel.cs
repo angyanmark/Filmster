@@ -25,7 +25,7 @@ namespace Filmster.ViewModels
 
         public async Task Search(string searchValue)
         {
-            var searchItems = await TMDbService.GetMultiSearchAsync(searchValue, await IncludeAdultService.LoadIncludeAdultAsync());
+            var searchItems = await TMDbService.GetMultiSearchAsync(searchValue);
             SearchItems.AddRange(searchItems);
         }
     }

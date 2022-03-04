@@ -13,9 +13,9 @@ namespace Filmster.Views
             InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await ViewModel.InitializeAsync();
+            ViewModel.Initialize();
         }
     }
 }

@@ -421,10 +421,6 @@
     <value>Sorozatok</value>
     <comment>TV Shows text for media</comment>
   </data>
-  <data name="Settings_IncludeAdult.Header" xml:space="preserve">
-    <value>Felnőtt tartalom megjelenítése a keresési eredményekben</value>
-    <comment>Include adult content in search results text for Settings</comment>
-  </data>
   <data name="Media_SortBy.Header" xml:space="preserve">
     <value>Rendezés</value>
     <comment>Sort by text for media</comment>

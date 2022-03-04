@@ -178,7 +178,6 @@
     <Compile Include="Converters\LocalizedStringFormatConverter.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
-    <Compile Include="Services\IncludeAdultService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="ViewModels\CollectionDetailViewModel.cs" />

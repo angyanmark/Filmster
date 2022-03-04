@@ -243,7 +243,7 @@ namespace Filmster.ViewModels
         {
             if (!string.IsNullOrWhiteSpace(sender.Text) && args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                var multiSearchItems = await TMDbService.GetMultiSearchAsync(sender.Text, await IncludeAdultService.LoadIncludeAdultAsync());
+                var multiSearchItems = await TMDbService.GetMultiSearchAsync(sender.Text);
                 SearchItems.Reset(multiSearchItems.Select(item => new SearchItem
                 {
                     SearchBase = item,

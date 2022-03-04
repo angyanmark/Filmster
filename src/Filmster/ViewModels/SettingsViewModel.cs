@@ -50,18 +50,6 @@ namespace Filmster.ViewModels
             }
         }
 
-        private bool _includeAdult;
-        public bool IncludeAdult
-        {
-            get { return _includeAdult; }
-
-            set
-            {
-                Set(ref _includeAdult, value);
-                _ = IncludeAdultToggledAsync(IncludeAdult);
-            }
-        }
-
         private ApplicationLanguage _selectedLanguage;
         public ApplicationLanguage SelectedLanguage
         {
@@ -81,16 +69,10 @@ namespace Filmster.ViewModels
             });
         }
 
-        public async Task InitializeAsync()
+        public void Initialize()
         {
-            IncludeAdult = await IncludeAdultService.LoadIncludeAdultAsync();
             LoadLanguages();
             VersionDescription = GetVersionDescription();
-        }
-
-        private async Task IncludeAdultToggledAsync(bool isToggled)
-        {
-            await IncludeAdultService.SaveIncludeAdultAsync(isToggled);
         }
 
         private void LoadLanguages()

@@ -137,14 +137,14 @@ namespace Filmster.Common.Services
             return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
         }
 
-        public static async Task<List<SearchMovie>> GetSearchMovieAsync(string value, bool includeAdult = false)
+        public static async Task<List<SearchMovie>> GetSearchMovieAsync(string value)
         {
-            return (await client.SearchMovieAsync(value, CurrentLanguage, includeAdult: includeAdult)).Results;
+            return (await client.SearchMovieAsync(value, CurrentLanguage)).Results;
         }
 
-        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value, bool includeAdult = false)
+        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value)
         {
-            return (await client.SearchMultiAsync(value, CurrentLanguage, includeAdult: includeAdult)).Results;
+            return (await client.SearchMultiAsync(value, CurrentLanguage)).Results;
         }
 
         public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options)
