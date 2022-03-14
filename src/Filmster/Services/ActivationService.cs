@@ -91,7 +91,7 @@ namespace Filmster.Services
                 var query = protocolArgs.Uri.Query;
 
                 var requestToken = HttpUtility.ParseQueryString(query).Get("request_token");
-                var approved = bool.Parse(HttpUtility.ParseQueryString(query).Get("approved"));
+                bool.TryParse(HttpUtility.ParseQueryString(query).Get("approved"), out bool approved);
 
                 if (approved)
                 {
