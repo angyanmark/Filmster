@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Filmster.Activation;
+using Filmster.Common.Helpers;
 using Filmster.Common.Services;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -99,7 +100,14 @@ namespace Filmster.Services
                 }
                 else
                 {
-                    // TODO: handle unsuccessful login
+                    var dialog = new ContentDialog
+                    {
+                        Title = "ContentDialog_Login_Failed".GetLocalized(),
+                        Content = "ContentDialog_Login_Failed_Content".GetLocalized(),
+                        CloseButtonText = "ContentDialog_Ok".GetLocalized(),
+                    };
+
+                    await dialog.ShowAsync();
                 }
             }
         }

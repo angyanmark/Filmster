@@ -661,4 +661,16 @@
     <value>Are you sure you want to log out?</value>
     <comment>Log out content text for ConfirmDialog</comment>
   </data>
+  <data name="ContentDialog_Login_Failed" xml:space="preserve">
+    <value>Login failed</value>
+    <comment>Login failed text for ContentDialog</comment>
+  </data>
+  <data name="ContentDialog_Login_Failed_Content" xml:space="preserve">
+    <value>Please try again later.</value>
+    <comment>Login failed content text for ContentDialog</comment>
+  </data>
+  <data name="ContentDialog_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK text for ContentDialog</comment>
+  </data>
 </root>
