@@ -673,4 +673,16 @@
     <value>OK</value>
     <comment>OK text for ContentDialog</comment>
   </data>
+  <data name="Settings_MicrosoftStore.Content" xml:space="preserve">
+    <value>Microsoft Store</value>
+    <comment>Microsoft Store text for Settings</comment>
+  </data>
+  <data name="Settings_MicrosoftStore.NavigateUri" xml:space="preserve">
+    <value>ms-windows-store://review/?ProductId=9P6DHMBWPWS3</value>
+    <comment>Microsoft Store link for Settings</comment>
+  </data>
+  <data name="Settings_Rate.Text" xml:space="preserve">
+    <value>Rate the application:</value>
+    <comment>Rate text for Settings</comment>
+  </data>
 </root>

@@ -93,6 +93,10 @@
                         <HyperlinkButton x:Uid="Settings_GitHubIssuesLink" Padding="0" />
                     </StackPanel>
                     <TextBlock x:Uid="Settings_TMDbNotice" Style="{StaticResource BodyTextBlockStyle}" />
+                    <StackPanel Orientation="Horizontal" Spacing="{StaticResource XXXSmallSpacing}">
+                        <TextBlock x:Uid="Settings_Rate" Style="{StaticResource BodyTextBlockStyle}" />
+                        <HyperlinkButton x:Uid="Settings_MicrosoftStore" Padding="0" />
+                    </StackPanel>
                     <StackPanel Spacing="{StaticResource XXXSmallSpacing}">
                         <TextBlock x:Uid="Settings_Disclaimer" Style="{ThemeResource SubtitleTextBlockStyle}" />
                         <TextBlock x:Uid="Settings_Disclaim" Style="{ThemeResource BodyTextBlockStyle}" />
