@@ -38,7 +38,7 @@ namespace Filmster.Extensions
             }
         }
 
-        public static List<T> Shuffle<T>(this List<T> list)
+        public static IEnumerable<T> Shuffle<T>(this IList<T> list)
         {
             Random random = new Random();
             for (int i = list.Count - 1; i > 0; i--)

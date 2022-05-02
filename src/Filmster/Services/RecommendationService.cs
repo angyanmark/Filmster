@@ -15,15 +15,19 @@ namespace Filmster.Services
         {
             var favorites = await TMDbService.GetFavoriteMoviesAsync(accountSortBy: AccountSortBy.CreatedAt, sortOrder: SortOrder.Descending);
 
-            var recommendations = new List<SearchMovie>();
-
+            var tasks = new List<Task<SearchContainer<SearchMovie>>>();
             foreach (var favorite in favorites.Results.Shuffle().Take(4))
             {
-                var movie = await TMDbService.GetMovieAsync(favorite.Id);
-                recommendations.AddRange(movie.Recommendations.Results.Shuffle().Take(4));
+                tasks.Add(TMDbService.GetMovieRecommendationsAsync(favorite.Id));
             }
 
-            return recommendations;
+            var recommended = new List<SearchMovie>();
+            foreach (var recommendations in await Task.WhenAll(tasks))
+            {
+                recommended.AddRange(recommendations.Results.Shuffle().Take(4));
+            }
+
+            return recommended;
         }
     }
 }

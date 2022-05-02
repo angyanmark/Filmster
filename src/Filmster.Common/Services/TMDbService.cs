@@ -102,6 +102,11 @@ namespace Filmster.Common.Services
             return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, (includeAccountState ? MovieMethods.AccountStates : MovieMethods.Undefined) | MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
         }
 
+        public static async Task<SearchContainer<SearchMovie>> GetMovieRecommendationsAsync(int id)
+        {
+            return await client.GetMovieRecommendationsAsync(id, CurrentLanguage);
+        }
+
         public static async Task<Collection> GetCollectionAsync(int id, CollectionMethods extraMethods = CollectionMethods.Undefined)
         {
             return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage, extraMethods);
