@@ -83,7 +83,7 @@ namespace Filmster.ViewModels
                 Languages.Add(new ApplicationLanguage
                 {
                     Code = language,
-                    DisplayName = (LanguageService.LanguageLocalizationPrefix + language).GetLocalized(),
+                    DisplayName = $"{LanguageService.LanguageLocalizationPrefix}{language}".GetLocalized(),
                 });
             }
 

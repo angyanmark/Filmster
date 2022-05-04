@@ -22,8 +22,9 @@ namespace Filmster.Services
             }
 
             var recommended = new List<SearchMovie>();
-            foreach (var recommendations in await Task.WhenAll(tasks))
+            foreach (var task in tasks)
             {
+                var recommendations = await task;
                 recommended.AddRange(recommendations.Results.Shuffle().Take(4));
             }
 

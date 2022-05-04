@@ -83,13 +83,13 @@ namespace Filmster.ViewModels
 
         public ShellViewModel()
         {
-            _ = InitializeUserProperties();
+            _ = InitializeUserPropertiesAsync();
 
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
         }
 
-        private async Task InitializeUserProperties()
+        private async Task InitializeUserPropertiesAsync()
         {
             if (UserSessionService.IsLoggedIn)
             {

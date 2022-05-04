@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
+using Windows.System;
 using Windows.UI.Xaml.Controls;
 
 namespace Filmster.ViewModels
@@ -207,6 +208,11 @@ namespace Filmster.ViewModels
             FavoriteMovies.Clear();
             FavoriteTvShows.Clear();
             Lists.Clear();
+            Recommendations.Clear();
+            PrimaryPivotSelectedIndex = default;
+            WatchlistPivotSelectedIndex = default;
+            IsMovieWatchlistPinned = default;
+            IsTvShowWatchlistPinned = default;
             IsLoggedOut = !IsLoggedIn;
             DataLoaded = true;
         }
@@ -216,8 +222,8 @@ namespace Filmster.ViewModels
             if (!UserSessionService.IsLoggedIn)
             {
                 var token = await TMDbService.GetAutenticationTokenAsync();
-                var logInUri = new Uri(TMDbService.TMDbLogInBaseUrl + token.RequestToken + "?redirect_to=filmster.login:");
-                await Windows.System.Launcher.LaunchUriAsync(logInUri);
+                var logInUri = new Uri($"{TMDbService.TMDbLogInBaseUrl}{token.RequestToken}?redirect_to=filmster.login:");
+                await Launcher.LaunchUriAsync(logInUri);
             }
         }
 

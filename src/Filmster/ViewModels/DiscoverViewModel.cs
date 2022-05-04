@@ -25,13 +25,13 @@ namespace Filmster.ViewModels
         public readonly int VoteCountMin = 0;
         public readonly int VoteCountMax = 20000;
 
-        private readonly IEnumerable<DiscoverMovieSortBy> ExcludedSortByItems = new List<DiscoverMovieSortBy>
+        private readonly IEnumerable<DiscoverMovieSortBy> ExcludedSortByEnums = new List<DiscoverMovieSortBy>
         {
             DiscoverMovieSortBy.Undefined,
             DiscoverMovieSortBy.OriginalTitle,
             DiscoverMovieSortBy.OriginalTitleDesc,
             DiscoverMovieSortBy.ReleaseDate,
-            DiscoverMovieSortBy.ReleaseDateDesc
+            DiscoverMovieSortBy.ReleaseDateDesc,
         };
 
         public ObservableCollection<SearchMovie> Movies { get; set; } = new ObservableCollection<SearchMovie>();
@@ -122,15 +122,15 @@ namespace Filmster.ViewModels
 
         private void GetSortBy()
         {
-            var enums = Enum.GetValues(typeof(DiscoverMovieSortBy)).Cast<DiscoverMovieSortBy>();
-            foreach (var e in enums)
+            var sortByEnums = Enum.GetValues(typeof(DiscoverMovieSortBy)).Cast<DiscoverMovieSortBy>();
+            foreach (var sortByEnum in sortByEnums)
             {
-                if (!ExcludedSortByItems.Contains(e))
+                if (!ExcludedSortByEnums.Contains(sortByEnum))
                 {
                     SortByItems.Add(new DiscoverMovieSortByItem
                     {
-                        SortBy = e,
-                        DisplayName = $"DiscoverMovieSortBy_{e}".GetLocalized()
+                        SortBy = sortByEnum,
+                        DisplayName = $"DiscoverMovieSortBy_{sortByEnum}".GetLocalized(),
                     });
                 }
             }
@@ -157,7 +157,7 @@ namespace Filmster.ViewModels
                 VoteAverageAtMost = Math.Round(VoteAverageAtMost * 2, 1),
                 VoteCountAtLeast = VoteCountAtLeast,
                 GenreId = GenreId,
-                SortBy = SelectedSortByItem.SortBy
+                SortBy = SelectedSortByItem.SortBy,
             };
 
             var movies = await TMDbService.GetDiscoverMoviesAsync(options);
