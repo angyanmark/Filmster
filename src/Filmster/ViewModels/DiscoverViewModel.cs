@@ -23,7 +23,7 @@ namespace Filmster.ViewModels
         public readonly double VoteAverageMin = 0;
         public readonly double VoteAverageMax = 5;
         public readonly int VoteCountMin = 0;
-        public readonly int VoteCountMax = 20000;
+        public readonly int VoteCountMax = 30000;
 
         private readonly IEnumerable<DiscoverMovieSortBy> ExcludedSortByEnums = new List<DiscoverMovieSortBy>
         {

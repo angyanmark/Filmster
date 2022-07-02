@@ -47,7 +47,7 @@
                                 Margin="{StaticResource XSmallTopMargin}"
                                 Maximum="{x:Bind ViewModel.VoteCountMax}"
                                 Minimum="{x:Bind ViewModel.VoteCountMin}"
-                                StepFrequency="500"
+                                StepFrequency="1000"
                                 Value="{x:Bind ViewModel.VoteCountAtLeast, Mode=TwoWay}" />
                     </StackPanel>
 
