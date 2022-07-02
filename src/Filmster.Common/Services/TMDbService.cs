@@ -172,7 +172,7 @@ namespace Filmster.Common.Services
             return await client.GetMovieGenresAsync(CurrentLanguage);
         }
 
-        public static async Task<Token> GetAutenticationTokenAsync()
+        public static async Task<Token> GetAuthenticationTokenAsync()
         {
             return await client.AuthenticationRequestAutenticationTokenAsync();
         }
@@ -231,25 +231,19 @@ namespace Filmster.Common.Services
 
         public static async Task<bool> SetRatingAsync(MediaType mediaType, int id, double value)
         {
-            bool success;
-
             switch (mediaType)
             {
                 case MediaType.Movie:
-                    success = value == -1
+                    return value == -1
                         ? await client.MovieRemoveRatingAsync(id)
                         : await client.MovieSetRatingAsync(id, value * 2);
-                    break;
                 case MediaType.Tv:
-                    success = value == -1
+                    return value == -1
                         ? await client.TvShowRemoveRatingAsync(id)
                         : await client.TvShowSetRatingAsync(id, value * 2);
-                    break;
                 default:
                     throw new ArgumentException(string.Format("Cannot set rating to media type {0}.", mediaType), nameof(mediaType));
             }
-
-            return success;
         }
 
         public static async Task<bool> ChangeFavoriteStatusAsync(MediaType mediaType, int id, bool isFavorite)

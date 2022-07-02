@@ -110,7 +110,7 @@ namespace Filmster.ViewModels
             ImageClickedCommand = new RelayCommand<TaggedImage>(ImageClicked);
         }
 
-        public async Task LoadPerson(int id)
+        public async Task LoadPersonAsync(int id)
         {
             Person = await TMDbService.GetPersonAsync(id);
             if (Person == null)

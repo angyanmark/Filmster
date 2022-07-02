@@ -18,7 +18,7 @@ namespace Filmster.Views
             base.OnNavigatedTo(e);
             if (e.Parameter is int id)
             {
-                await ViewModel.LoadCollection(id);
+                await ViewModel.LoadCollectionAsync(id);
                 ViewModel.DataLoaded = true;
             }
         }

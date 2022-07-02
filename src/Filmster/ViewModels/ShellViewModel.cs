@@ -284,7 +284,6 @@ namespace Filmster.ViewModels
                     return DisplayNameHelper.GetSearchTvDisplayName(tvShow);
                 case MediaType.Person:
                     return (searchItem as SearchPerson).Name;
-                case MediaType.Unknown:
                 default:
                     return string.Empty;
             }

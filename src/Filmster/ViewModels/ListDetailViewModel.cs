@@ -54,7 +54,7 @@ namespace Filmster.ViewModels
             ListRemoveClickedCommand = new RelayCommand<SearchMovie>(ListRemoveClickedAsync);
         }
 
-        public async Task LoadList(int id)
+        public async Task LoadListAsync(int id)
         {
             GenericList = await TMDbService.GetListAsync(id);
             if (GenericList == null)

@@ -117,7 +117,7 @@ namespace Filmster.ViewModels
             ShareClickedCommand = new RelayCommand(ShareClicked);
         }
 
-        public async Task LoadTvShow(int id)
+        public async Task LoadTvShowAsync(int id)
         {
             TvShow = await TMDbService.GetTvShowAsync(id, IsLoggedIn);
             if (TvShow == null)

@@ -141,7 +141,7 @@ namespace Filmster.ViewModels
             UserSessionService.LoggedOutEvent += OnLoggedOut;
         }
 
-        public async Task LoadProfile()
+        public async Task LoadProfileAsync()
         {
             if (UserSessionService.IsLoggedIn)
             {
@@ -221,7 +221,7 @@ namespace Filmster.ViewModels
         {
             if (!UserSessionService.IsLoggedIn)
             {
-                var token = await TMDbService.GetAutenticationTokenAsync();
+                var token = await TMDbService.GetAuthenticationTokenAsync();
                 var logInUri = new Uri($"{TMDbService.TMDbLogInBaseUrl}{token.RequestToken}?redirect_to=filmster.login:");
                 await Launcher.LaunchUriAsync(logInUri);
             }

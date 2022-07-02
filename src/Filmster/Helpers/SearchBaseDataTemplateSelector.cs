@@ -23,7 +23,6 @@ namespace Filmster.Helpers
                     return Tv;
                 case MediaType.Person:
                     return Person;
-                case MediaType.Unknown:
                 default:
                     return Unknown;
             }

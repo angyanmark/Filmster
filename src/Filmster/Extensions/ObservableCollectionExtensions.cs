@@ -39,7 +39,7 @@ namespace Filmster.Extensions
         }
 
         // Fisher-Yates shuffle
-        public static IEnumerable<T> Shuffle<T>(this IList<T> list)
+        public static IList<T> Shuffle<T>(this IList<T> list)
         {
             Random random = new Random();
             for (int i = list.Count - 1; i > 0; i--)

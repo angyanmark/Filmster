@@ -115,7 +115,7 @@ namespace Filmster.ViewModels
             ShareClickedCommand = new RelayCommand(ShareClicked);
         }
 
-        public async Task LoadMovie(int id)
+        public async Task LoadMovieAsync(int id)
         {
             Movie = await TMDbService.GetMovieAsync(id, IsLoggedIn);
             if (Movie == null)

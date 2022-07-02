@@ -88,7 +88,7 @@ namespace Filmster.ViewModels
         {
         }
 
-        public async Task LoadTvSeason(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
+        public async Task LoadTvSeasonAsync(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
         {
             TvSeason = await TMDbService.GetTvSeasonAsync(tvShowSeasonEpisodeNumbers.TvShowId, tvShowSeasonEpisodeNumbers.TvSeasonNumber);
             if (TvSeason == null)

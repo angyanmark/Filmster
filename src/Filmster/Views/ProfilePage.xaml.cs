@@ -22,7 +22,7 @@ namespace Filmster.Views
                 ViewModel.PrimaryPivotSelectedIndex = parameter.PrimaryPivotIndex;
                 ViewModel.WatchlistPivotSelectedIndex = parameter.WatchlistPivotIndex;
             }
-            await ViewModel.LoadProfile();
+            await ViewModel.LoadProfileAsync();
             ViewModel.DataLoaded = true;
         }
     }

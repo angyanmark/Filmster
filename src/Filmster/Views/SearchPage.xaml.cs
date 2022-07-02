@@ -18,8 +18,7 @@ namespace Filmster.Views
             base.OnNavigatedTo(e);
             if (e.Parameter is string searchValue)
             {
-                ViewModel.SearchValue = searchValue;
-                await ViewModel.Search(ViewModel.SearchValue);
+                await ViewModel.SearchAsync(searchValue);
                 ViewModel.DataLoaded = true;
             }
         }

@@ -66,7 +66,7 @@ namespace Filmster.ViewModels
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
         }
 
-        public async Task LoadCollection(int id)
+        public async Task LoadCollectionAsync(int id)
         {
             Collection = await GetCollectionAsync(id);
             if (Collection == null)

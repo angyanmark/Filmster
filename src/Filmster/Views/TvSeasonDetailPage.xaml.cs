@@ -19,7 +19,7 @@ namespace Filmster.Views
             base.OnNavigatedTo(e);
             if (e.Parameter is TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
             {
-                await ViewModel.LoadTvSeason(tvShowSeasonEpisodeNumbers);
+                await ViewModel.LoadTvSeasonAsync(tvShowSeasonEpisodeNumbers);
                 ViewModel.DataLoaded = true;
             }
         }
