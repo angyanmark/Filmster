@@ -174,11 +174,11 @@
     <comment>Upcoming pivot item title for Movies</comment>
   </data>
   <data name="Movies_TopRated.Header" xml:space="preserve">
-    <value>Legjobbnak értékelt</value>
+    <value>Legjobbra értékelt</value>
     <comment>Top Rated pivot item title for Movies</comment>
   </data>
   <data name="TvShows_TopRated.Header" xml:space="preserve">
-    <value>Legjobbnak értékelt</value>
+    <value>Legjobbra értékelt</value>
     <comment>Top Rated pivot item title for TvShows</comment>
   </data>
   <data name="Shell_AutoSuggestBox.PlaceholderText" xml:space="preserve">
@@ -626,7 +626,7 @@
     <comment>Clear text for ConfirmDialog</comment>
   </data>
   <data name="ConfirmDialog_Clear_Content" xml:space="preserve">
-    <value>Biztosan kiüríti ezt a listát?</value>
+    <value>Biztosan kiüríted ezt a listát?</value>
     <comment>Clear content text for ConfirmDialog</comment>
   </data>
   <data name="ConfirmDialog_Close" xml:space="preserve">
@@ -638,7 +638,7 @@
     <comment>Delete text for ConfirmDialog</comment>
   </data>
   <data name="ConfirmDialog_Delete_Content" xml:space="preserve">
-    <value>Biztosan törli ezt a listát?</value>
+    <value>Biztosan törlöd ezt a listát?</value>
     <comment>Delete content text for ConfirmDialog</comment>
   </data>
   <data name="ImageGallery_OpenOriginalMenuFlyoutItem.Text" xml:space="preserve">
@@ -658,7 +658,7 @@
     <comment>Log out text for ConfirmDialog</comment>
   </data>
   <data name="ConfirmDialog_LogOut_Content" xml:space="preserve">
-    <value>Biztosan kijelentkezik?</value>
+    <value>Biztosan kijelentkezel?</value>
     <comment>Log out content text for ConfirmDialog</comment>
   </data>
   <data name="ContentDialog_Login_Failed" xml:space="preserve">
@@ -666,7 +666,7 @@
     <comment>Login failed text for ContentDialog</comment>
   </data>
   <data name="ContentDialog_Login_Failed_Content" xml:space="preserve">
-    <value>Próbálkozzon újra később.</value>
+    <value>Próbálkozz újra később.</value>
     <comment>Login failed content text for ContentDialog</comment>
   </data>
   <data name="ContentDialog_Ok" xml:space="preserve">
@@ -682,7 +682,7 @@
     <comment>Microsoft Store link for Settings</comment>
   </data>
   <data name="Settings_Rate.Text" xml:space="preserve">
-    <value>Értékelje az alkalmazást:</value>
+    <value>Értékeld az alkalmazást:</value>
     <comment>Rate text for Settings</comment>
   </data>
   <data name="ContentDialog_AddToList_Failed" xml:space="preserve">
