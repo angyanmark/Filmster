@@ -169,7 +169,8 @@
 
                         <Button x:Uid="Profile_Recommend"
                                 Grid.Row="0"
-                                Command="{x:Bind ViewModel.RecommendClickedCommand}" />
+                                Command="{x:Bind ViewModel.RecommendClickedCommand}"
+                                IsEnabled="{x:Bind ViewModel.RecommendationsLoaded, Mode=OneWay}" />
                         <controls:AdaptiveGridView Grid.Row="1"
                                                    ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
                                                    ItemsSource="{x:Bind ViewModel.Recommendations, Mode=OneWay}"

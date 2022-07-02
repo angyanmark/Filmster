@@ -10,6 +10,7 @@ using Filmster.Views;
 using Microsoft.Toolkit.Uwp;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Lists;
@@ -32,11 +33,22 @@ namespace Filmster.ViewModels
         public IncrementalLoadingCollection<ListsSource, AccountList> Lists { get; set; } = new IncrementalLoadingCollection<ListsSource, AccountList>();
         public ObservableCollection<SearchMovie> Recommendations { get; set; } = new ObservableCollection<SearchMovie>();
 
+        private bool _recommendationsLoaded;
+        public bool RecommendationsLoaded
+        {
+            get { return _recommendationsLoaded; }
+            set { Set(ref _recommendationsLoaded, value); }
+        }
+
         private int _primaryPivotSelectedIndex;
         public int PrimaryPivotSelectedIndex
         {
             get { return _primaryPivotSelectedIndex; }
-            set { Set(ref _primaryPivotSelectedIndex, value); }
+            set
+            {
+                Set(ref _primaryPivotSelectedIndex, value);
+                PrimaryPivotSelectedIndexChanged();
+            }
         }
 
         private int _ratedPivotSelectedIndex;
@@ -314,8 +326,20 @@ namespace Filmster.ViewModels
 
         private async void RecommendClickedAsync()
         {
+            RecommendationsLoaded = false;
             var recommendations = await RecommendationService.RecommendMoviesAsync();
             Recommendations.Reset(recommendations);
+            RecommendationsLoaded = true;
+        }
+
+        private void PrimaryPivotSelectedIndexChanged()
+        {
+            if (PrimaryPivotSelectedIndex == 4 &&
+                !Recommendations.Any() &&
+                RecommendClickedCommand.CanExecute(default))
+            {
+                RecommendClickedCommand.Execute(default);
+            }
         }
     }
 }
