@@ -1,8 +1,11 @@
-﻿using Filmster.Common.Services;
+﻿using Filmster.Common.Helpers;
+using Filmster.Common.Services;
 using Filmster.Extensions;
 using Filmster.Helpers;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using TMDbLib.Objects.Exceptions;
 using TMDbLib.Objects.Search;
 using Windows.UI.Xaml.Controls;
 
@@ -26,11 +29,27 @@ namespace Filmster.Dialogs
 
         private async void MovieClickedAsync(SearchMovie movie)
         {
-            var success = await TMDbService.ListAddMovieAsync(ListId, movie.Id);
-            if (success)
+            try
             {
-                AddedMovie = movie;
+                var success = await TMDbService.ListAddMovieAsync(ListId, movie.Id);
+                if (success)
+                {
+                    AddedMovie = movie;
+                    Hide();
+                }
+            }
+            catch (GeneralHttpException exception)
+            {
                 Hide();
+
+                var dialog = new ContentDialog
+                {
+                    Title = "ContentDialog_AddToList_Failed".GetLocalized(),
+                    Content = exception.Message,
+                    CloseButtonText = "ContentDialog_Ok".GetLocalized(),
+                };
+
+                await dialog.ShowAsync();
             }
         }
 

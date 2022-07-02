@@ -685,4 +685,8 @@
     <value>Értékelje az alkalmazást:</value>
     <comment>Rate text for Settings</comment>
   </data>
+  <data name="ContentDialog_AddToList_Failed" xml:space="preserve">
+    <value>Sikertelen hozzáadás</value>
+    <comment>Add failed text for ContentDialog</comment>
+  </data>
 </root>
