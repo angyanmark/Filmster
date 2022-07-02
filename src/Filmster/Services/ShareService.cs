@@ -1,5 +1,6 @@
 ﻿using Filmster.Common.Helpers;
 using Filmster.Common.Models;
+using System;
 using Windows.ApplicationModel.DataTransfer;
 
 namespace Filmster.Services
@@ -23,7 +24,7 @@ namespace Filmster.Services
             DataRequest request = args.Request;
             request.Data.Properties.Title = appDisplayName;
             request.Data.Properties.Description = ShareParameter.Text;
-            request.Data.SetText($"{ShareParameter.Text}\n#{appDisplayName}");
+            request.Data.SetText($"{ShareParameter.Text}{Environment.NewLine}#{appDisplayName}");
             request.Data.SetWebLink(ShareParameter.Uri);
         }
 
