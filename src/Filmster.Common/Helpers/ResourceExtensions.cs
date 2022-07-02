@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System.Linq;
+using Windows.ApplicationModel.Resources;
 
 namespace Filmster.Common.Helpers
 {
@@ -6,9 +7,13 @@ namespace Filmster.Common.Helpers
     {
         private static readonly ResourceLoader _resLoader = new ResourceLoader();
 
-        public static string GetLocalized(this string resourceKey)
+        public static string GetLocalized(this string resourceKey, params object[] args)
         {
-            return _resLoader.GetString(resourceKey);
+            var localized = _resLoader.GetString(resourceKey);
+
+            return args.Any()
+                ? string.Format(localized, args)
+                : localized;
         }
     }
 }
