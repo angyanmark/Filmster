@@ -39,6 +39,20 @@ namespace Filmster.ViewModels
             set { Set(ref _primaryPivotSelectedIndex, value); }
         }
 
+        private int _ratedPivotSelectedIndex;
+        public int RatedPivotSelectedIndex
+        {
+            get { return _ratedPivotSelectedIndex; }
+            set { Set(ref _ratedPivotSelectedIndex, value); }
+        }
+
+        private int _favoritesPivotSelectedIndex;
+        public int FavoritesPivotSelectedIndex
+        {
+            get { return _favoritesPivotSelectedIndex; }
+            set { Set(ref _favoritesPivotSelectedIndex, value); }
+        }
+
         private int _watchlistPivotSelectedIndex;
         public int WatchlistPivotSelectedIndex
         {
@@ -210,6 +224,8 @@ namespace Filmster.ViewModels
             Lists.Clear();
             Recommendations.Clear();
             PrimaryPivotSelectedIndex = default;
+            RatedPivotSelectedIndex = default;
+            FavoritesPivotSelectedIndex = default;
             WatchlistPivotSelectedIndex = default;
             IsMovieWatchlistPinned = default;
             IsTvShowWatchlistPinned = default;
