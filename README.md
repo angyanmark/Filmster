@@ -11,10 +11,10 @@
 </p>
 
 <p align="center">
-  <a style="text-decoration:none" href="https://www.microsoft.com/store/apps/9P6DHMBWPWS3" target="_blank">
+  <a href="https://www.microsoft.com/store/apps/9P6DHMBWPWS3">
     <img src="https://img.shields.io/badge/download-Microsoft%20Store-blue" alt="Microsoft Store" />
   </a>
-  <a style="text-decoration:none" href="https://github.com/angyanmark/Filmster/releases" target="_blank">
+  <a href="https://github.com/angyanmark/Filmster/releases">
     <img src="https://img.shields.io/github/v/release/angyanmark/Filmster" alt="Release" />
   </a>
 </p>
