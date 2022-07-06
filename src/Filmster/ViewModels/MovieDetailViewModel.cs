@@ -129,7 +129,7 @@ namespace Filmster.ViewModels
             Directors = GetDirectors();
             Certification = GetCertification();
             Genres = GetGenres();
-            Video = Movie.Videos.Results.FirstOrDefault();
+            Video = VideoSelectService.SelectVideo(Movie.Videos.Results);
             Collection = await GetCollectionAsync();
             Cast.AddRange(Movie.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(Movie.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));

@@ -99,7 +99,7 @@ namespace Filmster.ViewModels
             TvShowSeasonEpisodeNumbers = tvShowSeasonEpisodeNumbers;
             SelectedPoster = GetSelectedPoster();
             (VoteAverage, VoteCount) = VoteHelper.GetVoteAverageVoteCount(TvSeason.Episodes.Select(episode => (episode.VoteAverage, episode.VoteCount)));
-            Video = TvSeason.Videos.Results.FirstOrDefault();
+            Video = VideoSelectService.SelectVideo(TvSeason.Videos.Results);
             Cast.AddRange(TvSeason.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
         }

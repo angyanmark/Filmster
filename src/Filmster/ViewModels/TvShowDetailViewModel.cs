@@ -132,7 +132,7 @@ namespace Filmster.ViewModels
             EpisodeRuntime = Convert.ToInt32(TvShow.EpisodeRunTime.DefaultIfEmpty().Average());
             Certification = GetCertification();
             Genres = GetGenres();
-            Video = TvShow.Videos.Results.FirstOrDefault();
+            Video = VideoSelectService.SelectVideo(TvShow.Videos.Results);
             Cast.AddRange(TvShow.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(TvShow.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
             Images.AddRange(TvShow.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount));
