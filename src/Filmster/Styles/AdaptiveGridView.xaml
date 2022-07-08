@@ -19,7 +19,7 @@
     <DataTemplate x:Key="AdaptiveGridMediumPosterTemplate">
         <Image Source="{Binding PosterPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}"
                Style="{StaticResource StretchImageBase}"
-               ToolTipService.ToolTip="{Binding Converter={StaticResource SearchMovieTvBaseToTitleReleaseDateStringConverter}}" />
+               ToolTipService.ToolTip="{Binding Converter={StaticResource SearchBaseToDisplayNameStringConverter}}" />
     </DataTemplate>
 
     <DataTemplate x:Key="AdaptiveGridLargeProfileTemplate">
@@ -318,6 +318,11 @@
                         VerticalAlignment="Center"
                         Spacing="{StaticResource SmallSpacing}">
                 <TextBlock Style="{StaticResource SearchListTitleStyle}" Text="{Binding Name}" />
+                <StackPanel>
+                    <TextBlock Style="{StaticResource KnownForListDisplayNameTextStyle}" Text="{Binding KnownFor[0], Converter={StaticResource KnownForBaseToDisplayNameStringConverter}}" />
+                    <TextBlock Style="{StaticResource KnownForListDisplayNameTextStyle}" Text="{Binding KnownFor[1], Converter={StaticResource KnownForBaseToDisplayNameStringConverter}}" />
+                    <TextBlock Style="{StaticResource KnownForListDisplayNameTextStyle}" Text="{Binding KnownFor[2], Converter={StaticResource KnownForBaseToDisplayNameStringConverter}}" />
+                </StackPanel>
             </StackPanel>
             <TextBlock Grid.Column="1"
                        Style="{StaticResource SearchMediaTypeStyle}"

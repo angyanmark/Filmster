@@ -1,6 +1,5 @@
 ﻿using Filmster.Common.Services;
 using Filmster.Extensions;
-using Filmster.Services;
 using Filmster.ViewModelBases;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;

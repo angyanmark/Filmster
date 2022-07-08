@@ -12,8 +12,6 @@ using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
 using Filmster.Views;
-using TMDbLib.Objects.General;
-using TMDbLib.Objects.Search;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -247,7 +245,7 @@ namespace Filmster.ViewModels
                 SearchItems.Reset(multiSearchItems.Select(item => new SearchItem
                 {
                     SearchBase = item,
-                    DisplayName = GetSearchItemDisplayName(item),
+                    DisplayName = DisplayNameHelper.GetSearchBaseDisplayName(item),
                 }));
             }
         }
@@ -269,23 +267,6 @@ namespace Filmster.ViewModels
             else if (args.QueryText is string searchValue && !string.IsNullOrWhiteSpace(searchValue))
             {
                 NavigationService.Navigate<SearchPage>(searchValue);
-            }
-        }
-
-        private string GetSearchItemDisplayName(SearchBase searchItem)
-        {
-            switch (searchItem.MediaType)
-            {
-                case MediaType.Movie:
-                    var movie = searchItem as SearchMovie;
-                    return DisplayNameHelper.GetSearchMovieDisplayName(movie);
-                case MediaType.Tv:
-                    var tvShow = searchItem as SearchTv;
-                    return DisplayNameHelper.GetSearchTvDisplayName(tvShow);
-                case MediaType.Person:
-                    return (searchItem as SearchPerson).Name;
-                default:
-                    return string.Empty;
             }
         }
     }
