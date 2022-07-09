@@ -151,8 +151,10 @@ namespace Filmster.ViewModels
 
         private void SetCast(bool isChecked, PersonCastCrewSortType sortType)
         {
-            var movieCast = SortHelper.SortMovieCast(Person.MovieCredits.Cast, sortType);
-            var tvShowCast = SortHelper.SortTvShowCast(Person.TvCredits.Cast, sortType);
+            var movieCast = Person.MovieCredits.Cast.DistinctBy(cast => cast.Id);
+            var tvShowCast = Person.TvCredits.Cast.DistinctBy(cast => cast.Id);
+            movieCast = SortHelper.SortMovieCast(movieCast, sortType);
+            tvShowCast = SortHelper.SortTvShowCast(tvShowCast, sortType);
             movieCast = isChecked ? movieCast : movieCast.Take(TMDbService.DefaultCastCrewBackdropCount);
             tvShowCast = isChecked ? tvShowCast : tvShowCast.Take(TMDbService.DefaultCastCrewBackdropCount);
             MovieCast.Refresh(movieCast);
@@ -161,8 +163,10 @@ namespace Filmster.ViewModels
 
         private void SetCrew(bool isChecked, PersonCastCrewSortType sortType)
         {
-            var movieCrew = SortHelper.SortMovieCrew(Person.MovieCredits.Crew, sortType);
-            var tvShowCrew = SortHelper.SortTvShowCrew(Person.TvCredits.Crew, sortType);
+            var movieCrew = Person.MovieCredits.Crew.DistinctBy(crew => crew.Id);
+            var tvShowCrew = Person.TvCredits.Crew.DistinctBy(crew => crew.Id);
+            movieCrew = SortHelper.SortMovieCrew(movieCrew, sortType);
+            tvShowCrew = SortHelper.SortTvShowCrew(tvShowCrew, sortType);
             movieCrew = isChecked ? movieCrew : movieCrew.Take(TMDbService.DefaultCastCrewBackdropCount);
             tvShowCrew = isChecked ? tvShowCrew : tvShowCrew.Take(TMDbService.DefaultCastCrewBackdropCount);
             MovieCrew.Refresh(movieCrew);

@@ -161,9 +161,10 @@
     <Compile Include="Dialogs\ListAddContentDialog.xaml.cs">
       <DependentUpon>ListAddContentDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Helpers\BackgroundTaskHelper.cs" />
-	<Compile Include="Helpers\DisplayNameHelper.cs" />
+    <Compile Include="Helpers\DisplayNameHelper.cs" />
     <Compile Include="Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Converters\ExternalIdToUriConverter.cs" />
     <Compile Include="Converters\IntToRuntimeConverter.cs" />
