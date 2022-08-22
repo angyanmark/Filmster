@@ -8,7 +8,9 @@ using Filmster.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TMDbLib.Objects.General;
+using TMDbLib.Objects.Search;
 using TMDbLib.Objects.TvShows;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -84,8 +86,11 @@ namespace Filmster.ViewModels
             }
         }
 
+        public ICommand TvSeasonEpisodeClickedCommand;
+
         public TvSeasonDetailViewModel()
         {
+            TvSeasonEpisodeClickedCommand = new RelayCommand<TvSeasonEpisode>(TvSeasonEpisodeClicked);
         }
 
         public async Task LoadTvSeasonAsync(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
@@ -107,6 +112,17 @@ namespace Filmster.ViewModels
         private ImageData GetSelectedPoster()
         {
             return TvSeason.Images.Posters.Find(poster => poster.FilePath == TvSeason.PosterPath) ?? TvSeason.Images.Posters.FirstOrDefault();
+        }
+
+        private void TvSeasonEpisodeClicked(TvSeasonEpisode tvSeasonEpisode)
+        {
+            NavigationService.Navigate<TvEpisodeDetailPage>(new TvShowSeasonEpisodeNumbers
+            {
+                TvShowId = TvShowSeasonEpisodeNumbers.TvShowId,
+                TvSeasonNumber = tvSeasonEpisode.SeasonNumber,
+                TvEpisodeNumber = tvSeasonEpisode.EpisodeNumber,
+                TvShowImdbId = TvShowSeasonEpisodeNumbers.TvShowImdbId,
+            });
         }
 
         private void CastToggled(bool isChecked)

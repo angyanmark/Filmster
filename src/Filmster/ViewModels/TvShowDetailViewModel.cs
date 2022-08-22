@@ -247,7 +247,7 @@ namespace Filmster.ViewModels
 
         public async void RatingChangedAsync(RatingControl sender, object args)
         {
-            await ChangeRatingAsync(MediaType.Tv, TvShow.Id, sender.Value);
+            await ChangeRatingAsync(MediaType.Tv, sender.Value, TvShow.Id);
         }
 
         public async void FavoriteClickedAsync(object sender, TappedRoutedEventArgs e)

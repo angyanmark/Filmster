@@ -39,6 +39,11 @@
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchSmallPosterWithRatingTemplate}" />
     </Style>
 
+    <Style x:Key="AdaptiveGridNoStretchXLargeStillWithRating" TargetType="controls:AdaptiveGridView">
+        <Setter Property="IsItemClickEnabled" Value="True" />
+        <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchXLargeStillWithRatingTemplate}" />
+    </Style>
+
     <Style x:Key="AdaptiveGridNoStretchMediumProfile" TargetType="controls:AdaptiveGridView">
         <Setter Property="IsItemClickEnabled" Value="True" />
         <Setter Property="ItemTemplate" Value="{StaticResource AdaptiveGridNoStretchMediumProfileTemplate}" />
@@ -96,6 +101,23 @@
         </StackPanel>
     </DataTemplate>
 
+    <DataTemplate x:Key="AdaptiveGridNoStretchXLargeStillWithRatingTemplate">
+        <StackPanel Width="{StaticResource DetailStillGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
+            <Image Source="{Binding StillPath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=XLargeStill}" Style="{StaticResource AdaptiveGridNoStretchStillImage}" />
+            <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                <RatingControl IsReadOnly="True" Value="{Binding Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                <TextBlock HorizontalAlignment="Center" Foreground="{StaticResource SystemOffsetMediumBrush}">
+                    <Run Text="{Binding SeasonNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
+                    <Run Text="{Binding EpisodeNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
+                </TextBlock>
+                <TextBlock Style="{StaticResource ImageGridTitleTextStyle}"
+                           Text="{Binding Name}"
+                           ToolTipService.ToolTip="{Binding Name}" />
+                <TextBlock Style="{StaticResource ImageGridSubtitleTextStyle}" Text="{Binding AirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}" />
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
     <DataTemplate x:Key="AdaptiveGridNoStretchMediumProfileTemplate">
         <StackPanel Width="{StaticResource DetailPosterGridWidth}" Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}">
             <Image Source="{Binding ProfilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumProfile}" Style="{StaticResource AdaptiveGridNoStretchImage}" />
@@ -124,6 +146,13 @@
            TargetType="Image">
         <Setter Property="Height" Value="{StaticResource DetailPosterGridHeight}" />
         <Setter Property="Width" Value="{StaticResource DetailPosterGridWidth}" />
+    </Style>
+
+    <Style x:Key="AdaptiveGridNoStretchStillImage"
+           BasedOn="{StaticResource StretchImageBase}"
+           TargetType="Image">
+        <Setter Property="Height" Value="{StaticResource DetailStillGridHeight}" />
+        <Setter Property="Width" Value="{StaticResource DetailStillGridWidth}" />
     </Style>
 
     <Style x:Key="AdaptiveGridNoStretchLandscapeImage"

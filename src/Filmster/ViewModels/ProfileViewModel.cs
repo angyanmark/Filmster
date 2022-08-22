@@ -1,5 +1,6 @@
 ﻿using Filmster.Common.Helper.Tile;
 using Filmster.Common.Helpers;
+using Filmster.Common.Models;
 using Filmster.Common.Services;
 using Filmster.Dialogs;
 using Filmster.Extensions;
@@ -26,6 +27,7 @@ namespace Filmster.ViewModels
 
         public IncrementalLoadingCollection<RatedMoviesSource, SearchMovieWithRating> RatedMovies { get; set; } = new IncrementalLoadingCollection<RatedMoviesSource, SearchMovieWithRating>();
         public IncrementalLoadingCollection<RatedTvShowsSource, AccountSearchTv> RatedTvShows { get; set; } = new IncrementalLoadingCollection<RatedTvShowsSource, AccountSearchTv>();
+        public IncrementalLoadingCollection<RatedTvEpisodesSource, AccountSearchTvEpisode> RatedTvEpisodes { get; set; } = new IncrementalLoadingCollection<RatedTvEpisodesSource, AccountSearchTvEpisode>();
         public IncrementalLoadingCollection<MovieWatchlistSource, SearchMovie> MovieWatchlist { get; set; } = new IncrementalLoadingCollection<MovieWatchlistSource, SearchMovie>();
         public IncrementalLoadingCollection<TvShowWatchlistSource, SearchTv> TvShowWatchlist { get; set; } = new IncrementalLoadingCollection<TvShowWatchlistSource, SearchTv>();
         public IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie> FavoriteMovies { get; set; } = new IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie>();
@@ -151,6 +153,7 @@ namespace Filmster.ViewModels
 
         public ICommand LogInClickedCommand;
         public ICommand LogOutClickedCommand;
+        public ICommand AccountSearchTvEpisodeClickedCommand;
         public ICommand CreateListClickedCommand;
         public ICommand AccountListClickedCommand;
         public ICommand RecommendClickedCommand;
@@ -159,6 +162,7 @@ namespace Filmster.ViewModels
         {
             LogInClickedCommand = new RelayCommand(LogInClickedAsync);
             LogOutClickedCommand = new RelayCommand(LogOutClickedAsync);
+            AccountSearchTvEpisodeClickedCommand = new RelayCommand<AccountSearchTvEpisode>(AccountSearchTvEpisodeClicked);
             CreateListClickedCommand = new RelayCommand(CreateListClickedAsync);
             AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClicked);
             RecommendClickedCommand = new RelayCommand(RecommendClickedAsync);
@@ -229,6 +233,7 @@ namespace Filmster.ViewModels
             Username = "Profile_GuestUsername".GetLocalized();
             RatedMovies.Clear();
             RatedTvShows.Clear();
+            RatedTvEpisodes.Clear();
             MovieWatchlist.Clear();
             TvShowWatchlist.Clear();
             FavoriteMovies.Clear();
@@ -274,6 +279,17 @@ namespace Filmster.ViewModels
                     await UserSessionService.LoggedOutAsync();
                 }
             }
+        }
+
+        private void AccountSearchTvEpisodeClicked(AccountSearchTvEpisode accountSearchTvEpisode)
+        {
+            NavigationService.Navigate<TvEpisodeDetailPage>(new TvShowSeasonEpisodeNumbers
+            {
+                TvShowId = accountSearchTvEpisode.ShowId,
+                TvSeasonNumber = accountSearchTvEpisode.SeasonNumber,
+                TvEpisodeNumber = accountSearchTvEpisode.EpisodeNumber,
+                TvShowImdbId = string.Empty,
+            });
         }
 
         private async void MovieWatchlistPinnedChangedAsync()

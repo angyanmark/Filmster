@@ -210,7 +210,7 @@
     <comment>Crew text for media</comment>
   </data>
   <data name="Media_DirectedBy.Text" xml:space="preserve">
-    <value>Rendezte</value>
+    <value>Rendezte:</value>
     <comment>Directed by text for media</comment>
   </data>
   <data name="Media_Homepage.Text" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>Trailer text for media</comment>
   </data>
   <data name="Media_CreatedBy.Text" xml:space="preserve">
-    <value>Készítette</value>
+    <value>Készítette:</value>
     <comment>Created by text for media</comment>
   </data>
   <data name="Media_Seasons.Text" xml:space="preserve">
@@ -522,7 +522,7 @@
     <comment>Episode number text for Media</comment>
   </data>
   <data name="Media_SeasonNumber" xml:space="preserve">
-    <value>{0}. évad</value>
+    <value>{0}. évad,</value>
     <comment>Season number text for Media</comment>
   </data>
   <data name="Date_ShortDate" xml:space="preserve">
@@ -688,5 +688,13 @@
   <data name="ContentDialog_AddToList_Failed" xml:space="preserve">
     <value>Sikertelen hozzáadás</value>
     <comment>Add failed text for ContentDialog</comment>
+  </data>
+  <data name="Media_GuestStars.Text" xml:space="preserve">
+    <value>Vendégszereplők</value>
+    <comment>Guest stars text for media</comment>
+  </data>
+  <data name="Profile_TvEpisodes.Header" xml:space="preserve">
+    <value>Epizódok</value>
+    <comment>TV Episodes text for Profile</comment>
   </data>
 </root>

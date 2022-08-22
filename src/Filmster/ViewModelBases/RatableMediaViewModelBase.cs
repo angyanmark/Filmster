@@ -2,6 +2,7 @@
 using Filmster.Common.Services;
 using System.Threading.Tasks;
 using TMDbLib.Objects.General;
+using TMDbLib.Objects.TvShows;
 
 namespace Filmster.ViewModelBases
 {
@@ -65,14 +66,22 @@ namespace Filmster.ViewModelBases
             }
         }
 
-        private protected async Task ChangeRatingAsync(MediaType mediaType, int id, double value)
+        private protected void SetAccountState(TvAccountState tvAccountState)
+        {
+            if (tvAccountState != null)
+            {
+                Rating = tvAccountState.Rating ?? -1;
+            }
+        }
+
+        private protected async Task ChangeRatingAsync(MediaType mediaType, double value, int id, int? seasonNumber = null, int? episodeNumber = null)
         {
             if (!IsLoggedIn)
             {
                 return;
             }
 
-            bool success = await TMDbService.SetRatingAsync(mediaType, id, value);
+            bool success = await TMDbService.SetRatingAsync(mediaType, value, id, seasonNumber, episodeNumber);
 
             if (success && value != -1 && IsWatchlist)
             {

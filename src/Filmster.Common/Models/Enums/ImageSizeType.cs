@@ -17,6 +17,8 @@
         SmallStill = 13,
         MediumStill = 14,
         LargeStill = 15,
-        Original = 16,
+        XLargeStill = 16,
+        XXLargeStill = 17,
+        Original = 18,
     }
 }

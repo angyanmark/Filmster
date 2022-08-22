@@ -41,6 +41,9 @@ namespace Filmster.Converters
                 case ExternalIdType.IMDbTvShow:
                     baseUrl = TMDbService.IMDbTvShowBaseUrl;
                     break;
+                case ExternalIdType.IMDbTvEpisode:
+                    baseUrl = TMDbService.IMDbTvEpisodeBaseUrl;
+                    break;
                 case ExternalIdType.IMDbPerson:
                     baseUrl = TMDbService.IMDbPersonBaseUrl;
                     break;

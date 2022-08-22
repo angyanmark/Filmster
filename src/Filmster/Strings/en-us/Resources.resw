@@ -689,4 +689,12 @@
     <value>Add failed</value>
     <comment>Add failed text for ContentDialog</comment>
   </data>
+  <data name="Media_GuestStars.Text" xml:space="preserve">
+    <value>Guest Stars</value>
+    <comment>Guest stars text for media</comment>
+  </data>
+  <data name="Profile_TvEpisodes.Header" xml:space="preserve">
+    <value>TV Episodes</value>
+    <comment>TV Episodes text for Profile</comment>
+  </data>
 </root>

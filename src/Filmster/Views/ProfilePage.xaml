@@ -86,6 +86,12 @@
                                                        ItemsSource="{x:Bind ViewModel.RatedTvShows, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
                         </PivotItem>
+
+                        <PivotItem x:Uid="Profile_TvEpisodes">
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.AccountSearchTvEpisodeClickedCommand}"
+                                                       ItemsSource="{x:Bind ViewModel.RatedTvEpisodes, Mode=OneWay}"
+                                                       Style="{StaticResource AdaptiveGridNoStretchXLargeStillWithRating}" />
+                        </PivotItem>
                     </Pivot>
                 </PivotItem>
 

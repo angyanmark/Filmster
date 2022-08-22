@@ -7,8 +7,18 @@
         <Setter Property="ItemTemplate" Value="{StaticResource FlipPosterTemplate}" />
     </Style>
 
+    <Style x:Key="FlipViewStill" TargetType="FlipView">
+        <Setter Property="Height" Value="{StaticResource DetailStillHeight}" />
+        <Setter Property="Width" Value="{StaticResource DetailStillWidth}" />
+        <Setter Property="ItemTemplate" Value="{StaticResource FlipStillTemplate}" />
+    </Style>
+
     <DataTemplate x:Key="FlipPosterTemplate">
         <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=MediumPoster}" Style="{StaticResource StretchImageBase}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="FlipStillTemplate">
+        <Image Source="{Binding FilePath, Converter={StaticResource ImagePathToFullPathConverter}, ConverterParameter=XXLargeStill}" Style="{StaticResource StretchImageBase}" />
     </DataTemplate>
 
 </ResourceDictionary>

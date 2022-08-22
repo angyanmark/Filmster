@@ -1,4 +1,4 @@
-﻿<Page x:Class="Filmster.Views.TvSeasonDetailPage"
+﻿<Page x:Class="Filmster.Views.TvEpisodeDetailPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -16,6 +16,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
@@ -26,9 +27,9 @@
 
                     <FlipView Grid.Column="0"
                               VerticalAlignment="Top"
-                              ItemsSource="{x:Bind ViewModel.TvSeason.Images.Posters, Mode=OneWay}"
+                              ItemsSource="{x:Bind ViewModel.TvEpisode.Images.Stills, Mode=OneWay}"
                               SelectedItem="{x:Bind ViewModel.SelectedPoster, Mode=TwoWay}"
-                              Style="{StaticResource FlipView}"
+                              Style="{StaticResource FlipViewStill}"
                               Tapped="{x:Bind ViewModel.PosterClicked}" />
 
                     <Grid Grid.Column="1" RowSpacing="{StaticResource XSmallSpacing}">
@@ -42,38 +43,42 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0"
-                                   Style="{StaticResource DetailPageTitleStyle}"
-                                   ToolTipService.ToolTip="{x:Bind ViewModel.TvSeason.AirDate.Value.ToShortDateString(), Mode=OneWay}">
-                            <Run Text="{x:Bind ViewModel.TvSeason.Name, Mode=OneWay}" />
+                        <TextBlock Grid.Row="0" Style="{StaticResource DetailPageTitleStyle}">
+                            <Run Text="{x:Bind ViewModel.TvEpisode.Name, Mode=OneWay}" />
                             <Run FontWeight="Normal"
                                  Foreground="{StaticResource SystemOffsetMediumLowBrush}"
-                                 Text="{x:Bind ViewModel.TvSeason.AirDate.Value.Year, Mode=OneWay}" />
+                                 Text="{x:Bind ViewModel.TvEpisode.AirDate, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Text="{x:Bind ViewModel.TvSeason.SeasonNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_Season'}" />
+                                   Style="{StaticResource DirectorCreatorTextStyle}"
+                                   Visibility="{x:Bind ViewModel.Directors, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                            <Run x:Uid="Media_DirectedBy" Foreground="{StaticResource SystemOffsetMediumBrush}" />
+                            <Run Text="{x:Bind ViewModel.Directors, Mode=OneWay}" />
+                        </TextBlock>
 
-                        <TextBlock Grid.Row="2"
-                                   Foreground="{StaticResource SystemOffsetMediumBrush}"
-                                   Text="{x:Bind ViewModel.TvSeason.Episodes.Count, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodesCount'}" />
+                        <TextBlock Grid.Row="2" Foreground="{StaticResource SystemOffsetMediumBrush}">
+                            <Run Text="{x:Bind ViewModel.TvEpisode.SeasonNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
+                            <Run Text="{x:Bind ViewModel.TvEpisode.EpisodeNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
+                        </TextBlock>
 
                         <StackPanel Grid.Row="3"
                                     Orientation="Horizontal"
                                     Spacing="{StaticResource SmallSpacing}">
                             <RatingControl Margin="{StaticResource XSmallTopMargin}"
-                                           IsReadOnly="True"
-                                           PlaceholderValue="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                                           IsReadOnly="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
+                                           PlaceholderValue="{x:Bind ViewModel.TvEpisode.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}"
+                                           ValueChanged="{x:Bind ViewModel.RatingChangedAsync}"
+                                           Value="{x:Bind ViewModel.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
                             <TextBlock VerticalAlignment="Center">
-                                <Run FontWeight="Bold" Text="{x:Bind ViewModel.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
-                                <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                                <Run FontWeight="Bold" Text="{x:Bind ViewModel.TvEpisode.VoteAverage, Mode=OneWay, Converter={StaticResource RatingToScaledRatingStringConverter}, ConverterParameter=10|5}" />
+                                <Run Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.TvEpisode.VoteCount, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
                         </StackPanel>
 
                         <TextBlock Grid.Row="4"
                                    Style="{StaticResource OverviewTextStyle}"
-                                   Text="{x:Bind ViewModel.TvSeason.Overview, Mode=OneWay}" />
+                                   Text="{x:Bind ViewModel.TvEpisode.Overview, Mode=OneWay}" />
 
                         <StackPanel Grid.Row="5"
                                     Orientation="Horizontal"
@@ -84,8 +89,8 @@
                                 <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
                             </HyperlinkButton>
                             <HyperlinkButton Padding="0"
-                                             NavigateUri="{x:Bind ViewModel.TvShowSeasonEpisodeNumbers, Mode=OneWay, Converter={StaticResource TvShowSeasonEpisodeNumbersToImdbSeasonUriConverter}}"
-                                             Visibility="{x:Bind ViewModel.TvShowSeasonEpisodeNumbers.TvShowImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                             NavigateUri="{x:Bind ViewModel.TvEpisode.ExternalIds.ImdbId, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=IMDbTvEpisode}"
+                                             Visibility="{x:Bind ViewModel.TvEpisode.ExternalIds.ImdbId, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
                                 <TextBlock x:Uid="Media_IMDb" Style="{StaticResource ExternalLinkTextStyle}" />
                             </HyperlinkButton>
                         </StackPanel>
@@ -101,10 +106,13 @@
                 </Grid>
 
                 <StackPanel Grid.Row="1">
-                    <TextBlock x:Uid="Media_Episodes" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvSeasonEpisodeClickedCommand}"
-                                               ItemsSource="{x:Bind ViewModel.TvSeason.Episodes, Mode=OneWay}"
-                                               Style="{StaticResource AdaptiveGridEpisodeListLargeStill}" />
+                    <TextBlock x:Uid="Media_GuestStars" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvCastClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.GuestStars, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchMediumProfile}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsGuestStarChecked, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="2">
@@ -125,6 +133,16 @@
                     <ToggleButton x:Uid="Media_ShowAll"
                                   HorizontalAlignment="Center"
                                   IsChecked="{x:Bind ViewModel.IsCrewChecked, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="4">
+                    <TextBlock x:Uid="Media_Images" Style="{StaticResource TitleTextBlockStyle}" />
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.ImageClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.Images, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchSmallBackdrop}" />
+                    <ToggleButton x:Uid="Media_ShowAll"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{x:Bind ViewModel.IsImagesChecked, Mode=TwoWay}" />
                 </StackPanel>
             </Grid>
         </ScrollViewer>

@@ -41,6 +41,8 @@ namespace Filmster.Common.Services
         public static readonly string SmallStillSize = "w92";
         public static readonly string MediumStillSize = "w185";
         public static readonly string LargeStillSize = "w300";
+        public static readonly string XLargeStillSize = "w500";
+        public static readonly string XXLargeStillSize = "w1280";
 
         public static readonly string OriginalSize = "original";
 
@@ -53,6 +55,7 @@ namespace Filmster.Common.Services
         public static readonly string IMDbBaseUrl = "https://www.imdb.com/";
         public static readonly string IMDbMovieBaseUrl = "https://www.imdb.com/title/";
         public static readonly string IMDbTvShowBaseUrl = "https://www.imdb.com/title/";
+        public static readonly string IMDbTvEpisodeBaseUrl = "https://www.imdb.com/title/";
         public static readonly string IMDbPersonBaseUrl = "https://www.imdb.com/name/";
         public static readonly string YouTubeBaseUrl = "https://www.youtube.com/watch?v=";
         public static readonly string FacebookBaseUrl = "https://www.facebook.com/";
@@ -132,6 +135,11 @@ namespace Filmster.Common.Services
             return await client.GetTvSeasonAsync(tvShowId, seasonNumber, TvSeasonMethods.Images | TvSeasonMethods.Credits | TvSeasonMethods.Videos, CurrentLanguage, IncludeImageLanguage);
         }
 
+        public static async Task<TvEpisode> GetTvEpisodeAsync(int tvShowId, int seasonNumber, int episodeNumber, bool includeAccountState = false)
+        {
+            return await client.GetTvEpisodeAsync(tvShowId, seasonNumber, episodeNumber, (includeAccountState ? TvEpisodeMethods.AccountStates : TvEpisodeMethods.Undefined) | TvEpisodeMethods.Images | TvEpisodeMethods.Credits | TvEpisodeMethods.Videos | TvEpisodeMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
+        }
+
         public static async Task<SearchContainer<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow, int page = 0)
         {
             return await client.GetTrendingPeopleAsync(timeWindow, page);  // NOTE: no language filter
@@ -209,6 +217,11 @@ namespace Filmster.Common.Services
             return await client.AccountGetRatedTvShowsAsync(page, accountSortBy, sortOrder, CurrentLanguage);
         }
 
+        public static async Task<SearchContainer<AccountSearchTvEpisode>> GetRatedTvEpisodesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
+        {
+            return await client.AccountGetRatedTvShowEpisodesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
+        }
+
         public static async Task<SearchContainer<SearchMovie>> GetFavoriteMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
         {
             return await client.AccountGetFavoriteMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
@@ -229,7 +242,7 @@ namespace Filmster.Common.Services
             return await client.AccountGetTvWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
         }
 
-        public static async Task<bool> SetRatingAsync(MediaType mediaType, int id, double value)
+        public static async Task<bool> SetRatingAsync(MediaType mediaType, double value, int id, int? seasonNumber = null, int? episodeNumber = null)
         {
             switch (mediaType)
             {
@@ -241,6 +254,10 @@ namespace Filmster.Common.Services
                     return value == -1
                         ? await client.TvShowRemoveRatingAsync(id)
                         : await client.TvShowSetRatingAsync(id, value * 2);
+                case MediaType.Episode:
+                    return value == -1
+                        ? await client.TvEpisodeRemoveRatingAsync(id, seasonNumber.Value, episodeNumber.Value)
+                        : await client.TvEpisodeSetRatingAsync(id, seasonNumber.Value, episodeNumber.Value, value * 2);
                 default:
                     throw new ArgumentException(string.Format("Cannot set rating to media type {0}.", mediaType), nameof(mediaType));
             }

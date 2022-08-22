@@ -60,6 +60,12 @@ namespace Filmster.Converters
                 case ImageSizeType.LargeStill:
                     size = TMDbService.LargeStillSize;
                     break;
+                case ImageSizeType.XLargeStill:
+                    size = TMDbService.XLargeStillSize;
+                    break;
+                case ImageSizeType.XXLargeStill:
+                    size = TMDbService.XXLargeStillSize;
+                    break;
                 case ImageSizeType.Original:
                     size = TMDbService.OriginalSize;
                     break;

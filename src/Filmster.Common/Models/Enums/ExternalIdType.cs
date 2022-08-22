@@ -10,10 +10,11 @@
         TMDbList = 6,
         IMDbMovie = 7,
         IMDbTvShow = 8,
-        IMDbPerson = 9,
-        YouTube = 10,
-        Facebook = 11,
-        Instagram = 12,
-        Twitter = 13,
+        IMDbTvEpisode = 9,
+        IMDbPerson = 10,
+        YouTube = 11,
+        Facebook = 12,
+        Instagram = 13,
+        Twitter = 14,
     }
 }

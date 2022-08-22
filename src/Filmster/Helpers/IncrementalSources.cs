@@ -155,6 +155,24 @@ namespace Filmster.Helpers
         }
     }
 
+    public class RatedTvEpisodesSource : IIncrementalSource<AccountSearchTvEpisode>
+    {
+        private SearchContainer<AccountSearchTvEpisode> TvEpisodes = new SearchContainer<AccountSearchTvEpisode>();
+
+        public async Task<IEnumerable<AccountSearchTvEpisode>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= TvEpisodes.TotalPages)
+            {
+                TvEpisodes = await TMDbService.GetRatedTvEpisodesAsync(pageIndex, AccountSortBy.CreatedAt, SortOrder.Descending);
+                return TvEpisodes.Results;
+            }
+
+            return default;
+        }
+    }
+
     public class FavoriteMoviesSource : IIncrementalSource<SearchMovie>
     {
         private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
