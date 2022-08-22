@@ -28,7 +28,7 @@ namespace Filmster.Helpers
                     Name = TaskName,
                     TaskEntryPoint = TaskEntryPoint,
                 };
-                taskBuilder.SetTrigger(new TimeTrigger(180, false));
+                taskBuilder.SetTrigger(new TimeTrigger(360, false));
                 taskBuilder.Register();
             }
         }
