@@ -1,10 +1,12 @@
 ﻿using Filmster.Common.Models;
+using Filmster.Common.Models.Extensions;
 using Filmster.Common.Services;
 using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.Services;
 using Filmster.ViewModelBases;
 using Filmster.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ using Windows.UI.Xaml.Input;
 
 namespace Filmster.ViewModels
 {
-    public class TvSeasonDetailViewModel : MediaViewModelBase
+    public class TvSeasonDetailViewModel : RatableMediaViewModelBase
     {
         private TvSeason _tvSeason;
         public TvSeason TvSeason
@@ -61,6 +63,7 @@ namespace Filmster.ViewModels
             set { Set(ref _voteCount, value); }
         }
 
+        public ObservableCollection<TvSeasonEpisodeWithRating> Episodes { get; set; } = new ObservableCollection<TvSeasonEpisodeWithRating>();
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
 
@@ -95,18 +98,39 @@ namespace Filmster.ViewModels
 
         public async Task LoadTvSeasonAsync(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
         {
-            TvSeason = await TMDbService.GetTvSeasonAsync(tvShowSeasonEpisodeNumbers.TvShowId, tvShowSeasonEpisodeNumbers.TvSeasonNumber);
+            TvSeason = await TMDbService.GetTvSeasonAsync(tvShowSeasonEpisodeNumbers.TvShowId, tvShowSeasonEpisodeNumbers.TvSeasonNumber, IsLoggedIn);
             if (TvSeason == null)
             {
                 NavigationService.GoBack();
                 return;
             }
             TvShowSeasonEpisodeNumbers = tvShowSeasonEpisodeNumbers;
+            SetEpisodes();
             SelectedPoster = GetSelectedPoster();
             (VoteAverage, VoteCount) = VoteHelper.GetVoteAverageVoteCount(TvSeason.Episodes.Select(episode => (episode.VoteAverage, episode.VoteCount)));
             Video = VideoSelectService.SelectVideo(TvSeason.Videos.Results);
             Cast.AddRange(TvSeason.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
+        }
+
+        private void SetEpisodes()
+        {
+            Episodes.AddRange(TvSeason.Episodes.Select(episode => new TvSeasonEpisodeWithRating
+            {
+                Rating = TvSeason.AccountStates.Results.Single(accountState => accountState.EpisodeNumber == episode.EpisodeNumber).Rating,
+                AirDate = episode.AirDate,
+                Crew = episode.Crew,
+                EpisodeNumber = episode.EpisodeNumber,
+                GuestStars = episode.GuestStars,
+                Id = episode.Id,
+                Name = episode.Name,
+                Overview = episode.Overview,
+                ProductionCode = episode.ProductionCode,
+                SeasonNumber = episode.SeasonNumber,
+                StillPath = episode.StillPath,
+                VoteAverage = episode.VoteAverage,
+                VoteCount = episode.VoteCount,
+            }));
         }
 
         private ImageData GetSelectedPoster()

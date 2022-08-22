@@ -103,7 +103,7 @@
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Uid="Media_Episodes" Style="{StaticResource TitleTextBlockStyle}" />
                     <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvSeasonEpisodeClickedCommand}"
-                                               ItemsSource="{x:Bind ViewModel.TvSeason.Episodes, Mode=OneWay}"
+                                               ItemsSource="{x:Bind ViewModel.Episodes, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridEpisodeListLargeStill}" />
                 </StackPanel>
 

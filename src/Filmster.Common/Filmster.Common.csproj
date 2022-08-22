@@ -129,6 +129,7 @@
     <Compile Include="Models\Enums\ExternalIdType.cs" />
     <Compile Include="Models\Enums\ImageSizeType.cs" />
     <Compile Include="Models\Enums\PersonCastCrewSortType.cs" />
+    <Compile Include="Models\Extensions\TvSeasonEpisodeWithRating.cs" />
     <Compile Include="Models\ImageGalleryNavigationParameter.cs" />
     <Compile Include="Models\SearchItem.cs" />
     <Compile Include="Models\ShareParameter.cs" />
