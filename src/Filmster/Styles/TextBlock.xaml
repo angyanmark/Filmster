@@ -56,7 +56,7 @@
         <Setter Property="MaxLines" Value="20" />
     </Style>
 
-    <Style x:Key="GenresTextStyle"
+    <Style x:Key="ProductionCompaniesTextStyle"
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />

@@ -71,6 +71,9 @@
                             <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
                                        Text="{x:Bind ViewModel.Certification, Mode=OneWay}"
                                        Visibility="{x:Bind ViewModel.Certification, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}"
+                                       Text="{x:Bind ViewModel.Genres, Mode=OneWay}"
+                                       Visibility="{x:Bind ViewModel.Genres, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
                         </StackPanel>
 
                         <StackPanel Grid.Row="3"
@@ -119,8 +122,8 @@
                                    Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
 
                         <TextBlock Grid.Row="6"
-                                   Style="{StaticResource GenresTextStyle}"
-                                   Text="{x:Bind ViewModel.Genres, Mode=OneWay}" />
+                                   Style="{StaticResource ProductionCompaniesTextStyle}"
+                                   Text="{x:Bind ViewModel.ProductionCompanies, Mode=OneWay}" />
 
                         <StackPanel Grid.Row="7"
                                     Orientation="Horizontal"

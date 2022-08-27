@@ -69,6 +69,13 @@ namespace Filmster.ViewModels
             set { Set(ref _genres, value); }
         }
 
+        private string _productionCompanies;
+        public string ProductionCompanies
+        {
+            get { return _productionCompanies; }
+            set { Set(ref _productionCompanies, value); }
+        }
+
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
         public ObservableCollection<ImageData> Images { get; set; } = new ObservableCollection<ImageData>();
@@ -129,6 +136,7 @@ namespace Filmster.ViewModels
             Directors = GetDirectors();
             Certification = GetCertification();
             Genres = GetGenres();
+            ProductionCompanies = GetProductionCompanies();
             Video = VideoSelectService.SelectVideo(Movie.Videos.Results);
             Collection = await GetCollectionAsync();
             Cast.AddRange(Movie.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
@@ -166,6 +174,11 @@ namespace Filmster.ViewModels
         private string GetGenres()
         {
             return string.Join(", ", Movie.Genres.Select(genre => genre.Name));
+        }
+
+        private string GetProductionCompanies()
+        {
+            return string.Join(", ", Movie.ProductionCompanies.Select(productionCompany => productionCompany.Name));
         }
 
         private async Task<Collection> GetCollectionAsync()

@@ -69,6 +69,13 @@ namespace Filmster.ViewModels
             set { Set(ref _genres, value); }
         }
 
+        private string _productionCompanies;
+        public string ProductionCompanies
+        {
+            get { return _productionCompanies; }
+            set { Set(ref _productionCompanies, value); }
+        }
+
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
         public ObservableCollection<Crew> Crew { get; set; } = new ObservableCollection<Crew>();
         public ObservableCollection<ImageData> Images { get; set; } = new ObservableCollection<ImageData>();
@@ -132,6 +139,7 @@ namespace Filmster.ViewModels
             EpisodeRuntime = Convert.ToInt32(TvShow.EpisodeRunTime.DefaultIfEmpty().Average());
             Certification = GetCertification();
             Genres = GetGenres();
+            ProductionCompanies = GetProductionCompanies();
             Video = VideoSelectService.SelectVideo(TvShow.Videos.Results);
             Cast.AddRange(TvShow.Credits.Cast.Take(TMDbService.DefaultCastCrewBackdropCount));
             Crew.AddRange(TvShow.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
@@ -167,6 +175,11 @@ namespace Filmster.ViewModels
         private string GetGenres()
         {
             return string.Join(", ", TvShow.Genres.Select(genre => genre.Name));
+        }
+
+        private string GetProductionCompanies()
+        {
+            return string.Join(", ", TvShow.ProductionCompanies.Select(productionCompany => productionCompany.Name));
         }
 
         private void SearchTvSeasonClicked(SearchTvSeason searchTvSeason)
