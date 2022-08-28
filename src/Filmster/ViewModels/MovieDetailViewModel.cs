@@ -130,7 +130,6 @@ namespace Filmster.ViewModels
                 NavigationService.GoBack();
                 return;
             }
-            
             SetAccountState(Movie.AccountStates);
             SelectedPoster = GetSelectedPoster();
             Directors = GetDirectors();

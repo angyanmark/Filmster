@@ -81,10 +81,10 @@ namespace Filmster.ViewModels
 
         public ShellViewModel()
         {
-            _ = InitializeUserPropertiesAsync();
-
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
+
+            _ = InitializeUserPropertiesAsync();
         }
 
         private async Task InitializeUserPropertiesAsync()

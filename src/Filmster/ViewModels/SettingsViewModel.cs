@@ -63,14 +63,8 @@ namespace Filmster.ViewModels
 
         public SettingsViewModel()
         {
-            SaveLanguageCommand = new RelayCommand(async () =>
-            {
-                await SaveLanguageAsync();
-            });
-        }
+            SaveLanguageCommand = new RelayCommand(async () => await SaveLanguageAsync());
 
-        public void Initialize()
-        {
             LoadLanguages();
             VersionDescription = GetVersionDescription();
         }

@@ -1,6 +1,5 @@
 ﻿using Filmster.ViewModels;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace Filmster.Views
 {
@@ -11,11 +10,6 @@ namespace Filmster.Views
         public SettingsPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ViewModel.Initialize();
         }
     }
 }

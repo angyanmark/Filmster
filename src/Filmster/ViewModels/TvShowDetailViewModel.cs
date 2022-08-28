@@ -132,7 +132,6 @@ namespace Filmster.ViewModels
                 NavigationService.GoBack();
                 return;
             }
-
             SetAccountState(TvShow.AccountStates);
             SelectedPoster = GetSelectedPoster();
             Creators = GetCreators();
