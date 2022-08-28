@@ -160,9 +160,9 @@ namespace Filmster.Common.Services
             return (await client.SearchMultiAsync(value, CurrentLanguage)).Results;
         }
 
-        public static async Task<List<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options)
+        public static async Task<SearchContainer<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options, int page = 0)
         {
-            var query = await client.DiscoverMoviesAsync()
+            return await client.DiscoverMoviesAsync()
                 .WherePrimaryReleaseDateIsAfter(options.PrimaryReleaseDateAfter)
                 .WherePrimaryReleaseDateIsBefore(options.PrimaryReleaseDateBefore)
                 .WhereVoteAverageIsAtLeast(options.VoteAverageAtLeast)
@@ -170,9 +170,7 @@ namespace Filmster.Common.Services
                 .WhereVoteCountIsAtLeast(options.VoteCountAtLeast)
                 .IncludeWithAllOfGenre(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
                 .OrderBy(options.SortBy)
-                .Query(CurrentLanguage);
-
-            return query.Results;
+                .Query(CurrentLanguage, page);
         }
 
         public static async Task<List<Genre>> GetMovieGenresAsync()

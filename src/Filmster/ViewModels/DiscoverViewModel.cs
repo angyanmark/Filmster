@@ -1,9 +1,9 @@
 ﻿using Filmster.Common.Helpers;
 using Filmster.Common.Models;
 using Filmster.Common.Services;
-using Filmster.Extensions;
 using Filmster.Helpers;
 using Filmster.ViewModelBases;
+using Microsoft.Toolkit.Uwp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,7 +34,7 @@ namespace Filmster.ViewModels
             DiscoverMovieSortBy.ReleaseDateDesc,
         };
 
-        public ObservableCollection<SearchMovie> Movies { get; set; } = new ObservableCollection<SearchMovie>();
+        public IncrementalLoadingCollection<DiscoverMoviesSource, SearchMovie> Movies { get; set; } = new IncrementalLoadingCollection<DiscoverMoviesSource, SearchMovie>();
 
         public List<Genre> Genres { get; set; } = new List<Genre>();
         private Genre EmptyGenre { get; set; } = new Genre { Id = 0, Name = string.Empty };
@@ -95,8 +95,10 @@ namespace Filmster.ViewModels
 
         public DiscoverViewModel()
         {
-            _ = LoadDataAsync();
             SetCommands();
+            SetSortBy();
+            Clear();
+            DiscoverMoviesSource.Options = GetOptions();
         }
 
         public void SetCommands()
@@ -105,22 +107,7 @@ namespace Filmster.ViewModels
             DiscoverCommand = new RelayCommand(async () => await DiscoverAsync());
         }
 
-        private async Task LoadDataAsync()
-        {
-            await GetGenresAsync();
-            GetSortBy();
-            Clear();
-            await DiscoverAsync();
-        }
-
-        private async Task GetGenresAsync()
-        {
-            Genres.Add(EmptyGenre);
-            var genres = await TMDbService.GetMovieGenresAsync();
-            Genres.AddRange(genres);
-        }
-
-        private void GetSortBy()
+        private void SetSortBy()
         {
             var sortByEnums = Enum.GetValues(typeof(DiscoverMovieSortBy)).Cast<DiscoverMovieSortBy>();
             foreach (var sortByEnum in sortByEnums)
@@ -144,12 +131,34 @@ namespace Filmster.ViewModels
             VoteAverageAtMost = VoteAverageMax;
             VoteCountAtLeast = VoteCountMin;
             GenreId = EmptyGenre.Id;
-            SelectedSortByItem = SortByItems.FirstOrDefault(sortByItem => sortByItem.SortBy == DiscoverMovieSortBy.PopularityDesc);
+            SelectedSortByItem = SortByItems.SingleOrDefault(sortByItem => sortByItem.SortBy == DiscoverMovieSortBy.PopularityDesc);
+        }
+
+        public async Task LoadDataAsync()
+        {
+            await Task.WhenAll(new List<Task>
+            {
+                GetGenresAsync(),
+                DiscoverAsync(),
+            });
+        }
+
+        private async Task GetGenresAsync()
+        {
+            Genres.Add(EmptyGenre);
+            var genres = await TMDbService.GetMovieGenresAsync();
+            Genres.AddRange(genres);
         }
 
         private async Task DiscoverAsync()
         {
-            var options = new DiscoverMovieOptions
+            DiscoverMoviesSource.Options = GetOptions();
+            await Movies.RefreshAsync();
+        }
+
+        private DiscoverMovieOptions GetOptions()
+        {
+            return new DiscoverMovieOptions
             {
                 PrimaryReleaseDateAfter = new DateTime(ReleaseDateFrom, 1, 1),
                 PrimaryReleaseDateBefore = new DateTime(ReleaseDateTo, 1, 1),
@@ -159,9 +168,6 @@ namespace Filmster.ViewModels
                 GenreId = GenreId,
                 SortBy = SelectedSortByItem.SortBy,
             };
-
-            var movies = await TMDbService.GetDiscoverMoviesAsync(options);
-            Movies.Refresh(movies);
         }
     }
 }

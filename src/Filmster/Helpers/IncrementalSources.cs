@@ -1,4 +1,5 @@
-﻿using Filmster.Common.Services;
+﻿using Filmster.Common.Models;
+using Filmster.Common.Services;
 using Microsoft.Toolkit.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -113,6 +114,25 @@ namespace Filmster.Helpers
             {
                 People = await TMDbService.GetTrendingPeopleAsync(TimeWindow.Week, pageIndex);
                 return People.Results;
+            }
+
+            return default;
+        }
+    }
+
+    public class DiscoverMoviesSource : IIncrementalSource<SearchMovie>
+    {
+        public static DiscoverMovieOptions Options { get; set; }
+        private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
+
+        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
+            {
+                Movies = await TMDbService.GetDiscoverMoviesAsync(Options, pageIndex);
+                return Movies.Results;
             }
 
             return default;
