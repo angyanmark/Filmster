@@ -155,9 +155,9 @@ namespace Filmster.Common.Services
             return (await client.SearchMovieAsync(value, CurrentLanguage)).Results;
         }
 
-        public static async Task<List<SearchBase>> GetMultiSearchAsync(string value)
+        public static async Task<SearchContainer<SearchBase>> GetMultiSearchAsync(string value, int page = 0)
         {
-            return (await client.SearchMultiAsync(value, CurrentLanguage)).Results;
+            return await client.SearchMultiAsync(value, CurrentLanguage, page);
         }
 
         public static async Task<SearchContainer<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options, int page = 0)

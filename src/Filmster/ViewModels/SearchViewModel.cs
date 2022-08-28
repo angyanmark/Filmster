@@ -1,7 +1,6 @@
-﻿using Filmster.Common.Services;
-using Filmster.Extensions;
+﻿using Filmster.Helpers;
 using Filmster.ViewModelBases;
-using System.Collections.ObjectModel;
+using Microsoft.Toolkit.Uwp;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Search;
 
@@ -16,7 +15,7 @@ namespace Filmster.ViewModels
             set { Set(ref _searchValue, value); }
         }
 
-        public ObservableCollection<SearchBase> SearchItems { get; set; } = new ObservableCollection<SearchBase>();
+        public IncrementalLoadingCollection<MultiSearchSource, SearchBase> SearchItems { get; set; } = new IncrementalLoadingCollection<MultiSearchSource, SearchBase>();
 
         public SearchViewModel()
         {
@@ -25,8 +24,8 @@ namespace Filmster.ViewModels
         public async Task SearchAsync(string searchValue)
         {
             SearchValue = searchValue;
-            var searchItems = await TMDbService.GetMultiSearchAsync(searchValue);
-            SearchItems.AddRange(searchItems);
+            MultiSearchSource.SearchValue = SearchValue;
+            await SearchItems.RefreshAsync();
         }
     }
 }
