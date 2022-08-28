@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using TMDbLib.Objects.People;
-using TMDbLib.Objects.Search;
 
 namespace Filmster.Extensions
 {
@@ -50,33 +49,6 @@ namespace Filmster.Extensions
                 list[j] = temp;
             }
             return list;
-        }
-
-        public static void Refresh(this ObservableCollection<SearchMovie> oldList, IEnumerable<SearchMovie> newList)
-        {
-            for (int i = 0; i < oldList.Count; i++)
-            {
-                if (!newList.Any(x => x.Id == oldList[i].Id))
-                {
-                    oldList.RemoveAt(i--);
-                }
-            }
-
-            foreach (var (item, index) in newList.Select((x, i) => (item: x, index: i)))
-            {
-                if (!oldList.Any(x => x.Id == item.Id))
-                {
-                    oldList.Insert(index, item);
-                }
-                else
-                {
-                    var i = oldList.IndexOf(oldList.FirstOrDefault(x => x.Id == item.Id));
-                    if (i != index)
-                    {
-                        oldList.Move(i, index);
-                    }
-                }
-            }
         }
 
         public static void Refresh(this ObservableCollection<MovieRole> oldList, IEnumerable<MovieRole> newList)

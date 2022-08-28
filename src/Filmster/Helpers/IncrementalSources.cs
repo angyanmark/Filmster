@@ -158,6 +158,25 @@ namespace Filmster.Helpers
         }
     }
 
+    public class SearchMovieSource : IIncrementalSource<SearchMovie>
+    {
+        public static string SearchValue { get; set; }
+        private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
+
+        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if ((pageIndex == 1 || pageIndex <= Movies.TotalPages) && !string.IsNullOrWhiteSpace(SearchValue))
+            {
+                Movies = await TMDbService.GetSearchMovieAsync(SearchValue, pageIndex);
+                return Movies.Results;
+            }
+
+            return default;
+        }
+    }
+
     public class RatedMoviesSource : IIncrementalSource<SearchMovieWithRating>
     {
         private SearchContainer<SearchMovieWithRating> Movies = new SearchContainer<SearchMovieWithRating>();

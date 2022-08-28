@@ -150,9 +150,9 @@ namespace Filmster.Common.Services
             return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
         }
 
-        public static async Task<List<SearchMovie>> GetSearchMovieAsync(string value)
+        public static async Task<SearchContainer<SearchMovie>> GetSearchMovieAsync(string value, int page = 0)
         {
-            return (await client.SearchMovieAsync(value, CurrentLanguage)).Results;
+            return await client.SearchMovieAsync(value, CurrentLanguage, page);
         }
 
         public static async Task<SearchContainer<SearchBase>> GetMultiSearchAsync(string value, int page = 0)

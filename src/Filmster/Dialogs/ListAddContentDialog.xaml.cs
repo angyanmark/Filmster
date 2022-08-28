@@ -1,9 +1,8 @@
 ﻿using Filmster.Common.Helpers;
 using Filmster.Common.Services;
-using Filmster.Extensions;
 using Filmster.Helpers;
+using Microsoft.Toolkit.Uwp;
 using System;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TMDbLib.Objects.Exceptions;
 using TMDbLib.Objects.Search;
@@ -14,7 +13,7 @@ namespace Filmster.Dialogs
     public sealed partial class ListAddContentDialog : ContentDialog
     {
         private string ListId { get; set; }
-        private ObservableCollection<SearchMovie> Movies { get; set; } = new ObservableCollection<SearchMovie>();
+        private IncrementalLoadingCollection<SearchMovieSource, SearchMovie> Movies { get; set; } = new IncrementalLoadingCollection<SearchMovieSource, SearchMovie>();
         public SearchMovie AddedMovie { get; set; }
 
         private readonly ICommand MovieClickedCommand;
@@ -58,8 +57,8 @@ namespace Filmster.Dialogs
             var value = (sender as TextBox).Text;
             if (!string.IsNullOrWhiteSpace(value))
             {
-                var movies = await TMDbService.GetSearchMovieAsync(value);
-                Movies.Reset(movies);
+                SearchMovieSource.SearchValue = value;
+                await Movies.RefreshAsync();
             }
         }
     }
