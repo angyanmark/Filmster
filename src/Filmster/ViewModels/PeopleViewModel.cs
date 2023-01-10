@@ -7,6 +7,6 @@ namespace Filmster.ViewModels
 {
     public class PeopleViewModel : MediaViewModelBase
     {
-        public IncrementalLoadingCollection<TrendingPeopleSource, SearchPerson> TrendingPeople { get; set; } = new IncrementalLoadingCollection<TrendingPeopleSource, SearchPerson>();
+        public IncrementalLoadingCollection<PopularPeopleSource, SearchPerson> PopularPeople { get; set; } = new IncrementalLoadingCollection<PopularPeopleSource, SearchPerson>();
     }
 }

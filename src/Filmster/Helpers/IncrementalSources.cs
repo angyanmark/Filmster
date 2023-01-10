@@ -8,7 +8,6 @@ using TMDbLib.Objects.Account;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
-using TMDbLib.Objects.Trending;
 
 namespace Filmster.Helpers
 {
@@ -102,7 +101,7 @@ namespace Filmster.Helpers
         }
     }
 
-    public class TrendingPeopleSource : IIncrementalSource<SearchPerson>
+    public class PopularPeopleSource : IIncrementalSource<SearchPerson>
     {
         private SearchContainer<SearchPerson> People = new SearchContainer<SearchPerson>();
 
@@ -112,7 +111,7 @@ namespace Filmster.Helpers
 
             if (pageIndex == 1 || pageIndex <= People.TotalPages)
             {
-                People = await TMDbService.GetTrendingPeopleAsync(TimeWindow.Week, pageIndex);
+                People = await TMDbService.GetPopularPeopleAsync(pageIndex);
                 return People.Results;
             }
 

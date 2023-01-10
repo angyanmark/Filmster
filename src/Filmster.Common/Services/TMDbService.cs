@@ -11,7 +11,6 @@ using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
-using TMDbLib.Objects.Trending;
 using TMDbLib.Objects.TvShows;
 
 namespace Filmster.Common.Services
@@ -140,9 +139,9 @@ namespace Filmster.Common.Services
             return await client.GetTvEpisodeAsync(tvShowId, seasonNumber, episodeNumber, (includeAccountState ? TvEpisodeMethods.AccountStates : TvEpisodeMethods.Undefined) | TvEpisodeMethods.Images | TvEpisodeMethods.Credits | TvEpisodeMethods.Videos | TvEpisodeMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
         }
 
-        public static async Task<SearchContainer<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow, int page = 0)
+        public static async Task<SearchContainer<SearchPerson>> GetPopularPeopleAsync(int page = 0)
         {
-            return await client.GetTrendingPeopleAsync(timeWindow, page);  // NOTE: no language filter
+            return await client.GetPersonPopularListAsync(page, CurrentLanguage);
         }
 
         public static async Task<Person> GetPersonAsync(int id)
