@@ -122,8 +122,8 @@
                                    Text="{x:Bind ViewModel.TvShow.Overview, Mode=OneWay}" />
 
                         <TextBlock Grid.Row="6"
-                                   Style="{StaticResource ProductionCompaniesTextStyle}"
-                                   Text="{x:Bind ViewModel.ProductionCompanies, Mode=OneWay}" />
+                                   Style="{StaticResource NetworksTextStyle}"
+                                   Text="{x:Bind ViewModel.Networks, Mode=OneWay}" />
 
                         <StackPanel Grid.Row="7"
                                     Orientation="Horizontal"
@@ -172,7 +172,7 @@
 
                 <StackPanel Grid.Row="2">
                     <TextBlock x:Uid="Media_Recommendations" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.TvShowClickedCommand}"
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.TvShow.Recommendations.Results, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                 </StackPanel>
