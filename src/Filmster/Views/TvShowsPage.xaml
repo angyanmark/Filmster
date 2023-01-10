@@ -9,13 +9,13 @@
 
     <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
         <PivotItem x:Uid="TvShows_Popular">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.PopularTvShows, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="TvShows_TopRated">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TopRatedTvShows, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>

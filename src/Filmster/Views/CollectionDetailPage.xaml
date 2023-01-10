@@ -80,7 +80,7 @@
 
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Uid="Media_Parts" Style="{StaticResource TitleTextBlockStyle}" />
-                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                ItemsSource="{x:Bind ViewModel.Collection.Parts, Mode=OneWay}"
                                                Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                 </StackPanel>

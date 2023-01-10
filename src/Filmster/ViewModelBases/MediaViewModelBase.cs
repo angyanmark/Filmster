@@ -15,9 +15,6 @@ namespace Filmster.ViewModelBases
     public class MediaViewModelBase : LoadingObservable
     {
         public ICommand TvShowClickedCommand;
-        public ICommand SearchMovieClickedCommand;
-        public ICommand SearchTvClickedCommand;
-        public ICommand SearchPersonClickedCommand;
         public ICommand SearchBaseClickedCommand;
         public ICommand MovieCastClickedCommand;
         public ICommand TvCastClickedCommand;
@@ -36,9 +33,6 @@ namespace Filmster.ViewModelBases
         private void SetCommands()
         {
             TvShowClickedCommand = new RelayCommand<TvShow>(TvShowClicked);
-            SearchMovieClickedCommand = new RelayCommand<SearchMovie>(SearchMovieClicked);
-            SearchTvClickedCommand = new RelayCommand<SearchTv>(SearchTvClicked);
-            SearchPersonClickedCommand = new RelayCommand<SearchPerson>(SearchPersonClicked);
             SearchBaseClickedCommand = new RelayCommand<SearchBase>(SearchBaseClicked);
             MovieCastClickedCommand = new RelayCommand<MovieCast>(MovieCastClicked);
             TvCastClickedCommand = new RelayCommand<TvCast>(TvCastClicked);
@@ -53,21 +47,6 @@ namespace Filmster.ViewModelBases
         private void TvShowClicked(TvShow tvShow)
         {
             NavigationService.Navigate<TvShowDetailPage>(tvShow.Id);
-        }
-
-        private void SearchMovieClicked(SearchMovie searchMovie)
-        {
-            NavigationService.Navigate<MovieDetailPage>(searchMovie.Id);
-        }
-
-        private void SearchTvClicked(SearchTv searchTv)
-        {
-            NavigationService.Navigate<TvShowDetailPage>(searchTv.Id);
-        }
-
-        private void SearchPersonClicked(SearchPerson searchPerson)
-        {
-            NavigationService.Navigate<PersonDetailPage>(searchPerson.Id);
         }
 
         private void SearchBaseClicked(SearchBase searchBase)

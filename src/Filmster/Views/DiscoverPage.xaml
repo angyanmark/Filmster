@@ -100,7 +100,7 @@
         </StackPanel>
 
         <controls:AdaptiveGridView Grid.Row="2"
-                                   ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                   ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                    ItemsSource="{x:Bind ViewModel.Movies, Mode=OneWay}"
                                    Style="{StaticResource AdaptiveGridMediumPoster}" />
     </Grid>

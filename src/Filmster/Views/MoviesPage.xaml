@@ -9,19 +9,19 @@
 
     <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
         <PivotItem x:Uid="Movies_Popular">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="Movies_Upcoming">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.UpcomingMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>
 
         <PivotItem x:Uid="Movies_TopRated">
-            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.TopRatedMovies, Mode=OneWay}"
                                        Style="{StaticResource AdaptiveGridMediumPoster}" />
         </PivotItem>

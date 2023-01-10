@@ -76,13 +76,13 @@
                 <PivotItem x:Uid="Profile_Rated">
                     <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}" SelectedIndex="{x:Bind ViewModel.RatedPivotSelectedIndex, Mode=TwoWay}">
                         <PivotItem x:Uid="Profile_Movies">
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.RatedMovies, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
                         </PivotItem>
 
                         <PivotItem x:Uid="Profile_TvShows">
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.RatedTvShows, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchSmallPosterWithRating}" />
                         </PivotItem>
@@ -98,13 +98,13 @@
                 <PivotItem x:Uid="Profile_Favorites">
                     <Pivot HeaderTemplate="{StaticResource PivotSubHeaderTemplate}" SelectedIndex="{x:Bind ViewModel.FavoritesPivotSelectedIndex, Mode=TwoWay}">
                         <PivotItem x:Uid="Profile_Movies">
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.FavoriteMovies, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                         </PivotItem>
 
                         <PivotItem x:Uid="Profile_TvShows">
-                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                        ItemsSource="{x:Bind ViewModel.FavoriteTvShows, Mode=OneWay}"
                                                        Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                         </PivotItem>
@@ -124,7 +124,7 @@
                                               Grid.Row="0"
                                               IsOn="{x:Bind ViewModel.IsMovieWatchlistPinned, Mode=TwoWay}" />
                                 <controls:AdaptiveGridView Grid.Row="1"
-                                                           ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                                           ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                            ItemsSource="{x:Bind ViewModel.MovieWatchlist, Mode=OneWay}"
                                                            Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                             </Grid>
@@ -141,7 +141,7 @@
                                               Grid.Row="0"
                                               IsOn="{x:Bind ViewModel.IsTvShowWatchlistPinned, Mode=TwoWay}" />
                                 <controls:AdaptiveGridView Grid.Row="1"
-                                                           ItemClickCommand="{x:Bind ViewModel.SearchTvClickedCommand}"
+                                                           ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                            ItemsSource="{x:Bind ViewModel.TvShowWatchlist, Mode=OneWay}"
                                                            Style="{StaticResource AdaptiveGridNoStretchSmallPoster}" />
                             </Grid>
@@ -173,12 +173,19 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <Button x:Uid="Profile_Recommend"
-                                Grid.Row="0"
-                                Command="{x:Bind ViewModel.RecommendClickedCommand}"
-                                IsEnabled="{x:Bind ViewModel.RecommendationsLoaded, Mode=OneWay}" />
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource XSmallSpacing}">
+                            <Button x:Uid="Profile_RecommendMovies"
+                                    Command="{x:Bind ViewModel.RecommendMoviesClickedCommand}"
+                                    IsEnabled="{x:Bind ViewModel.RecommendationsLoaded, Mode=OneWay}" />
+                            <Button x:Uid="Profile_RecommendTvShows"
+                                    Command="{x:Bind ViewModel.RecommendTvShowsClickedCommand}"
+                                    IsEnabled="{x:Bind ViewModel.RecommendationsLoaded, Mode=OneWay}" />
+                        </StackPanel>
+
                         <controls:AdaptiveGridView Grid.Row="1"
-                                                   ItemClickCommand="{x:Bind ViewModel.SearchMovieClickedCommand}"
+                                                   ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                                    ItemsSource="{x:Bind ViewModel.Recommendations, Mode=OneWay}"
                                                    Style="{StaticResource AdaptiveGridSearchListMediumPoster}" />
                     </Grid>

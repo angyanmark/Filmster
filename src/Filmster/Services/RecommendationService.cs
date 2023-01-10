@@ -30,5 +30,25 @@ namespace Filmster.Services
 
             return recommended;
         }
+
+        public static async Task<List<SearchTv>> RecommendTvShowsAsync()
+        {
+            var favorites = await TMDbService.GetFavoriteTvShowsAsync(accountSortBy: AccountSortBy.CreatedAt, sortOrder: SortOrder.Descending);
+
+            var tasks = new List<Task<SearchContainer<SearchTv>>>();
+            foreach (var favorite in favorites.Results.Shuffle().Take(4))
+            {
+                tasks.Add(TMDbService.GetTvShowRecommendationsAsync(favorite.Id));
+            }
+
+            var recommended = new List<SearchTv>();
+            foreach (var task in tasks)
+            {
+                var recommendations = await task;
+                recommended.AddRange(recommendations.Results.Shuffle().Take(4));
+            }
+
+            return recommended;
+        }
     }
 }

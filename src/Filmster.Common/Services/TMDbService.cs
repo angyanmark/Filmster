@@ -129,6 +129,11 @@ namespace Filmster.Common.Services
             return await client.GetTvShowAsync(id, (includeAccountState ? TvShowMethods.AccountStates : TvShowMethods.Undefined) | TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
         }
 
+        public static async Task<SearchContainer<SearchTv>> GetTvShowRecommendationsAsync(int id)
+        {
+            return await client.GetTvShowRecommendationsAsync(id, CurrentLanguage);
+        }
+
         public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber, bool includeAccountState = false)
         {
             return await client.GetTvSeasonAsync(tvShowId, seasonNumber, (includeAccountState ? TvSeasonMethods.AccountStates : TvSeasonMethods.Undefined) | TvSeasonMethods.Images | TvSeasonMethods.Credits | TvSeasonMethods.Videos, CurrentLanguage, IncludeImageLanguage);

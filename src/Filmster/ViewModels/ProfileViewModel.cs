@@ -33,7 +33,7 @@ namespace Filmster.ViewModels
         public IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie> FavoriteMovies { get; set; } = new IncrementalLoadingCollection<FavoriteMoviesSource, SearchMovie>();
         public IncrementalLoadingCollection<FavoriteTvShowsSource, SearchTv> FavoriteTvShows { get; set; } = new IncrementalLoadingCollection<FavoriteTvShowsSource, SearchTv>();
         public IncrementalLoadingCollection<ListsSource, AccountList> Lists { get; set; } = new IncrementalLoadingCollection<ListsSource, AccountList>();
-        public ObservableCollection<SearchMovie> Recommendations { get; set; } = new ObservableCollection<SearchMovie>();
+        public ObservableCollection<SearchMovieTvBase> Recommendations { get; set; } = new ObservableCollection<SearchMovieTvBase>();
 
         private bool _recommendationsLoaded;
         public bool RecommendationsLoaded
@@ -156,7 +156,8 @@ namespace Filmster.ViewModels
         public ICommand AccountSearchTvEpisodeClickedCommand;
         public ICommand CreateListClickedCommand;
         public ICommand AccountListClickedCommand;
-        public ICommand RecommendClickedCommand;
+        public ICommand RecommendMoviesClickedCommand;
+        public ICommand RecommendTvShowsClickedCommand;
 
         public ProfileViewModel()
         {
@@ -165,7 +166,8 @@ namespace Filmster.ViewModels
             AccountSearchTvEpisodeClickedCommand = new RelayCommand<AccountSearchTvEpisode>(AccountSearchTvEpisodeClicked);
             CreateListClickedCommand = new RelayCommand(CreateListClickedAsync);
             AccountListClickedCommand = new RelayCommand<AccountList>(AccountListClicked);
-            RecommendClickedCommand = new RelayCommand(RecommendClickedAsync);
+            RecommendMoviesClickedCommand = new RelayCommand(RecommendMoviesClickedAsync);
+            RecommendTvShowsClickedCommand = new RelayCommand(RecommendTvShowsClickedAsync);
 
             UserSessionService.LoggedInEvent += OnLoggedInAsync;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
@@ -340,10 +342,18 @@ namespace Filmster.ViewModels
             NavigationService.Navigate<ListDetailPage>(accountList.Id);
         }
 
-        private async void RecommendClickedAsync()
+        private async void RecommendMoviesClickedAsync()
         {
             RecommendationsLoaded = false;
             var recommendations = await RecommendationService.RecommendMoviesAsync();
+            Recommendations.Reset(recommendations);
+            RecommendationsLoaded = true;
+        }
+
+        private async void RecommendTvShowsClickedAsync()
+        {
+            RecommendationsLoaded = false;
+            var recommendations = await RecommendationService.RecommendTvShowsAsync();
             Recommendations.Reset(recommendations);
             RecommendationsLoaded = true;
         }
@@ -352,9 +362,9 @@ namespace Filmster.ViewModels
         {
             if (PrimaryPivotSelectedIndex == 4 &&
                 !Recommendations.Any() &&
-                RecommendClickedCommand.CanExecute(default))
+                RecommendMoviesClickedCommand.CanExecute(default))
             {
-                RecommendClickedCommand.Execute(default);
+                RecommendMoviesClickedCommand.Execute(default);
             }
         }
     }
