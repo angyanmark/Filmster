@@ -113,6 +113,7 @@ namespace Filmster.ViewModels
         public async Task LoadTvEpisodeAsync(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
         {
             TvEpisode = await TMDbService.GetTvEpisodeAsync(tvShowSeasonEpisodeNumbers.TvShowId, tvShowSeasonEpisodeNumbers.TvSeasonNumber, tvShowSeasonEpisodeNumbers.TvEpisodeNumber.Value, IsLoggedIn);
+            TvEpisode.ShowId = tvShowSeasonEpisodeNumbers.TvShowId;
             if (TvEpisode == null)
             {
                 NavigationService.GoBack();
@@ -211,7 +212,7 @@ namespace Filmster.ViewModels
 
         public async void RatingChangedAsync(RatingControl sender, object args)
         {
-            await ChangeRatingAsync(MediaType.Episode, sender.Value, TvEpisode.Id.Value, TvEpisode.SeasonNumber, TvEpisode.EpisodeNumber);
+            await ChangeRatingAsync(MediaType.Episode, sender.Value, TvEpisode.ShowId, TvEpisode.SeasonNumber, TvEpisode.EpisodeNumber);
         }
     }
 }
