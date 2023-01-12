@@ -161,7 +161,7 @@ namespace Filmster.ViewModels
             return new DiscoverMovieOptions
             {
                 PrimaryReleaseDateAfter = new DateTime(ReleaseDateFrom, 1, 1),
-                PrimaryReleaseDateBefore = new DateTime(ReleaseDateTo, 1, 1),
+                PrimaryReleaseDateBefore = new DateTime(ReleaseDateTo, 12, 31),
                 VoteAverageAtLeast = Math.Round(VoteAverageAtLeast * 2, 1),
                 VoteAverageAtMost = Math.Round(VoteAverageAtMost * 2, 1),
                 VoteCountAtLeast = VoteCountAtLeast,
