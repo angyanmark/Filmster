@@ -10,7 +10,7 @@
   <Identity
     Name="5482Mrkngyn.Filmster"
     Publisher="CN=4D4DCF06-811F-4E12-BC82-5AE03034C76A"
-    Version="1.0.2.0" />
+    Version="1.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="a699ec2e-8d64-425d-84df-720efd8f565e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
