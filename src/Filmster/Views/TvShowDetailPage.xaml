@@ -44,7 +44,6 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -149,20 +148,21 @@
                             </HyperlinkButton>
                         </StackPanel>
 
-                        <HyperlinkButton Grid.Row="8"
-                                         Padding="0"
-                                         NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
-                                         ToolTipService.ToolTip="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource VideoToVideoDisplayTitleStringConverter}}"
-                                         Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
-                            <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
-                        </HyperlinkButton>
-
-                        <HyperlinkButton x:Uid="Media_Share"
-                                         Grid.Row="9"
-                                         Padding="0"
-                                         Command="{x:Bind ViewModel.ShareClickedCommand}">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72D;" />
-                        </HyperlinkButton>
+                        <StackPanel Grid.Row="8"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource XSmallSpacing}">
+                            <HyperlinkButton x:Uid="Media_Share"
+                                             Padding="0"
+                                             Command="{x:Bind ViewModel.ShareClickedCommand}">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72D;" />
+                            </HyperlinkButton>
+                            <HyperlinkButton Padding="0"
+                                             NavigateUri="{x:Bind ViewModel.Video.Key, Mode=OneWay, Converter={StaticResource ExternalIdToUriConverter}, ConverterParameter=YouTube}"
+                                             ToolTipService.ToolTip="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource VideoToVideoDisplayTitleStringConverter}}"
+                                             Visibility="{x:Bind ViewModel.Video, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                <TextBlock x:Uid="Media_Trailer" Style="{StaticResource ExternalLinkTextStyle}" />
+                            </HyperlinkButton>
+                        </StackPanel>
                     </Grid>
                 </Grid>
 
