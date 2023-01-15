@@ -154,4 +154,10 @@
         <Setter Property="Foreground" Value="{StaticResource SystemOffsetMediumBrush}" />
     </Style>
 
+    <Style x:Key="SettingsSubheaderTextStyle"
+           BasedOn="{StaticResource BaseTextBlockStyle}"
+           TargetType="TextBlock">
+        <Setter Property="Margin" Value="{StaticResource SmallTopMargin}" />
+    </Style>
+
 </ResourceDictionary>

@@ -13,7 +13,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid Margin="{StaticResource MediumLeftTopRightBottomMargin}">
+        <Grid Margin="{StaticResource MediumLeftTopRightBottomMargin}" RowSpacing="{StaticResource MediumSpacing}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -23,7 +23,7 @@
                 <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                 <StackPanel>
-                    <TextBlock x:Uid="Settings_Theme" />
+                    <TextBlock x:Uid="Settings_Theme" Style="{ThemeResource SettingsSubheaderTextStyle}" />
                     <RadioButton x:Uid="Settings_Theme_Light"
                                  Command="{x:Bind ViewModel.SwitchThemeCommand}"
                                  FontSize="15"
@@ -52,10 +52,10 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
 
-                    <TextBlock x:Uid="Settings_Language" />
+                    <TextBlock x:Uid="Settings_Language" Style="{ThemeResource SettingsSubheaderTextStyle}" />
                     <StackPanel Margin="{StaticResource XSmallTopMargin}"
                                 Orientation="Horizontal"
-                                Spacing="{StaticResource SmallSpacing}">
+                                Spacing="{StaticResource XSmallSpacing}">
                         <ComboBox Width="160"
                                   DisplayMemberPath="DisplayName"
                                   ItemsSource="{x:Bind ViewModel.Languages}"
@@ -70,16 +70,16 @@
                            HorizontalAlignment="Center"
                            FontSize="64"
                            Style="{StaticResource AppLogoStyle}" />
-                <TextBlock Margin="{StaticResource XSmallTopMargin}"
+                <TextBlock Margin="{StaticResource XXSmallTopMargin}"
                            HorizontalAlignment="Center"
-                           Style="{ThemeResource TitleTextBlockStyle}"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"
                            Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
                 <TextBlock x:Uid="Settings_AppDescription"
-                           Margin="{StaticResource SmallTopMargin}"
+                           Margin="{StaticResource XXSmallTopMargin}"
                            HorizontalAlignment="Center"
                            Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                <StackPanel Margin="{StaticResource SmallTopMargin}" Spacing="{StaticResource MediumSpacing}">
+                <StackPanel Margin="{StaticResource MediumTopMargin}" Spacing="{StaticResource MediumSpacing}">
                     <StackPanel>
                         <TextBlock x:Uid="Settings_GitHubLinkPre" Style="{StaticResource BodyTextBlockStyle}" />
                         <HyperlinkButton x:Uid="Settings_GitHubLink" Padding="0" />
