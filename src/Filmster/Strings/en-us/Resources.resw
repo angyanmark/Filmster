@@ -262,7 +262,7 @@
     <comment>Application description</comment>
   </data>
   <data name="Settings_Copyright.Text" xml:space="preserve">
-    <value>Copyright (c) 2022 Márk Ángyán</value>
+    <value>Copyright © 2023 Márk Ángyán</value>
     <comment>Copyright text for Settings</comment>
   </data>
   <data name="Settings_CreatedBy.Text" xml:space="preserve">
