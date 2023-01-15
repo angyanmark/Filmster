@@ -265,10 +265,6 @@
     <value>Copyright © 2023 Márk Ángyán</value>
     <comment>Copyright text for Settings</comment>
   </data>
-  <data name="Settings_CreatedBy.Text" xml:space="preserve">
-    <value>Created by Márk Ángyán</value>
-    <comment>Created by text for Settings</comment>
-  </data>
   <data name="Settings_Disclaim.Text" xml:space="preserve">
     <value>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</value>
     <comment>Disclaim text for Settings</comment>

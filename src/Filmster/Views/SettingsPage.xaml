@@ -78,10 +78,6 @@
                            Margin="{StaticResource SmallTopMargin}"
                            HorizontalAlignment="Center"
                            Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <TextBlock x:Uid="Settings_CreatedBy"
-                           Margin="{StaticResource SmallTopMargin}"
-                           HorizontalAlignment="Center"
-                           Style="{StaticResource BodyTextBlockStyle}" />
 
                 <StackPanel Margin="{StaticResource SmallTopMargin}" Spacing="{StaticResource MediumSpacing}">
                     <StackPanel>
