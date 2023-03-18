@@ -156,7 +156,7 @@ namespace Filmster.ViewModels
             RecommendMoviesClickedCommand = new RelayCommand(RecommendMoviesClickedAsync);
             RecommendTvShowsClickedCommand = new RelayCommand(RecommendTvShowsClickedAsync);
 
-            UserSessionService.LoggedInEvent += OnLoggedInAsync;
+            UserSessionService.LoggedInEvent += OnLoggedIn;
             UserSessionService.LoggedOutEvent += OnLoggedOut;
         }
 
@@ -172,9 +172,9 @@ namespace Filmster.ViewModels
             }
         }
 
-        private async void OnLoggedInAsync(object sender, EventArgs e)
+        private void OnLoggedIn(object sender, EventArgs e)
         {
-            await SetLoggedInPropertiesAsync();
+            NavigationService.Reload();
         }
 
         private void OnLoggedOut(object sender, EventArgs e)

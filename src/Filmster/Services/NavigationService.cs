@@ -1,5 +1,6 @@
 ﻿using Filmster.Views;
 using System;
+using System.Linq;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Search;
 using Windows.UI.Xaml;
@@ -54,6 +55,12 @@ namespace Filmster.Services
         }
 
         public static void GoForward() => Frame.GoForward();
+
+        public static void Reload(object parameter = null, NavigationTransitionInfo infoOverride = null)
+        {
+            Navigate(Frame.CurrentSourcePageType, parameter ?? true, infoOverride);
+            Frame.BackStack.Remove(Frame.BackStack.Last());
+        }
 
         public static bool Navigate(Type pageType, object parameter = null, NavigationTransitionInfo infoOverride = null)
         {
