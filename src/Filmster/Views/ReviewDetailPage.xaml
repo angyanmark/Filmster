@@ -1,0 +1,66 @@
+﻿<Page x:Class="Filmster.Views.ReviewDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Style="{StaticResource PageStyle}"
+      mc:Ignorable="d">
+
+    <Grid>
+        <ProgressRing IsActive="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{StaticResource ProgressRing}" />
+        <ScrollViewer Visibility="{x:Bind ViewModel.DataLoaded, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid Padding="{StaticResource MediumLeftTopRightBottomMargin}"
+                  ColumnSpacing="{StaticResource MediumSpacing}"
+                  RowSpacing="{StaticResource MediumSpacing}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="3"
+                           Style="{StaticResource DetailPageTitleStyle}"
+                           Text="{x:Bind ViewModel.Review.MediaTitle, Mode=OneWay}" />
+
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <PersonPicture Width="{StaticResource ReviewDetailAvatarSize}"
+                                   Height="{StaticResource ReviewDetailAvatarSize}"
+                                   DisplayName="{x:Bind ViewModel.Review.Author, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.Review.AuthorDetails.AvatarPath, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
+                    <PersonPicture Width="{StaticResource ReviewDetailAvatarSize}"
+                                   Height="{StaticResource ReviewDetailAvatarSize}"
+                                   ProfilePicture="{x:Bind ViewModel.Review.AuthorDetails.AvatarPath, Mode=OneWay, Converter={StaticResource ReviewAvatarPathToFullPathConverter}, ConverterParameter='92'}"
+                                   Visibility="{x:Bind ViewModel.Review.AuthorDetails.AvatarPath, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
+                </Grid>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Style="{StaticResource ReviewNameTextStyle}" Text="{x:Bind ViewModel.Review.Author, Mode=OneWay}" />
+                    <TextBlock Style="{StaticResource ReviewUsernameTextStyle}" Text="{x:Bind ViewModel.Review.AuthorDetails.Username, Mode=OneWay}" />
+                    <HyperlinkButton Padding="0"
+                                     NavigateUri="{x:Bind ViewModel.Review.Url, Mode=OneWay}"
+                                     Visibility="{x:Bind ViewModel.Review.Url, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                        <TextBlock x:Uid="Media_TMDb" Style="{StaticResource ExternalLinkTextStyle}" />
+                    </HyperlinkButton>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2">
+                    <RatingControl IsReadOnly="True" Value="{x:Bind ViewModel.Review.AuthorDetails.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="3"
+                           Style="{StaticResource ReviewContentTextStyle}"
+                           Text="{x:Bind ViewModel.Review.Content, Mode=OneWay}" />
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

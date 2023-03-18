@@ -697,4 +697,8 @@
     <value>Ajánlj sorozatokat</value>
     <comment>Recommend TV shows text for Profile</comment>
   </data>
+  <data name="Media_Reviews.Text" xml:space="preserve">
+    <value>Vélemények</value>
+    <comment>Reviews text for media</comment>
+  </data>
 </root>

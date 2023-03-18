@@ -123,12 +123,14 @@ namespace Filmster.ViewModels
         public ICommand SearchTvSeasonClickedCommand;
         public ICommand ImageClickedCommand;
         public ICommand ShareClickedCommand;
+        public ICommand ReviewsClickedCommand;
 
         public TvShowDetailViewModel()
         {
             SearchTvSeasonClickedCommand = new RelayCommand<SearchTvSeason>(SearchTvSeasonClicked);
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
             ShareClickedCommand = new RelayCommand(ShareClicked);
+            ReviewsClickedCommand = new RelayCommand(ReviewsClicked);
         }
 
         public async Task LoadTvShowAsync(int id)
@@ -255,6 +257,15 @@ namespace Filmster.ViewModels
             {
                 Text = TvShow.Name,
                 Uri = new Uri($"{TMDbService.TMDbTvShowBaseUrl}{TvShow.Id}"),
+            });
+        }
+
+        private void ReviewsClicked()
+        {
+            NavigationService.Navigate<ReviewsPage>(new ReviewsNavigationParameter
+            {
+                MediaType = MediaType.Tv,
+                Id = TvShow.Id,
             });
         }
 

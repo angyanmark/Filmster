@@ -115,11 +115,13 @@ namespace Filmster.ViewModels
 
         public ICommand ImageClickedCommand;
         public ICommand ShareClickedCommand;
+        public ICommand ReviewsClickedCommand;
 
         public MovieDetailViewModel()
         {
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
             ShareClickedCommand = new RelayCommand(ShareClicked);
+            ReviewsClickedCommand = new RelayCommand(ReviewsClicked);
         }
 
         public async Task LoadMovieAsync(int id)
@@ -245,6 +247,15 @@ namespace Filmster.ViewModels
             {
                 Text = Movie.Title,
                 Uri = new Uri($"{TMDbService.TMDbMovieBaseUrl}{Movie.Id}"),
+            });
+        }
+
+        private void ReviewsClicked()
+        {
+            NavigationService.Navigate<ReviewsPage>(new ReviewsNavigationParameter
+            {
+                MediaType = MediaType.Movie,
+                Id = Movie.Id,
             });
         }
 

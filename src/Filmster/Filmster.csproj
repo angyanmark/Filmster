@@ -148,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
+    <Compile Include="Components\ReviewListItem.xaml.cs">
+      <DependentUpon>ReviewListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ReviewAvatarPathToFullPathConverter.cs" />
     <Compile Include="Converters\IntToBoolConverter.cs" />
     <Compile Include="Converters\KnownForBaseToDisplayNameStringConverter.cs" />
     <Compile Include="Converters\MediaTypeToLocalizedStringConverter.cs" />
@@ -200,6 +204,8 @@
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ReviewDetailViewModel.cs" />
+    <Compile Include="ViewModels\ReviewsViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -234,6 +240,12 @@
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReviewDetailPage.xaml.cs">
+      <DependentUpon>ReviewDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReviewsPage.xaml.cs">
+      <DependentUpon>ReviewsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
@@ -263,6 +275,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\ReviewListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\CreateListContentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -354,6 +370,14 @@
     <Page Include="Views\ProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReviewDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReviewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>

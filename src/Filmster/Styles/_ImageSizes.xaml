@@ -17,6 +17,10 @@
     <x:Double x:Key="DetailPosterGridWidth">148</x:Double>
     <x:Double x:Key="DetailStillGridHeight">180</x:Double>
     <x:Double x:Key="DetailStillGridWidth">320</x:Double>
+    <x:Double x:Key="DetailReviewGridWidth">604</x:Double>
+
+    <x:Double x:Key="DetailReviewAvatarSize">45</x:Double>
+    <x:Double x:Key="ReviewDetailAvatarSize">92</x:Double>
 
     <x:Double x:Key="DetailBackdropGridWidth">300</x:Double>
 

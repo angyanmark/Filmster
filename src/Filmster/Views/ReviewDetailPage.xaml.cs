@@ -4,11 +4,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Filmster.Views
 {
-    public sealed partial class MovieDetailPage : Page
+    public sealed partial class ReviewDetailPage : Page
     {
-        public MovieDetailViewModel ViewModel { get; } = new MovieDetailViewModel();
+        public ReviewDetailViewModel ViewModel { get; } = new ReviewDetailViewModel();
 
-        public MovieDetailPage()
+        public ReviewDetailPage()
         {
             InitializeComponent();
         }
@@ -16,9 +16,9 @@ namespace Filmster.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e.Parameter is int id)
+            if (e.Parameter is string id)
             {
-                await ViewModel.LoadMovieAsync(id);
+                await ViewModel.LoadReviewAsync(id);
                 ViewModel.DataLoaded = true;
             }
         }

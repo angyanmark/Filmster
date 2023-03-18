@@ -4,8 +4,8 @@ using Filmster.Views;
 using System.Windows.Input;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.People;
+using TMDbLib.Objects.Reviews;
 using TMDbLib.Objects.Search;
-using TMDbLib.Objects.TvShows;
 
 using MovieCast = TMDbLib.Objects.Movies.Cast;
 using TvCast = TMDbLib.Objects.TvShows.Cast;
@@ -18,6 +18,7 @@ namespace Filmster.ViewModelBases
         public ICommand MovieCastClickedCommand;
         public ICommand TvCastClickedCommand;
         public ICommand CrewClickedCommand;
+        public ICommand ReviewBaseClickedCommand;
         public ICommand MovieRoleClickedCommand;
         public ICommand TvRoleClickedCommand;
         public ICommand MovieJobClickedCommand;
@@ -35,6 +36,7 @@ namespace Filmster.ViewModelBases
             MovieCastClickedCommand = new RelayCommand<MovieCast>(MovieCastClicked);
             TvCastClickedCommand = new RelayCommand<TvCast>(TvCastClicked);
             CrewClickedCommand = new RelayCommand<Crew>(CrewClicked);
+            ReviewBaseClickedCommand = new RelayCommand<ReviewBase>(ReviewBaseClicked);
             MovieRoleClickedCommand = new RelayCommand<MovieRole>(MovieRoleClicked);
             TvRoleClickedCommand = new RelayCommand<TvRole>(TvRoleClicked);
             MovieJobClickedCommand = new RelayCommand<MovieJob>(MovieJobClicked);
@@ -60,6 +62,11 @@ namespace Filmster.ViewModelBases
         private void CrewClicked(Crew crew)
         {
             NavigationService.Navigate<PersonDetailPage>(crew.Id);
+        }
+
+        private void ReviewBaseClicked(ReviewBase reviewBase)
+        {
+            NavigationService.Navigate<ReviewDetailPage>(reviewBase.Id);
         }
 
         private void MovieRoleClicked(MovieRole movieRole)

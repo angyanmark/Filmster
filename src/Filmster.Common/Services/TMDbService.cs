@@ -10,6 +10,7 @@ using TMDbLib.Objects.General;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.People;
+using TMDbLib.Objects.Reviews;
 using TMDbLib.Objects.Search;
 using TMDbLib.Objects.TvShows;
 
@@ -101,7 +102,7 @@ namespace Filmster.Common.Services
 
         public static async Task<Movie> GetMovieAsync(int id, bool includeAccountState = false)
         {
-            return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, (includeAccountState ? MovieMethods.AccountStates : MovieMethods.Undefined) | MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates);
+            return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, (includeAccountState ? MovieMethods.AccountStates : MovieMethods.Undefined) | MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates | MovieMethods.Reviews);
         }
 
         public static async Task<SearchContainer<SearchMovie>> GetMovieRecommendationsAsync(int id)
@@ -112,6 +113,24 @@ namespace Filmster.Common.Services
         public static async Task<Collection> GetCollectionAsync(int id, CollectionMethods extraMethods = CollectionMethods.Undefined)
         {
             return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage, extraMethods);
+        }
+
+        public static async Task<SearchContainerWithId<ReviewBase>> GetReviewsAsync(MediaType mediaType, int id, int page = 0)
+        {
+            switch (mediaType)
+            {
+                case MediaType.Movie:
+                    return await client.GetMovieReviewsAsync(id, CurrentLanguage, page);
+                case MediaType.Tv:
+                    return await client.GetTvShowReviewsAsync(id, CurrentLanguage, page);
+                default:
+                    throw new ArgumentException(string.Format("Cannot get reviews to media type {0}.", mediaType), nameof(mediaType));
+            }
+        }
+
+        public static async Task<Review> GetReviewAsync(string id)
+        {
+            return await client.GetReviewAsync(id);
         }
 
         public static async Task<SearchContainer<SearchTv>> GetPopularTvShowsAsync(int page = 0)
@@ -126,7 +145,7 @@ namespace Filmster.Common.Services
 
         public static async Task<TvShow> GetTvShowAsync(int id, bool includeAccountState = false)
         {
-            return await client.GetTvShowAsync(id, (includeAccountState ? TvShowMethods.AccountStates : TvShowMethods.Undefined) | TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
+            return await client.GetTvShowAsync(id, (includeAccountState ? TvShowMethods.AccountStates : TvShowMethods.Undefined) | TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds | TvShowMethods.Reviews, CurrentLanguage, IncludeImageLanguage);
         }
 
         public static async Task<SearchContainer<SearchTv>> GetTvShowRecommendationsAsync(int id)
@@ -199,7 +218,6 @@ namespace Filmster.Common.Services
 
         public static async Task<bool> DeleteUserSessionAsync()
         {
-            // TODO: delete session
             await client.SetSessionInformationAsync(string.Empty, SessionType.Unassigned);
             return true;
         }

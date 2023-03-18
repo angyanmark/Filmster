@@ -37,6 +37,7 @@
             <converters:PersonCastCrewSortTypeToLocalizedStringConverter x:Key="PersonCastCrewSortTypeToLocalizedStringConverter" />
             <converters:RatingToScaledRatingConverter x:Key="RatingToScaledRatingConverter" />
             <converters:RatingToScaledRatingStringConverter x:Key="RatingToScaledRatingStringConverter" />
+            <converters:ReviewAvatarPathToFullPathConverter x:Key="ReviewAvatarPathToFullPathConverter" />
             <converters:SearchBaseToDisplayNameStringConverter x:Key="SearchBaseToDisplayNameStringConverter" />
             <converters:TvShowSeasonEpisodeNumbersToImdbSeasonUriConverter x:Key="TvShowSeasonEpisodeNumbersToImdbSeasonUriConverter" />
             <converters:TvShowSeasonEpisodeNumbersToUriConverter x:Key="TvShowSeasonEpisodeNumbersToUriConverter" />

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TMDbLib.Objects.Account;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Lists;
+using TMDbLib.Objects.Reviews;
 using TMDbLib.Objects.Search;
 
 namespace Filmster.Helpers
@@ -132,6 +133,26 @@ namespace Filmster.Helpers
             {
                 Movies = await TMDbService.GetDiscoverMoviesAsync(Options, pageIndex);
                 return Movies.Results;
+            }
+
+            return default;
+        }
+    }
+
+    public class ReviewsSource : IIncrementalSource<ReviewBase>
+    {
+        public static MediaType MediaType { get; set; }
+        public static int Id { get; set; }
+        private SearchContainerWithId<ReviewBase> Reviews = new SearchContainerWithId<ReviewBase>();
+
+        public async Task<IEnumerable<ReviewBase>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= Reviews.TotalPages)
+            {
+                Reviews = await TMDbService.GetReviewsAsync(MediaType, Id, pageIndex);
+                return Reviews.Results;
             }
 
             return default;

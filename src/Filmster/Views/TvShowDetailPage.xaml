@@ -18,6 +18,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" ColumnSpacing="{StaticResource LargeSpacing}">
@@ -208,6 +209,15 @@
                     <ToggleButton x:Uid="Media_ShowAll"
                                   HorizontalAlignment="Center"
                                   IsChecked="{x:Bind ViewModel.IsImagesChecked, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="6" Visibility="{x:Bind ViewModel.TvShow.Reviews.Results, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                    <HyperlinkButton Padding="0" Command="{x:Bind ViewModel.ReviewsClickedCommand}">
+                        <TextBlock x:Uid="Media_Reviews" Style="{StaticResource TitleTextBlockStyle}" />
+                    </HyperlinkButton>
+                    <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.ReviewBaseClickedCommand}"
+                                               ItemsSource="{x:Bind ViewModel.TvShow.Reviews.Results, Mode=OneWay}"
+                                               Style="{StaticResource AdaptiveGridNoStretchReview}" />
                 </StackPanel>
             </Grid>
         </ScrollViewer>

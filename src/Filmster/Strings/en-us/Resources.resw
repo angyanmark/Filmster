@@ -697,4 +697,8 @@
     <value>Recommend TV shows</value>
     <comment>Recommend TV shows text for Profile</comment>
   </data>
+  <data name="Media_Reviews.Text" xml:space="preserve">
+    <value>Reviews</value>
+    <comment>Reviews text for media</comment>
+  </data>
 </root>
