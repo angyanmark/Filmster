@@ -18,6 +18,7 @@ using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Search;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Filmster.ViewModels
 {
@@ -74,8 +75,8 @@ namespace Filmster.ViewModels
             set { Set(ref _watchlistPivotSelectedIndex, value); }
         }
 
-        private string _avatarSource = TMDbService.GravatarBaseUrl;
-        public string AvatarSource
+        private BitmapImage _avatarSource;
+        public BitmapImage AvatarSource
         {
             get { return _avatarSource; }
             set { Set(ref _avatarSource, value); }
@@ -93,20 +94,6 @@ namespace Filmster.ViewModels
         {
             get { return _username; }
             set { Set(ref _username, value); }
-        }
-
-        private bool _hasAvatar;
-        public bool HasAvatar
-        {
-            get { return _hasAvatar; }
-            set { Set(ref _hasAvatar, value); }
-        }
-
-        private bool _hasNoAvatar;
-        public bool HasNoAvatar
-        {
-            get { return _hasNoAvatar; }
-            set { Set(ref _hasNoAvatar, value); }
         }
 
         private bool _isLoggedIn;
@@ -209,16 +196,9 @@ namespace Filmster.ViewModels
         private async Task GetAccountDetailsAsync()
         {
             var accountDetails = await TMDbService.GetAccountDetailsAsync();
-            if (string.IsNullOrEmpty(accountDetails.Avatar.Gravatar.Hash))
+            if (!string.IsNullOrEmpty(accountDetails.Avatar.Gravatar.Hash))
             {
-                HasAvatar = false;
-                HasNoAvatar = !HasAvatar;
-            }
-            else
-            {
-                AvatarSource = $"{TMDbService.GravatarBaseUrl}{accountDetails.Avatar.Gravatar.Hash}.jpg?s={AvatarSize}";
-                HasNoAvatar = false;
-                HasAvatar = !HasNoAvatar;
+                AvatarSource = new BitmapImage(new Uri($"{TMDbService.GravatarBaseUrl}{accountDetails.Avatar.Gravatar.Hash}.jpg?s={AvatarSize}", UriKind.Absolute));
             }
             Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
             Username = accountDetails.Username;
@@ -228,9 +208,7 @@ namespace Filmster.ViewModels
         {
             DataLoaded = false;
             IsLoggedIn = false;
-            AvatarSource = TMDbService.GravatarBaseUrl;
-            HasNoAvatar = true;
-            HasAvatar = !HasNoAvatar;
+            AvatarSource = default;
             Name = "Profile_GuestName".GetLocalized();
             Username = "Profile_GuestUsername".GetLocalized();
             RatedMovies.Clear();

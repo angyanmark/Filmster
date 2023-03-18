@@ -15,6 +15,7 @@ using Filmster.Views;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 using WinUI = Microsoft.UI.Xaml.Controls;
@@ -47,8 +48,8 @@ namespace Filmster.ViewModels
             set { Set(ref _selected, value); }
         }
 
-        private string _avatarSource = TMDbService.GravatarBaseUrl;
-        public string AvatarSource
+        private BitmapImage _avatarSource;
+        public BitmapImage AvatarSource
         {
             get { return _avatarSource; }
             set { Set(ref _avatarSource, value); }
@@ -59,20 +60,6 @@ namespace Filmster.ViewModels
         {
             get { return _name; }
             set { Set(ref _name, value); }
-        }
-
-        private bool _hasAvatar;
-        public bool HasAvatar
-        {
-            get { return _hasAvatar; }
-            set { Set(ref _hasAvatar, value); }
-        }
-
-        private bool _hasNoAvatar;
-        public bool HasNoAvatar
-        {
-            get { return _hasNoAvatar; }
-            set { Set(ref _hasNoAvatar, value); }
         }
 
         public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(OnLoaded));
@@ -112,25 +99,16 @@ namespace Filmster.ViewModels
         private async Task SetLoggedInPropertiesAsync()
         {
             var accountDetails = await TMDbService.GetAccountDetailsAsync();
-            if (string.IsNullOrEmpty(accountDetails.Avatar.Gravatar.Hash))
+            if (!string.IsNullOrEmpty(accountDetails.Avatar.Gravatar.Hash))
             {
-                HasAvatar = false;
-                HasNoAvatar = !HasAvatar;
-            }
-            else
-            {
-                AvatarSource = $"{TMDbService.GravatarBaseUrl}{accountDetails.Avatar.Gravatar.Hash}.jpg?s={AvatarSize}";
-                HasNoAvatar = false;
-                HasAvatar = !HasNoAvatar;
+                AvatarSource = new BitmapImage(new Uri($"{TMDbService.GravatarBaseUrl}{accountDetails.Avatar.Gravatar.Hash}.jpg?s={AvatarSize}", UriKind.Absolute));
             }
             Name = string.IsNullOrEmpty(accountDetails.Name) ? accountDetails.Username : accountDetails.Name;
         }
 
         private void SetLoggedOutProperties()
         {
-            AvatarSource = TMDbService.GravatarBaseUrl;
-            HasAvatar = false;
-            HasNoAvatar = !HasAvatar;
+            AvatarSource = default;
             Name = "Profile_GuestName".GetLocalized();
         }
 

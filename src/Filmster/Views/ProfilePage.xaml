@@ -18,8 +18,8 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0"
-                  ColumnSpacing="24"
-                  RowSpacing="4">
+                  ColumnSpacing="{StaticResource LargeSpacing}"
+                  RowSpacing="{StaticResource XXXSmallSpacing}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -36,14 +36,14 @@
                                Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                DisplayName="{x:Bind ViewModel.Name, Mode=OneWay}"
-                               Visibility="{x:Bind ViewModel.HasNoAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                               Visibility="{x:Bind ViewModel.AvatarSource, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
                 <PersonPicture Grid.Row="0"
                                Grid.RowSpan="3"
                                Grid.Column="0"
                                Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                ProfilePicture="{x:Bind ViewModel.AvatarSource, Mode=OneWay}"
-                               Visibility="{x:Bind ViewModel.HasAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                               Visibility="{x:Bind ViewModel.AvatarSource, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
 
                 <TextBlock Grid.Row="0"
                            Grid.Column="1"

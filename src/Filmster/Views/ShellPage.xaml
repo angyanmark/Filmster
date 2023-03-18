@@ -66,11 +66,11 @@
                             <PersonPicture Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                            Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                            DisplayName="{x:Bind ViewModel.Name, Mode=OneWay}"
-                                           Visibility="{x:Bind ViewModel.HasNoAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                           Visibility="{x:Bind ViewModel.AvatarSource, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}, ConverterParameter='True'}" />
                             <PersonPicture Width="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                            Height="{x:Bind ViewModel.AvatarSize, Mode=OneWay}"
                                            ProfilePicture="{x:Bind ViewModel.AvatarSource, Mode=OneWay}"
-                                           Visibility="{x:Bind ViewModel.HasAvatar, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                           Visibility="{x:Bind ViewModel.AvatarSource, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
                         </Grid>
                         <TextBlock VerticalAlignment="Center" Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
                     </StackPanel>
