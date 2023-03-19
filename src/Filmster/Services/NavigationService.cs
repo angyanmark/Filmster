@@ -56,10 +56,14 @@ namespace Filmster.Services
 
         public static void GoForward() => Frame.GoForward();
 
-        public static void Reload(object parameter = null, NavigationTransitionInfo infoOverride = null)
+        public static bool Reload(object parameter = null, NavigationTransitionInfo infoOverride = null)
         {
-            Navigate(Frame.CurrentSourcePageType, parameter ?? true, infoOverride);
-            Frame.BackStack.Remove(Frame.BackStack.Last());
+            var navigationResult = Navigate(Frame.CurrentSourcePageType, parameter ?? true, infoOverride);
+            if (navigationResult)
+            {
+                Frame.BackStack.Remove(Frame.BackStack.Last());
+            }
+            return navigationResult;
         }
 
         public static bool Navigate(Type pageType, object parameter = null, NavigationTransitionInfo infoOverride = null)
@@ -69,16 +73,9 @@ namespace Filmster.Services
                 throw new ArgumentException($"Invalid pageType '{pageType}', please provide a valid pageType.", nameof(pageType));
             }
 
-            if (Frame.Content?.GetType() != pageType || (parameter != null))
-            {
-                var navigationResult = Frame.Navigate(pageType, parameter, infoOverride);
-
-                return navigationResult;
-            }
-            else
-            {
-                return false;
-            }
+            return
+                (Frame.Content?.GetType() != pageType || (parameter != null)) &&
+                Frame.Navigate(pageType, parameter, infoOverride);
         }
 
         public static bool Navigate<T>(object parameter = null, NavigationTransitionInfo infoOverride = null)
