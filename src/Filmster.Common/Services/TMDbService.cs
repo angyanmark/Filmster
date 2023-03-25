@@ -170,7 +170,20 @@ namespace Filmster.Common.Services
 
         public static async Task<Person> GetPersonAsync(int id)
         {
-            return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
+            try
+            {
+                return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
+            }
+            catch (Exception)
+            {
+                var person = await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits);
+                person.TaggedImages = new SearchContainerWithId<TaggedImage>
+                {
+                    Id = id,
+                    Results = new List<TaggedImage>(),
+                };
+                return person;
+            }
         }
 
         public static async Task<SearchContainer<SearchMovie>> GetSearchMovieAsync(string value, int page = 0)
