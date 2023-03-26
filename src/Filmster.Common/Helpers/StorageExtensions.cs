@@ -12,10 +12,8 @@ namespace Filmster.Common.Helpers
     {
         private const string FileExtension = ".json";
 
-        public static bool IsRoamingStorageAvailable(this ApplicationData appData)
-        {
-            return appData.RoamingStorageQuota == 0;
-        }
+        public static bool IsRoamingStorageAvailable(this ApplicationData appData) =>
+            appData.RoamingStorageQuota == 0;
 
         public static async Task SaveAsync<T>(this StorageFolder folder, string name, T content)
         {
@@ -38,15 +36,11 @@ namespace Filmster.Common.Helpers
             return await Json.ToObjectAsync<T>(fileContent);
         }
 
-        public static async Task SaveAsync<T>(this ApplicationDataContainer settings, string key, T value)
-        {
+        public static async Task SaveAsync<T>(this ApplicationDataContainer settings, string key, T value) =>
             settings.SaveString(key, await Json.StringifyAsync(value));
-        }
 
-        public static void SaveString(this ApplicationDataContainer settings, string key, string value)
-        {
+        public static void SaveString(this ApplicationDataContainer settings, string key, string value) =>
             settings.Values[key] = value;
-        }
 
         public static async Task<T> ReadAsync<T>(this ApplicationDataContainer settings, string key)
         {
@@ -108,9 +102,7 @@ namespace Filmster.Common.Helpers
             return null;
         }
 
-        private static string GetFileName(string name)
-        {
-            return string.Concat(name, FileExtension);
-        }
+        private static string GetFileName(string name) =>
+            string.Concat(name, FileExtension);
     }
 }

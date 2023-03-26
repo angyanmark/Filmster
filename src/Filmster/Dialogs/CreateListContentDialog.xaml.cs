@@ -9,10 +9,7 @@ namespace Filmster.Dialogs
         private string ListDescription { get; set; }
         public string ListId { get; set; }
 
-        public CreateListContentDialog()
-        {
-            InitializeComponent();
-        }
+        public CreateListContentDialog() => InitializeComponent();
 
         private async void CreateListButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {

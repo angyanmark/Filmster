@@ -11,15 +11,11 @@ namespace Filmster.ViewModels
         private string _searchValue;
         public string SearchValue
         {
-            get { return _searchValue; }
-            set { Set(ref _searchValue, value); }
+            get => _searchValue;
+            set => Set(ref _searchValue, value);
         }
 
         public IncrementalLoadingCollection<MultiSearchSource, SearchBase> SearchItems { get; set; } = new IncrementalLoadingCollection<MultiSearchSource, SearchBase>();
-
-        public SearchViewModel()
-        {
-        }
 
         public async Task SearchAsync(string searchValue)
         {

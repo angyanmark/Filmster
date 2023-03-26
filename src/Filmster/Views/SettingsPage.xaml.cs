@@ -7,9 +7,6 @@ namespace Filmster.Views
     {
         public SettingsViewModel ViewModel { get; } = new SettingsViewModel();
 
-        public SettingsPage()
-        {
-            InitializeComponent();
-        }
+        public SettingsPage() => InitializeComponent();
     }
 }

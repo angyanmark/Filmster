@@ -8,10 +8,7 @@ namespace Filmster.Views
     {
         public ReviewDetailViewModel ViewModel { get; } = new ReviewDetailViewModel();
 
-        public ReviewDetailPage()
-        {
-            InitializeComponent();
-        }
+        public ReviewDetailPage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

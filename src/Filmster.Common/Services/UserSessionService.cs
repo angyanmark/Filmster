@@ -16,15 +16,11 @@ namespace Filmster.Common.Services
         public static event EventHandler LoggedInEvent = delegate { };
         public static event EventHandler LoggedOutEvent = delegate { };
 
-        private static async Task SaveSessionIdAsync(string sessionId)
-        {
+        private static async Task SaveSessionIdAsync(string sessionId) =>
             await ApplicationData.Current.LocalSettings.SaveAsync(SessionIdKey, sessionId);
-        }
 
-        private static async Task<string> LoadSessionIdAsync()
-        {
-            return await ApplicationData.Current.LocalSettings.ReadAsync<string>(SessionIdKey);
-        }
+        private static async Task<string> LoadSessionIdAsync() =>
+            await ApplicationData.Current.LocalSettings.ReadAsync<string>(SessionIdKey);
 
         public static async Task StartUserSessionAsync()
         {

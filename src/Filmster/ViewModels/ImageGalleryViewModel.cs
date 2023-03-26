@@ -17,16 +17,14 @@ namespace Filmster.ViewModels
         private string _selectedImagePath;
         public string SelectedImagePath
         {
-            get { return _selectedImagePath; }
-            set { Set(ref _selectedImagePath, value); }
+            get => _selectedImagePath;
+            set => Set(ref _selectedImagePath, value);
         }
 
         public ICommand OpenOriginalClickedCommand;
 
-        public ImageGalleryViewModel()
-        {
+        public ImageGalleryViewModel() =>
             OpenOriginalClickedCommand = new RelayCommand<string>(OpenOriginalClickedAsync);
-        }
 
         public void LoadImages(ImageGalleryNavigationParameter parameter)
         {
@@ -34,9 +32,7 @@ namespace Filmster.ViewModels
             SelectedImagePath = parameter.SelectedImagePath;
         }
 
-        private async void OpenOriginalClickedAsync(string imagePath)
-        {
+        private async void OpenOriginalClickedAsync(string imagePath) =>
             await Launcher.LaunchUriAsync(new Uri($"{TMDbService.SecureBaseUrl}{TMDbService.OriginalSize}{imagePath}"));
-        }
     }
 }

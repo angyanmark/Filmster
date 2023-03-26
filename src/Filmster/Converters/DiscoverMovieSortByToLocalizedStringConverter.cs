@@ -7,14 +7,10 @@ namespace Filmster.Converters
 {
     public class DiscoverMovieSortByToLocalizedStringConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return $"{nameof(DiscoverMovieSortBy)}_{value}".GetLocalized();
-        }
+        public object Convert(object value, Type targetType, object parameter, string language) =>
+            $"{nameof(DiscoverMovieSortBy)}_{value}".GetLocalized();
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, string language) =>
             throw new NotImplementedException();
-        }
     }
 }

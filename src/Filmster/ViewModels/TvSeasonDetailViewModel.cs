@@ -24,43 +24,43 @@ namespace Filmster.ViewModels
         private TvSeason _tvSeason;
         public TvSeason TvSeason
         {
-            get { return _tvSeason; }
-            set { Set(ref _tvSeason, value); }
+            get => _tvSeason;
+            set => Set(ref _tvSeason, value);
         }
 
         private ImageData _selectedPoster;
         public ImageData SelectedPoster
         {
-            get { return _selectedPoster; }
-            set { Set(ref _selectedPoster, value); }
+            get => _selectedPoster;
+            set => Set(ref _selectedPoster, value);
         }
 
         private TvShowSeasonEpisodeNumbers _tvShowSeasonEpisodeNumbers;
         public TvShowSeasonEpisodeNumbers TvShowSeasonEpisodeNumbers
         {
-            get { return _tvShowSeasonEpisodeNumbers; }
-            set { Set(ref _tvShowSeasonEpisodeNumbers, value); }
+            get => _tvShowSeasonEpisodeNumbers;
+            set => Set(ref _tvShowSeasonEpisodeNumbers, value);
         }
 
         private Video _video;
         public Video Video
         {
-            get { return _video; }
-            set { Set(ref _video, value); }
+            get => _video;
+            set => Set(ref _video, value);
         }
 
         private double _voteAverage;
         public double VoteAverage
         {
-            get { return _voteAverage; }
-            set { Set(ref _voteAverage, value); }
+            get => _voteAverage;
+            set => Set(ref _voteAverage, value);
         }
 
         private int _voteCount;
         public int VoteCount
         {
-            get { return _voteCount; }
-            set { Set(ref _voteCount, value); }
+            get => _voteCount;
+            set => Set(ref _voteCount, value);
         }
 
         public ObservableCollection<TvSeasonEpisodeWithRating> Episodes { get; set; } = new ObservableCollection<TvSeasonEpisodeWithRating>();
@@ -70,7 +70,7 @@ namespace Filmster.ViewModels
         private bool _isCastChecked;
         public bool IsCastChecked
         {
-            get { return _isCastChecked; }
+            get => _isCastChecked;
             set
             {
                 Set(ref _isCastChecked, value);
@@ -81,7 +81,7 @@ namespace Filmster.ViewModels
         private bool _isCrewChecked;
         public bool IsCrewChecked
         {
-            get { return _isCrewChecked; }
+            get => _isCrewChecked;
             set
             {
                 Set(ref _isCrewChecked, value);
@@ -91,10 +91,8 @@ namespace Filmster.ViewModels
 
         public ICommand TvSeasonEpisodeClickedCommand;
 
-        public TvSeasonDetailViewModel()
-        {
+        public TvSeasonDetailViewModel() =>
             TvSeasonEpisodeClickedCommand = new RelayCommand<TvSeasonEpisode>(TvSeasonEpisodeClicked);
-        }
 
         public async Task LoadTvSeasonAsync(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
         {
@@ -113,8 +111,7 @@ namespace Filmster.ViewModels
             Crew.AddRange(TvSeason.Credits.Crew.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
-        private void SetEpisodes()
-        {
+        private void SetEpisodes() =>
             Episodes.AddRange(TvSeason.Episodes.Select(episode => new TvSeasonEpisodeWithRating
             {
                 Rating = TvSeason.AccountStates.Results.Single(accountState => accountState.EpisodeNumber == episode.EpisodeNumber).Rating,
@@ -131,15 +128,11 @@ namespace Filmster.ViewModels
                 VoteAverage = episode.VoteAverage,
                 VoteCount = episode.VoteCount,
             }));
-        }
 
-        private ImageData GetSelectedPoster()
-        {
-            return TvSeason.Images.Posters.Find(poster => poster.FilePath == TvSeason.PosterPath) ?? TvSeason.Images.Posters.FirstOrDefault();
-        }
+        private ImageData GetSelectedPoster() =>
+            TvSeason.Images.Posters.Find(poster => poster.FilePath == TvSeason.PosterPath) ?? TvSeason.Images.Posters.FirstOrDefault();
 
-        private void TvSeasonEpisodeClicked(TvSeasonEpisode tvSeasonEpisode)
-        {
+        private void TvSeasonEpisodeClicked(TvSeasonEpisode tvSeasonEpisode) =>
             NavigationService.Navigate<TvEpisodeDetailPage>(new TvShowSeasonEpisodeNumbers
             {
                 TvShowId = TvShowSeasonEpisodeNumbers.TvShowId,
@@ -147,7 +140,6 @@ namespace Filmster.ViewModels
                 TvEpisodeNumber = tvSeasonEpisode.EpisodeNumber,
                 TvShowImdbId = TvShowSeasonEpisodeNumbers.TvShowImdbId,
             });
-        }
 
         private void CastToggled(bool isChecked)
         {

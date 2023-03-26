@@ -9,11 +9,8 @@ namespace Filmster.Services
         private const string YouTube = "YouTube";
         private const string Trailer = "Trailer";
 
-        public static Video SelectVideo(List<Video> videos)
-        {
-            return
-                videos.LastOrDefault(video => video.Site == YouTube && video.Type == Trailer) ??
-                videos.LastOrDefault();
-        }
+        public static Video SelectVideo(List<Video> videos) =>
+            videos.LastOrDefault(video => video.Site == YouTube && video.Type == Trailer) ??
+            videos.LastOrDefault();
     }
 }

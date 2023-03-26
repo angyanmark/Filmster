@@ -7,9 +7,6 @@ namespace Filmster.Views
     {
         public TvShowsViewModel ViewModel { get; } = new TvShowsViewModel();
 
-        public TvShowsPage()
-        {
-            InitializeComponent();
-        }
+        public TvShowsPage() => InitializeComponent();
     }
 }

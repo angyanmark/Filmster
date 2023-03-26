@@ -8,10 +8,7 @@ namespace Filmster.Views
     {
         public DiscoverViewModel ViewModel { get; } = new DiscoverViewModel();
 
-        public DiscoverPage()
-        {
-            InitializeComponent();
-        }
+        public DiscoverPage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

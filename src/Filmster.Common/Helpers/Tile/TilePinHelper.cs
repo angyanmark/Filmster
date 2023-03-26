@@ -6,10 +6,8 @@ namespace Filmster.Common.Helper.Tile
 {
     public static class TilePinHelper
     {
-        public static bool IsTilePinned(string tileId)
-        {
-            return SecondaryTile.Exists(tileId);
-        }
+        public static bool IsTilePinned(string tileId) =>
+            SecondaryTile.Exists(tileId);
 
         public static async Task<bool> PinWatchlistAsync(string tileId, string displayName)
         {

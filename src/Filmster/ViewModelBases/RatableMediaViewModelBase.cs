@@ -11,47 +11,43 @@ namespace Filmster.ViewModelBases
         private bool _isLoggedIn = UserSessionService.IsLoggedIn;
         public bool IsLoggedIn
         {
-            get { return _isLoggedIn; }
-            set { Set(ref _isLoggedIn, value); }
+            get => _isLoggedIn;
+            set => Set(ref _isLoggedIn, value);
         }
 
         private double _rating;
         public double Rating
         {
-            get { return _rating; }
-            set { Set(ref _rating, value); }
+            get => _rating;
+            set => Set(ref _rating, value);
         }
 
         private bool _isFavorite;
         public bool IsFavorite
         {
-            get { return _isFavorite; }
-            set { Set(ref _isFavorite, value); }
+            get => _isFavorite;
+            set => Set(ref _isFavorite, value);
         }
 
         private bool _isNotFavorite;
         public bool IsNotFavorite
         {
-            get { return _isNotFavorite; }
-            set { Set(ref _isNotFavorite, value); }
+            get => _isNotFavorite;
+            set => Set(ref _isNotFavorite, value);
         }
 
         private bool _isWatchlist;
         public bool IsWatchlist
         {
-            get { return _isWatchlist; }
-            set { Set(ref _isWatchlist, value); }
+            get => _isWatchlist;
+            set => Set(ref _isWatchlist, value);
         }
 
         private bool _isNotWatchlist;
         public bool IsNotWatchlist
         {
-            get { return _isNotWatchlist; }
-            set { Set(ref _isNotWatchlist, value); }
-        }
-
-        public RatableMediaViewModelBase()
-        {
+            get => _isNotWatchlist;
+            set => Set(ref _isNotWatchlist, value);
         }
 
         private protected void SetAccountState(AccountState accountState)

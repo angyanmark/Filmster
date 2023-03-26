@@ -20,23 +20,14 @@ namespace Filmster.Converters
             string h = "Media_RuntimeHours".GetLocalized();
             string m = "Media_RuntimeMinutes".GetLocalized();
 
-            if (hours == 0)
-            {
-                return $"{minutes}{m}";
-            }
-            else if (minutes == 0)
-            {
-                return $"{hours}{h}";
-            }
-            else
-            {
-                return $"{hours}{h} {minutes}{m}";
-            }
+            return hours == 0
+                ? $"{minutes}{m}"
+                : minutes == 0
+                    ? $"{hours}{h}"
+                    : $"{hours}{h} {minutes}{m}";
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, string language) =>
             throw new NotImplementedException();
-        }
     }
 }

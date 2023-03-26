@@ -6,10 +6,7 @@ namespace Filmster.Components
 {
     public sealed partial class ReviewListItem : UserControl
     {
-        public ReviewListItem()
-        {
-            InitializeComponent();
-        }
+        public ReviewListItem() => InitializeComponent();
 
         public ReviewBase Review
         {

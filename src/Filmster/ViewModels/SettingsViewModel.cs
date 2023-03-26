@@ -18,17 +18,15 @@ namespace Filmster.ViewModels
         private ElementTheme _elementTheme = ThemeSelectorService.Theme;
         public ElementTheme ElementTheme
         {
-            get { return _elementTheme; }
-
-            set { Set(ref _elementTheme, value); }
+            get => _elementTheme;
+            set => Set(ref _elementTheme, value);
         }
 
         private string _versionDescription;
         public string VersionDescription
         {
-            get { return _versionDescription; }
-
-            set { Set(ref _versionDescription, value); }
+            get => _versionDescription;
+            set => Set(ref _versionDescription, value);
         }
 
         private ICommand _switchThemeCommand;
@@ -53,8 +51,8 @@ namespace Filmster.ViewModels
         private ApplicationLanguage _selectedLanguage;
         public ApplicationLanguage SelectedLanguage
         {
-            get { return _selectedLanguage; }
-            set { Set(ref _selectedLanguage, value); }
+            get => _selectedLanguage;
+            set => Set(ref _selectedLanguage, value);
         }
 
         public ObservableCollection<ApplicationLanguage> Languages { get; private set; } = new ObservableCollection<ApplicationLanguage>();
@@ -84,10 +82,8 @@ namespace Filmster.ViewModels
             SelectedLanguage = Languages.FirstOrDefault(language => language.Code == LanguageService.CurrentLanguage);
         }
 
-        private async Task SaveLanguageAsync()
-        {
+        private async Task SaveLanguageAsync() =>
             await LanguageService.SaveLanguageAsync(SelectedLanguage.Code);
-        }
 
         private string GetVersionDescription()
         {

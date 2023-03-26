@@ -10,7 +10,6 @@ namespace Filmster.Common.Helpers
         public static string GetLocalized(this string resourceKey, params object[] args)
         {
             var localized = _resLoader.GetString(resourceKey);
-
             return args.Any()
                 ? string.Format(localized, args)
                 : localized;

@@ -24,21 +24,21 @@ namespace Filmster.ViewModels
         private Person _person;
         public Person Person
         {
-            get { return _person; }
-            set { Set(ref _person, value); }
+            get => _person;
+            set => Set(ref _person, value);
         }
 
         private ImageData _selectedPoster;
         public ImageData SelectedPoster
         {
-            get { return _selectedPoster; }
-            set { Set(ref _selectedPoster, value); }
+            get => _selectedPoster;
+            set => Set(ref _selectedPoster, value);
         }
 
         private PersonCastCrewSortType _selectedCastSortType = PersonCastCrewSortType.ReleaseDate;
         public PersonCastCrewSortType SelectedCastSortType
         {
-            get { return _selectedCastSortType; }
+            get => _selectedCastSortType;
             set
             {
                 if (value != SelectedCastSortType)
@@ -52,7 +52,7 @@ namespace Filmster.ViewModels
         private PersonCastCrewSortType _selectedCrewSortType = PersonCastCrewSortType.ReleaseDate;
         public PersonCastCrewSortType SelectedCrewSortType
         {
-            get { return _selectedCrewSortType; }
+            get => _selectedCrewSortType;
             set
             {
                 if (value != SelectedCrewSortType)
@@ -73,7 +73,7 @@ namespace Filmster.ViewModels
         private bool _isCastChecked;
         public bool IsCastChecked
         {
-            get { return _isCastChecked; }
+            get => _isCastChecked;
             set
             {
                 Set(ref _isCastChecked, value);
@@ -84,7 +84,7 @@ namespace Filmster.ViewModels
         private bool _isCrewChecked;
         public bool IsCrewChecked
         {
-            get { return _isCrewChecked; }
+            get => _isCrewChecked;
             set
             {
                 Set(ref _isCrewChecked, value);
@@ -95,7 +95,7 @@ namespace Filmster.ViewModels
         private bool _isImagesChecked;
         public bool IsImagesChecked
         {
-            get { return _isImagesChecked; }
+            get => _isImagesChecked;
             set
             {
                 Set(ref _isImagesChecked, value);
@@ -105,10 +105,8 @@ namespace Filmster.ViewModels
 
         public ICommand ImageClickedCommand;
 
-        public PersonDetailViewModel()
-        {
+        public PersonDetailViewModel() =>
             ImageClickedCommand = new RelayCommand<TaggedImage>(ImageClicked);
-        }
 
         public async Task LoadPersonAsync(int id)
         {
@@ -124,30 +122,20 @@ namespace Filmster.ViewModels
             Images.AddRange(Person.TaggedImages.Results.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
-        private ImageData GetSelectedPoster()
-        {
-            return Person.Images.Profiles.Find(poster => poster.FilePath == Person.ProfilePath) ?? Person.Images.Profiles.FirstOrDefault();
-        }
+        private ImageData GetSelectedPoster() =>
+            Person.Images.Profiles.Find(poster => poster.FilePath == Person.ProfilePath) ?? Person.Images.Profiles.FirstOrDefault();
 
-        private void CastSortTypeChanged(PersonCastCrewSortType sortType)
-        {
+        private void CastSortTypeChanged(PersonCastCrewSortType sortType) =>
             SetCast(IsCastChecked, sortType);
-        }
 
-        private void CrewSortTypeChanged(PersonCastCrewSortType sortType)
-        {
+        private void CrewSortTypeChanged(PersonCastCrewSortType sortType) =>
             SetCrew(IsCrewChecked, sortType);
-        }
 
-        private void CastToggled(bool isChecked)
-        {
+        private void CastToggled(bool isChecked) =>
             SetCast(isChecked, SelectedCastSortType);
-        }
 
-        private void CrewToggled(bool isChecked)
-        {
+        private void CrewToggled(bool isChecked) =>
             SetCrew(isChecked, SelectedCrewSortType);
-        }
 
         private void SetCast(bool isChecked, PersonCastCrewSortType sortType)
         {
@@ -185,14 +173,12 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void ImageClicked(TaggedImage selectedImage)
-        {
+        private void ImageClicked(TaggedImage selectedImage) =>
             NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
             {
                 ImagePaths = Person.TaggedImages.Results.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
             });
-        }
 
         public void PosterClicked(object sender, TappedRoutedEventArgs e)
         {

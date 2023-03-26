@@ -28,9 +28,8 @@ namespace Filmster.Common.Helper.Tile
             };
         }
 
-        private static TileBinding CreateTile(int? backgroindImageOverlay, string title, string subtitle, string backgroundPath, string backgroundAlternateText = "", int? titleHintMaxLines = 2)
-        {
-            return new TileBinding()
+        private static TileBinding CreateTile(int? backgroindImageOverlay, string title, string subtitle, string backgroundPath, string backgroundAlternateText = "", int? titleHintMaxLines = 2) =>
+            new TileBinding()
             {
                 Content = new TileBindingContentAdaptive()
                 {
@@ -58,9 +57,8 @@ namespace Filmster.Common.Helper.Tile
                             HintStyle = AdaptiveTextStyle.CaptionSubtle,
                             HintAlign = AdaptiveTextAlign.Center,
                         },
-                    }
-                }
+                    },
+                },
             };
-        }
     }
 }

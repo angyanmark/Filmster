@@ -14,7 +14,7 @@ namespace Filmster
 
         private ActivationService ActivationService
         {
-            get { return _activationService.Value; }
+            get => _activationService.Value;
         }
 
         public App()
@@ -36,10 +36,8 @@ namespace Filmster
             OverrideTitleBar();
         }
 
-        protected override async void OnActivated(IActivatedEventArgs args)
-        {
+        protected override async void OnActivated(IActivatedEventArgs args) =>
             await ActivationService.ActivateAsync(args);
-        }
 
         private void OnAppUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
@@ -47,15 +45,11 @@ namespace Filmster
             // For more info see https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.unhandledexception
         }
 
-        private ActivationService CreateActivationService()
-        {
-            return new ActivationService(typeof(Views.MoviesPage), new Lazy<UIElement>(CreateShell));
-        }
+        private ActivationService CreateActivationService() =>
+            new ActivationService(typeof(Views.MoviesPage), new Lazy<UIElement>(CreateShell));
 
-        private UIElement CreateShell()
-        {
-            return new Views.ShellPage();
-        }
+        private UIElement CreateShell() =>
+            new Views.ShellPage();
 
         private void OverrideTitleBar()
         {

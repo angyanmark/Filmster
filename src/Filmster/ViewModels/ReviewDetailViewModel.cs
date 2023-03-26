@@ -11,12 +11,8 @@ namespace Filmster.ViewModels
         private Review _review;
         public Review Review
         {
-            get { return _review; }
-            set { Set(ref _review, value); }
-        }
-
-        public ReviewDetailViewModel()
-        {
+            get => _review;
+            set => Set(ref _review, value);
         }
 
         public async Task LoadReviewAsync(string id)

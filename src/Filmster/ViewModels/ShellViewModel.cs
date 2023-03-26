@@ -38,28 +38,28 @@ namespace Filmster.ViewModels
 
         public bool IsBackEnabled
         {
-            get { return _isBackEnabled; }
-            set { Set(ref _isBackEnabled, value); }
+            get => _isBackEnabled;
+            set => Set(ref _isBackEnabled, value);
         }
 
         public WinUI.NavigationViewItem Selected
         {
-            get { return _selected; }
-            set { Set(ref _selected, value); }
+            get => _selected;
+            set => Set(ref _selected, value);
         }
 
         private BitmapImage _avatarSource;
         public BitmapImage AvatarSource
         {
-            get { return _avatarSource; }
-            set { Set(ref _avatarSource, value); }
+            get => _avatarSource;
+            set => Set(ref _avatarSource, value);
         }
 
         private string _name;
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(OnLoaded));
@@ -86,15 +86,11 @@ namespace Filmster.ViewModels
             }
         }
 
-        private async void OnLoggedInAsync(object sender, EventArgs e)
-        {
+        private async void OnLoggedInAsync(object sender, EventArgs e) =>
             await SetLoggedInPropertiesAsync();
-        }
 
-        private void OnLoggedOut(object sender, EventArgs e)
-        {
+        private void OnLoggedOut(object sender, EventArgs e) =>
             SetLoggedOutProperties();
-        }
 
         private async Task SetLoggedInPropertiesAsync()
         {
@@ -144,15 +140,11 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void OnBackRequested(WinUI.NavigationView sender, WinUI.NavigationViewBackRequestedEventArgs args)
-        {
+        private void OnBackRequested(WinUI.NavigationView sender, WinUI.NavigationViewBackRequestedEventArgs args) =>
             NavigationService.GoBack();
-        }
 
-        private void Frame_NavigationFailed(object sender, NavigationFailedEventArgs e)
-        {
+        private void Frame_NavigationFailed(object sender, NavigationFailedEventArgs e) =>
             throw e.Exception;
-        }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
@@ -207,11 +199,8 @@ namespace Filmster.ViewModels
             return keyboardAccelerator;
         }
 
-        private static void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-        {
-            var result = NavigationService.GoBack();
-            args.Handled = result;
-        }
+        private static void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args) =>
+            args.Handled = NavigationService.GoBack();
 
         public ObservableCollection<SearchItem> SearchItems { get; set; } = new ObservableCollection<SearchItem>();
 

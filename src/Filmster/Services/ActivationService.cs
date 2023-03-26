@@ -117,9 +117,7 @@ namespace Filmster.Services
             yield break;
         }
 
-        private bool IsInteractive(object args)
-        {
-            return args is IActivatedEventArgs;
-        }
+        private bool IsInteractive(object args) =>
+            args is IActivatedEventArgs;
     }
 }

@@ -10,10 +10,7 @@ namespace Filmster.Views
     {
         public ReviewsViewModel ViewModel { get; } = new ReviewsViewModel();
 
-        public ReviewsPage()
-        {
-            InitializeComponent();
-        }
+        public ReviewsPage() => InitializeComponent();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

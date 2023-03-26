@@ -23,64 +23,64 @@ namespace Filmster.ViewModels
         private TvShow _tvShow;
         public TvShow TvShow
         {
-            get { return _tvShow; }
-            set { Set(ref _tvShow, value); }
+            get => _tvShow;
+            set => Set(ref _tvShow, value);
         }
 
         private ImageData _selectedPoster;
         public ImageData SelectedPoster
         {
-            get { return _selectedPoster; }
-            set { Set(ref _selectedPoster, value); }
+            get => _selectedPoster;
+            set => Set(ref _selectedPoster, value);
         }
 
         private Video _video;
         public Video Video
         {
-            get { return _video; }
-            set { Set(ref _video, value); }
+            get => _video;
+            set => Set(ref _video, value);
         }
 
         private string _certification;
         public string Certification
         {
-            get { return _certification; }
-            set { Set(ref _certification, value); }
+            get => _certification;
+            set => Set(ref _certification, value);
         }
 
         private string _creators;
         public string Creators
         {
-            get { return _creators; }
-            set { Set(ref _creators, value); }
+            get => _creators;
+            set => Set(ref _creators, value);
         }
 
         private int _episodeRuntime;
         public int EpisodeRuntime
         {
-            get { return _episodeRuntime; }
-            set { Set(ref _episodeRuntime, value); }
+            get => _episodeRuntime;
+            set => Set(ref _episodeRuntime, value);
         }
 
         private string _genres;
         public string Genres
         {
-            get { return _genres; }
-            set { Set(ref _genres, value); }
+            get => _genres;
+            set => Set(ref _genres, value);
         }
 
         private string _networks;
         public string Networks
         {
-            get { return _networks; }
-            set { Set(ref _networks, value); }
+            get => _networks;
+            set => Set(ref _networks, value);
         }
 
         private string _productionCompanies;
         public string ProductionCompanies
         {
-            get { return _productionCompanies; }
-            set { Set(ref _productionCompanies, value); }
+            get => _productionCompanies;
+            set => Set(ref _productionCompanies, value);
         }
 
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
@@ -90,7 +90,7 @@ namespace Filmster.ViewModels
         private bool _isCastChecked;
         public bool IsCastChecked
         {
-            get { return _isCastChecked; }
+            get => _isCastChecked;
             set
             {
                 Set(ref _isCastChecked, value);
@@ -101,7 +101,7 @@ namespace Filmster.ViewModels
         private bool _isCrewChecked;
         public bool IsCrewChecked
         {
-            get { return _isCrewChecked; }
+            get => _isCrewChecked;
             set
             {
                 Set(ref _isCrewChecked, value);
@@ -112,7 +112,7 @@ namespace Filmster.ViewModels
         private bool _isImagesChecked;
         public bool IsImagesChecked
         {
-            get { return _isImagesChecked; }
+            get => _isImagesChecked;
             set
             {
                 Set(ref _isImagesChecked, value);
@@ -155,16 +155,11 @@ namespace Filmster.ViewModels
             Images.AddRange(TvShow.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
-        private ImageData GetSelectedPoster()
-        {
-            return TvShow.Images.Posters.Find(poster => poster.FilePath == TvShow.PosterPath) ?? TvShow.Images.Posters.FirstOrDefault();
-        }
+        private ImageData GetSelectedPoster() =>
+            TvShow.Images.Posters.Find(poster => poster.FilePath == TvShow.PosterPath) ?? TvShow.Images.Posters.FirstOrDefault();
 
-        private string GetCreators()
-        {
-            var creators = TvShow.CreatedBy.Select(creator => creator.Name);
-            return string.Join(", ", creators);
-        }
+        private string GetCreators() =>
+            string.Join(", ", TvShow.CreatedBy.Select(creator => creator.Name));
 
         private string GetCertification()
         {
@@ -181,30 +176,22 @@ namespace Filmster.ViewModels
             return default;
         }
 
-        private string GetGenres()
-        {
-            return string.Join(", ", TvShow.Genres.Select(genre => genre.Name));
-        }
+        private string GetGenres() =>
+            string.Join(", ", TvShow.Genres.Select(genre => genre.Name));
 
-        private string GetNetworks()
-        {
-            return string.Join(", ", TvShow.Networks.Select(network => network.Name));
-        }
+        private string GetNetworks() =>
+            string.Join(", ", TvShow.Networks.Select(network => network.Name));
 
-        private string GetProductionCompanies()
-        {
-            return string.Join(", ", TvShow.ProductionCompanies.Select(productionCompany => productionCompany.Name));
-        }
+        private string GetProductionCompanies() =>
+            string.Join(", ", TvShow.ProductionCompanies.Select(productionCompany => productionCompany.Name));
 
-        private void SearchTvSeasonClicked(SearchTvSeason searchTvSeason)
-        {
+        private void SearchTvSeasonClicked(SearchTvSeason searchTvSeason) =>
             NavigationService.Navigate<TvSeasonDetailPage>(new TvShowSeasonEpisodeNumbers
             {
                 TvShowId = TvShow.Id,
                 TvSeasonNumber = searchTvSeason.SeasonNumber,
                 TvShowImdbId = TvShow.ExternalIds.ImdbId,
             });
-        }
 
         private void CastToggled(bool isChecked)
         {
@@ -242,32 +229,26 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void ImageClicked(ImageData selectedImage)
-        {
+        private void ImageClicked(ImageData selectedImage) =>
             NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
             {
                 ImagePaths = TvShow.Images.Backdrops.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
             });
-        }
 
-        private void ShareClicked()
-        {
+        private void ShareClicked() =>
             ShareService.Share(new ShareParameter
             {
                 Text = TvShow.Name,
                 Uri = new Uri($"{TMDbService.TMDbTvShowBaseUrl}{TvShow.Id}"),
             });
-        }
 
-        private void ReviewsClicked()
-        {
+        private void ReviewsClicked() =>
             NavigationService.Navigate<ReviewsPage>(new ReviewsNavigationParameter
             {
                 MediaType = MediaType.Tv,
                 Id = TvShow.Id,
             });
-        }
 
         public void PosterClicked(object sender, TappedRoutedEventArgs e)
         {
@@ -281,10 +262,8 @@ namespace Filmster.ViewModels
             }
         }
 
-        public async void RatingChangedAsync(RatingControl sender, object args)
-        {
+        public async void RatingChangedAsync(RatingControl sender, object args) =>
             await ChangeRatingAsync(MediaType.Tv, sender.Value, TvShow.Id);
-        }
 
         public async void FavoriteClickedAsync(object sender, TappedRoutedEventArgs e)
         {

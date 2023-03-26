@@ -17,19 +17,12 @@ namespace Filmster.Converters
 
             bool.TryParse(parameter as string, out bool negate);
 
-            if (string.IsNullOrEmpty(v))
-            {
-                return negate ? Visibility.Visible : Visibility.Collapsed;
-            }
-            else
-            {
-                return negate ? Visibility.Collapsed : Visibility.Visible;
-            }
+            return string.IsNullOrEmpty(v)
+                ? negate ? Visibility.Visible : Visibility.Collapsed
+                : negate ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, string language) =>
             throw new NotImplementedException();
-        }
     }
 }

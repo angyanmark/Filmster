@@ -33,32 +33,24 @@ namespace Filmster.Helpers
             }
         }
 
-        private static string GetSearchMovieDisplayName(SearchMovie movie)
-        {
-            return movie.ReleaseDate.HasValue
+        private static string GetSearchMovieDisplayName(SearchMovie movie) =>
+            movie.ReleaseDate.HasValue
                 ? $"{movie.Title} ({movie.ReleaseDate.Value.Year})"
                 : movie.Title;
-        }
 
-        private static string GetSearchTvDisplayName(SearchTv tv)
-        {
-            return tv.FirstAirDate.HasValue
+        private static string GetSearchTvDisplayName(SearchTv tv) =>
+            tv.FirstAirDate.HasValue
                 ? $"{tv.Name} ({tv.FirstAirDate.Value.Year})"
                 : tv.Name;
-        }
 
-        private static string GetKnownForMovieDisplayName(KnownForMovie movie)
-        {
-            return movie.ReleaseDate.HasValue
+        private static string GetKnownForMovieDisplayName(KnownForMovie movie) =>
+            movie.ReleaseDate.HasValue
                 ? $"{movie.Title} ({movie.ReleaseDate.Value.Year})"
                 : movie.Title;
-        }
 
-        private static string GetKnownForTvDisplayName(KnownForTv tv)
-        {
-            return tv.FirstAirDate.HasValue
+        private static string GetKnownForTvDisplayName(KnownForTv tv) =>
+            tv.FirstAirDate.HasValue
                 ? $"{tv.Name} ({tv.FirstAirDate.Value.Year})"
                 : tv.Name;
-        }
     }
 }

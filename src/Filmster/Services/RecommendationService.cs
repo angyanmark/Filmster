@@ -11,12 +11,14 @@ namespace Filmster.Services
 {
     public static class RecommendationService
     {
+        private static readonly int TakeCount = 4;
+
         public static async Task<List<SearchMovie>> RecommendMoviesAsync()
         {
             var favorites = await TMDbService.GetFavoriteMoviesAsync(accountSortBy: AccountSortBy.CreatedAt, sortOrder: SortOrder.Descending);
 
             var tasks = new List<Task<SearchContainer<SearchMovie>>>();
-            foreach (var favorite in favorites.Results.Shuffle().Take(4))
+            foreach (var favorite in favorites.Results.Shuffle().Take(TakeCount))
             {
                 tasks.Add(TMDbService.GetMovieRecommendationsAsync(favorite.Id));
             }
@@ -25,7 +27,7 @@ namespace Filmster.Services
             foreach (var task in tasks)
             {
                 var recommendations = await task;
-                recommended.AddRange(recommendations.Results.Shuffle().Take(4));
+                recommended.AddRange(recommendations.Results.Shuffle().Take(TakeCount));
             }
 
             return recommended;
@@ -36,7 +38,7 @@ namespace Filmster.Services
             var favorites = await TMDbService.GetFavoriteTvShowsAsync(accountSortBy: AccountSortBy.CreatedAt, sortOrder: SortOrder.Descending);
 
             var tasks = new List<Task<SearchContainer<SearchTv>>>();
-            foreach (var favorite in favorites.Results.Shuffle().Take(4))
+            foreach (var favorite in favorites.Results.Shuffle().Take(TakeCount))
             {
                 tasks.Add(TMDbService.GetTvShowRecommendationsAsync(favorite.Id));
             }
@@ -45,7 +47,7 @@ namespace Filmster.Services
             foreach (var task in tasks)
             {
                 var recommendations = await task;
-                recommended.AddRange(recommendations.Results.Shuffle().Take(4));
+                recommended.AddRange(recommendations.Results.Shuffle().Take(TakeCount));
             }
 
             return recommended;

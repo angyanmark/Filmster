@@ -39,14 +39,14 @@ namespace Filmster.ViewModels
         private bool _recommendationsLoaded;
         public bool RecommendationsLoaded
         {
-            get { return _recommendationsLoaded; }
-            set { Set(ref _recommendationsLoaded, value); }
+            get => _recommendationsLoaded;
+            set => Set(ref _recommendationsLoaded, value);
         }
 
         private int _primaryPivotSelectedIndex;
         public int PrimaryPivotSelectedIndex
         {
-            get { return _primaryPivotSelectedIndex; }
+            get => _primaryPivotSelectedIndex;
             set
             {
                 Set(ref _primaryPivotSelectedIndex, value);
@@ -57,63 +57,63 @@ namespace Filmster.ViewModels
         private int _ratedPivotSelectedIndex;
         public int RatedPivotSelectedIndex
         {
-            get { return _ratedPivotSelectedIndex; }
-            set { Set(ref _ratedPivotSelectedIndex, value); }
+            get => _ratedPivotSelectedIndex;
+            set => Set(ref _ratedPivotSelectedIndex, value);
         }
 
         private int _favoritesPivotSelectedIndex;
         public int FavoritesPivotSelectedIndex
         {
-            get { return _favoritesPivotSelectedIndex; }
-            set { Set(ref _favoritesPivotSelectedIndex, value); }
+            get => _favoritesPivotSelectedIndex;
+            set => Set(ref _favoritesPivotSelectedIndex, value);
         }
 
         private int _watchlistPivotSelectedIndex;
         public int WatchlistPivotSelectedIndex
         {
-            get { return _watchlistPivotSelectedIndex; }
-            set { Set(ref _watchlistPivotSelectedIndex, value); }
+            get => _watchlistPivotSelectedIndex;
+            set => Set(ref _watchlistPivotSelectedIndex, value);
         }
 
         private BitmapImage _avatarSource;
         public BitmapImage AvatarSource
         {
-            get { return _avatarSource; }
-            set { Set(ref _avatarSource, value); }
+            get => _avatarSource;
+            set => Set(ref _avatarSource, value);
         }
 
         private string _name;
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         private string _username;
         public string Username
         {
-            get { return _username; }
-            set { Set(ref _username, value); }
+            get => _username;
+            set => Set(ref _username, value);
         }
 
         private bool _isLoggedIn;
         public bool IsLoggedIn
         {
-            get { return _isLoggedIn; }
-            set { Set(ref _isLoggedIn, value); }
+            get => _isLoggedIn;
+            set => Set(ref _isLoggedIn, value);
         }
 
         private bool _isLoggedOut;
         public bool IsLoggedOut
         {
-            get { return _isLoggedOut; }
-            set { Set(ref _isLoggedOut, value); }
+            get => _isLoggedOut;
+            set => Set(ref _isLoggedOut, value);
         }
 
         private bool _isMovieWatchlistPinned;
         public bool IsMovieWatchlistPinned
         {
-            get { return _isMovieWatchlistPinned; }
+            get => _isMovieWatchlistPinned;
             set
             {
                 if (_isMovieWatchlistPinned != value)
@@ -127,7 +127,7 @@ namespace Filmster.ViewModels
         private bool _isTvShowWatchlistPinned;
         public bool IsTvShowWatchlistPinned
         {
-            get { return _isTvShowWatchlistPinned; }
+            get => _isTvShowWatchlistPinned;
             set
             {
                 if (_isTvShowWatchlistPinned != value)
@@ -172,15 +172,11 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void OnLoggedIn(object sender, EventArgs e)
-        {
+        private void OnLoggedIn(object sender, EventArgs e) =>
             NavigationService.Reload();
-        }
 
-        private void OnLoggedOut(object sender, EventArgs e)
-        {
+        private void OnLoggedOut(object sender, EventArgs e) =>
             SetLoggedOutProperties();
-        }
 
         private async Task SetLoggedInPropertiesAsync()
         {
@@ -261,8 +257,7 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void AccountSearchTvEpisodeClicked(AccountSearchTvEpisode accountSearchTvEpisode)
-        {
+        private void AccountSearchTvEpisodeClicked(AccountSearchTvEpisode accountSearchTvEpisode) =>
             NavigationService.Navigate<TvEpisodeDetailPage>(new TvShowSeasonEpisodeNumbers
             {
                 TvShowId = accountSearchTvEpisode.ShowId,
@@ -270,7 +265,6 @@ namespace Filmster.ViewModels
                 TvEpisodeNumber = accountSearchTvEpisode.EpisodeNumber,
                 TvShowImdbId = string.Empty,
             });
-        }
 
         private async void MovieWatchlistPinnedChangedAsync()
         {
@@ -315,10 +309,8 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void AccountListClicked(AccountList accountList)
-        {
+        private void AccountListClicked(AccountList accountList) =>
             NavigationService.Navigate<ListDetailPage>(accountList.Id);
-        }
 
         private async void RecommendMoviesClickedAsync()
         {

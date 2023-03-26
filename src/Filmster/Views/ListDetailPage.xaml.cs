@@ -10,10 +10,7 @@ namespace Filmster.Views
     {
         public ListDetailViewModel ViewModel { get; } = new ListDetailViewModel();
 
-        public ListDetailPage()
-        {
-            InitializeComponent();
-        }
+        public ListDetailPage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -25,9 +22,7 @@ namespace Filmster.Views
             }
         }
 
-        private void DeleteMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
-        {
+        private void DeleteMenuFlyoutItem_Click(object sender, RoutedEventArgs e) =>
             ViewModel.ListRemoveClickedCommand.Execute((sender as MenuFlyoutItem).DataContext as SearchMovie);
-        }
     }
 }

@@ -20,51 +20,49 @@ namespace Filmster.ViewModels
         private Collection _collection;
         public Collection Collection
         {
-            get { return _collection; }
-            set { Set(ref _collection, value); }
+            get => _collection;
+            set => Set(ref _collection, value);
         }
 
         private ImageData _selectedPoster;
         public ImageData SelectedPoster
         {
-            get { return _selectedPoster; }
-            set { Set(ref _selectedPoster, value); }
+            get => _selectedPoster;
+            set => Set(ref _selectedPoster, value);
         }
 
         private DateTime? _startDate;
         public DateTime? StartDate
         {
-            get { return _startDate; }
-            set { Set(ref _startDate, value); }
+            get => _startDate;
+            set => Set(ref _startDate, value);
         }
 
         private DateTime? _endDate;
         public DateTime? EndDate
         {
-            get { return _endDate; }
-            set { Set(ref _endDate, value); }
+            get => _endDate;
+            set => Set(ref _endDate, value);
         }
 
         private double _voteAverage;
         public double VoteAverage
         {
-            get { return _voteAverage; }
-            set { Set(ref _voteAverage, value); }
+            get => _voteAverage;
+            set => Set(ref _voteAverage, value);
         }
 
         private int _voteCount;
         public int VoteCount
         {
-            get { return _voteCount; }
-            set { Set(ref _voteCount, value); }
+            get => _voteCount;
+            set => Set(ref _voteCount, value);
         }
 
         public ICommand ImageClickedCommand;
 
-        public CollectionDetailViewModel()
-        {
+        public CollectionDetailViewModel() =>
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
-        }
 
         public async Task LoadCollectionAsync(int id)
         {
@@ -89,10 +87,8 @@ namespace Filmster.ViewModels
             return collection;
         }
 
-        private ImageData GetSelectedPoster()
-        {
-            return Collection.Images.Posters.Find(poster => poster.FilePath == Collection.PosterPath) ?? Collection.Images.Posters.FirstOrDefault();
-        }
+        private ImageData GetSelectedPoster() =>
+            Collection.Images.Posters.Find(poster => poster.FilePath == Collection.PosterPath) ?? Collection.Images.Posters.FirstOrDefault();
 
         private void SetStartEndDate()
         {
@@ -101,14 +97,12 @@ namespace Filmster.ViewModels
             EndDate = dates.Any(date => !date.HasValue) ? null : dates.Max();
         }
 
-        private void ImageClicked(ImageData selectedImage)
-        {
+        private void ImageClicked(ImageData selectedImage) =>
             NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
             {
                 ImagePaths = Collection.Images.Backdrops.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
             });
-        }
 
         public void PosterClicked(object sender, TappedRoutedEventArgs e)
         {

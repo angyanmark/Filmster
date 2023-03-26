@@ -13,10 +13,8 @@ namespace Filmster.Activation
     {
         private readonly Type _navElement;
 
-        public DefaultActivationHandler(Type navElement)
-        {
+        public DefaultActivationHandler(Type navElement) =>
             _navElement = navElement;
-        }
 
         protected override async Task HandleInternalAsync(IActivatedEventArgs args)
         {
@@ -59,10 +57,8 @@ namespace Filmster.Activation
             await Task.CompletedTask;
         }
 
-        protected override bool CanHandleInternal(IActivatedEventArgs args)
-        {
-            // None of the ActivationHandlers has handled the app activation
-            return NavigationService.Frame.Content == null && _navElement != null;
-        }
+        // None of the ActivationHandlers has handled the app activation
+        protected override bool CanHandleInternal(IActivatedEventArgs args) =>
+            NavigationService.Frame.Content == null && _navElement != null;
     }
 }

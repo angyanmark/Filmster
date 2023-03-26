@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMDbLib.Objects.Discover;
@@ -66,7 +65,7 @@ namespace Filmster.ViewModels
         private MediaType _selectedMediaType = MediaType.Movie;
         public MediaType SelectedMediaType
         {
-            get { return _selectedMediaType; }
+            get => _selectedMediaType;
             set
             {
                 if (value != SelectedMediaType)
@@ -80,64 +79,64 @@ namespace Filmster.ViewModels
         private bool _isMovieMediaType = true;
         public bool IsMovieMediaType
         {
-            get { return _isMovieMediaType; }
-            set { Set(ref _isMovieMediaType, value); }
+            get => _isMovieMediaType;
+            set => Set(ref _isMovieMediaType, value);
         }
 
         private int _releaseDateFrom;
         public int ReleaseDateFrom
         {
-            get { return _releaseDateFrom; }
-            set { Set(ref _releaseDateFrom, value); }
+            get => _releaseDateFrom;
+            set => Set(ref _releaseDateFrom, value);
         }
 
         private int _releaseDateTo;
         public int ReleaseDateTo
         {
-            get { return _releaseDateTo; }
-            set { Set(ref _releaseDateTo, value); }
+            get => _releaseDateTo;
+            set => Set(ref _releaseDateTo, value);
         }
 
         private double _voteAverageAtLeast;
         public double VoteAverageAtLeast
         {
-            get { return _voteAverageAtLeast; }
-            set { Set(ref _voteAverageAtLeast, value); }
+            get => _voteAverageAtLeast;
+            set => Set(ref _voteAverageAtLeast, value);
         }
 
         private double _voteAverageAtMost;
         public double VoteAverageAtMost
         {
-            get { return _voteAverageAtMost; }
-            set { Set(ref _voteAverageAtMost, value); }
+            get => _voteAverageAtMost;
+            set => Set(ref _voteAverageAtMost, value);
         }
 
         private int _voteCountAtLeast;
         public int VoteCountAtLeast
         {
-            get { return _voteCountAtLeast; }
-            set { Set(ref _voteCountAtLeast, value); }
+            get => _voteCountAtLeast;
+            set => Set(ref _voteCountAtLeast, value);
         }
 
         private int _genreId;
         public int GenreId
         {
-            get { return _genreId; }
-            set { Set(ref _genreId, value); }
+            get => _genreId;
+            set => Set(ref _genreId, value);
         }
 
         private DiscoverMovieSortBy _selectedMovieSortByItem;
         public DiscoverMovieSortBy SelectedMovieSortByItem
         {
-            get { return _selectedMovieSortByItem; }
-            set { Set(ref _selectedMovieSortByItem, value); }
+            get => _selectedMovieSortByItem;
+            set => Set(ref _selectedMovieSortByItem, value);
         }
 
         private DiscoverTvShowSortBy _selectedTvShowSortByItem;
         public DiscoverTvShowSortBy SelectedTvShowSortByItem
         {
-            get { return _selectedTvShowSortByItem; }
-            set { Set(ref _selectedTvShowSortByItem, value); }
+            get => _selectedTvShowSortByItem;
+            set => Set(ref _selectedTvShowSortByItem, value);
         }
 
         public ICommand ClearCommand;

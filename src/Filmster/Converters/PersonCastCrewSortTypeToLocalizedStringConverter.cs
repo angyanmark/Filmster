@@ -7,14 +7,10 @@ namespace Filmster.Converters
 {
     public class PersonCastCrewSortTypeToLocalizedStringConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return $"{nameof(PersonCastCrewSortType)}_{value}".GetLocalized();
-        }
+        public object Convert(object value, Type targetType, object parameter, string language) =>
+            $"{nameof(PersonCastCrewSortType)}_{value}".GetLocalized();
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, string language) =>
             throw new NotImplementedException();
-        }
     }
 }

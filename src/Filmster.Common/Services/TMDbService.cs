@@ -85,35 +85,23 @@ namespace Filmster.Common.Services
             }
         }
 
-        public static async Task<SearchContainer<SearchMovie>> GetPopularMoviesAsync(int page = 0)
-        {
-            return await client.GetMoviePopularListAsync(CurrentLanguage, page);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetPopularMoviesAsync(int page = 0) =>
+            await client.GetMoviePopularListAsync(CurrentLanguage, page);
 
-        public static async Task<SearchContainer<SearchMovie>> GetUpcomingMoviesAsync(int page = 0)
-        {
-            return await client.GetMovieUpcomingListAsync(CurrentLanguage, page);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetUpcomingMoviesAsync(int page = 0) =>
+            await client.GetMovieUpcomingListAsync(CurrentLanguage, page);
 
-        public static async Task<SearchContainer<SearchMovie>> GetTopRatedMoviesAsync(int page = 0)
-        {
-            return await client.GetMovieTopRatedListAsync(CurrentLanguage, page);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetTopRatedMoviesAsync(int page = 0) =>
+            await client.GetMovieTopRatedListAsync(CurrentLanguage, page);
 
-        public static async Task<Movie> GetMovieAsync(int id, bool includeAccountState = false)
-        {
-            return await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, (includeAccountState ? MovieMethods.AccountStates : MovieMethods.Undefined) | MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates | MovieMethods.Reviews);
-        }
+        public static async Task<Movie> GetMovieAsync(int id, bool includeAccountState = false) =>
+            await client.GetMovieAsync(id, CurrentLanguage, IncludeImageLanguage, (includeAccountState ? MovieMethods.AccountStates : MovieMethods.Undefined) | MovieMethods.Images | MovieMethods.Videos | MovieMethods.Credits | MovieMethods.Recommendations | MovieMethods.ReleaseDates | MovieMethods.Reviews);
 
-        public static async Task<SearchContainer<SearchMovie>> GetMovieRecommendationsAsync(int id)
-        {
-            return await client.GetMovieRecommendationsAsync(id, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetMovieRecommendationsAsync(int id) =>
+            await client.GetMovieRecommendationsAsync(id, CurrentLanguage);
 
-        public static async Task<Collection> GetCollectionAsync(int id, CollectionMethods extraMethods = CollectionMethods.Undefined)
-        {
-            return await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage, extraMethods);
-        }
+        public static async Task<Collection> GetCollectionAsync(int id, CollectionMethods extraMethods = CollectionMethods.Undefined) =>
+            await client.GetCollectionAsync(id, CurrentLanguage, IncludeImageLanguage, extraMethods);
 
         public static async Task<SearchContainerWithId<ReviewBase>> GetReviewsAsync(MediaType mediaType, int id, int page = 0)
         {
@@ -128,45 +116,29 @@ namespace Filmster.Common.Services
             }
         }
 
-        public static async Task<Review> GetReviewAsync(string id)
-        {
-            return await client.GetReviewAsync(id);
-        }
+        public static async Task<Review> GetReviewAsync(string id) =>
+            await client.GetReviewAsync(id);
 
-        public static async Task<SearchContainer<SearchTv>> GetPopularTvShowsAsync(int page = 0)
-        {
-            return await client.GetTvShowPopularAsync(page, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchTv>> GetPopularTvShowsAsync(int page = 0) =>
+            await client.GetTvShowPopularAsync(page, CurrentLanguage);
 
-        public static async Task<SearchContainer<SearchTv>> GetTopRatedTvShowsAsync(int page = 0)
-        {
-            return await client.GetTvShowTopRatedAsync(page, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchTv>> GetTopRatedTvShowsAsync(int page = 0) =>
+            await client.GetTvShowTopRatedAsync(page, CurrentLanguage);
 
-        public static async Task<TvShow> GetTvShowAsync(int id, bool includeAccountState = false)
-        {
-            return await client.GetTvShowAsync(id, (includeAccountState ? TvShowMethods.AccountStates : TvShowMethods.Undefined) | TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds | TvShowMethods.Reviews, CurrentLanguage, IncludeImageLanguage);
-        }
+        public static async Task<TvShow> GetTvShowAsync(int id, bool includeAccountState = false) =>
+            await client.GetTvShowAsync(id, (includeAccountState ? TvShowMethods.AccountStates : TvShowMethods.Undefined) | TvShowMethods.Images | TvShowMethods.Videos | TvShowMethods.Credits | TvShowMethods.Recommendations | TvShowMethods.ContentRatings | TvShowMethods.ExternalIds | TvShowMethods.Reviews, CurrentLanguage, IncludeImageLanguage);
 
-        public static async Task<SearchContainer<SearchTv>> GetTvShowRecommendationsAsync(int id)
-        {
-            return await client.GetTvShowRecommendationsAsync(id, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchTv>> GetTvShowRecommendationsAsync(int id) =>
+            await client.GetTvShowRecommendationsAsync(id, CurrentLanguage);
 
-        public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber, bool includeAccountState = false)
-        {
-            return await client.GetTvSeasonAsync(tvShowId, seasonNumber, (includeAccountState ? TvSeasonMethods.AccountStates : TvSeasonMethods.Undefined) | TvSeasonMethods.Images | TvSeasonMethods.Credits | TvSeasonMethods.Videos, CurrentLanguage, IncludeImageLanguage);
-        }
+        public static async Task<TvSeason> GetTvSeasonAsync(int tvShowId, int seasonNumber, bool includeAccountState = false) =>
+            await client.GetTvSeasonAsync(tvShowId, seasonNumber, (includeAccountState ? TvSeasonMethods.AccountStates : TvSeasonMethods.Undefined) | TvSeasonMethods.Images | TvSeasonMethods.Credits | TvSeasonMethods.Videos, CurrentLanguage, IncludeImageLanguage);
 
-        public static async Task<TvEpisode> GetTvEpisodeAsync(int tvShowId, int seasonNumber, int episodeNumber, bool includeAccountState = false)
-        {
-            return await client.GetTvEpisodeAsync(tvShowId, seasonNumber, episodeNumber, (includeAccountState ? TvEpisodeMethods.AccountStates : TvEpisodeMethods.Undefined) | TvEpisodeMethods.Images | TvEpisodeMethods.Credits | TvEpisodeMethods.Videos | TvEpisodeMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
-        }
+        public static async Task<TvEpisode> GetTvEpisodeAsync(int tvShowId, int seasonNumber, int episodeNumber, bool includeAccountState = false) =>
+            await client.GetTvEpisodeAsync(tvShowId, seasonNumber, episodeNumber, (includeAccountState ? TvEpisodeMethods.AccountStates : TvEpisodeMethods.Undefined) | TvEpisodeMethods.Images | TvEpisodeMethods.Credits | TvEpisodeMethods.Videos | TvEpisodeMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
 
-        public static async Task<SearchContainer<SearchPerson>> GetPopularPeopleAsync(int page = 0)
-        {
-            return await client.GetPersonPopularListAsync(page, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchPerson>> GetPopularPeopleAsync(int page = 0) =>
+            await client.GetPersonPopularListAsync(page, CurrentLanguage);
 
         public static async Task<Person> GetPersonAsync(int id)
         {
@@ -186,19 +158,14 @@ namespace Filmster.Common.Services
             }
         }
 
-        public static async Task<SearchContainer<SearchMovie>> GetSearchMovieAsync(string value, int page = 0)
-        {
-            return await client.SearchMovieAsync(value, CurrentLanguage, page);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetSearchMovieAsync(string value, int page = 0) =>
+            await client.SearchMovieAsync(value, CurrentLanguage, page);
 
-        public static async Task<SearchContainer<SearchBase>> GetMultiSearchAsync(string value, int page = 0)
-        {
-            return await client.SearchMultiAsync(value, CurrentLanguage, page);
-        }
+        public static async Task<SearchContainer<SearchBase>> GetMultiSearchAsync(string value, int page = 0) =>
+            await client.SearchMultiAsync(value, CurrentLanguage, page);
 
-        public static async Task<SearchContainer<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options, int page = 0)
-        {
-            return await client.DiscoverMoviesAsync()
+        public static async Task<SearchContainer<SearchMovie>> GetDiscoverMoviesAsync(DiscoverMovieOptions options, int page = 0) =>
+            await client.DiscoverMoviesAsync()
                 .WherePrimaryReleaseDateIsAfter(options.PrimaryReleaseDateAfter)
                 .WherePrimaryReleaseDateIsBefore(options.PrimaryReleaseDateBefore)
                 .WhereVoteAverageIsAtLeast(options.VoteAverageAtLeast)
@@ -207,11 +174,9 @@ namespace Filmster.Common.Services
                 .IncludeWithAllOfGenre(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
                 .OrderBy(options.SortBy)
                 .Query(CurrentLanguage, page);
-        }
 
-        public static async Task<SearchContainer<SearchTv>> GetDiscoverTvShowsAsync(DiscoverTvShowOptions options, int page = 0)
-        {
-            return await client.DiscoverTvShowsAsync()
+        public static async Task<SearchContainer<SearchTv>> GetDiscoverTvShowsAsync(DiscoverTvShowOptions options, int page = 0) =>
+            await client.DiscoverTvShowsAsync()
                 .WhereFirstAirDateIsAfter(options.FirstAirDateAfter)
                 .WhereFirstAirDateIsBefore(options.FirstAirDateBefore)
                 .WhereVoteAverageIsAtLeast(options.VoteAverageAtLeast)
@@ -220,32 +185,21 @@ namespace Filmster.Common.Services
                 .WhereGenresInclude(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
                 .OrderBy(options.SortBy)
                 .Query(CurrentLanguage, page);
-        }
 
-        public static async Task<List<Genre>> GetMovieGenresAsync()
-        {
-            return await client.GetMovieGenresAsync(CurrentLanguage);
-        }
+        public static async Task<List<Genre>> GetMovieGenresAsync() =>
+            await client.GetMovieGenresAsync(CurrentLanguage);
 
-        public static async Task<List<Genre>> GetTvShowGenresAsync()
-        {
-            return await client.GetTvGenresAsync(CurrentLanguage);
-        }
+        public static async Task<List<Genre>> GetTvShowGenresAsync() =>
+            await client.GetTvGenresAsync(CurrentLanguage);
 
-        public static async Task<Token> GetAuthenticationTokenAsync()
-        {
-            return await client.AuthenticationRequestAutenticationTokenAsync();
-        }
+        public static async Task<Token> GetAuthenticationTokenAsync() =>
+            await client.AuthenticationRequestAutenticationTokenAsync();
 
-        public static async Task<UserSession> GetUserSessionAsync(string requestToken)
-        {
-            return await client.AuthenticationGetUserSessionAsync(requestToken);
-        }
+        public static async Task<UserSession> GetUserSessionAsync(string requestToken) =>
+            await client.AuthenticationGetUserSessionAsync(requestToken);
 
-        public static async Task SetSessionInformationAsync(string sessionId, SessionType sessionType)
-        {
+        public static async Task SetSessionInformationAsync(string sessionId, SessionType sessionType) =>
             await client.SetSessionInformationAsync(sessionId, sessionType);
-        }
 
         public static async Task<bool> DeleteUserSessionAsync()
         {
@@ -253,45 +207,29 @@ namespace Filmster.Common.Services
             return true;
         }
 
-        public static async Task<AccountDetails> GetAccountDetailsAsync()
-        {
-            return await client.AccountGetDetailsAsync();
-        }
+        public static async Task<AccountDetails> GetAccountDetailsAsync() =>
+            await client.AccountGetDetailsAsync();
 
-        public static async Task<SearchContainer<SearchMovieWithRating>> GetRatedMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetRatedMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchMovieWithRating>> GetRatedMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetRatedMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
 
-        public static async Task<SearchContainer<AccountSearchTv>> GetRatedTvShowsAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetRatedTvShowsAsync(page, accountSortBy, sortOrder, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<AccountSearchTv>> GetRatedTvShowsAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetRatedTvShowsAsync(page, accountSortBy, sortOrder, CurrentLanguage);
 
-        public static async Task<SearchContainer<AccountSearchTvEpisode>> GetRatedTvEpisodesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetRatedTvShowEpisodesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<AccountSearchTvEpisode>> GetRatedTvEpisodesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetRatedTvShowEpisodesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
 
-        public static async Task<SearchContainer<SearchMovie>> GetFavoriteMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetFavoriteMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetFavoriteMoviesAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetFavoriteMoviesAsync(page, accountSortBy, sortOrder, CurrentLanguage);
 
-        public static async Task<SearchContainer<SearchTv>> GetFavoriteTvShowsAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetFavoriteTvAsync(page, accountSortBy, sortOrder, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchTv>> GetFavoriteTvShowsAsync(int page = 0, AccountSortBy accountSortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetFavoriteTvAsync(page, accountSortBy, sortOrder, CurrentLanguage);
 
-        public static async Task<SearchContainer<SearchMovie>> GetMovieWatchlistAsync(int page = 0, AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetMovieWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchMovie>> GetMovieWatchlistAsync(int page = 0, AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetMovieWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
 
-        public static async Task<SearchContainer<SearchTv>> GetTvShowWatchlistAsync(int page = 0, AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined)
-        {
-            return await client.AccountGetTvWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
-        }
+        public static async Task<SearchContainer<SearchTv>> GetTvShowWatchlistAsync(int page = 0, AccountSortBy sortBy = AccountSortBy.Undefined, SortOrder sortOrder = SortOrder.Undefined) =>
+            await client.AccountGetTvWatchlistAsync(page, sortBy, sortOrder, language: CurrentLanguage);
 
         public static async Task<bool> SetRatingAsync(MediaType mediaType, double value, int id, int? seasonNumber = null, int? episodeNumber = null)
         {
@@ -314,49 +252,31 @@ namespace Filmster.Common.Services
             }
         }
 
-        public static async Task<bool> ChangeFavoriteStatusAsync(MediaType mediaType, int id, bool isFavorite)
-        {
-            return await client.AccountChangeFavoriteStatusAsync(mediaType, id, isFavorite);
-        }
+        public static async Task<bool> ChangeFavoriteStatusAsync(MediaType mediaType, int id, bool isFavorite) =>
+            await client.AccountChangeFavoriteStatusAsync(mediaType, id, isFavorite);
 
-        public static async Task<bool> ChangeWatchlistStatusAsync(MediaType mediaType, int id, bool isWatchlist)
-        {
-            return await client.AccountChangeWatchlistStatusAsync(mediaType, id, isWatchlist);
-        }
+        public static async Task<bool> ChangeWatchlistStatusAsync(MediaType mediaType, int id, bool isWatchlist) =>
+            await client.AccountChangeWatchlistStatusAsync(mediaType, id, isWatchlist);
 
-        public static async Task<SearchContainer<AccountList>> GetListsAsync(int page = 0)
-        {
-            return await client.AccountGetListsAsync(page, CurrentLanguage);
-        }
+        public static async Task<SearchContainer<AccountList>> GetListsAsync(int page = 0) =>
+            await client.AccountGetListsAsync(page, CurrentLanguage);
 
-        public static async Task<GenericList> GetListAsync(int id)
-        {
-            return await client.GetListAsync(id.ToString(), CurrentLanguage);
-        }
+        public static async Task<GenericList> GetListAsync(int id) =>
+            await client.GetListAsync(id.ToString(), CurrentLanguage);
 
-        public static async Task<string> ListCreateAsync(string name, string description = "")
-        {
-            return await client.ListCreateAsync(name, description);
-        }
+        public static async Task<string> ListCreateAsync(string name, string description = "") =>
+            await client.ListCreateAsync(name, description);
 
-        public static async Task<bool> ListAddMovieAsync(string listId, int id)
-        {
-            return await client.ListAddMovieAsync(listId, id);
-        }
+        public static async Task<bool> ListAddMovieAsync(string listId, int id) =>
+            await client.ListAddMovieAsync(listId, id);
 
-        public static async Task<bool> ListRemoveMovieAsync(string listId, int id)
-        {
-            return await client.ListRemoveMovieAsync(listId, id);
-        }
+        public static async Task<bool> ListRemoveMovieAsync(string listId, int id) =>
+            await client.ListRemoveMovieAsync(listId, id);
 
-        public static async Task<bool> ListClearAsync(string listId)
-        {
-            return await client.ListClearAsync(listId);
-        }
+        public static async Task<bool> ListClearAsync(string listId) =>
+            await client.ListClearAsync(listId);
 
-        public static async Task<bool> ListDeleteAsync(string listId)
-        {
-            return await client.ListDeleteAsync(listId);
-        }
+        public static async Task<bool> ListDeleteAsync(string listId) =>
+            await client.ListDeleteAsync(listId);
     }
 }

@@ -7,9 +7,6 @@ namespace Filmster.Views
     {
         public PeopleViewModel ViewModel { get; } = new PeopleViewModel();
 
-        public PeoplePage()
-        {
-            InitializeComponent();
-        }
+        public PeoplePage() => InitializeComponent();
     }
 }

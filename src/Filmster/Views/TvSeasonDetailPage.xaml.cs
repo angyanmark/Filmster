@@ -9,10 +9,7 @@ namespace Filmster.Views
     {
         public TvSeasonDetailViewModel ViewModel { get; } = new TvSeasonDetailViewModel();
 
-        public TvSeasonDetailPage()
-        {
-            InitializeComponent();
-        }
+        public TvSeasonDetailPage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -9,10 +9,7 @@ namespace Filmster.Views
     {
         public ProfileViewModel ViewModel { get; } = new ProfileViewModel();
 
-        public ProfilePage()
-        {
-            InitializeComponent();
-        }
+        public ProfilePage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

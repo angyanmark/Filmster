@@ -8,10 +8,7 @@ namespace Filmster.Views
     {
         public SearchViewModel ViewModel { get; } = new SearchViewModel();
 
-        public SearchPage()
-        {
-            InitializeComponent();
-        }
+        public SearchPage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

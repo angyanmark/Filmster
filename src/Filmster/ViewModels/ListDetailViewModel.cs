@@ -21,22 +21,22 @@ namespace Filmster.ViewModels
         private GenericList _genericList;
         public GenericList GenericList
         {
-            get { return _genericList; }
-            set { Set(ref _genericList, value); }
+            get => _genericList;
+            set => Set(ref _genericList, value);
         }
 
         private double _voteAverage;
         public double VoteAverage
         {
-            get { return _voteAverage; }
-            set { Set(ref _voteAverage, value); }
+            get => _voteAverage;
+            set => Set(ref _voteAverage, value);
         }
 
         private int _voteCount;
         public int VoteCount
         {
-            get { return _voteCount; }
-            set { Set(ref _voteCount, value); }
+            get => _voteCount;
+            set => Set(ref _voteCount, value);
         }
 
         public ObservableCollection<SearchBase> Items { get; set; } = new ObservableCollection<SearchBase>();
@@ -66,10 +66,8 @@ namespace Filmster.ViewModels
             SetVoteAverageVoteCount();
         }
 
-        private void SetVoteAverageVoteCount()
-        {
+        private void SetVoteAverageVoteCount() =>
             (VoteAverage, VoteCount) = VoteHelper.GetVoteAverageVoteCount(Items.Select(item => ((item as SearchMovieTvBase).VoteAverage, (item as SearchMovieTvBase).VoteCount)));
-        }
 
         private async void ListAddClickedAsync()
         {

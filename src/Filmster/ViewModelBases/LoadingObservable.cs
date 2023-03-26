@@ -5,8 +5,8 @@
         private bool _dataLoaded;
         public bool DataLoaded
         {
-            get { return _dataLoaded; }
-            set { Set(ref _dataLoaded, value); }
+            get => _dataLoaded;
+            set => Set(ref _dataLoaded, value);
         }
     }
 }

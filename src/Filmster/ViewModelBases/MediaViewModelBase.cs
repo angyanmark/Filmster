@@ -25,10 +25,8 @@ namespace Filmster.ViewModelBases
         public ICommand TvJobClickedCommand;
         public ICommand CollectionClickedCommand;
 
-        public MediaViewModelBase()
-        {
+        public MediaViewModelBase() =>
             SetCommands();
-        }
 
         private void SetCommands()
         {
@@ -44,54 +42,15 @@ namespace Filmster.ViewModelBases
             CollectionClickedCommand = new RelayCommand<int>(CollectionClicked);
         }
 
-        private void SearchBaseClicked(SearchBase searchBase)
-        {
-            NavigationService.NavigateSearchBase(searchBase);
-        }
-
-        private void MovieCastClicked(MovieCast cast)
-        {
-            NavigationService.Navigate<PersonDetailPage>(cast.Id);
-        }
-
-        private void TvCastClicked(TvCast cast)
-        {
-            NavigationService.Navigate<PersonDetailPage>(cast.Id);
-        }
-
-        private void CrewClicked(Crew crew)
-        {
-            NavigationService.Navigate<PersonDetailPage>(crew.Id);
-        }
-
-        private void ReviewBaseClicked(ReviewBase reviewBase)
-        {
-            NavigationService.Navigate<ReviewDetailPage>(reviewBase.Id);
-        }
-
-        private void MovieRoleClicked(MovieRole movieRole)
-        {
-            NavigationService.Navigate<MovieDetailPage>(movieRole.Id);
-        }
-
-        private void TvRoleClicked(TvRole tvRole)
-        {
-            NavigationService.Navigate<TvShowDetailPage>(tvRole.Id);
-        }
-
-        private void MovieJobClicked(MovieJob movieJob)
-        {
-            NavigationService.Navigate<MovieDetailPage>(movieJob.Id);
-        }
-
-        private void TvJobClicked(TvJob tvJob)
-        {
-            NavigationService.Navigate<TvShowDetailPage>(tvJob.Id);
-        }
-
-        private void CollectionClicked(int id)
-        {
-            NavigationService.Navigate<CollectionDetailPage>(id);
-        }
+        private void SearchBaseClicked(SearchBase searchBase) => NavigationService.NavigateSearchBase(searchBase);
+        private void MovieCastClicked(MovieCast cast) => NavigationService.Navigate<PersonDetailPage>(cast.Id);
+        private void TvCastClicked(TvCast cast) => NavigationService.Navigate<PersonDetailPage>(cast.Id);
+        private void CrewClicked(Crew crew) => NavigationService.Navigate<PersonDetailPage>(crew.Id);
+        private void ReviewBaseClicked(ReviewBase reviewBase) => NavigationService.Navigate<ReviewDetailPage>(reviewBase.Id);
+        private void MovieRoleClicked(MovieRole movieRole) => NavigationService.Navigate<MovieDetailPage>(movieRole.Id);
+        private void TvRoleClicked(TvRole tvRole) => NavigationService.Navigate<TvShowDetailPage>(tvRole.Id);
+        private void MovieJobClicked(MovieJob movieJob) => NavigationService.Navigate<MovieDetailPage>(movieJob.Id);
+        private void TvJobClicked(TvJob tvJob) => NavigationService.Navigate<TvShowDetailPage>(tvJob.Id);
+        private void CollectionClicked(int id) => NavigationService.Navigate<CollectionDetailPage>(id);
     }
 }

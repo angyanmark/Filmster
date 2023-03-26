@@ -23,57 +23,57 @@ namespace Filmster.ViewModels
         private Movie _movie;
         public Movie Movie
         {
-            get { return _movie; }
-            set { Set(ref _movie, value); }
+            get => _movie;
+            set => Set(ref _movie, value);
         }
 
         private ImageData _selectedPoster;
         public ImageData SelectedPoster
         {
-            get { return _selectedPoster; }
-            set { Set(ref _selectedPoster, value); }
+            get => _selectedPoster;
+            set => Set(ref _selectedPoster, value);
         }
 
         private Collection _collection;
         public Collection Collection
         {
-            get { return _collection; }
-            set { Set(ref _collection, value); }
+            get => _collection;
+            set => Set(ref _collection, value);
         }
 
         private Video _video;
         public Video Video
         {
-            get { return _video; }
-            set { Set(ref _video, value); }
+            get => _video;
+            set => Set(ref _video, value);
         }
 
         private string _certification;
         public string Certification
         {
-            get { return _certification; }
-            set { Set(ref _certification, value); }
+            get => _certification;
+            set => Set(ref _certification, value);
         }
 
         private string _directors;
         public string Directors
         {
-            get { return _directors; }
-            set { Set(ref _directors, value); }
+            get => _directors;
+            set => Set(ref _directors, value);
         }
 
         private string _genres;
         public string Genres
         {
-            get { return _genres; }
-            set { Set(ref _genres, value); }
+            get => _genres;
+            set => Set(ref _genres, value);
         }
 
         private string _productionCompanies;
         public string ProductionCompanies
         {
-            get { return _productionCompanies; }
-            set { Set(ref _productionCompanies, value); }
+            get => _productionCompanies;
+            set => Set(ref _productionCompanies, value);
         }
 
         public ObservableCollection<Cast> Cast { get; set; } = new ObservableCollection<Cast>();
@@ -83,7 +83,7 @@ namespace Filmster.ViewModels
         private bool _isCastChecked;
         public bool IsCastChecked
         {
-            get { return _isCastChecked; }
+            get => _isCastChecked;
             set
             {
                 Set(ref _isCastChecked, value);
@@ -94,7 +94,7 @@ namespace Filmster.ViewModels
         private bool _isCrewChecked;
         public bool IsCrewChecked
         {
-            get { return _isCrewChecked; }
+            get => _isCrewChecked;
             set
             {
                 Set(ref _isCrewChecked, value);
@@ -105,7 +105,7 @@ namespace Filmster.ViewModels
         private bool _isImagesChecked;
         public bool IsImagesChecked
         {
-            get { return _isImagesChecked; }
+            get => _isImagesChecked;
             set
             {
                 Set(ref _isImagesChecked, value);
@@ -145,16 +145,11 @@ namespace Filmster.ViewModels
             Images.AddRange(Movie.Images.Backdrops.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
-        private ImageData GetSelectedPoster()
-        {
-            return Movie.Images.Posters.Find(poster => poster.FilePath == Movie.PosterPath) ?? Movie.Images.Posters.FirstOrDefault();
-        }
+        private ImageData GetSelectedPoster() =>
+            Movie.Images.Posters.Find(poster => poster.FilePath == Movie.PosterPath) ?? Movie.Images.Posters.FirstOrDefault();
 
-        private string GetDirectors()
-        {
-            var directors = Movie.Credits.Crew.FindAll(crew => crew.Job.ToLower() == "director");
-            return string.Join(", ", directors.Select(director => director.Name));
-        }
+        private string GetDirectors() =>
+            string.Join(", ", Movie.Credits.Crew.FindAll(crew => crew.Job.ToLower() == "director").Select(director => director.Name));
 
         private string GetCertification()
         {
@@ -172,15 +167,11 @@ namespace Filmster.ViewModels
             return default;
         }
 
-        private string GetGenres()
-        {
-            return string.Join(", ", Movie.Genres.Select(genre => genre.Name));
-        }
+        private string GetGenres() =>
+            string.Join(", ", Movie.Genres.Select(genre => genre.Name));
 
-        private string GetProductionCompanies()
-        {
-            return string.Join(", ", Movie.ProductionCompanies.Select(productionCompany => productionCompany.Name));
-        }
+        private string GetProductionCompanies() =>
+            string.Join(", ", Movie.ProductionCompanies.Select(productionCompany => productionCompany.Name));
 
         private async Task<Collection> GetCollectionAsync()
         {
@@ -232,32 +223,26 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void ImageClicked(ImageData selectedImage)
-        {
+        private void ImageClicked(ImageData selectedImage) =>
             NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
             {
                 ImagePaths = Movie.Images.Backdrops.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
             });
-        }
 
-        private void ShareClicked()
-        {
+        private void ShareClicked() =>
             ShareService.Share(new ShareParameter
             {
                 Text = Movie.Title,
                 Uri = new Uri($"{TMDbService.TMDbMovieBaseUrl}{Movie.Id}"),
             });
-        }
 
-        private void ReviewsClicked()
-        {
+        private void ReviewsClicked() =>
             NavigationService.Navigate<ReviewsPage>(new ReviewsNavigationParameter
             {
                 MediaType = MediaType.Movie,
                 Id = Movie.Id,
             });
-        }
 
         public void PosterClicked(object sender, TappedRoutedEventArgs e)
         {
@@ -271,10 +256,8 @@ namespace Filmster.ViewModels
             }
         }
 
-        public async void RatingChangedAsync(RatingControl sender, object args)
-        {
+        public async void RatingChangedAsync(RatingControl sender, object args) =>
             await ChangeRatingAsync(MediaType.Movie, sender.Value, Movie.Id);
-        }
 
         public async void FavoriteClickedAsync(object sender, TappedRoutedEventArgs e)
         {

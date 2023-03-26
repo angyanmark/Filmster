@@ -24,9 +24,7 @@ namespace Filmster.Converters
             return new BitmapImage(new Uri(uriString, UriKind.Absolute));
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, string language) =>
             throw new NotImplementedException();
-        }
     }
 }

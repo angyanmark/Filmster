@@ -14,10 +14,8 @@ namespace Filmster.Services
 
         public static ElementTheme Theme { get; set; } = ElementTheme.Default;
 
-        public static async Task InitializeAsync()
-        {
+        public static async Task InitializeAsync() =>
             Theme = await LoadThemeFromSettingsAsync();
-        }
 
         public static async Task SetThemeAsync(ElementTheme theme)
         {
@@ -54,9 +52,7 @@ namespace Filmster.Services
             return cacheTheme;
         }
 
-        private static async Task SaveThemeInSettingsAsync(ElementTheme theme)
-        {
+        private static async Task SaveThemeInSettingsAsync(ElementTheme theme) =>
             await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, theme.ToString());
-        }
     }
 }

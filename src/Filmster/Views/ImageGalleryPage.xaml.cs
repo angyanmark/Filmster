@@ -10,10 +10,7 @@ namespace Filmster.Views
     {
         public ImageGalleryViewModel ViewModel { get; } = new ImageGalleryViewModel();
 
-        public ImageGalleryPage()
-        {
-            InitializeComponent();
-        }
+        public ImageGalleryPage() => InitializeComponent();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -24,9 +21,7 @@ namespace Filmster.Views
             }
         }
 
-        private void OpenOriginalMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
-        {
+        private void OpenOriginalMenuFlyoutItem_Click(object sender, RoutedEventArgs e) =>
             ViewModel.OpenOriginalClickedCommand.Execute((sender as MenuFlyoutItem).DataContext as string);
-        }
     }
 }

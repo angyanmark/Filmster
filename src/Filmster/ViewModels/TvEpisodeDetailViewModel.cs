@@ -22,36 +22,36 @@ namespace Filmster.ViewModels
         private TvEpisode _tvEpisode;
         public TvEpisode TvEpisode
         {
-            get { return _tvEpisode; }
-            set { Set(ref _tvEpisode, value); }
+            get => _tvEpisode;
+            set => Set(ref _tvEpisode, value);
         }
 
         private ImageData _selectedPoster;
         public ImageData SelectedPoster
         {
-            get { return _selectedPoster; }
-            set { Set(ref _selectedPoster, value); }
+            get => _selectedPoster;
+            set => Set(ref _selectedPoster, value);
         }
 
         private TvShowSeasonEpisodeNumbers _tvShowSeasonEpisodeNumbers;
         public TvShowSeasonEpisodeNumbers TvShowSeasonEpisodeNumbers
         {
-            get { return _tvShowSeasonEpisodeNumbers; }
-            set { Set(ref _tvShowSeasonEpisodeNumbers, value); }
+            get => _tvShowSeasonEpisodeNumbers;
+            set => Set(ref _tvShowSeasonEpisodeNumbers, value);
         }
 
         private Video _video;
         public Video Video
         {
-            get { return _video; }
-            set { Set(ref _video, value); }
+            get => _video;
+            set => Set(ref _video, value);
         }
 
         private string _directors;
         public string Directors
         {
-            get { return _directors; }
-            set { Set(ref _directors, value); }
+            get => _directors;
+            set => Set(ref _directors, value);
         }
 
         public ObservableCollection<Cast> GuestStars { get; set; } = new ObservableCollection<Cast>();
@@ -62,7 +62,7 @@ namespace Filmster.ViewModels
         private bool _isGuestStarChecked;
         public bool IsGuestStarChecked
         {
-            get { return _isGuestStarChecked; }
+            get => _isGuestStarChecked;
             set
             {
                 Set(ref _isGuestStarChecked, value);
@@ -73,7 +73,7 @@ namespace Filmster.ViewModels
         private bool _isCastChecked;
         public bool IsCastChecked
         {
-            get { return _isCastChecked; }
+            get => _isCastChecked;
             set
             {
                 Set(ref _isCastChecked, value);
@@ -84,7 +84,7 @@ namespace Filmster.ViewModels
         private bool _isCrewChecked;
         public bool IsCrewChecked
         {
-            get { return _isCrewChecked; }
+            get => _isCrewChecked;
             set
             {
                 Set(ref _isCrewChecked, value);
@@ -95,7 +95,7 @@ namespace Filmster.ViewModels
         private bool _isImagesChecked;
         public bool IsImagesChecked
         {
-            get { return _isImagesChecked; }
+            get => _isImagesChecked;
             set
             {
                 Set(ref _isImagesChecked, value);
@@ -105,10 +105,8 @@ namespace Filmster.ViewModels
 
         public ICommand ImageClickedCommand;
 
-        public TvEpisodeDetailViewModel()
-        {
+        public TvEpisodeDetailViewModel() =>
             ImageClickedCommand = new RelayCommand<ImageData>(ImageClicked);
-        }
 
         public async Task LoadTvEpisodeAsync(TvShowSeasonEpisodeNumbers tvShowSeasonEpisodeNumbers)
         {
@@ -130,10 +128,8 @@ namespace Filmster.ViewModels
             Images.AddRange(TvEpisode.Images.Stills.Take(TMDbService.DefaultCastCrewBackdropCount));
         }
 
-        private ImageData GetSelectedPoster()
-        {
-            return TvEpisode.Images.Stills.Find(image => image.FilePath == TvEpisode.StillPath) ?? TvEpisode.Images.Stills.FirstOrDefault();
-        }
+        private ImageData GetSelectedPoster() =>
+            TvEpisode.Images.Stills.Find(image => image.FilePath == TvEpisode.StillPath) ?? TvEpisode.Images.Stills.FirstOrDefault();
 
         private string GetDirectors()
         {
@@ -189,14 +185,12 @@ namespace Filmster.ViewModels
             }
         }
 
-        private void ImageClicked(ImageData selectedImage)
-        {
+        private void ImageClicked(ImageData selectedImage) =>
             NavigationService.Navigate<ImageGalleryPage>(new ImageGalleryNavigationParameter
             {
                 ImagePaths = TvEpisode.Images.Stills.Select(image => image.FilePath),
                 SelectedImagePath = selectedImage.FilePath,
             });
-        }
 
         public void PosterClicked(object sender, TappedRoutedEventArgs e)
         {
@@ -210,9 +204,7 @@ namespace Filmster.ViewModels
             }
         }
 
-        public async void RatingChangedAsync(RatingControl sender, object args)
-        {
+        public async void RatingChangedAsync(RatingControl sender, object args) =>
             await ChangeRatingAsync(MediaType.Episode, sender.Value, TvEpisode.ShowId, TvEpisode.SeasonNumber, TvEpisode.EpisodeNumber);
-        }
     }
 }
