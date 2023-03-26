@@ -305,14 +305,6 @@
     <value>Felfedezés</value>
     <comment>Discover navigation view item name</comment>
   </data>
-  <data name="DiscoverMovieSortBy_OriginalTitle" xml:space="preserve">
-    <value>Eredeti cím</value>
-    <comment>DiscoverMovieSortBy.OriginalTitle displayname</comment>
-  </data>
-  <data name="DiscoverMovieSortBy_OriginalTitleDesc" xml:space="preserve">
-    <value>Eredeti cím (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.OriginalTitleDesc displayname</comment>
-  </data>
   <data name="DiscoverMovieSortBy_Popularity" xml:space="preserve">
     <value>Népszerűség</value>
     <comment>DiscoverMovieSortBy.Popularity displayname</comment>
@@ -329,14 +321,6 @@
     <value>Elsődleges megjelenési dátum (csökkenő)</value>
     <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc displayname</comment>
   </data>
-  <data name="DiscoverMovieSortBy_ReleaseDate" xml:space="preserve">
-    <value>Megjelenési dátum</value>
-    <comment>DiscoverMovieSortBy.ReleaseDate displayname</comment>
-  </data>
-  <data name="DiscoverMovieSortBy_ReleaseDateDesc" xml:space="preserve">
-    <value>Megjelenési dátum (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.ReleaseDateDesc displayname</comment>
-  </data>
   <data name="DiscoverMovieSortBy_Revenue" xml:space="preserve">
     <value>Bevétel</value>
     <comment>DiscoverMovieSortBy.Revenue displayname</comment>
@@ -344,10 +328,6 @@
   <data name="DiscoverMovieSortBy_RevenueDesc" xml:space="preserve">
     <value>Bevétel (csökkenő)</value>
     <comment>DiscoverMovieSortBy.RevenueDesc displayname</comment>
-  </data>
-  <data name="DiscoverMovieSortBy_Undefined" xml:space="preserve">
-    <value>Ismeretlen</value>
-    <comment>DiscoverMovieSortBy.Undefined displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverage" xml:space="preserve">
     <value>Szavazatátlag</value>
@@ -700,5 +680,33 @@
   <data name="Media_Reviews.Text" xml:space="preserve">
     <value>Vélemények</value>
     <comment>Reviews text for media</comment>
+  </data>
+  <data name="Discover_MediaType.Header" xml:space="preserve">
+    <value>Média</value>
+    <comment>Media text for Discover</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_FirstAirDate" xml:space="preserve">
+    <value>Első adás dátuma</value>
+    <comment>DiscoverTvShowSortBy.FirstAirDate displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_FirstAirDateDesc" xml:space="preserve">
+    <value>Első adás dátuma (csökkenő)</value>
+    <comment>DiscoverTvShowSortBy.FirstAirDateDesc displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_Popularity" xml:space="preserve">
+    <value>Népszerűség</value>
+    <comment>DiscoverTvShowSortBy.Popularity displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_PopularityDesc" xml:space="preserve">
+    <value>Népszerűség (csökkenő)</value>
+    <comment>DiscoverTvShowSortBy.PopularityDesc displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_VoteAverage" xml:space="preserve">
+    <value>Szavazatátlag</value>
+    <comment>DiscoverTvShowSortBy.VoteAverage displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_VoteAverageDesc" xml:space="preserve">
+    <value>Szavazatátlag (csökkenő)</value>
+    <comment>DiscoverTvShowSortBy.VoteAverageDesc displayname</comment>
   </data>
 </root>

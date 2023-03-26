@@ -68,7 +68,7 @@ namespace Filmster.ViewModels
         public ObservableCollection<MovieJob> MovieCrew { get; set; } = new ObservableCollection<MovieJob>();
         public ObservableCollection<TvJob> TvShowCrew { get; set; } = new ObservableCollection<TvJob>();
         public ObservableCollection<TaggedImage> Images { get; set; } = new ObservableCollection<TaggedImage>();
-        public IEnumerable<PersonCastCrewSortType> SortTypes { get; set; } = Enum.GetValues(typeof(PersonCastCrewSortType)).Cast<PersonCastCrewSortType>();
+        public IEnumerable<PersonCastCrewSortType> SortTypes { get; } = Enum.GetValues(typeof(PersonCastCrewSortType)).Cast<PersonCastCrewSortType>();
 
         private bool _isCastChecked;
         public bool IsCastChecked

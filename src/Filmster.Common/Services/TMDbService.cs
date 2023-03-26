@@ -209,9 +209,27 @@ namespace Filmster.Common.Services
                 .Query(CurrentLanguage, page);
         }
 
+        public static async Task<SearchContainer<SearchTv>> GetDiscoverTvShowsAsync(DiscoverTvShowOptions options, int page = 0)
+        {
+            return await client.DiscoverTvShowsAsync()
+                .WhereFirstAirDateIsAfter(options.FirstAirDateAfter)
+                .WhereFirstAirDateIsBefore(options.FirstAirDateBefore)
+                .WhereVoteAverageIsAtLeast(options.VoteAverageAtLeast)
+                //.WhereVoteAverageIsAtMost(options.VoteAverageAtMost)
+                .WhereVoteCountIsAtLeast(options.VoteCountAtLeast)
+                .WhereGenresInclude(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
+                .OrderBy(options.SortBy)
+                .Query(CurrentLanguage, page);
+        }
+
         public static async Task<List<Genre>> GetMovieGenresAsync()
         {
             return await client.GetMovieGenresAsync(CurrentLanguage);
+        }
+
+        public static async Task<List<Genre>> GetTvShowGenresAsync()
+        {
+            return await client.GetTvGenresAsync(CurrentLanguage);
         }
 
         public static async Task<Token> GetAuthenticationTokenAsync()

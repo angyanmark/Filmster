@@ -1,15 +1,15 @@
 ﻿using Filmster.Common.Helpers;
 using System;
-using TMDbLib.Objects.General;
+using TMDbLib.Objects.Discover;
 using Windows.UI.Xaml.Data;
 
 namespace Filmster.Converters
 {
-    public class MediaTypeToLocalizedStringConverter : IValueConverter
+    public class DiscoverMovieSortByToLocalizedStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return $"{nameof(MediaType)}_{value}".GetLocalized();
+            return $"{nameof(DiscoverMovieSortBy)}_{value}".GetLocalized();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -11,10 +11,24 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0"
+        <ComboBox x:Uid="Discover_MediaType"
+                  Grid.Row="0"
+                  Width="216"
+                  HorizontalAlignment="Center"
+                  ItemsSource="{x:Bind ViewModel.MediaTypes, Mode=OneTime}"
+                  SelectedItem="{x:Bind ViewModel.SelectedMediaType, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource MediaTypeToLocalizedStringConverter}}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <StackPanel Grid.Row="1"
                     Margin="{StaticResource SmallTopBottomMargin}"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
@@ -58,18 +72,37 @@
                 <ComboBox x:Uid="Discover_Genre"
                           Width="216"
                           DisplayMemberPath="Name"
-                          ItemsSource="{x:Bind ViewModel.Genres}"
+                          ItemsSource="{x:Bind ViewModel.Genres, Mode=OneWay}"
                           SelectedValue="{x:Bind ViewModel.GenreId, Mode=TwoWay}"
                           SelectedValuePath="Id" />
-                <ComboBox x:Uid="Discover_SortBy"
-                          Width="216"
-                          DisplayMemberPath="DisplayName"
-                          ItemsSource="{x:Bind ViewModel.SortByItems}"
-                          SelectedItem="{x:Bind ViewModel.SelectedSortByItem, Mode=TwoWay}" />
+                <Grid>
+                    <ComboBox x:Uid="Discover_SortBy"
+                              Width="216"
+                              ItemsSource="{x:Bind ViewModel.MovieSortByItems, Mode=OneTime}"
+                              SelectedItem="{x:Bind ViewModel.SelectedMovieSortByItem, Mode=TwoWay}"
+                              Visibility="{x:Bind ViewModel.IsMovieMediaType, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource DiscoverMovieSortByToLocalizedStringConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox x:Uid="Discover_SortBy"
+                              Width="216"
+                              ItemsSource="{x:Bind ViewModel.TvShowSortByItems, Mode=OneTime}"
+                              SelectedItem="{x:Bind ViewModel.SelectedTvShowSortByItem, Mode=TwoWay}"
+                              Visibility="{x:Bind ViewModel.IsMovieMediaType, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='True'}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource DiscoverTvShowSortByToLocalizedStringConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1"
+        <StackPanel Grid.Row="2"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
                     Spacing="{StaticResource XLargeSpacing}">
@@ -99,9 +132,9 @@
                     Style="{StaticResource AccentButtonStyle}" />
         </StackPanel>
 
-        <controls:AdaptiveGridView Grid.Row="2"
+        <controls:AdaptiveGridView Grid.Row="3"
                                    ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
-                                   ItemsSource="{x:Bind ViewModel.Movies, Mode=OneWay}"
+                                   ItemsSource="{x:Bind ViewModel.Results, Mode=OneWay}"
                                    Style="{StaticResource AdaptiveGridMediumPoster}" />
     </Grid>
 </Page>

@@ -124,8 +124,8 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
     <Compile Include="Helpers\StorageExtensions.cs" />
     <Compile Include="Models\ApplicationLanguage.cs" />
+    <Compile Include="Models\DiscoverTvShowOptions.cs" />
     <Compile Include="Models\DiscoverMovieOptions.cs" />
-    <Compile Include="Models\DiscoverMovieSortByItem.cs" />
     <Compile Include="Models\Enums\ExternalIdType.cs" />
     <Compile Include="Models\Enums\ImageSizeType.cs" />
     <Compile Include="Models\Enums\PersonCastCrewSortType.cs" />

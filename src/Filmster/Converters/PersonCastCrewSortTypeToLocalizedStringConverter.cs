@@ -9,7 +9,7 @@ namespace Filmster.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return $"{default(PersonCastCrewSortType).GetType().Name}_{value}".GetLocalized();
+            return $"{nameof(PersonCastCrewSortType)}_{value}".GetLocalized();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

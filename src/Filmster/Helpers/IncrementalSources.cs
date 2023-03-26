@@ -2,6 +2,7 @@
 using Filmster.Common.Services;
 using Microsoft.Toolkit.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Account;
@@ -120,19 +121,40 @@ namespace Filmster.Helpers
         }
     }
 
-    public class DiscoverMoviesSource : IIncrementalSource<SearchMovie>
+    public class DiscoverSource : IIncrementalSource<SearchMovieTvBase>
     {
-        public static DiscoverMovieOptions Options { get; set; }
-        private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
+        public static MediaType MediaType { get; set; }
+        public static DiscoverMovieOptions MovieOptions { get; set; }
+        public static DiscoverTvShowOptions TvShowOptions { get; set; }
+        private readonly SearchContainer<SearchMovieTvBase> Result = new SearchContainer<SearchMovieTvBase>();
 
-        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<SearchMovieTvBase>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
         {
             pageIndex++;
 
-            if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
+            if (pageIndex == 1 || pageIndex <= Result.TotalPages)
             {
-                Movies = await TMDbService.GetDiscoverMoviesAsync(Options, pageIndex);
-                return Movies.Results;
+                switch (MediaType)
+                {
+                    case MediaType.Movie:
+                        var movies = await TMDbService.GetDiscoverMoviesAsync(MovieOptions, pageIndex);
+                        Result.Page = movies.TotalPages;
+                        Result.Results = movies.Results.ConvertAll(r => (SearchMovieTvBase)r);
+                        Result.TotalPages = movies.TotalPages;
+                        Result.TotalResults = movies.TotalResults;
+                        break;
+                    case MediaType.Tv:
+                        var tvShows = await TMDbService.GetDiscoverTvShowsAsync(TvShowOptions, pageIndex);
+                        Result.Page = tvShows.TotalPages;
+                        Result.Results = tvShows.Results.ConvertAll(r => (SearchMovieTvBase)r);
+                        Result.TotalPages = tvShows.TotalPages;
+                        Result.TotalResults = tvShows.TotalResults;
+                        break;
+                    default:
+                        throw new InvalidEnumArgumentException(nameof(MediaType), (int)MediaType, typeof(MediaType));
+                }
+                
+                return Result.Results;
             }
 
             return default;

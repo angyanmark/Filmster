@@ -305,14 +305,6 @@
     <value>Discover</value>
     <comment>Discover navigation view item name</comment>
   </data>
-  <data name="DiscoverMovieSortBy_OriginalTitle" xml:space="preserve">
-    <value>Original Title</value>
-    <comment>DiscoverMovieSortBy.OriginalTitle displayname</comment>
-  </data>
-  <data name="DiscoverMovieSortBy_OriginalTitleDesc" xml:space="preserve">
-    <value>Original Title (desc)</value>
-    <comment>DiscoverMovieSortBy.OriginalTitleDesc displayname</comment>
-  </data>
   <data name="DiscoverMovieSortBy_Popularity" xml:space="preserve">
     <value>Popularity</value>
     <comment>DiscoverMovieSortBy.Popularity displayname</comment>
@@ -329,14 +321,6 @@
     <value>Primary Release Date (desc)</value>
     <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc displayname</comment>
   </data>
-  <data name="DiscoverMovieSortBy_ReleaseDate" xml:space="preserve">
-    <value>Release Date</value>
-    <comment>DiscoverMovieSortBy.ReleaseDate displayname</comment>
-  </data>
-  <data name="DiscoverMovieSortBy_ReleaseDateDesc" xml:space="preserve">
-    <value>Release Date (desc)</value>
-    <comment>DiscoverMovieSortBy.ReleaseDateDesc displayname</comment>
-  </data>
   <data name="DiscoverMovieSortBy_Revenue" xml:space="preserve">
     <value>Revenue</value>
     <comment>DiscoverMovieSortBy.Revenue displayname</comment>
@@ -344,10 +328,6 @@
   <data name="DiscoverMovieSortBy_RevenueDesc" xml:space="preserve">
     <value>Revenue (desc)</value>
     <comment>DiscoverMovieSortBy.RevenueDesc displayname</comment>
-  </data>
-  <data name="DiscoverMovieSortBy_Undefined" xml:space="preserve">
-    <value>Undefined</value>
-    <comment>DiscoverMovieSortBy.Undefined displayname</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverage" xml:space="preserve">
     <value>Vote Average</value>
@@ -602,7 +582,7 @@
     <comment>Person translation for MediaType</comment>
   </data>
   <data name="MediaType_Tv" xml:space="preserve">
-    <value>TV</value>
+    <value>TV Show</value>
     <comment>TV translation for MediaType</comment>
   </data>
   <data name="MediaType_Unknown" xml:space="preserve">
@@ -700,5 +680,33 @@
   <data name="Media_Reviews.Text" xml:space="preserve">
     <value>Reviews</value>
     <comment>Reviews text for media</comment>
+  </data>
+  <data name="Discover_MediaType.Header" xml:space="preserve">
+    <value>Media</value>
+    <comment>Media text for Discover</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_FirstAirDate" xml:space="preserve">
+    <value>First Air Date</value>
+    <comment>DiscoverTvShowSortBy.FirstAirDate displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_FirstAirDateDesc" xml:space="preserve">
+    <value>First Air Date (desc)</value>
+    <comment>DiscoverTvShowSortBy.FirstAirDateDesc displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_Popularity" xml:space="preserve">
+    <value>Popularity</value>
+    <comment>DiscoverTvShowSortBy.Popularity displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_PopularityDesc" xml:space="preserve">
+    <value>Popularity (desc)</value>
+    <comment>DiscoverTvShowSortBy.PopularityDesc displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_VoteAverage" xml:space="preserve">
+    <value>Vote Average</value>
+    <comment>DiscoverTvShowSortBy.VoteAverage displayname</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_VoteAverageDesc" xml:space="preserve">
+    <value>Vote Average (desc)</value>
+    <comment>DiscoverTvShowSortBy.VoteAverageDesc displayname</comment>
   </data>
 </root>

@@ -151,6 +151,8 @@
     <Compile Include="Components\ReviewListItem.xaml.cs">
       <DependentUpon>ReviewListItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DiscoverTvShowSortByToLocalizedStringConverter.cs" />
+    <Compile Include="Converters\DiscoverMovieSortByToLocalizedStringConverter.cs" />
     <Compile Include="Converters\ReviewAvatarPathToFullPathConverter.cs" />
     <Compile Include="Converters\IntToBoolConverter.cs" />
     <Compile Include="Converters\KnownForBaseToDisplayNameStringConverter.cs" />

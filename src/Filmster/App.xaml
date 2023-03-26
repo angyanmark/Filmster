@@ -26,6 +26,8 @@
             <c:BoolNegationConverter x:Key="BoolNegationConverter" />
             <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <c:StringFormatConverter x:Key="StringFormatConverter" />
+            <converters:DiscoverMovieSortByToLocalizedStringConverter x:Key="DiscoverMovieSortByToLocalizedStringConverter" />
+            <converters:DiscoverTvShowSortByToLocalizedStringConverter x:Key="DiscoverTvShowSortByToLocalizedStringConverter" />
             <converters:ExternalIdToUriConverter x:Key="ExternalIdToUriConverter" />
             <converters:ImagePathToFullPathConverter x:Key="ImagePathToFullPathConverter" />
             <converters:IntToBoolConverter x:Key="IntToBoolConverter" />

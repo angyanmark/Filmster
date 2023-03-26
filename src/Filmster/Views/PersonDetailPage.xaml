@@ -83,7 +83,7 @@
                         <ComboBox x:Uid="Media_SortBy"
                                   Width="200"
                                   HorizontalAlignment="Right"
-                                  ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneWay}"
+                                  ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneTime}"
                                   SelectedItem="{x:Bind ViewModel.SelectedCastSortType, Mode=TwoWay}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -130,7 +130,7 @@
                         <ComboBox x:Uid="Media_SortBy"
                                   Width="200"
                                   HorizontalAlignment="Right"
-                                  ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneWay}"
+                                  ItemsSource="{x:Bind ViewModel.SortTypes, Mode=OneTime}"
                                   SelectedItem="{x:Bind ViewModel.SelectedCrewSortType, Mode=TwoWay}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
