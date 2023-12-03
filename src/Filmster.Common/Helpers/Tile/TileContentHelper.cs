@@ -9,7 +9,7 @@ namespace Filmster.Common.Helper.Tile
         public static TileContent GetContent(string title, DateTime? releaseDate, double voteAverage, int voteCount, string posterPathKey, string backdropPathKey)
         {
             var backgroundImageOverlay = 60;
-            var longTitle = $"{title} ({releaseDate.Value.Year})";
+            var longTitle = releaseDate.HasValue ? $"{title} ({releaseDate.Value.Year})" : title;
             var shortTitle = title;
             var subtitle = $"{voteAverage / 2}★ ({voteCount})";
             var posterPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{posterPathKey}";
