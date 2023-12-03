@@ -50,6 +50,24 @@ namespace Filmster.Helpers
         }
     }
 
+    public class NowPlayingMoviesSource : IIncrementalSource<SearchMovie>
+    {
+        private SearchContainerWithDates<SearchMovie> Movies = new SearchContainerWithDates<SearchMovie>();
+
+        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
+            {
+                Movies = await TMDbService.GetNowPlayingMoviesAsync(pageIndex);
+                return Movies.Results;
+            }
+
+            return default;
+        }
+    }
+
     public class UpcomingMoviesSource : IIncrementalSource<SearchMovie>
     {
         private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();

@@ -725,4 +725,8 @@
     <value>Felkapott</value>
     <comment>Trending pivot item title for TvShows</comment>
   </data>
+  <data name="Movies_NowPlaying.Header" xml:space="preserve">
+    <value>Most játsszák</value>
+    <comment>Now Playing pivot item title for Movies</comment>
+  </data>
 </root>

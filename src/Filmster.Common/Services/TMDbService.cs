@@ -92,6 +92,9 @@ namespace Filmster.Common.Services
         public static async Task<SearchContainer<SearchMovie>> GetPopularMoviesAsync(int page = 0) =>
             await client.GetMoviePopularListAsync(CurrentLanguage, page);
 
+        public static async Task<SearchContainerWithDates<SearchMovie>> GetNowPlayingMoviesAsync(int page = 0) =>
+            await client.GetMovieNowPlayingListAsync(CurrentLanguage, page);
+
         public static async Task<SearchContainer<SearchMovie>> GetUpcomingMoviesAsync(int page = 0) =>
             await client.GetMovieUpcomingListAsync(CurrentLanguage, page);
 
