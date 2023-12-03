@@ -709,4 +709,8 @@
     <value>Szavazatátlag (csökkenő)</value>
     <comment>DiscoverTvShowSortBy.VoteAverageDesc display name</comment>
   </data>
+  <data name="Review_UpdatedAt" xml:space="preserve">
+    <value>Szerkesztve: {0}</value>
+    <comment>Updated at text for Review</comment>
+  </data>
 </root>

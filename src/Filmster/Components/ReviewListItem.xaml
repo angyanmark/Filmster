@@ -20,7 +20,9 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0"
+              Grid.Column="0"
+              VerticalAlignment="Center">
             <PersonPicture Width="{StaticResource DetailReviewAvatarSize}"
                            Height="{StaticResource DetailReviewAvatarSize}"
                            DisplayName="{x:Bind Review.Author, Mode=OneWay}"
@@ -31,13 +33,20 @@
                            Visibility="{x:Bind Review.AuthorDetails.AvatarPath, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
         </Grid>
 
-        <StackPanel Grid.Row="0" Grid.Column="1">
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    VerticalAlignment="Center">
             <TextBlock Style="{StaticResource ReviewListNameTextStyle}" Text="{x:Bind Review.Author, Mode=OneWay}" />
             <TextBlock Style="{StaticResource ReviewListUsernameTextStyle}" Text="{x:Bind Review.AuthorDetails.Username, Mode=OneWay}" />
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2">
-            <RatingControl IsReadOnly="True" Value="{x:Bind Review.AuthorDetails.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+            <RatingControl HorizontalAlignment="Right"
+                           IsReadOnly="True"
+                           Value="{x:Bind Review.AuthorDetails.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+            <TextBlock Style="{StaticResource ReviewListCreatedAtTextStyle}"
+                       Text="{x:Bind Review.CreatedAt, Mode=OneWay}"
+                       ToolTipService.ToolTip="{x:Bind Review.UpdatedAt, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Review_UpdatedAt'}" />
         </StackPanel>
 
         <TextBlock Grid.Row="1"

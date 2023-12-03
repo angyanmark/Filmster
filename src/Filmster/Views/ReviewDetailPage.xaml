@@ -30,7 +30,9 @@
                            Style="{StaticResource DetailPageTitleStyle}"
                            Text="{x:Bind ViewModel.Review.MediaTitle, Mode=OneWay}" />
 
-                <Grid Grid.Row="1" Grid.Column="0">
+                <Grid Grid.Row="1"
+                      Grid.Column="0"
+                      VerticalAlignment="Center">
                     <PersonPicture Width="{StaticResource ReviewDetailAvatarSize}"
                                    Height="{StaticResource ReviewDetailAvatarSize}"
                                    DisplayName="{x:Bind ViewModel.Review.Author, Mode=OneWay}"
@@ -41,7 +43,9 @@
                                    Visibility="{x:Bind ViewModel.Review.AuthorDetails.AvatarPath, Mode=OneWay, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
                 </Grid>
 
-                <StackPanel Grid.Row="1" Grid.Column="1">
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1"
+                            VerticalAlignment="Center">
                     <TextBlock Style="{StaticResource ReviewNameTextStyle}" Text="{x:Bind ViewModel.Review.Author, Mode=OneWay}" />
                     <TextBlock Style="{StaticResource ReviewUsernameTextStyle}" Text="{x:Bind ViewModel.Review.AuthorDetails.Username, Mode=OneWay}" />
                     <HyperlinkButton Padding="0"
@@ -52,7 +56,12 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="2">
-                    <RatingControl IsReadOnly="True" Value="{x:Bind ViewModel.Review.AuthorDetails.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <RatingControl HorizontalAlignment="Right"
+                                   IsReadOnly="True"
+                                   Value="{x:Bind ViewModel.Review.AuthorDetails.Rating, Mode=OneWay, Converter={StaticResource RatingToScaledRatingConverter}, ConverterParameter=10|5}" />
+                    <TextBlock Style="{StaticResource ReviewCreatedAtTextStyle}"
+                               Text="{x:Bind ViewModel.Review.CreatedAt, Mode=OneWay}"
+                               ToolTipService.ToolTip="{x:Bind ViewModel.Review.UpdatedAt, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Review_UpdatedAt'}" />
                 </StackPanel>
 
                 <TextBlock Grid.Row="2"

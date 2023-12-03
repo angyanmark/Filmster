@@ -709,4 +709,8 @@
     <value>Vote average (desc)</value>
     <comment>DiscoverTvShowSortBy.VoteAverageDesc display name</comment>
   </data>
+  <data name="Review_UpdatedAt" xml:space="preserve">
+    <value>Updated at {0}</value>
+    <comment>Updated at text for Review</comment>
+  </data>
 </root>

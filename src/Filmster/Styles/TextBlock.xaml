@@ -178,6 +178,15 @@
         <Setter Property="Foreground" Value="{StaticResource SystemOffsetMediumBrush}" />
     </Style>
 
+    <Style x:Key="ReviewCreatedAtTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource SystemOffsetMediumBrush}" />
+    </Style>
+
     <Style x:Key="ReviewContentTextStyle"
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
@@ -194,6 +203,12 @@
            BasedOn="{StaticResource ReviewUsernameTextStyle}"
            TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
+    </Style>
+
+    <Style x:Key="ReviewListCreatedAtTextStyle"
+           BasedOn="{StaticResource ReviewCreatedAtTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource XSmallFontSize}" />
     </Style>
 
     <Style x:Key="ReviewListContentTextStyle"
