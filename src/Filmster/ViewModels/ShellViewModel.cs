@@ -24,7 +24,7 @@ namespace Filmster.ViewModels
 {
     public class ShellViewModel : Observable
     {
-        public int AvatarSize { get; } = 36;
+        public readonly int AvatarSize = 36;
 
         private readonly KeyboardAccelerator _altLeftKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu);
         private readonly KeyboardAccelerator _backKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.GoBack);

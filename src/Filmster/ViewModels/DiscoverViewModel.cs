@@ -32,13 +32,13 @@ namespace Filmster.ViewModels
 
         public IncrementalLoadingCollection<DiscoverSource, SearchMovieTvBase> Results { get; set; } = new IncrementalLoadingCollection<DiscoverSource, SearchMovieTvBase>();
 
-        public List<MediaType> MediaTypes { get; } = new List<MediaType>
+        public IReadOnlyList<MediaType> MediaTypes { get; } = new List<MediaType>
         {
             MediaType.Movie,
             MediaType.Tv,
         };
 
-        public List<DiscoverMovieSortBy> MovieSortByItems { get; } = new List<DiscoverMovieSortBy>
+        public IReadOnlyList<DiscoverMovieSortBy> MovieSortByItems { get; } = new List<DiscoverMovieSortBy>
         {
             DiscoverMovieSortBy.Popularity,
             DiscoverMovieSortBy.PopularityDesc,
@@ -52,7 +52,7 @@ namespace Filmster.ViewModels
             DiscoverMovieSortBy.VoteCountDesc,
         };
 
-        public List<DiscoverTvShowSortBy> TvShowSortByItems { get; } = new List<DiscoverTvShowSortBy>
+        public IReadOnlyList<DiscoverTvShowSortBy> TvShowSortByItems { get; } = new List<DiscoverTvShowSortBy>
         {
             DiscoverTvShowSortBy.VoteAverage,
             DiscoverTvShowSortBy.VoteAverageDesc,

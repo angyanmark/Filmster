@@ -24,7 +24,7 @@ namespace Filmster.ViewModels
 {
     public class ProfileViewModel : MediaViewModelBase
     {
-        public int AvatarSize { get; } = 144;
+        public readonly int AvatarSize = 144;
 
         public IncrementalLoadingCollection<RatedMoviesSource, SearchMovieWithRating> RatedMovies { get; set; } = new IncrementalLoadingCollection<RatedMoviesSource, SearchMovieWithRating>();
         public IncrementalLoadingCollection<RatedTvShowsSource, AccountSearchTv> RatedTvShows { get; set; } = new IncrementalLoadingCollection<RatedTvShowsSource, AccountSearchTv>();
