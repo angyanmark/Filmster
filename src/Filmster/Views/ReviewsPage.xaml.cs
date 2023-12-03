@@ -17,6 +17,8 @@ namespace Filmster.Views
             base.OnNavigatedTo(e);
             if (e.Parameter is ReviewsNavigationParameter parameter)
             {
+                ViewModel.MediaTitle = parameter.MediaTitle;
+                ViewModel.MediaReleaseDate = parameter.MediaReleaseDate;
                 ReviewsSource.MediaType = parameter.MediaType;
                 ReviewsSource.Id = parameter.Id;
             }

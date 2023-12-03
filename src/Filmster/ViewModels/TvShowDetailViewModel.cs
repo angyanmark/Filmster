@@ -246,6 +246,8 @@ namespace Filmster.ViewModels
         private void ReviewsClicked() =>
             NavigationService.Navigate<ReviewsPage>(new ReviewsNavigationParameter
             {
+                MediaTitle = TvShow.Name,
+                MediaReleaseDate = TvShow.FirstAirDate,
                 MediaType = MediaType.Tv,
                 Id = TvShow.Id,
             });

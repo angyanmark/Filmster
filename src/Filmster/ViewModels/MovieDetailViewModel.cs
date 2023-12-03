@@ -240,6 +240,8 @@ namespace Filmster.ViewModels
         private void ReviewsClicked() =>
             NavigationService.Navigate<ReviewsPage>(new ReviewsNavigationParameter
             {
+                MediaTitle = Movie.Title,
+                MediaReleaseDate = Movie.ReleaseDate,
                 MediaType = MediaType.Movie,
                 Id = Movie.Id,
             });

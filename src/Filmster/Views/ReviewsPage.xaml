@@ -7,8 +7,24 @@
       Style="{StaticResource PageStyle}"
       mc:Ignorable="d">
 
-    <controls:AdaptiveGridView Padding="{StaticResource MediumLeftTopRightBottomMargin}"
-                               ItemClickCommand="{x:Bind ViewModel.ReviewBaseClickedCommand}"
-                               ItemsSource="{x:Bind ViewModel.Reviews, Mode=OneWay}"
-                               Style="{StaticResource AdaptiveGridReview}" />
+    <Grid Padding="{StaticResource MediumLeftRightMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Style="{StaticResource ReviewsHeaderTextStyle}"
+                   ToolTipService.ToolTip="{x:Bind ViewModel.MediaReleaseDate.Value.ToShortDateString(), Mode=OneWay}">
+            <Run Text="{x:Bind ViewModel.MediaTitle, Mode=OneWay}" />
+            <Run FontWeight="Normal"
+                 Foreground="{StaticResource SystemOffsetMediumLowBrush}"
+                 Text="{x:Bind ViewModel.MediaReleaseDate.Value.Year, Mode=OneWay}" />
+        </TextBlock>
+
+        <controls:AdaptiveGridView Grid.Row="1"
+                                   ItemClickCommand="{x:Bind ViewModel.ReviewBaseClickedCommand}"
+                                   ItemsSource="{x:Bind ViewModel.Reviews, Mode=OneWay}"
+                                   Style="{StaticResource AdaptiveGridReview}" />
+    </Grid>
 </Page>

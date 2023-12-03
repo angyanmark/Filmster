@@ -161,6 +161,17 @@
     </Style>
 
     <!--  Reviews  -->
+    <Style x:Key="ReviewsHeaderTextStyle"
+           BasedOn="{StaticResource TextWrap}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="MaxLines" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="{StaticResource SmallTopBottomMargin}" />
+    </Style>
+
     <Style x:Key="ReviewNameTextStyle"
            BasedOn="{StaticResource TextWrap}"
            TargetType="TextBlock">
