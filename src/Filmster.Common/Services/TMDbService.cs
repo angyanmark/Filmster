@@ -117,7 +117,7 @@ namespace Filmster.Common.Services
         }
 
         public static async Task<Review> GetReviewAsync(string id) =>
-            await client.GetReviewAsync(id);
+            await client.GetReviewAsync(id, CurrentLanguage);
 
         public static async Task<SearchContainer<SearchTv>> GetPopularTvShowsAsync(int page = 0) =>
             await client.GetTvShowPopularAsync(page, CurrentLanguage);
@@ -140,23 +140,8 @@ namespace Filmster.Common.Services
         public static async Task<SearchContainer<SearchPerson>> GetPopularPeopleAsync(int page = 0) =>
             await client.GetPersonPopularListAsync(page, CurrentLanguage);
 
-        public static async Task<Person> GetPersonAsync(int id)
-        {
-            try
-            {
-                return await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
-            }
-            catch (Exception)
-            {
-                var person = await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits);
-                person.TaggedImages = new SearchContainerWithId<TaggedImage>
-                {
-                    Id = id,
-                    Results = new List<TaggedImage>(),
-                };
-                return person;
-            }
-        }
+        public static async Task<Person> GetPersonAsync(int id) =>
+            await client.GetPersonAsync(id, CurrentLanguage, PersonMethods.Images | PersonMethods.MovieCredits | PersonMethods.TvCredits | PersonMethods.TaggedImages);
 
         public static async Task<SearchContainer<SearchMovie>> GetSearchMovieAsync(string value, int page = 0) =>
             await client.SearchMovieAsync(value, CurrentLanguage, page);
@@ -180,7 +165,7 @@ namespace Filmster.Common.Services
                 .WhereFirstAirDateIsAfter(options.FirstAirDateAfter)
                 .WhereFirstAirDateIsBefore(options.FirstAirDateBefore)
                 .WhereVoteAverageIsAtLeast(options.VoteAverageAtLeast)
-                //.WhereVoteAverageIsAtMost(options.VoteAverageAtMost)
+                .WhereVoteAverageIsAtMost(options.VoteAverageAtMost)
                 .WhereVoteCountIsAtLeast(options.VoteCountAtLeast)
                 .WhereGenresInclude(options.GenreId == 0 ? new List<int>() : new List<int> { options.GenreId })
                 .OrderBy(options.SortBy)

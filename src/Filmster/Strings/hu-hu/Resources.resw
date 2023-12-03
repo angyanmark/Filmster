@@ -307,43 +307,43 @@
   </data>
   <data name="DiscoverMovieSortBy_Popularity" xml:space="preserve">
     <value>Népszerűség</value>
-    <comment>DiscoverMovieSortBy.Popularity displayname</comment>
+    <comment>DiscoverMovieSortBy.Popularity display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_PopularityDesc" xml:space="preserve">
     <value>Népszerűség (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.PopularityDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.PopularityDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_PrimaryReleaseDate" xml:space="preserve">
     <value>Elsődleges megjelenési dátum</value>
-    <comment>DiscoverMovieSortBy.PrimaryReleaseDate displayname</comment>
+    <comment>DiscoverMovieSortBy.PrimaryReleaseDate display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_PrimaryReleaseDateDesc" xml:space="preserve">
     <value>Elsődleges megjelenési dátum (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_Revenue" xml:space="preserve">
     <value>Bevétel</value>
-    <comment>DiscoverMovieSortBy.Revenue displayname</comment>
+    <comment>DiscoverMovieSortBy.Revenue display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_RevenueDesc" xml:space="preserve">
     <value>Bevétel (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.RevenueDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.RevenueDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverage" xml:space="preserve">
     <value>Szavazatátlag</value>
-    <comment>DiscoverMovieSortBy.VoteAverage displayname</comment>
+    <comment>DiscoverMovieSortBy.VoteAverage display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverageDesc" xml:space="preserve">
     <value>Szavazatátlag (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.VoteAverageDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.VoteAverageDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteCount" xml:space="preserve">
     <value>Szavazatszám</value>
-    <comment>DiscoverMovieSortBy.VoteCount displayname</comment>
+    <comment>DiscoverMovieSortBy.VoteCount display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteCountDesc" xml:space="preserve">
     <value>Szavazatszám (csökkenő)</value>
-    <comment>DiscoverMovieSortBy.VoteCountDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.VoteCountDesc display name</comment>
   </data>
   <data name="Discover_Clear.Content" xml:space="preserve">
     <value>Törlés</value>
@@ -359,19 +359,19 @@
   </data>
   <data name="Discover_MinimumVotes.Text" xml:space="preserve">
     <value>Minimális szavazat</value>
-    <comment>Minimum Votes text for Discover</comment>
+    <comment>Minimum votes text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes:.Text" xml:space="preserve">
     <value>Minimális szavazat:</value>
-    <comment>Minimum Votes: text for Discover</comment>
+    <comment>Minimum votes: text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate.Text" xml:space="preserve">
     <value>Megjelenési dátum</value>
-    <comment>Release Date text for Discover</comment>
+    <comment>Release date text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate:.Text" xml:space="preserve">
     <value>Megjelenési dátum:</value>
-    <comment>Release Date: text for Discover</comment>
+    <comment>Release date: text for Discover</comment>
   </data>
   <data name="Discover_SortBy.Header" xml:space="preserve">
     <value>Rendezés</value>
@@ -379,11 +379,11 @@
   </data>
   <data name="Discover_VoteAverage.Text" xml:space="preserve">
     <value>Szavazatátlag</value>
-    <comment>Vote Average text for Discover</comment>
+    <comment>Vote average text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage:.Text" xml:space="preserve">
     <value>Szavazatátlag:</value>
-    <comment>Vote Average: text for Discover</comment>
+    <comment>Vote average: text for Discover</comment>
   </data>
   <data name="Media_Movies.Text" xml:space="preserve">
     <value>Filmek</value>
@@ -687,26 +687,26 @@
   </data>
   <data name="DiscoverTvShowSortBy_FirstAirDate" xml:space="preserve">
     <value>Első adás dátuma</value>
-    <comment>DiscoverTvShowSortBy.FirstAirDate displayname</comment>
+    <comment>DiscoverTvShowSortBy.FirstAirDate display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_FirstAirDateDesc" xml:space="preserve">
     <value>Első adás dátuma (csökkenő)</value>
-    <comment>DiscoverTvShowSortBy.FirstAirDateDesc displayname</comment>
+    <comment>DiscoverTvShowSortBy.FirstAirDateDesc display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_Popularity" xml:space="preserve">
     <value>Népszerűség</value>
-    <comment>DiscoverTvShowSortBy.Popularity displayname</comment>
+    <comment>DiscoverTvShowSortBy.Popularity display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_PopularityDesc" xml:space="preserve">
     <value>Népszerűség (csökkenő)</value>
-    <comment>DiscoverTvShowSortBy.PopularityDesc displayname</comment>
+    <comment>DiscoverTvShowSortBy.PopularityDesc display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_VoteAverage" xml:space="preserve">
     <value>Szavazatátlag</value>
-    <comment>DiscoverTvShowSortBy.VoteAverage displayname</comment>
+    <comment>DiscoverTvShowSortBy.VoteAverage display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_VoteAverageDesc" xml:space="preserve">
     <value>Szavazatátlag (csökkenő)</value>
-    <comment>DiscoverTvShowSortBy.VoteAverageDesc displayname</comment>
+    <comment>DiscoverTvShowSortBy.VoteAverageDesc display name</comment>
   </data>
 </root>

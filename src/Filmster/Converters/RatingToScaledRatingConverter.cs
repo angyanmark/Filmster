@@ -12,8 +12,8 @@ namespace Filmster.Converters
                 return -1.0;
             }
 
-            var success = double.TryParse(value.ToString(), out var rating);
-            if (rating == 0 || !success)
+            var rating = (double)value;
+            if (rating == 0)
             {
                 return -1.0;
             }

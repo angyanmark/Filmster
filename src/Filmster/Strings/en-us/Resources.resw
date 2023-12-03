@@ -158,7 +158,7 @@
     <comment>Light theme text for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy statement</value>
+    <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
@@ -311,39 +311,39 @@
   </data>
   <data name="DiscoverMovieSortBy_PopularityDesc" xml:space="preserve">
     <value>Popularity (desc)</value>
-    <comment>DiscoverMovieSortBy.PopularityDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.PopularityDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_PrimaryReleaseDate" xml:space="preserve">
-    <value>Primary Release Date</value>
-    <comment>DiscoverMovieSortBy.PrimaryReleaseDate displayname</comment>
+    <value>Primary release date</value>
+    <comment>DiscoverMovieSortBy.PrimaryReleaseDate display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_PrimaryReleaseDateDesc" xml:space="preserve">
-    <value>Primary Release Date (desc)</value>
-    <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc displayname</comment>
+    <value>Primary release date (desc)</value>
+    <comment>DiscoverMovieSortBy.PrimaryReleaseDateDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_Revenue" xml:space="preserve">
     <value>Revenue</value>
-    <comment>DiscoverMovieSortBy.Revenue displayname</comment>
+    <comment>DiscoverMovieSortBy.Revenue display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_RevenueDesc" xml:space="preserve">
     <value>Revenue (desc)</value>
-    <comment>DiscoverMovieSortBy.RevenueDesc displayname</comment>
+    <comment>DiscoverMovieSortBy.RevenueDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverage" xml:space="preserve">
-    <value>Vote Average</value>
-    <comment>DiscoverMovieSortBy.VoteAverage displayname</comment>
+    <value>Vote average</value>
+    <comment>DiscoverMovieSortBy.VoteAverage display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteAverageDesc" xml:space="preserve">
-    <value>Vote Average (desc)</value>
-    <comment>DiscoverMovieSortBy.VoteAverageDesc displayname</comment>
+    <value>Vote average (desc)</value>
+    <comment>DiscoverMovieSortBy.VoteAverageDesc display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteCount" xml:space="preserve">
-    <value>Vote Count</value>
-    <comment>DiscoverMovieSortBy.VoteCount displayname</comment>
+    <value>Vote count</value>
+    <comment>DiscoverMovieSortBy.VoteCount display name</comment>
   </data>
   <data name="DiscoverMovieSortBy_VoteCountDesc" xml:space="preserve">
-    <value>Vote Count (desc)</value>
-    <comment>DiscoverMovieSortBy.VoteCountDesc displayname</comment>
+    <value>Vote count (desc)</value>
+    <comment>DiscoverMovieSortBy.VoteCountDesc display name</comment>
   </data>
   <data name="Discover_Clear.Content" xml:space="preserve">
     <value>Clear</value>
@@ -358,32 +358,32 @@
     <comment>Genre text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes.Text" xml:space="preserve">
-    <value>Minimum Votes</value>
-    <comment>Minimum Votes text for Discover</comment>
+    <value>Minimum votes</value>
+    <comment>Minimum votes text for Discover</comment>
   </data>
   <data name="Discover_MinimumVotes:.Text" xml:space="preserve">
-    <value>Minimum Votes:</value>
-    <comment>Minimum Votes: text for Discover</comment>
+    <value>Minimum votes:</value>
+    <comment>Minimum votes: text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate.Text" xml:space="preserve">
-    <value>Release Date</value>
-    <comment>Release Date text for Discover</comment>
+    <value>Release date</value>
+    <comment>Release date text for Discover</comment>
   </data>
   <data name="Discover_ReleaseDate:.Text" xml:space="preserve">
-    <value>Release Date:</value>
-    <comment>Release Date: text for Discover</comment>
+    <value>Release date:</value>
+    <comment>Release date: text for Discover</comment>
   </data>
   <data name="Discover_SortBy.Header" xml:space="preserve">
     <value>Sort by</value>
     <comment>Sort by text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage.Text" xml:space="preserve">
-    <value>Vote Average</value>
-    <comment>Vote Average text for Discover</comment>
+    <value>Vote average</value>
+    <comment>Vote average text for Discover</comment>
   </data>
   <data name="Discover_VoteAverage:.Text" xml:space="preserve">
-    <value>Vote Average:</value>
-    <comment>Vote Average: text for Discover</comment>
+    <value>Vote average:</value>
+    <comment>Vote average: text for Discover</comment>
   </data>
   <data name="Media_Movies.Text" xml:space="preserve">
     <value>Movies</value>
@@ -686,27 +686,27 @@
     <comment>Media text for Discover</comment>
   </data>
   <data name="DiscoverTvShowSortBy_FirstAirDate" xml:space="preserve">
-    <value>First Air Date</value>
-    <comment>DiscoverTvShowSortBy.FirstAirDate displayname</comment>
+    <value>First air date</value>
+    <comment>DiscoverTvShowSortBy.FirstAirDate display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_FirstAirDateDesc" xml:space="preserve">
-    <value>First Air Date (desc)</value>
-    <comment>DiscoverTvShowSortBy.FirstAirDateDesc displayname</comment>
+    <value>First air date (desc)</value>
+    <comment>DiscoverTvShowSortBy.FirstAirDateDesc display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_Popularity" xml:space="preserve">
     <value>Popularity</value>
-    <comment>DiscoverTvShowSortBy.Popularity displayname</comment>
+    <comment>DiscoverTvShowSortBy.Popularity display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_PopularityDesc" xml:space="preserve">
     <value>Popularity (desc)</value>
-    <comment>DiscoverTvShowSortBy.PopularityDesc displayname</comment>
+    <comment>DiscoverTvShowSortBy.PopularityDesc display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_VoteAverage" xml:space="preserve">
-    <value>Vote Average</value>
-    <comment>DiscoverTvShowSortBy.VoteAverage displayname</comment>
+    <value>Vote average</value>
+    <comment>DiscoverTvShowSortBy.VoteAverage display name</comment>
   </data>
   <data name="DiscoverTvShowSortBy_VoteAverageDesc" xml:space="preserve">
-    <value>Vote Average (desc)</value>
-    <comment>DiscoverTvShowSortBy.VoteAverageDesc displayname</comment>
+    <value>Vote average (desc)</value>
+    <comment>DiscoverTvShowSortBy.VoteAverageDesc display name</comment>
   </data>
 </root>
