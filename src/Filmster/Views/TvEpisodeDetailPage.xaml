@@ -57,10 +57,15 @@
                             <Run Text="{x:Bind ViewModel.Directors, Mode=OneWay}" />
                         </TextBlock>
 
-                        <TextBlock Grid.Row="2" Foreground="{StaticResource SystemOffsetMediumBrush}">
-                            <Run Text="{x:Bind ViewModel.TvEpisode.SeasonNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
-                            <Run Text="{x:Bind ViewModel.TvEpisode.EpisodeNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
-                        </TextBlock>
+                        <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    Spacing="{StaticResource SmallSpacing}">
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
+                                <Run Text="{x:Bind ViewModel.TvEpisode.SeasonNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
+                                <Run Text="{x:Bind ViewModel.TvEpisode.EpisodeNumber, Mode=OneWay, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
+                            </TextBlock>
+                            <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{x:Bind ViewModel.TvEpisode.Runtime, Mode=OneWay, Converter={StaticResource IntToRuntimeConverter}}" />
+                        </StackPanel>
 
                         <StackPanel Grid.Row="3"
                                     Orientation="Horizontal"

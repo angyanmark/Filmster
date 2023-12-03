@@ -123,6 +123,7 @@ namespace Filmster.ViewModels
                 Name = episode.Name,
                 Overview = episode.Overview,
                 ProductionCode = episode.ProductionCode,
+                Runtime = episode.Runtime,
                 SeasonNumber = episode.SeasonNumber,
                 StillPath = episode.StillPath,
                 VoteAverage = episode.VoteAverage,

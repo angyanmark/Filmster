@@ -189,10 +189,13 @@
                          Foreground="{StaticResource SystemOffsetMediumLowBrush}"
                          Text="{Binding AirDate, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Date_ShortDate'}" />
                 </TextBlock>
-                <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
-                    <Run Text="{Binding SeasonNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
-                    <Run Text="{Binding EpisodeNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
-                </TextBlock>
+                <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
+                    <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}">
+                        <Run Text="{Binding SeasonNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_SeasonNumber'}" />
+                        <Run Text="{Binding EpisodeNumber, Converter={StaticResource LocalizedStringFormatConverter}, ConverterParameter='Media_EpisodeNumber'}" />
+                    </TextBlock>
+                    <TextBlock Foreground="{StaticResource SystemOffsetMediumBrush}" Text="{Binding Runtime, Converter={StaticResource IntToRuntimeConverter}}" />
+                </StackPanel>
                 <TextBlock Style="{StaticResource ListOverviewTextStyle}" Text="{Binding Overview}" />
                 <StackPanel Orientation="Horizontal" Spacing="{StaticResource SmallSpacing}">
                     <RatingControl Margin="{StaticResource XSmallTopMargin}"
