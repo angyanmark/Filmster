@@ -713,4 +713,16 @@
     <value>Szerkesztve: {0}</value>
     <comment>Updated at text for Review</comment>
   </data>
+  <data name="Movies_Trending.Header" xml:space="preserve">
+    <value>Felkapott</value>
+    <comment>Trending pivot item title for Movies</comment>
+  </data>
+  <data name="People_Trending.Header" xml:space="preserve">
+    <value>Felkapott</value>
+    <comment>Trending pivot item title for People</comment>
+  </data>
+  <data name="TvShows_Trending.Header" xml:space="preserve">
+    <value>Felkapott</value>
+    <comment>Trending pivot item title for TvShows</comment>
+  </data>
 </root>

@@ -10,9 +10,28 @@ using TMDbLib.Objects.General;
 using TMDbLib.Objects.Lists;
 using TMDbLib.Objects.Reviews;
 using TMDbLib.Objects.Search;
+using TMDbLib.Objects.Trending;
 
 namespace Filmster.Helpers
 {
+    public class TrendingMoviesSource : IIncrementalSource<SearchMovie>
+    {
+        private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
+
+        public async Task<IEnumerable<SearchMovie>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= Movies.TotalPages)
+            {
+                Movies = await TMDbService.GetTrendingMoviesAsync(TimeWindow.Week, pageIndex);
+                return Movies.Results;
+            }
+
+            return default;
+        }
+    }
+
     public class PopularMoviesSource : IIncrementalSource<SearchMovie>
     {
         private SearchContainer<SearchMovie> Movies = new SearchContainer<SearchMovie>();
@@ -67,6 +86,24 @@ namespace Filmster.Helpers
         }
     }
 
+    public class TrendingTvShowsSource : IIncrementalSource<SearchTv>
+    {
+        private SearchContainer<SearchTv> TvShows = new SearchContainer<SearchTv>();
+
+        public async Task<IEnumerable<SearchTv>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= TvShows.TotalPages)
+            {
+                TvShows = await TMDbService.GetTrendingTvShowsAsync(TimeWindow.Week, pageIndex);
+                return TvShows.Results;
+            }
+
+            return default;
+        }
+    }
+
     public class PopularTvShowsSource : IIncrementalSource<SearchTv>
     {
         private SearchContainer<SearchTv> TvShows = new SearchContainer<SearchTv>();
@@ -97,6 +134,24 @@ namespace Filmster.Helpers
             {
                 TvShows = await TMDbService.GetTopRatedTvShowsAsync(pageIndex);
                 return TvShows.Results;
+            }
+
+            return default;
+        }
+    }
+
+    public class TrendingPeopleSource : IIncrementalSource<SearchPerson>
+    {
+        private SearchContainer<SearchPerson> People = new SearchContainer<SearchPerson>();
+
+        public async Task<IEnumerable<SearchPerson>> GetPagedItemsAsync(int pageIndex, int pageSize, CancellationToken cancellationToken = default)
+        {
+            pageIndex++;
+
+            if (pageIndex == 1 || pageIndex <= People.TotalPages)
+            {
+                People = await TMDbService.GetTrendingPeopleAsync(TimeWindow.Week, pageIndex);
+                return People.Results;
             }
 
             return default;

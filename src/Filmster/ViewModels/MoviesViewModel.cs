@@ -7,8 +7,9 @@ namespace Filmster.ViewModels
 {
     public class MoviesViewModel : MediaViewModelBase
     {
-        public IncrementalLoadingCollection<PopularMoviesSource, SearchMovie> PopularMovies { get; set; } = new IncrementalLoadingCollection<PopularMoviesSource, SearchMovie>();
-        public IncrementalLoadingCollection<UpcomingMoviesSource, SearchMovie> UpcomingMovies { get; set; } = new IncrementalLoadingCollection<UpcomingMoviesSource, SearchMovie>();
-        public IncrementalLoadingCollection<TopRatedMoviesSource, SearchMovie> TopRatedMovies { get; set; } = new IncrementalLoadingCollection<TopRatedMoviesSource, SearchMovie>();
+        public IncrementalLoadingCollection<TrendingMoviesSource, SearchMovie> TrendingMovies { get; } = new IncrementalLoadingCollection<TrendingMoviesSource, SearchMovie>();
+        public IncrementalLoadingCollection<PopularMoviesSource, SearchMovie> PopularMovies { get; } = new IncrementalLoadingCollection<PopularMoviesSource, SearchMovie>();
+        public IncrementalLoadingCollection<UpcomingMoviesSource, SearchMovie> UpcomingMovies { get; } = new IncrementalLoadingCollection<UpcomingMoviesSource, SearchMovie>();
+        public IncrementalLoadingCollection<TopRatedMoviesSource, SearchMovie> TopRatedMovies { get; } = new IncrementalLoadingCollection<TopRatedMoviesSource, SearchMovie>();
     }
 }

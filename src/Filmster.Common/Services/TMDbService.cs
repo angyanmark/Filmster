@@ -12,6 +12,7 @@ using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.People;
 using TMDbLib.Objects.Reviews;
 using TMDbLib.Objects.Search;
+using TMDbLib.Objects.Trending;
 using TMDbLib.Objects.TvShows;
 
 namespace Filmster.Common.Services
@@ -85,6 +86,9 @@ namespace Filmster.Common.Services
             }
         }
 
+        public static async Task<SearchContainer<SearchMovie>> GetTrendingMoviesAsync(TimeWindow timeWindow, int page = 0) =>
+            await client.GetTrendingMoviesAsync(timeWindow, page, CurrentLanguage);
+
         public static async Task<SearchContainer<SearchMovie>> GetPopularMoviesAsync(int page = 0) =>
             await client.GetMoviePopularListAsync(CurrentLanguage, page);
 
@@ -119,6 +123,9 @@ namespace Filmster.Common.Services
         public static async Task<Review> GetReviewAsync(string id) =>
             await client.GetReviewAsync(id, CurrentLanguage);
 
+        public static async Task<SearchContainer<SearchTv>> GetTrendingTvShowsAsync(TimeWindow timeWindow, int page = 0) =>
+            await client.GetTrendingTvAsync(timeWindow, page, CurrentLanguage);
+
         public static async Task<SearchContainer<SearchTv>> GetPopularTvShowsAsync(int page = 0) =>
             await client.GetTvShowPopularAsync(page, CurrentLanguage);
 
@@ -136,6 +143,9 @@ namespace Filmster.Common.Services
 
         public static async Task<TvEpisode> GetTvEpisodeAsync(int tvShowId, int seasonNumber, int episodeNumber, bool includeAccountState = false) =>
             await client.GetTvEpisodeAsync(tvShowId, seasonNumber, episodeNumber, (includeAccountState ? TvEpisodeMethods.AccountStates : TvEpisodeMethods.Undefined) | TvEpisodeMethods.Images | TvEpisodeMethods.Credits | TvEpisodeMethods.Videos | TvEpisodeMethods.ExternalIds, CurrentLanguage, IncludeImageLanguage);
+
+        public static async Task<SearchContainer<SearchPerson>> GetTrendingPeopleAsync(TimeWindow timeWindow, int page = 0) =>
+            await client.GetTrendingPeopleAsync(timeWindow, page, CurrentLanguage);
 
         public static async Task<SearchContainer<SearchPerson>> GetPopularPeopleAsync(int page = 0) =>
             await client.GetPersonPopularListAsync(page, CurrentLanguage);

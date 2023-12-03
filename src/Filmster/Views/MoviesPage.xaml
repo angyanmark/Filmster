@@ -8,6 +8,12 @@
       mc:Ignorable="d">
 
     <Pivot Margin="{StaticResource SmallLeftRightMargin}" HeaderTemplate="{StaticResource PivotHeaderTemplate}">
+        <PivotItem x:Uid="Movies_Trending">
+            <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
+                                       ItemsSource="{x:Bind ViewModel.TrendingMovies, Mode=OneWay}"
+                                       Style="{StaticResource AdaptiveGridMediumPoster}" />
+        </PivotItem>
+
         <PivotItem x:Uid="Movies_Popular">
             <controls:AdaptiveGridView ItemClickCommand="{x:Bind ViewModel.SearchBaseClickedCommand}"
                                        ItemsSource="{x:Bind ViewModel.PopularMovies, Mode=OneWay}"
