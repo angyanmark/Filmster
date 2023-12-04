@@ -12,10 +12,7 @@ namespace Filmster
     {
         private readonly Lazy<ActivationService> _activationService;
 
-        private ActivationService ActivationService
-        {
-            get => _activationService.Value;
-        }
+        private ActivationService ActivationService => _activationService.Value;
 
         public App()
         {

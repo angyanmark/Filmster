@@ -11,7 +11,7 @@ namespace Filmster.Common.Helper.Tile
             var backgroundImageOverlay = 60;
             var longTitle = releaseDate.HasValue ? $"{title} ({releaseDate.Value.Year})" : title;
             var shortTitle = title;
-            var subtitle = $"{voteAverage / 2}★ ({voteCount})";
+            var subtitle = $"{voteAverage / 2:0.#}★ ({voteCount})";
             var posterPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{posterPathKey}";
             var backdropPath = $"{TMDbService.SecureBaseUrl}{TMDbService.MediumPosterSize}{backdropPathKey}";
 
