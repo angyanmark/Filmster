@@ -20,10 +20,10 @@ namespace Filmster.ViewModels
     {
         public readonly int ReleaseDateMin = 1870;
         public readonly int ReleaseDateMax = DateTime.Now.Year + 10;
-        public readonly double VoteAverageMin = 0;
-        public readonly double VoteAverageMax = 5;
+        public readonly double VoteAverageMin = 0D;
+        public readonly double VoteAverageMax = 5D;
         public readonly int VoteCountMin = 0;
-        public readonly int VoteCountMax = 50000;
+        public readonly int VoteCountMax = 100_000;
 
         private readonly Genre EmptyGenre = new Genre { Id = 0, Name = string.Empty };
         private List<Genre> MovieGenres { get; } = new List<Genre>();
