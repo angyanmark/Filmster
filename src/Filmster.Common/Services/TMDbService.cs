@@ -21,56 +21,56 @@ namespace Filmster.Common.Services
     {
         private static readonly TMDbClient client = new TMDbClient("5e9bcb638329a15acf75c1b2d85ae67e");
 
-        public static readonly string SecureBaseUrl = "https://image.tmdb.org/t/p/";
+        public const string SecureBaseUrl = "https://image.tmdb.org/t/p/";
 
-        public static readonly string SmallBackdropSize = "w300";
-        public static readonly string MediumBackdropSize = "w780";
-        public static readonly string LargeBackdropSize = "w1280";
+        public const string SmallBackdropSize = "w300";
+        public const string MediumBackdropSize = "w780";
+        public const string LargeBackdropSize = "w1280";
 
-        public static readonly string SmallLogoSize = "w92";
-        public static readonly string MediumLogoSize = "w185";
-        public static readonly string LargeLogoSize = "w300";
+        public const string SmallLogoSize = "w92";
+        public const string MediumLogoSize = "w185";
+        public const string LargeLogoSize = "w300";
 
-        public static readonly string SmallPosterSize = "w154";
-        public static readonly string MediumPosterSize = "w342";
-        public static readonly string LargePosterSize = "w500";
+        public const string SmallPosterSize = "w154";
+        public const string MediumPosterSize = "w342";
+        public const string LargePosterSize = "w500";
 
-        public static readonly string SmallProfileSize = "w45";
-        public static readonly string MediumProfileSize = "w185";
-        public static readonly string LargeProfileSize = "h632";
+        public const string SmallProfileSize = "w45";
+        public const string MediumProfileSize = "w185";
+        public const string LargeProfileSize = "h632";
 
-        public static readonly string SmallStillSize = "w92";
-        public static readonly string MediumStillSize = "w185";
-        public static readonly string LargeStillSize = "w300";
-        public static readonly string XLargeStillSize = "w500";
-        public static readonly string XXLargeStillSize = "w1280";
+        public const string SmallStillSize = "w92";
+        public const string MediumStillSize = "w185";
+        public const string LargeStillSize = "w300";
+        public const string XLargeStillSize = "w500";
+        public const string XXLargeStillSize = "w1280";
 
-        public static readonly string OriginalSize = "original";
+        public const string OriginalSize = "original";
 
-        public static readonly string TMDbBaseUrl = "https://www.themoviedb.org/";
-        public static readonly string TMDbMovieBaseUrl = "https://www.themoviedb.org/movie/";
-        public static readonly string TMDbTvShowBaseUrl = "https://www.themoviedb.org/tv/";
-        public static readonly string TMDbPersonBaseUrl = "https://www.themoviedb.org/person/";
-        public static readonly string TMDbCollectionBaseUrl = "https://www.themoviedb.org/collection/";
-        public static readonly string TMDbListBaseUrl = "https://www.themoviedb.org/list/";
-        public static readonly string IMDbBaseUrl = "https://www.imdb.com/";
-        public static readonly string IMDbMovieBaseUrl = "https://www.imdb.com/title/";
-        public static readonly string IMDbTvShowBaseUrl = "https://www.imdb.com/title/";
-        public static readonly string IMDbTvEpisodeBaseUrl = "https://www.imdb.com/title/";
-        public static readonly string IMDbPersonBaseUrl = "https://www.imdb.com/name/";
-        public static readonly string YouTubeBaseUrl = "https://www.youtube.com/watch?v=";
-        public static readonly string FacebookBaseUrl = "https://www.facebook.com/";
-        public static readonly string TwitterBaseUrl = "https://twitter.com/";
-        public static readonly string InstagramBaseUrl = "https://www.instagram.com/";
+        public const string TMDbBaseUrl = "https://www.themoviedb.org/";
+        public const string TMDbMovieBaseUrl = "https://www.themoviedb.org/movie/";
+        public const string TMDbTvShowBaseUrl = "https://www.themoviedb.org/tv/";
+        public const string TMDbPersonBaseUrl = "https://www.themoviedb.org/person/";
+        public const string TMDbCollectionBaseUrl = "https://www.themoviedb.org/collection/";
+        public const string TMDbListBaseUrl = "https://www.themoviedb.org/list/";
+        public const string IMDbBaseUrl = "https://www.imdb.com/";
+        public const string IMDbMovieBaseUrl = "https://www.imdb.com/title/";
+        public const string IMDbTvShowBaseUrl = "https://www.imdb.com/title/";
+        public const string IMDbTvEpisodeBaseUrl = "https://www.imdb.com/title/";
+        public const string IMDbPersonBaseUrl = "https://www.imdb.com/name/";
+        public const string YouTubeBaseUrl = "https://www.youtube.com/watch?v=";
+        public const string FacebookBaseUrl = "https://www.facebook.com/";
+        public const string TwitterBaseUrl = "https://twitter.com/";
+        public const string InstagramBaseUrl = "https://www.instagram.com/";
 
-        public static readonly string TMDbTvSeasonUrl = "https://www.themoviedb.org/tv/{0}/season/{1}";
-        public static readonly string TMDbTvEpisodeUrl = "https://www.themoviedb.org/tv/{0}/season/{1}/episode/{2}";
-        public static readonly string IMDbTvSeasonUrl = "https://www.imdb.com/title/{0}/episodes?season={1}";
+        public const string TMDbTvSeasonUrl = "https://www.themoviedb.org/tv/{0}/season/{1}";
+        public const string TMDbTvEpisodeUrl = "https://www.themoviedb.org/tv/{0}/season/{1}/episode/{2}";
+        public const string IMDbTvSeasonUrl = "https://www.imdb.com/title/{0}/episodes?season={1}";
 
-        public static readonly string TMDbLogInBaseUrl = "https://www.themoviedb.org/authenticate/";
-        public static readonly string GravatarBaseUrl = "https://secure.gravatar.com/avatar/";
+        public const string TMDbLogInBaseUrl = "https://www.themoviedb.org/authenticate/";
+        public const string GravatarBaseUrl = "https://secure.gravatar.com/avatar/";
 
-        public static readonly int DefaultCastCrewBackdropCount = 15;
+        public const int DefaultCastCrewBackdropCount = 15;
 
         private static string CurrentLanguage { get; } = LanguageService.CurrentLanguage;
 
