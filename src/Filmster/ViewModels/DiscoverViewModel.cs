@@ -54,12 +54,14 @@ namespace Filmster.ViewModels
 
         public IReadOnlyList<DiscoverTvShowSortBy> TvShowSortByItems { get; } = new List<DiscoverTvShowSortBy>
         {
-            DiscoverTvShowSortBy.VoteAverage,
-            DiscoverTvShowSortBy.VoteAverageDesc,
-            DiscoverTvShowSortBy.FirstAirDate,
-            DiscoverTvShowSortBy.FirstAirDateDesc,
             DiscoverTvShowSortBy.Popularity,
             DiscoverTvShowSortBy.PopularityDesc,
+            DiscoverTvShowSortBy.FirstAirDate,
+            DiscoverTvShowSortBy.FirstAirDateDesc,
+            DiscoverTvShowSortBy.VoteAverage,
+            DiscoverTvShowSortBy.VoteAverageDesc,
+            DiscoverTvShowSortBy.VoteCount,
+            DiscoverTvShowSortBy.VoteCountDesc,
         };
 
         private MediaType _selectedMediaType = MediaType.Movie;

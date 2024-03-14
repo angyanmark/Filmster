@@ -729,4 +729,12 @@
     <value>Now Playing</value>
     <comment>Now Playing pivot item title for Movies</comment>
   </data>
+  <data name="DiscoverTvShowSortBy_VoteCount" xml:space="preserve">
+    <value>Vote count</value>
+    <comment>DiscoverTvShowSortBy.VoteCount display name</comment>
+  </data>
+  <data name="DiscoverTvShowSortBy_VoteCountDesc" xml:space="preserve">
+    <value>Vote count (desc)</value>
+    <comment>DiscoverTvShowSortBy.VoteCountDesc display name</comment>
+  </data>
 </root>
